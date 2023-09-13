@@ -10,21 +10,26 @@ import DashboardPage from './pages/DashboardPage';
 import DiaryPage from './pages/DiaryPage';
 import RecommendedFoodPage from './pages/RecommendedFoodPage';
 import SettingsPage from './pages/SettingsPage';
+import PrivateRoute from './components/PrivateRoute';
+import RestrictedRoute from './components/RestrictedRoute';
 
 function App() {
+  // useEffect для перевірки чи зареєстрований юзер при перезавантаженні сторінки
+  
+  let isAuth=false; // замінити на значення зі стейту
+
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-        {false && <Route index element={<WellcomPage />}/>}
-        <Route path='signup' element={<SignUpPage />}/>
-        <Route path='signin' element={<SignInPage />}/>
-        <Route path='forgot-password' element={<ForgotPasswordPage/>}/>
+        <Route index element={!isAuth ? <WellcomPage /> : <MainPage />}  />
+        <Route path='signup' element={<RestrictedRoute redirectTo='/' component={<SignUpPage />}  />}/>
+        <Route path='signin' element={<RestrictedRoute redirectTo='/' component={<SignInPage />}  />}/>
+        <Route path='forgot-password' element={<RestrictedRoute redirectTo='/' component={<ForgotPasswordPage/>} />}/>
 
-        <Route index element={<MainPage />}/>
-        <Route path='dashboard' element={<DashboardPage />}/>
-        <Route path='diary' element={<DiaryPage/>}/>
-        <Route path='recommended-food' element={<RecommendedFoodPage/>}/>
-        <Route path='settings' element={<SettingsPage/>}/>
+        <Route path='dashboard' element={<PrivateRoute redirectTo='/signin' component= {<DashboardPage/>} />}/>
+        <Route path='diary' element={<PrivateRoute redirectTo='/signin' component= {<DiaryPage/>} />} />
+        <Route path='recommended-food' element={<PrivateRoute redirectTo='/signin' component= {<RecommendedFoodPage/>} />} />
+        <Route path='settings' element={<PrivateRoute redirectTo='/signin' component= {<SettingsPage/>} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
