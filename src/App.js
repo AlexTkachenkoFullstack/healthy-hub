@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './Layout';
 import WellcomPage from './pages/WellcomPage';
@@ -25,6 +25,7 @@ function App() {
         <Route path='diary' element={<DiaryPage/>}/>
         <Route path='recommended-food' element={<RecommendedFoodPage/>}/>
         <Route path='settings' element={<SettingsPage/>}/>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );
