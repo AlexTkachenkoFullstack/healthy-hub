@@ -1,5 +1,5 @@
+import './styles/fonts.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Layout from './Layout';
 import WellcomPage from './pages/WellcomPage';
 import SignUpPage from './pages/SignUpPage';
