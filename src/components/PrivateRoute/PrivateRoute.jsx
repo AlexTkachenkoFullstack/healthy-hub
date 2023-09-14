@@ -1,6 +1,5 @@
 import { Navigate } from "react-router-dom"
 
-
 const PrivateRoute = ({ redirectTo='/', component }) => {
     // треба перевірити чи авторизований користувач(чи є токен у глобальному стейті) 
 
