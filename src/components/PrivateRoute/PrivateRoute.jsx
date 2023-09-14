@@ -6,8 +6,9 @@ const PrivateRoute = ({ redirectTo='/', component }) => {
 
     // змінити умову для авторизованого чи неавторизованого користувача(!auth)
     const shouldRedirect = true; //замінити на значення зі стейту
-    return (
-        shouldRedirect ? <Navigate to={redirectTo} />  : component
+    return (<>
+    {shouldRedirect ? <Navigate to={redirectTo} />  : component}
+    </>    
     )
 }
 
