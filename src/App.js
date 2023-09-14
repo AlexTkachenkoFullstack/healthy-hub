@@ -1,17 +1,17 @@
 import './styles/fonts.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Layout from './Layout';
-import WellcomPage from './pages/WellcomPage';
-import SignUpPage from './pages/SignUpPage/SignUpPage.jsx';
-import SignInPage from './pages/SignInPage';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
-import MainPage from './pages/MainPage';
-import DashboardPage from './pages/DashboardPage';
-import DiaryPage from './pages/DiaryPage';
-import RecommendedFoodPage from './pages/RecommendedFoodPage';
-import SettingsPage from './pages/SettingsPage';
-import PrivateRoute from './components/PrivateRoute';
-import RestrictedRoute from './components/RestrictedRoute';
+import Layout from './Layout/Layout';
+import WellcomPage from './pages/WellcomPage/WellcomPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import SignInPage from './pages/SignInPage/SignInPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage';
+import MainPage from './pages/MainPage/MainPage';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
+import DiaryPage from './pages/DiaryPage/DiaryPage';
+import RecommendedFoodPage from './pages/RecommendedFoodPage/RecommendedFoodPage';
+import SettingsPage from './pages/SettingsPage/SettingsPage';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 
 function App() {
   // useEffect для перевірки чи зареєстрований юзер при перезавантаженні сторінки
