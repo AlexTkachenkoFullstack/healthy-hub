@@ -2,7 +2,7 @@ import './styles/fonts.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import WellcomPage from './pages/WellcomPage';
-import SignUpPage from './pages/SignUpPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage.jsx';
 import SignInPage from './pages/SignInPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import MainPage from './pages/MainPage';
