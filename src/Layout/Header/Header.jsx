@@ -68,7 +68,7 @@ const Header = () => {
                 <use href={sprite + '#icon-profile-circle'} />
               </UserSvg>
               <svg width="14" height="14" stroke="var(--icon-color-green)">
-                <use href={sprite + '#icon-add'} />
+                <use href={sprite + '#icon-arrow-down'} />
               </svg>
             </UserInfoButton>
           </AuthContainer>
