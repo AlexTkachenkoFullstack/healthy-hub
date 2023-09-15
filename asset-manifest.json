@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/healthy-hub/static/css/main.35a46140.css",
+    "main.css": "/healthy-hub/static/css/main.134d2314.css",
     "main.js": "/healthy-hub/static/js/main.9b3aa06b.js",
     "static/media/Poppins-Regular.ttf": "/healthy-hub/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/healthy-hub/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/healthy-hub/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/Poppins-Bold.ttf": "/healthy-hub/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
     "index.html": "/healthy-hub/index.html",
-    "main.35a46140.css.map": "/healthy-hub/static/css/main.35a46140.css.map",
+    "main.134d2314.css.map": "/healthy-hub/static/css/main.134d2314.css.map",
     "main.9b3aa06b.js.map": "/healthy-hub/static/js/main.9b3aa06b.js.map"
   },
   "entrypoints": [
-    "static/css/main.35a46140.css",
+    "static/css/main.134d2314.css",
     "static/js/main.9b3aa06b.js"
   ]
 }
