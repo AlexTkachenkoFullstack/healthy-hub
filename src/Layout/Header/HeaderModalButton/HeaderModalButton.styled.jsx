@@ -30,6 +30,8 @@ export const ButtonName = styled.p`
 `;
 
 export const ButtonDescription = styled.p`
+  display: flex;
+  align-items: center;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -58,6 +60,5 @@ export const SvgGoal = styled.svg`
   width: 14px;
   height: 14px;
   stroke: var(--icon-color-green);
-  margin-bottom: 6px;
-  align-self: flex-end;
+  margin-left: 12px;
 `;

@@ -89,11 +89,13 @@ export default function HeaderModalButton({
           )}
           <ButtonTextContainer>
             <ButtonName>Goal</ButtonName>
-            <ButtonDescription>{goal}</ButtonDescription>
+            <ButtonDescription>
+              {goal}
+              <SvgGoal>
+                <use href={sprite + '#icon-arrow-down'} />
+              </SvgGoal>
+            </ButtonDescription>
           </ButtonTextContainer>
-          <SvgGoal>
-            <use href={sprite + '#icon-add'} />
-          </SvgGoal>
         </Button>
       )}
       {buttonType === 'weight' && (

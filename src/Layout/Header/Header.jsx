@@ -18,7 +18,7 @@ import {
 import sprite from '../../assets/images/icons/icons.svg';
 
 const Header = () => {
-  let isAuth = false; // замінити на значення зі стейту
+  let isAuth = true; // замінити на значення зі стейту
   let gender = 'Female'; //Female, Male
   let goal = 'Lose Fat'; //Lose Fat, Maintain, Gain Muscle
   let weight = 55;
@@ -68,7 +68,7 @@ const Header = () => {
                 <use href={sprite + '#icon-profile-circle'} />
               </UserSvg>
               <svg width="14" height="14" stroke="var(--icon-color-green)">
-                <use href={sprite + '#icon-add'} />
+                <use href={sprite + '#icon-arrow-down'} />
               </svg>
             </UserInfoButton>
           </AuthContainer>
