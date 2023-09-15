@@ -18,7 +18,7 @@ import {
 import sprite from '../../assets/images/icons/icons.svg';
 
 const Header = () => {
-  let isAuth = true; // замінити на значення зі стейту
+  let isAuth = false; // замінити на значення зі стейту
   let gender = 'Female'; //Female, Male
   let goal = 'Lose Fat'; //Lose Fat, Maintain, Gain Muscle
   let weight = 55;
