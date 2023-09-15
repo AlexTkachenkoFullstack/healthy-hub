@@ -72,6 +72,10 @@ img {
   height: auto;
 }
 
+button{
+  cursor: pointer;
+}
+
 .container {
   width: 100%;
   padding-left: 10px;
