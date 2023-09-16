@@ -113,6 +113,14 @@ export const Form = styled.form`
   gap: 16px;
   flex-direction: column;
   margin-bottom: 80px;
+
+  @media (min-width: 834px) {
+    margin-bottom: 238px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-bottom: 208px;
+  }
 `;
 
 export const TextInEnd = styled.p`
