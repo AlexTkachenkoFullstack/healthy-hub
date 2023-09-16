@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const RecommendedFood = styled.div`
-    margin: 0 auto;
+    background-color: var(--bg-secondary);
+    color: var(--text-color-primary-white);
 `
 export const Title = styled.h3`
     font-family: 'Poppins';
@@ -18,4 +19,7 @@ export const ProductsList = styled.ul`
     display: flex;
     gap: 20px;
     justify-content: center;
+`
+export const ProductItem = styled.li`
+    
 `

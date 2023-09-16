@@ -1,20 +1,20 @@
-import { RecommendedFood, Title, PhotoPage, ProductsList } from "./RecommendedFoodPage.styled";
+import { RecommendedFood, Title, PhotoPage, ProductsList, ProductItem } from "./RecommendedFoodPage.styled";
 
-const RecommendedFoodPage = ({ title, image, recommendedProducts }) => {
-  return (
-    <RecommendedFood>
-       <Title>{title}</Title>
-        <PhotoPage src={image} alt="Recommended Food" style={{ maxWidth: '100%' }} />
-      <ProductsList>
-        {recommendedProducts.map((product, index) => (
-          <li key={index}>{product}</li>
-        ))}
-      </ProductsList>
-    </RecommendedFood>
-  );
-};
+// const RecommendedFoodPage = ({ title, image, recommendedProducts }) => {
+//   return (
+//     <RecommendedFood>
+//        <Title>{title}</Title>
+//         <PhotoPage src={image} alt="Recommended Food" style={{ maxWidth: '100%' }} />
+//       <ProductsList>
+//         {recommendedProducts.map((product, index) => (
+//           <ProductItem key={index}>{product}</ProductItem>
+//         ))}
+//       </ProductsList>
+//     </RecommendedFood>
+//   );
+// };
 
-export default RecommendedFoodPage;
+// export default RecommendedFoodPage;
 
 
 // import React, { useState, useEffect } from 'react';
@@ -48,6 +48,35 @@ export default RecommendedFoodPage;
 // };
 
 
+
+
+
+const RecommendedFoodPage = () => {
+  const recommendedProducts = [
+    { id: 1, name: 'Product 1' },
+    { id: 2, name: 'Product 2' },
+    { id: 3, name: 'Product 3' },
+    // Add more products as needed
+  ];
+
+  return (
+    <RecommendedFood>
+      <Title>Recommended Food Page</Title>
+      <PhotoPage
+        src="./"
+        alt="Recommended Food"
+        style={{ maxWidth: '100%' }}
+      />
+      <ProductsList>
+        {recommendedProducts.map((product) => (
+          <ProductItem key={product.id}>{product.name}</ProductItem>
+        ))}
+      </ProductsList>
+    </RecommendedFood>
+  );
+};
+
+export default RecommendedFoodPage;
 
 
 
