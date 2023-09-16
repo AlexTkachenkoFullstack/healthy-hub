@@ -1,16 +1,16 @@
-import React from 'react';
+import { RecommendedFood, Title, PhotoPage, ProductsList } from "./RecommendedFoodPage.styled";
 
 const RecommendedFoodPage = ({ title, image, recommendedProducts }) => {
   return (
-    <div>
-       <h3>{title}</h3>
-        <img src={image} alt="Recommended Food" style={{ maxWidth: '100%' }} />
-      <ul>
+    <RecommendedFood>
+       <Title>{title}</Title>
+        <PhotoPage src={image} alt="Recommended Food" style={{ maxWidth: '100%' }} />
+      <ProductsList>
         {recommendedProducts.map((product, index) => (
           <li key={index}>{product}</li>
         ))}
-      </ul>
-    </div>
+      </ProductsList>
+    </RecommendedFood>
   );
 };
 
