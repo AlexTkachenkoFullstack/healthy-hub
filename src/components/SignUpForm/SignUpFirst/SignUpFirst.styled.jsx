@@ -85,7 +85,7 @@ export const InputText = styled.input`
   background: transparent;
   border: none;
   outline: none;
-  padding: 10px 8px;
+  padding: 8px 10px;
 `;
 
 export const InputButton = styled.button`
@@ -93,8 +93,7 @@ export const InputButton = styled.button`
   border: none;
   outline: none;
   background: var(--text-color-active-page-green);
-  width: 300px;
-  height: 36px;
+  padding: 8px 10px;
 
   color: var(--bg-primary);
   text-align: center;
@@ -105,7 +104,7 @@ export const InputButton = styled.button`
   line-height: 1.43;
 
   @media (min-width: 834px) {
-    width: 380px;
+    width: 420px;
   }
 `;
 
