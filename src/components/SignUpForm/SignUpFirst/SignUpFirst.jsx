@@ -11,7 +11,7 @@ const SignUpFirst = ({ goNext, regUser }) => {
           <Field name="email" />
           <p>Password</p>
           <Field name="password" />
-          <button type="submit" onClick={(goNext, re)}>
+          <button type="submit" onClick={goNext}>
             Sign Up
           </button>
         </Form>
