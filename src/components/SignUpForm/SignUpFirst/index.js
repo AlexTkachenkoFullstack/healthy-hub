@@ -1,1 +1,1 @@
-export { default } from './SignUpFirst';
+export { default } from './SignUpFirst.jsx';
