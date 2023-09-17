@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { async } from "q";
 
 export const instance = axios.create({
     baseURL: 'https://backend-healthyhub.onrender.com/'
