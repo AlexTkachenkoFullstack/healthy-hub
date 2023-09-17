@@ -18,11 +18,7 @@ const RecommendedFoodPage = () => {
   return (
     <RecommendedFood>
       <Title>Recommended Food Page</Title>
-      <PhotoPage
-        src="./assets/images/ketogenic-diet-2x.png"
-        alt="Recommended Food"
-        style={{ maxWidth: '100%' }}
-      />
+      <PhotoPage/>
       <ProductsList>
         {recommendedProducts.map((product) => (
           <ProductItem key={product.id}>{product.name}</ProductItem>
