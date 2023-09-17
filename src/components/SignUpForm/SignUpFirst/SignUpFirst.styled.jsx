@@ -20,12 +20,6 @@ export const SignUpFirstContainer = styled.div`
   }
 `;
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 export const Image = styled.img`
   width: 300px;
   height: 296px;
