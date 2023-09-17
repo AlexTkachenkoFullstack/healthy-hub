@@ -29,6 +29,7 @@ export default function HeaderModalButton({
   buttonType,
   weight,
   onClick,
+  mobile,
 }) {
   return (
     <>
@@ -38,7 +39,7 @@ export default function HeaderModalButton({
             <ImageContainer>
               {gender === 'Female' ? (
                 <img
-                  srcset={`${LoseFatGirl} 1x, ${LoseFatGirl2x} 2x`}
+                  srcSet={`${LoseFatGirl} 1x, ${LoseFatGirl2x} 2x`}
                   src={LoseFatGirl}
                   alt="Lose Fat Girl"
                   width="28"
@@ -46,7 +47,7 @@ export default function HeaderModalButton({
                 />
               ) : (
                 <img
-                  srcset={`${LoseFatMan} 1x, ${LoseFatMan2x} 2x`}
+                  srcSet={`${LoseFatMan} 1x, ${LoseFatMan2x} 2x`}
                   src={LoseFatMan}
                   alt="Lose Fat Man"
                   width="28"
@@ -59,7 +60,7 @@ export default function HeaderModalButton({
             <ImageContainer>
               {gender === 'Female' ? (
                 <img
-                  srcset={`${MaintainGirl} 1x, ${MaintainGirl2x} 2x`}
+                  srcSet={`${MaintainGirl} 1x, ${MaintainGirl2x} 2x`}
                   src={MaintainGirl}
                   alt="Maintain Girl"
                   width="28"
@@ -67,7 +68,7 @@ export default function HeaderModalButton({
                 />
               ) : (
                 <img
-                  srcset={`${MaintainMan} 1x, ${MaintainMan2x} 2x`}
+                  srcSet={`${MaintainMan} 1x, ${MaintainMan2x} 2x`}
                   src={MaintainMan}
                   alt="Maintain Man"
                   width="28"
@@ -79,7 +80,7 @@ export default function HeaderModalButton({
           {goal === 'Gain Muscle' && (
             <ImageContainer>
               <img
-                srcset={`${GainMuscule} 1x, ${GainMuscule2x} 2x`}
+                srcSet={`${GainMuscule} 1x, ${GainMuscule2x} 2x`}
                 src={GainMuscule}
                 alt="Gain Muscle"
                 width="28"
@@ -91,9 +92,15 @@ export default function HeaderModalButton({
             <ButtonName>Goal</ButtonName>
             <ButtonDescription>
               {goal}
-              <SvgGoal>
-                <use href={sprite + '#icon-arrow-down'} />
-              </SvgGoal>
+              {mobile ? (
+                <SvgGoal>
+                  <use href={sprite + '#icon-arrow-right'} />
+                </SvgGoal>
+              ) : (
+                <SvgGoal>
+                  <use href={sprite + '#icon-arrow-down'} />
+                </SvgGoal>
+              )}
             </ButtonDescription>
           </ButtonTextContainer>
         </Button>
@@ -102,7 +109,7 @@ export default function HeaderModalButton({
         <Button type="button" onClick={onClick}>
           <ImageContainer>
             <img
-              srcset={`${Weight} 1x, ${Weight2x} 2x`}
+              srcSet={`${Weight} 1x, ${Weight2x} 2x`}
               src={Weight}
               alt="Weight"
               width="28"
