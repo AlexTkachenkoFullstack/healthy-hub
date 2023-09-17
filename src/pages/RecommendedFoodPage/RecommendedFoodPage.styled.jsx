@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RecommendedFood = styled.div`
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
     color: var(--text-color-primary-white);
 `
 export const Title = styled.h3`

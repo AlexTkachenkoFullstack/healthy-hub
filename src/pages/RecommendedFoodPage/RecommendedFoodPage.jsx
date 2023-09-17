@@ -1,6 +1,44 @@
 import { RecommendedFood, Title, PhotoPage, ProductsList, ProductItem } from "./RecommendedFoodPage.styled";
 
-// const RecommendedFoodPage = ({ title, image, recommendedProducts }) => {
+
+const RecommendedFoodPage = () => {
+  const recommendedProducts = [
+    { id: 1, name: 'Product 1' },
+    { id: 2, name: 'Product 2' },
+    { id: 3, name: 'Product 3' },
+    { id: 4, name: 'Product 4' },
+    { id: 5, name: 'Product 5' },
+    { id: 6, name: 'Product 6' },
+    { id: 7, name: 'Product 7' },
+    { id: 8, name: 'Product 8' },
+    { id: 9, name: 'Product 9' },
+    { id: 10, name: 'Product 10' }
+  ];
+
+  return (
+    <RecommendedFood>
+      <Title>Recommended Food Page</Title>
+      <PhotoPage
+        src="./assets/images/ketogenic-diet-2x.png"
+        alt="Recommended Food"
+        style={{ maxWidth: '100%' }}
+      />
+      <ProductsList>
+        {recommendedProducts.map((product) => (
+          <ProductItem key={product.id}>{product.name}</ProductItem>
+        ))}
+      </ProductsList>
+    </RecommendedFood>
+  );
+};
+
+export default RecommendedFoodPage;
+
+
+
+
+
+//  const RecommendedFoodPage = ({ title, image, recommendedProducts }) => {
 //   return (
 //     <RecommendedFood>
 //        <Title>{title}</Title>
@@ -46,37 +84,5 @@ import { RecommendedFood, Title, PhotoPage, ProductsList, ProductItem } from "./
 //     </div>
 //   );
 // };
-
-
-
-
-
-const RecommendedFoodPage = () => {
-  const recommendedProducts = [
-    { id: 1, name: 'Product 1' },
-    { id: 2, name: 'Product 2' },
-    { id: 3, name: 'Product 3' },
-    // Add more products as needed
-  ];
-
-  return (
-    <RecommendedFood>
-      <Title>Recommended Food Page</Title>
-      <PhotoPage
-        src="./"
-        alt="Recommended Food"
-        style={{ maxWidth: '100%' }}
-      />
-      <ProductsList>
-        {recommendedProducts.map((product) => (
-          <ProductItem key={product.id}>{product.name}</ProductItem>
-        ))}
-      </ProductsList>
-    </RecommendedFood>
-  );
-};
-
-export default RecommendedFoodPage;
-
 
 
