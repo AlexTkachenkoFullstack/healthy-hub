@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { async } from "q";
 
 export const instance = axios.create({
     baseURL: 'https://backend-healthyhub.onrender.com/'
@@ -68,9 +69,59 @@ export const refreshThunk = createAsyncThunk(
         try {
             setAuthHeader(persistToken);
            const response = await instance('api/users/current');
-           return response.data
+           return response.data.user
         } catch (error) {
           return  thunkAPI.rejectWithValue(error.message)
         }
     }
 )
+
+// PUT /api/user/goal
+export const updateGoalThunk = createAsyncThunk(
+    'auth/updateGoal',
+    async (credentials, thunkAPI) => {
+        try {
+            const response = await instance.put('api/user/goal', credentials)
+            // має бути {goal:'lose fat'} або інша ціль
+            console.log(response.data)
+            return response.data
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message)
+        }
+        
+    }
+)
+
+// PUT /api/user/weight
+export const updateWeightThunk = createAsyncThunk(
+    'auth/updateWeight',
+    async (credentials, thunkAPI) => {
+        try {
+            const response = await instance.put('api/user/weight', credentials)
+            // має бути {date:'22.10.2023', weight: 67} або інша ціль
+            console.log(response.data)
+            return response.data
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message)
+        }
+        
+    }
+)
+
+// PUT або Patch /api/user/updateProfile
+export const updateProfileThunk=createAsyncThunk(
+    'auth/updateProfile',
+    async(credentials, thunkAPI)=>{
+        try{
+            const response = await instance.put('api/user/updateProfile', credentials)
+            // data:{profileInfo:{name:'Alex', age:23, height:176...},
+                  // weightInfo:{weight:74, data:'22.11.2022'}
+            // }
+            console.log(response.data)
+            return response.data
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.message)
+        }
+    }
+)
+
