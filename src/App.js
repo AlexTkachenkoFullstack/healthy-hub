@@ -19,7 +19,7 @@ import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 function App() {
   // useEffect для перевірки чи зареєстрований юзер при перезавантаженні сторінки
 
-//   let isAuth=false; // замінити на значення зі стейту
+  let isAuth=false; // замінити на значення зі стейту
 //   // видалити
 // const dispatch=useDispatch();
 // useEffect(()=>{
