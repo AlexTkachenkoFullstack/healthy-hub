@@ -12,20 +12,19 @@ import RecommendedFoodPage from './pages/RecommendedFoodPage/RecommendedFoodPage
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { instance, loginThunk, refreshThunk, registrationThunk } from './redux/auth/operations';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { instance, loginThunk, refreshThunk, registrationThunk } from './redux/auth/operations';
 
 function App() {
   // useEffect для перевірки чи зареєстрований юзер при перезавантаженні сторінки
 
   let isAuth=false; // замінити на значення зі стейту
   // видалити
-// const dispatch=useDispatch();
-// useEffect(()=>{
-//   console.dir(instance.defaults.headers.common.Authorization)
-//   dispatch(loginThunk({email:'fjcnvnxvаasddscdhfj@sjj.sd', password:'kjajddkjasdjk'}))
-// },[dispatch])
+const dispatch=useDispatch();
+useEffect(()=>{
+  dispatch(refreshThunk())
+},[dispatch])
 
   return (
     <Routes>
