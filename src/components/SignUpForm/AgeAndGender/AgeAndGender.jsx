@@ -15,9 +15,15 @@ import {
 } from './AgeAndGender.styled';
 import image from '../../../assets/images/elder-fitness.png';
 
-const AgeAndGender = ({ goNext, goBack }) => {
+const AgeAndGender = ({ goNext, goBack, data }) => {
+  const handleSubmit = (values, actions) => {
+    console.log(values);
+
+    goNext(values);
+  };
+
   return (
-    <Formik>
+    <Formik initialValues={data} onSubmit={handleSubmit}>
       {() => (
         <AgeAndGenderContainer>
           <Image src={image} alt="Elder fitness" />
@@ -48,7 +54,7 @@ const AgeAndGender = ({ goNext, goBack }) => {
               <ChooseText>Your age</ChooseText>
             </ExtraContainer>
             <InputBox>
-              <label  />
+              <label />
               <InputText
                 type="text"
                 name="age"
@@ -64,16 +70,13 @@ const AgeAndGender = ({ goNext, goBack }) => {
                 style={{ color: 'rgba(0, 0, 0, 0.5)' }}
               /> */}
 
-            
-              <InputButton type="submit" onClick={goNext}>
-                Next
-              </InputButton>
-            
-            
-              <BackButton type="button" onClick={goBack}>
-                Back
-              </BackButton>
-           
+            <InputButton type="submit" onClick={goNext}>
+              Next
+            </InputButton>
+
+            <BackButton type="button" onClick={goBack}>
+              Back
+            </BackButton>
           </Form>
         </AgeAndGenderContainer>
       )}
