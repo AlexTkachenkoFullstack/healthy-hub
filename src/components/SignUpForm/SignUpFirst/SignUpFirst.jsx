@@ -1,3 +1,4 @@
+import { Formik, Field } from 'formik';
 import React, { useState } from 'react';
 import image from '../../../assets/images/sport-and-fitness-tracker.png';
 import {
@@ -8,88 +9,66 @@ import {
   InputBox,
   InputText,
   InputButton,
-  Form,
+  FormStyle,
   TextInEnd,
   SignInText,
   FinishBlock,
   QuestionForm,
 } from './SignUpFirst.styled';
 
-const SignUpFirst = ({ goNext }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+const SignUpFirst = ({ goNext, data }) => {
+  const handleSubmit = (values, actions) => {
+    goNext(values);
   };
 
-    const handleSubmit = e => {
-      e.preventDefault();
-      // тут буде логіка відправки форми на сервер
-    };
-    
-    return (
-      <SignUpFirstContainer>
-        <Image src={image} alt="Sport and fitness tracker" />
-        <QuestionForm><MainHeader>Sign up</MainHeader>
+  return (
+    <SignUpFirstContainer>
+      <Image src={image} alt="Sport and fitness tracker" />
+      <QuestionForm>
+        <MainHeader>Sign up</MainHeader>
         <Text>You need to register to use the service</Text>
-
-        <Form onSubmit={handleSubmit}>
-          <InputBox>
-            <label htmlFor="name" />
-            <InputText
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </InputBox>
-          <InputBox>
-            <label htmlFor="email" />
-            <InputText
-              type="email"
-              id="email"
-              name="email"
-              placeholder="E-mail"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </InputBox>
-          <InputBox>
-            <label htmlFor="password" />
-            <InputText
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </InputBox>
-          <InputButton type="submit" onClick={goNext}>
-            Sign Up
-          </InputButton>
-        </Form>
+        <Formik initialValues={data} onSubmit={handleSubmit}>
+          <FormStyle autoComplete="off">
+            <InputBox>
+              <label htmlFor="name" />
+              <InputText
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </InputBox>
+            <InputBox>
+              <label htmlFor="email" />
+              <InputText
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                required
+              />
+            </InputBox>
+            <InputBox>
+              <label htmlFor="password" />
+              <InputText
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </InputBox>
+            <InputButton type="submit">Sign Up</InputButton>
+          </FormStyle>
+        </Formik>
         <FinishBlock>
           <TextInEnd>Do you already have an account?</TextInEnd>
           <SignInText>Sign in</SignInText>
-                </FinishBlock>
-            </QuestionForm>
-        
-      </SignUpFirstContainer>
-    );
+        </FinishBlock>
+      </QuestionForm>
+    </SignUpFirstContainer>
+  );
 };
 
 export default SignUpFirst;
