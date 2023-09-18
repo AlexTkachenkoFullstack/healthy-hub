@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
 
 export const SignUpFirstContainer = styled.div`
   background-color: var(--bg-primary);
   padding: 24px 0;
 
   /* потім margin прибрати*/
-  margin-top: 60px;
+  /* margin-top: 60px; */
 
   @media (min-width: 834px) {
     padding: 40px 0;
@@ -31,10 +32,9 @@ export const Image = styled.img`
   }
   @media (min-width: 1440px) {
     width: 592px;
-  height: 588px;
-  margin-left:150px;
+    height: 588px;
+    margin-left: 150px;
   }
-  
 `;
 
 export const MainHeader = styled.h1`
@@ -69,7 +69,7 @@ export const InputBox = styled.div`
   background: var(--bg-secondary);
 `;
 
-export const InputText = styled.input`
+export const InputText = styled(Field)`
   color: var(--text-color-secondary-grey);
   font-family: Poppins;
   font-size: 14px;
@@ -102,7 +102,7 @@ export const InputButton = styled.button`
   }
 `;
 
-export const Form = styled.form`
+export const FormStyle = styled(Form)`
   display: flex;
   gap: 16px;
   flex-direction: column;
@@ -140,10 +140,8 @@ export const FinishBlock = styled.div`
   gap: 16px;
   flex-direction: column;
   @media (min-width: 834px) {
-   flex-direction:row;
+    flex-direction: row;
   }
 `;
 
-export const QuestionForm = styled.div`
-  
-`;
+export const QuestionForm = styled.div``;
