@@ -1,0 +1,1 @@
+export {RecommendedCard} from "./RecommendedCard"
