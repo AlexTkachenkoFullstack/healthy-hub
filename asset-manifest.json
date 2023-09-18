@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/healthy-hub/static/css/main.e0a80722.css",
-    "main.js": "/healthy-hub/static/js/main.3407e056.js",
+    "main.js": "/healthy-hub/static/js/main.8205ed8e.js",
     "static/media/Poppins-Regular.ttf": "/healthy-hub/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/healthy-hub/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/healthy-hub/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/Poppins-Bold.ttf": "/healthy-hub/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
+    "static/media/ketogenic-diet.png": "/healthy-hub/static/media/ketogenic-diet.bd13d20fcd66588bb6fb.png",
     "static/media/sport-and-fitness-tracker.png": "/healthy-hub/static/media/sport-and-fitness-tracker.a616831fd2b34ff13567.png",
     "static/media/sport-and-fitness-tracker-mobile.png": "/healthy-hub/static/media/sport-and-fitness-tracker-mobile.bc6c5067b9717df38fd1.png",
     "static/media/sport-and-fitness-tracker-tablet.png": "/healthy-hub/static/media/sport-and-fitness-tracker-tablet.9b2da3ae735b83de98fd.png",
     "static/media/icons.svg": "/healthy-hub/static/media/icons.f77c9c85ef277407bf84827c5436d845.svg",
     "index.html": "/healthy-hub/index.html",
     "main.e0a80722.css.map": "/healthy-hub/static/css/main.e0a80722.css.map",
-    "main.3407e056.js.map": "/healthy-hub/static/js/main.3407e056.js.map"
+    "main.8205ed8e.js.map": "/healthy-hub/static/js/main.8205ed8e.js.map"
   },
   "entrypoints": [
     "static/css/main.e0a80722.css",
-    "static/js/main.3407e056.js"
+    "static/js/main.8205ed8e.js"
   ]
 }
