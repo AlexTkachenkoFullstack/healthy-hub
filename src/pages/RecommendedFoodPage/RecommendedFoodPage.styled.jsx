@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import RecommendedFoodPhoto from "../../assets/images/ketogenic-diet.png";
 
-export const RecommendedFood = styled.div`
+
+
+
+export const RecommendedFood = styled.section`
     background-color: var(--bg-primary);
     color: var(--text-color-primary-white);
 `
@@ -10,6 +13,12 @@ export const Title = styled.h3`
     font-weight: 500;
     font-style: sans-serif;
 `
+export const DesctopContainer = styled.div`
+    @media (min-width: 1440px) {
+    display: flex;
+    }
+`
+
 export const PhotoPage = styled.img`
    @media (min-width: 320px) {
    background-image: url(${RecommendedFoodPhoto});
@@ -50,5 +59,9 @@ export const ProductsList = styled.ul`
     
 `
 export const ProductItem = styled.li`
-    
+    @media (min-width: 834px) {
+    display: flex;
+    flex-basis: calc((100% - 160px) / 2);
+    justify-content: center;
+    }
 `

@@ -1,4 +1,4 @@
-import { RecommendedFood, Title, PhotoPage, ProductsList, ProductItem } from "./RecommendedFoodPage.styled";
+import { RecommendedFood, Title, DesctopContainer, PhotoPage, ProductsList, ProductItem } from "./RecommendedFoodPage.styled";
 
 
 const RecommendedFoodPage = () => {
@@ -18,12 +18,14 @@ const RecommendedFoodPage = () => {
   return (
     <RecommendedFood>
       <Title>Recommended Food Page</Title>
+      <DesctopContainer>
       <PhotoPage/>
       <ProductsList>
         {recommendedProducts.map((product) => (
           <ProductItem key={product.id}>{product.name}</ProductItem>
         ))}
-      </ProductsList>
+        </ProductsList>
+        </DesctopContainer>
     </RecommendedFood>
   );
 };
