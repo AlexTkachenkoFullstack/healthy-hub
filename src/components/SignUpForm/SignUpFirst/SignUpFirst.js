@@ -1,4 +1,20 @@
 import { Formik, Form, Field } from 'formik';
+import image from '../../../assets/images/sport-and-fitness-tracker.png';
+
+import {
+  SignUpFirstContainer,
+  Image,
+  MainHeader,
+  Text,
+  InputBox,
+  InputText,
+  InputButton,
+  Form,
+  TextInEnd,
+  SignInText,
+  FinishBlock,
+  QuestionForm,
+} from './SignUpFirst.styled';
 
 const SignUpFirst = ({ goNext, regUser }) => {
   return (
