@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import image from '../../../assets/images/summer-hiking.png'
+import image from '../../../assets/images/summer-hiking.png';
 import "./YourGoal.css";
 import {
   YourGoalContainer,

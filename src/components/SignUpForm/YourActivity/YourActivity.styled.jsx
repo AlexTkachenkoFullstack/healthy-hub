@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const AgeAndGenderContainer = styled.div`
+export const YourActivityContainer = styled.div`
   background-color: var(--bg-primary);
   padding: 24px 0;
 
@@ -20,9 +20,26 @@ export const AgeAndGenderContainer = styled.div`
   }
 `;
 
+export const YourActivityHeader = styled.h1`
+  color: var(--text-color-primary-white);
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  @media (min-width: 834px) {
+    font-size: 30px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  @media (min-width: 1440px) {
+    text-align: left;
+  }
+`;
+
 export const Image = styled.img`
   width: 300px;
-  height: 288px;
+  height: 304px;
   margin-bottom: 24px;
 
   margin: 0 auto;
@@ -30,33 +47,13 @@ export const Image = styled.img`
 
   @media (min-width: 834px) {
     width: 380px;
-    height: 366px;
+    height: 384px;
     margin-bottom: 60px;
   }
   @media (min-width: 1440px) {
     width: 592px;
-    height: 570px;
+    height: 598px;
     margin-left: 150px;
-  }
-`;
-
-export const AgeAndGenderHeader = styled.h1`
-  color: var(--text-color-primary-white);
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.25;
-  margin-bottom: 16px;
-  padding-left: 10px;
-
-  @media (min-width: 834px) {
-    font-size: 30px;
-    line-height: 1.2;
-    text-align: center;
-    padding-left: 0;
-  }
-  @media (min-width: 1440px) {
-    text-align: left;
   }
 `;
 
@@ -67,59 +64,26 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 24px;
-  padding-left:10px;
 
   @media (min-width: 834px) {
     font-size: 22px;
     line-height: 1.44;
     text-align: center;
-    width: 444px;
-    padding-left:0;
+    padding-left: 0;
   }
   @media (min-width: 1440px) {
     text-align: left;
   }
 `;
 
-export const ExtraContainer = styled.div`
-  @media (min-width: 834px) {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  @media (min-width: 1440px) {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-`;
-
-export const ChooseText = styled.p`
-  color: var(--text-color-primary-white);
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.43;
-  margin-top:24px;
-  margin-bottom:12px;
-`;
-
-export const Label = styled.label`
-  color: var(---text-color-primary-white);
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.43;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
 export const LabelBlock = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 85px;
+  flex-direction: column;
+  gap: 16px;
 
   @media (min-width: 834px) {
-    flex-direction: row;
+   align-items:flex-start;
+   width:458px;
   }
 
   @media (min-width: 1440px) {
@@ -127,35 +91,18 @@ export const LabelBlock = styled.div`
     gap: 16px;
   }
 `;
-
-export const InputBox = styled.div`
-  border-radius: 12px;
-  border: 1px solid var(--text-color-active-page-green);
-  background: var(--bg-secondary);
-  @media (min-width: 834px) {
-    width: 380px;
-    display: block;
-    margin: 0 auto;
-    @media (min-width: 1440px) {
-      width: 212px;
-     margin:0;
-    }
-  }
-`;
-
-export const InputText = styled.input`
-  color: var(--text-color-secondary-grey);
+export const Label = styled.label`
+  color: var(---text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 1.429;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 8px 10px;
-
- 
+  line-height: 1.43;
+  display: grid;
+  grid: repeat(1, auto) / auto-flow;
+  grid-auto-rows: inherit;
+  align-items: center;
+  gap: 8px;
+  justify-items: start;
 `;
 
 export const InputButton = styled.button`
@@ -185,10 +132,9 @@ export const InputButton = styled.button`
   @media (min-width: 1440px) {
     width: 212px;
     height: 36px;
-    margin:  20px 0;
+    margin: 20px 0;
   }
 `;
-
 export const BackButton = styled.button`
   color: var(--text-color-secondary-grey);
   text-align: center;
@@ -206,4 +152,3 @@ export const BackButton = styled.button`
     margin-left: 82px;
   }
 `;
-
