@@ -18,7 +18,7 @@ const WellcomPage = () => {
         <WellcomeContainer>
             < ImageContainerLog />
             <ContainerText>
-                <TextTitle>Set goals and achieve them</TextTitle>
+                    <TextTitle>Set goals and achieve them</TextTitle>
                     <Text>The service will help you set goals <br /> and follow them.</Text>
             <NavItem>
                 <ButtonSignIn  to="/signin">Sign in</ButtonSignIn>
