@@ -84,6 +84,10 @@ button{
   margin-right: auto;
 }
 
+body.modalIsOpen {
+  overflow: hidden;
+}
+
 @media screen and (min-width: 320px) {
   .container {
     width: 320px;
