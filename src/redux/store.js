@@ -11,6 +11,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
+import { recommendedFoodSlice } from "./recommendedFood/slice";
  
 const persistConfig = {
   key: 'user',
@@ -24,6 +25,7 @@ const persistedReducer = persistReducer(persistConfig, authSlice.reducer)
 export const store = configureStore({
   reducer: {
     auth: persistedReducer,
+    recommendedFood:recommendedFoodSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

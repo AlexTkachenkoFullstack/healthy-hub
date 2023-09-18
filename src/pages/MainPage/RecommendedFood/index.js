@@ -1,0 +1,1 @@
+export { RecommendedFood } from './RecommendedFood';

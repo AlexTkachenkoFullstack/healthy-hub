@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { loginThunk, registrationThunk, logOutThunk, refreshThunk } from "./operations";
+import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk } from "./operations";
 
 const initialState = {
     user: { 
@@ -16,6 +16,7 @@ const initialState = {
     token: null,
     isLoading: false,
     error:null,
+    dateLastWeight:null,
 }
 
 const handlePending = (state) => {
@@ -29,7 +30,6 @@ const handleFulfild = (state) => {
 
 const handleFulfildReg = (state, action) => {
     handleFulfild(state)
-    console.log(action)
     state.user = {...state.user, ...action.payload.user};
     state.token = action.payload.token;
 }
@@ -56,6 +56,30 @@ const handleRejected = (state, action) => {
     state.error=action.payload
 }
 
+const handleFulfildUpdateGoal=(state, action)=>{
+    handleFulfild(state);
+    // data:{goal:'lose fat'}
+    state.user = {...state.user, ...action.payload.data};
+}
+
+const handleFulfildUpdateWeight=(state, action)=>{
+    handleFulfild(state);
+    // data:{date:'22.10.2023', weight: 67}
+    state.user = {...state.user, ...action.payload.data.weight};
+    state.dateLastWeight=action.payload.data.date;
+}
+
+const handleFulfildUpdateProfile=(state, action)=>{
+    handleFulfild(state);
+    // {profileInfo:{name:'Alex', age:23, height:176, avatarUrl:'http...', gender: 'male', activity: 1.2},
+    // weightInfo:{weight:76, date:'22.11.2022'}
+    // }
+    state.user = {...state.user, ...action.payload.data.profileInfo};
+    if(action.payload.data.weightInfo){
+        state.dateLastWeight=action.payload.data.weightInfo.date;
+        state.user.weight=action.payload.data.weightInfo.weight;
+    }
+}
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -71,11 +95,11 @@ export const authSlice = createSlice({
                 state.token = null;
                 handleRejected()
             })
-            .addCase(refreshThunk.pending, (state, action) => {
-                state.isLoading=true
-            })
             .addCase(refreshThunk.fulfilled, handleFulfildRefresh)
-            .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending), handlePending)
-            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected), handleRejected)
+            .addCase(updateGoalThunk.fulfilled, handleFulfildUpdateGoal)
+            .addCase(updateWeightThunk.fulfilled, handleFulfildUpdateWeight)
+            .addCase(updateProfileThunk.fulfilled, handleFulfildUpdateProfile)
+            .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending, refreshThunk.pending, updateGoalThunk.pending, updateWeightThunk.pending, updateProfileThunk.pending), handlePending)
+            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected), handleRejected)
     }
 })
