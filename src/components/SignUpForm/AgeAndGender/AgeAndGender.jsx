@@ -15,6 +15,13 @@ import {
 } from './AgeAndGender.styled';
 import image from '../../../assets/images/elder-fitness.png';
 
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  genderGroup: yup.string().required('Goal is required is required'),
+  age: yup.string().required('Age is required'),
+});
+
 const AgeAndGender = ({ goNext, goBack, data }) => {
   const handleSubmit = (values, actions) => {
     console.log(values);
@@ -27,7 +34,7 @@ const AgeAndGender = ({ goNext, goBack, data }) => {
       <AgeAndGenderContainer>
         <Image src={image} alt="Elder fitness" />
         <Form>
-          <AgeAndGenderHeader id="gender-group">
+          <AgeAndGenderHeader id="genderGroup">
             Select gender, Age
           </AgeAndGenderHeader>
           <Text>
@@ -36,7 +43,7 @@ const AgeAndGender = ({ goNext, goBack, data }) => {
           </Text>
           <ExtraContainer>
             <ChooseText>Gender</ChooseText>
-            <LabelBlock role="group" aria-label="gender-group">
+            <LabelBlock role="group" aria-label="genderGroup">
               <Label>
                 <Field type="radio" name="gender" value="male" />
                 Male
