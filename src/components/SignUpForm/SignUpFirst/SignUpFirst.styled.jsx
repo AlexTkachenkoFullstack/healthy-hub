@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import { NavLink } from 'react-router-dom';
 
 export const SignUpFirstContainer = styled.div`
   background-color: var(--bg-primary);
@@ -126,7 +127,7 @@ export const TextInEnd = styled.p`
   line-height: 1.43;
 `;
 
-export const SignInText = styled.div`
+export const SignInText = styled(NavLink)`
   color: var(--text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
