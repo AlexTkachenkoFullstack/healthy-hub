@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HeaderModalButton from './HeaderModalButton/HeaderModalButton';
 import MobileMenu from './MobileMenu/MobileMenu';
 import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
@@ -34,6 +34,17 @@ const Header = () => {
   const [showTargetModal, setShowTargetModal] = useState(false);
   const [showWeightModal, setShowWeightModal] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
+
+  useEffect(() => {
+    if (showMobileMenu || showTargetModal || showWeightModal || showUserModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showMobileMenu, showTargetModal, showWeightModal, showUserModal]);
 
   const openMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
