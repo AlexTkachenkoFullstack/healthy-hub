@@ -15,7 +15,7 @@ import {
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  'your-goal-group': Yup.string().required('Goal is required is required'),
+  'your-goal-group': yup.string().required('Goal is required is required'),
 });
 
 const YourGoal = ({ goNext, data }) => {
