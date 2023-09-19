@@ -12,12 +12,15 @@ import {
   BackButton,
 } from './YourActivity.styled';
 
-import signUp from '../signUp';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  yourActivityGroup: yup.string().required('Activity is required is required'),
+});
 
 const YourActivity = ({ goNext, goBack, data }) => {
   const handleSubmit = async (values, actions) => {
     goNext(values);
-    // const res = await signUp(data);
     console.log(data);
     console.log('User was registered!!!');
   };
@@ -28,14 +31,14 @@ const YourActivity = ({ goNext, goBack, data }) => {
         <YourActivityContainer>
           <Image src={image} alt="Illustration Activity" />
           <Form>
-            <YourActivityHeader id="your-activity-group">
+            <YourActivityHeader id="yourActivityGroup">
               Your Activity
             </YourActivityHeader>
             <Text>
               To correctly calculate calorie <br />
               and water intake
             </Text>
-            <LabelBlock role="group" aria-labelledby="your-activity-group">
+            <LabelBlock role="group" aria-labelledby="yourActivityGroup">
               <Label>
                 <Field type="radio" name="activity" value="1.2" />
                 1.2 - if you do not have physical activity and sedentary work
