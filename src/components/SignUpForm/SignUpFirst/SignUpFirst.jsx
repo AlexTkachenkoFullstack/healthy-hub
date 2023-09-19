@@ -23,19 +23,7 @@ import checkEmail from '../checkEmail';
 const schema = yup.object().shape({
   name: yup.string().required('Please enter name'),
   email: yup.string().email().required('Enter correct email'),
-
-  password: yup
-    .string()
-    .matches(
-      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).*$',
-      'must include at least 1 uppercase and lowercase symbols'
-    )
-    .matches(
-      '^(?=.*\\d)(?=.*[~`!@#$%^&()_=+{}\\[\\]/|:;,"<>?]).*$',
-      'must include 1 number and special symbol'
-    )
-    .matches('^[^А-Яа-яЇїІіЄєҐґЁё]+$', 'must include only latin letters')
-    .required('Please Enter your Password'),
+  password: yup.string().required('Password is required'),
 });
 
 const SignUpFirst = ({ goNext, data }) => {
@@ -63,8 +51,8 @@ const SignUpFirst = ({ goNext, data }) => {
         <Text>You need to register to use the service</Text>
         <Formik
           initialValues={data}
-          validationSchema={schema}
           onSubmit={handleSubmit}
+          validationSchema={schema}
         >
           <FormStyle autoComplete="off">
             <InputBox>
