@@ -15,12 +15,8 @@ import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getAuthStatus } from './redux/auth/selectors';
-import {
-  instance,
-  loginThunk,
-  refreshThunk,
-  registrationThunk,
-} from './redux/auth/operations';
+// import { useDispatch } from 'react-redux';
+// import { instance, loginThunk, refreshThunk, registrationThunk } from './redux/auth/operations';
 
 function App() {
   let isAuth = useSelector(getAuthStatus);
