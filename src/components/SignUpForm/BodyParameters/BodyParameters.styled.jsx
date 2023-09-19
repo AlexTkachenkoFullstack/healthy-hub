@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { Field } from 'formik';
+import styled from 'styled-components';
 
 export const BodyParametersContainer = styled.div`
   background-color: var(--bg-primary);
@@ -64,7 +65,7 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 24px;
-  width:280px;
+  width: 280px;
 
   @media (min-width: 834px) {
     font-size: 22px;
@@ -110,25 +111,22 @@ export const InputBox = styled.div`
     line-height: 1.429;
     background-color: #0f0f0f;
     border: transparent;
-    
 
     padding: 8px 10px;
   }
 
-  
-
-@media (min-width: 834px) {
+  @media (min-width: 834px) {
     width: 380px;
- display: block;
-     margin: 0 auto;
+    display: block;
+    margin: 0 auto;
     @media (min-width: 1440px) {
-       width: 212px;
-       margin: 0;
-     }
+      width: 212px;
+      margin: 0;
+    }
   }
- `;
+`;
 
-export const InputText = styled.input`
+export const InputText = styled(Field)`
   color: var(--text-color-secondary-grey);
   font-family: Poppins;
   font-size: 14px;
