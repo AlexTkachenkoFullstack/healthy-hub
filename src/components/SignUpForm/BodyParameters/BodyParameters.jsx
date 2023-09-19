@@ -12,6 +12,13 @@ import {
   BackButton,
 } from './BodyParameters.styled';
 
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  height: yup.string().required('Goal is required is required'),
+  weight: yup.string().required('Age is required'),
+});
+
 const BodyParameters = ({ goNext, goBack, data }) => {
   const handleSubmit = (values, actions) => {
     goNext(values);
