@@ -29,8 +29,8 @@ import MaintainGirl2x from '../../../assets/images/emoji/maintake-girl-2x.png';
 import MaintainMan from '../../../assets/images/emoji/maintake-men.png';
 import MaintainMan2x from '../../../assets/images/emoji/maintake-men-2x.png';
 
-export default function TargetSelectionModal({ gender, onClose }) {
-  const [goal, setGoal] = useState('Lose Fat');
+export default function TargetSelectionModal({ gender, onClose, target }) {
+  const [goal, setGoal] = useState(target);
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -67,10 +67,10 @@ export default function TargetSelectionModal({ gender, onClose }) {
               The service will adjust your calorie <br /> intake to your goal
             </Subtitle>
             <RadioForm onSubmit={onSubmit}>
-              {goal === 'Lose Fat' ? (
+              {goal === 'lose fat' ? (
                 <RadioContainer>
                   <CheckedImageContainer>
-                    {gender === 'Female' ? (
+                    {gender === 'female' ? (
                       <img
                         srcSet={`${LoseFatGirl} 1x, ${LoseFatGirl2x} 2x`}
                         src={LoseFatGirl}
@@ -93,7 +93,7 @@ export default function TargetSelectionModal({ gender, onClose }) {
               ) : (
                 <RadioContainer>
                   <ImageContainer>
-                    {gender === 'Female' ? (
+                    {gender === 'female' ? (
                       <img
                         srcSet={`${LoseFatGirl} 1x, ${LoseFatGirl2x} 2x`}
                         src={LoseFatGirl}
@@ -119,18 +119,18 @@ export default function TargetSelectionModal({ gender, onClose }) {
                 id="lose"
                 type="radio"
                 name="goal"
-                value="Lose Fat"
-                checked={goal === 'Lose Fat'}
-                onChange={() => setGoal('Lose Fat')}
+                value="lose fat"
+                checked={goal === 'lose fat'}
+                onChange={() => setGoal('lose fat')}
               />
-              {goal === 'Maintain' ? (
+              {goal === 'maintain' ? (
                 <RadioContainer>
                   <CheckedImageContainer>
-                    {gender === 'Female' ? (
+                    {gender === 'female' ? (
                       <img
                         srcSet={`${MaintainGirl} 1x, ${MaintainGirl2x} 2x`}
                         src={MaintainGirl}
-                        alt="Lose Fat Girl"
+                        alt="Maintain Girl"
                         width="20"
                         height="20"
                       />
@@ -138,7 +138,7 @@ export default function TargetSelectionModal({ gender, onClose }) {
                       <img
                         srcSet={`${MaintainMan} 1x, ${MaintainMan2x} 2x`}
                         src={MaintainMan}
-                        alt="Lose Fat Man"
+                        alt="Maintain Man"
                         width="20"
                         height="20"
                       />
@@ -151,11 +151,11 @@ export default function TargetSelectionModal({ gender, onClose }) {
               ) : (
                 <RadioContainer>
                   <ImageContainer>
-                    {gender === 'Female' ? (
+                    {gender === 'female' ? (
                       <img
                         srcSet={`${MaintainGirl} 1x, ${MaintainGirl2x} 2x`}
                         src={MaintainGirl}
-                        alt="Lose Fat Girl"
+                        alt="Maintain Girl"
                         width="20"
                         height="20"
                       />
@@ -163,7 +163,7 @@ export default function TargetSelectionModal({ gender, onClose }) {
                       <img
                         srcSet={`${MaintainMan} 1x, ${MaintainMan2x} 2x`}
                         src={MaintainMan}
-                        alt="Lose Fat Man"
+                        alt="Maintain Man"
                         width="20"
                         height="20"
                       />
@@ -176,17 +176,17 @@ export default function TargetSelectionModal({ gender, onClose }) {
                 id="maintain"
                 type="radio"
                 name="goal"
-                value="Maintain"
-                checked={goal === 'Maintain'}
-                onChange={() => setGoal('Maintain')}
+                value="maintain"
+                checked={goal === 'maintain'}
+                onChange={() => setGoal('maintain')}
               />
-              {goal === 'Gain Muscle' ? (
+              {goal === 'gain muscle' ? (
                 <RadioContainer>
                   <CheckedImageContainer>
                     <img
                       srcSet={`${GainMuscule} 1x, ${GainMuscule2x} 2x`}
                       src={GainMuscule}
-                      alt="Lose Fat Girl"
+                      alt="gain muscle Girl"
                       width="20"
                       height="20"
                     />
@@ -201,7 +201,7 @@ export default function TargetSelectionModal({ gender, onClose }) {
                     <img
                       srcSet={`${GainMuscule} 1x, ${GainMuscule2x} 2x`}
                       src={GainMuscule}
-                      alt="Lose Fat Girl"
+                      alt="gain muscle Girl"
                       width="20"
                       height="20"
                     />
@@ -213,9 +213,9 @@ export default function TargetSelectionModal({ gender, onClose }) {
                 id="gain"
                 type="radio"
                 name="goal"
-                value="Gain Muscle"
-                checked={goal === 'Gain Muscle'}
-                onChange={() => setGoal('Gain Muscle')}
+                value="gain muscle"
+                checked={goal === 'gain muscle'}
+                onChange={() => setGoal('gain muscle')}
               />
               <SubmitButton type="submit">Confirm</SubmitButton>
             </RadioForm>

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getAuthStatus, getUserInfo } from 'redux/auth/selectors';
 import HeaderModalButton from './HeaderModalButton/HeaderModalButton';
 import MobileMenu from './MobileMenu/MobileMenu';
 import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
@@ -23,11 +25,12 @@ import {
 import sprite from '../../assets/images/icons/icons.svg';
 
 const Header = () => {
-  let isAuth = false; // замінити на значення зі стейту
-  let gender = 'Female'; //Female, Male
-  let goal = 'Lose Fat'; //Lose Fat, Maintain, Gain Muscle
-  let weight = 55;
-  let name = 'Nadiia';
+  const isAuth = useSelector(getAuthStatus);
+  const user = useSelector(getUserInfo);
+  const gender = user.gender.toLowerCase();
+  const goal = user.goal.toLowerCase();
+  const weight = user.weight;
+  const name = user.name;
 
   const [today, setToday] = useState(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -167,7 +170,11 @@ const Header = () => {
         />
       )}
       {showTargetModal && (
-        <TargetSelectionModal gender={gender} onClose={closeTargetModal} />
+        <TargetSelectionModal
+          gender={gender}
+          onClose={closeTargetModal}
+          target={goal}
+        />
       )}
       {showWeightModal && (
         <CurrentWeightModal onClose={closeWeightModal} date={today} />

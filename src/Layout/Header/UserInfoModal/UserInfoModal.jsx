@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logOutThunk } from 'redux/auth/operations';
 import {
   Overlay,
   UserLayout,
@@ -13,6 +15,7 @@ import sprite from '../../../assets/images/icons/icons.svg';
 export default function UserInfoModal({ onClose }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -42,7 +45,7 @@ export default function UserInfoModal({ onClose }) {
   };
 
   const onLogout = () => {
-    console.log('Log out');
+    dispatch(logOutThunk());
     onClose();
   };
 
