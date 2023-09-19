@@ -1,5 +1,5 @@
 import { RecommendedFood, Title, DesctopContainer, PhotoPage, ProductsList, ProductItem } from "./RecommendedFoodPage.styled";
-
+// import { ReactComponent as ArrowRigth } from '../../../assets/images/icons/arrow-right.svg';
 import recommendedFood from 'RecommendedFood.json';
 import { randomArray } from 'utils';
 
