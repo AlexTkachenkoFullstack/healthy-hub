@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RecommendedFoodPhoto from "../../assets/images/ketogenic-diet.png";
+import RecommendedFoodPhoto from "../../assets/images/ketogenic-diet-2x.png";
 
 
 
@@ -21,7 +21,7 @@ export const DesctopContainer = styled.div`
 
 export const PhotoPage = styled.img`
    @media (min-width: 320px) {
-   background-image: url(${RecommendedFoodPhoto});
+    background-image: url(${RecommendedFoodPhoto});
     background-repeat: no-repeat;
     background-size: cover;
     height: 300px;
@@ -37,7 +37,7 @@ export const PhotoPage = styled.img`
     }
     @media (min-width: 1440px) {
     height: 536px;
-    width: 560px;  
+    width: 560px;
     }
 `
 export const ProductsList = styled.ul`
