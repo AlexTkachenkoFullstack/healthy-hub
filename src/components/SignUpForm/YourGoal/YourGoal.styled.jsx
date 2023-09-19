@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
 export const YourGoalContainer = styled.div`
   background-color: var(--bg-primary);
@@ -50,7 +51,7 @@ export const YourGoalHeader = styled.h1`
     text-align: center;
   }
   @media (min-width: 1440px) {
-    text-align:left;
+    text-align: left;
   }
 `;
 
@@ -78,9 +79,9 @@ export const Label = styled.label`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43;
-  display:flex;
-  align-items:center;
-  gap:8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const LabelBlock = styled.div`
@@ -100,7 +101,7 @@ export const LabelBlock = styled.div`
 
 export const InputButton = styled.button`
   border-radius: 12px;
-  border: none;
+  /* border: none; */
   outline: none;
   background: var(--text-color-active-page-green);
   padding: 8px 10px;
@@ -120,8 +121,8 @@ export const InputButton = styled.button`
     width: 380px;
   }
   @media (min-width: 1440px) {
-   width:212px;
-   height: 36px;
+    width: 212px;
+    height: 36px;
   }
 `;
 
@@ -130,6 +131,6 @@ export const BlockButton = styled.div`
     text-align: center;
   }
   @media (min-width: 1440px) {
-   text-align:left;
+    text-align: left;
   }
 `;
