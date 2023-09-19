@@ -26,17 +26,14 @@ const BodyParameters = ({ goNext, goBack, data }) => {
           <Text>Enter your parameters for correct performance tracking</Text>
           <ChooseText>Height</ChooseText>
           <InputBox>
-            <InputText name="Height" placeholder="Enter your height" />
+            <InputText name="height" placeholder="Enter your height" />
           </InputBox>
           <ChooseText>Weight</ChooseText>
           <InputBox>
-            <InputText name="Weight" placeholder="Enter your weight" />
+            <InputText name="weight" placeholder="Enter your weight" />
           </InputBox>
-          {/* <Field name="Weight" /> */}
           <p>
-            <InputButton type="submit" onClick={goNext}>
-              Next
-            </InputButton>
+            <InputButton type="submit">Next</InputButton>
           </p>
           <p>
             <BackButton type="button" onClick={goBack}>
@@ -47,12 +44,6 @@ const BodyParameters = ({ goNext, goBack, data }) => {
       </Formik>
     </BodyParametersContainer>
   );
-
-  // return(<>
-  //      <h1>BodyParameters</h1>
-  //     <button onClick={goNext}>Next</button>
-  //     <button onClick={goBack}>Back</button>
-  // </>)
 };
 
 export default BodyParameters;
