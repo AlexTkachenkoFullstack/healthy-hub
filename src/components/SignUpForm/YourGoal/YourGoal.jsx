@@ -12,8 +12,15 @@ import {
   BlockButton,
 } from './YourGoal.styled';
 
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  'your-goal-group': Yup.string().required('Goal is required is required'),
+});
+
 const YourGoal = ({ goNext, data }) => {
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = values => {
+    console.log(values);
     goNext(values);
   };
 
@@ -24,7 +31,7 @@ const YourGoal = ({ goNext, data }) => {
         <Form>
           <YourGoalHeader id="your-goal-group">Your Goal</YourGoalHeader>
           <Text>Choose a goal so that we can help you effectively</Text>
-          <LabelBlock role="group" aria-label="your-goal-group">
+          <LabelBlock role="group" aria-labelledby="your-goal-group">
             <Label>
               <Field type="radio" name="goal" value="Lose fat" />
               Lose fat
