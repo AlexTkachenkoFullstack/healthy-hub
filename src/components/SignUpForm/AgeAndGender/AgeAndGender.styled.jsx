@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
 export const AgeAndGenderContainer = styled.div`
   background-color: var(--bg-primary);
@@ -67,14 +68,14 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 24px;
-  padding-left:10px;
+  padding-left: 10px;
 
   @media (min-width: 834px) {
     font-size: 22px;
     line-height: 1.44;
     text-align: center;
     width: 444px;
-    padding-left:0;
+    padding-left: 0;
   }
   @media (min-width: 1440px) {
     text-align: left;
@@ -98,8 +99,8 @@ export const ChooseText = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
-  margin-top:24px;
-  margin-bottom:12px;
+  margin-top: 24px;
+  margin-bottom: 12px;
 `;
 
 export const Label = styled.label`
@@ -138,12 +139,12 @@ export const InputBox = styled.div`
     margin: 0 auto;
     @media (min-width: 1440px) {
       width: 212px;
-     margin:0;
+      margin: 0;
     }
   }
 `;
 
-export const InputText = styled.input`
+export const InputText = styled(Field)`
   color: var(--text-color-secondary-grey);
   font-family: Poppins;
   font-size: 14px;
@@ -154,8 +155,6 @@ export const InputText = styled.input`
   border: none;
   outline: none;
   padding: 8px 10px;
-
- 
 `;
 
 export const InputButton = styled.button`
@@ -185,7 +184,7 @@ export const InputButton = styled.button`
   @media (min-width: 1440px) {
     width: 212px;
     height: 36px;
-    margin:  20px 0;
+    margin: 20px 0;
   }
 `;
 
@@ -206,4 +205,3 @@ export const BackButton = styled.button`
     margin-left: 82px;
   }
 `;
-
