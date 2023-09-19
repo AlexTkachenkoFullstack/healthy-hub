@@ -13,7 +13,9 @@ const SignUpForm = () => {
   // const [password, setPassword]=useState('');
   // const [goal, setGoal]=useState('');
   // const [gender, setGender]=useState('');
-  // const  [bodyParams, setBodyParams]=useState('');
+  // const [height, setHeight]=useState('');
+  // const [weight, setWeight]=useState('');
+  // const [age, setAge]=useState('');
   // const [activity, setActivity] = useState('');
 
   const [data, setData] = useState({
