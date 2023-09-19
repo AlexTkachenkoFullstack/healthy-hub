@@ -1,4 +1,5 @@
 import { Formik, Field } from 'formik';
+import * as yup from 'yup';
 import React, { useState } from 'react';
 import image from '../../../assets/images/sport-and-fitness-tracker.png';
 import {
@@ -16,6 +17,12 @@ import {
   QuestionForm,
 } from './SignUpFirst.styled';
 
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(16).required(),
+});
+
 const SignUpFirst = ({ goNext, data }) => {
   const handleSubmit = (values, actions) => {
     goNext(values);
@@ -27,7 +34,11 @@ const SignUpFirst = ({ goNext, data }) => {
       <QuestionForm>
         <MainHeader>Sign up</MainHeader>
         <Text>You need to register to use the service</Text>
-        <Formik initialValues={data} onSubmit={handleSubmit}>
+        <Formik
+          initialValues={data}
+          validationSchema={schema}
+          onSubmit={handleSubmit}
+        >
           <FormStyle autoComplete="off">
             <InputBox>
               <label htmlFor="name" />
@@ -64,7 +75,7 @@ const SignUpFirst = ({ goNext, data }) => {
         </Formik>
         <FinishBlock>
           <TextInEnd>Do you already have an account?</TextInEnd>
-          <SignInText>Sign in</SignInText>
+          <SignInText to="/signin">Sign in</SignInText>
         </FinishBlock>
       </QuestionForm>
     </SignUpFirstContainer>
