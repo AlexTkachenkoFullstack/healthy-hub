@@ -24,41 +24,41 @@ const AgeAndGender = ({ goNext, goBack, data }) => {
 
   return (
     <Formik initialValues={data} onSubmit={handleSubmit}>
-      {() => (
-        <AgeAndGenderContainer>
-          <Image src={image} alt="Elder fitness" />
-          <Form>
-            <AgeAndGenderHeader id="gender-group">
-              Select gender, Age
-            </AgeAndGenderHeader>
-            <Text>
-              Choose a goal so that we can <br />
-              help you effectively
-            </Text>
-            <ExtraContainer>
-              <ChooseText>Gender</ChooseText>
-              <LabelBlock role="group" aria-label="gender-group">
-                <Label>
-                  <Field type="radio" name="gender" value="male" />
-                  Male
-                </Label>
-                <Label>
-                  <Field type="radio" name="gender" value="female" />
-                  Female
-                </Label>
-              </LabelBlock>
-              <ChooseText>Your age</ChooseText>
-            </ExtraContainer>
-            <InputBox>
-              <label />
-              <InputText
-                type="text"
-                name="age"
-                placeholder="Enter your age"
-                required
-              />
-            </InputBox>
-            {/* <Field
+      <AgeAndGenderContainer>
+        <Image src={image} alt="Elder fitness" />
+        <Form>
+          <AgeAndGenderHeader id="gender-group">
+            Select gender, Age
+          </AgeAndGenderHeader>
+          <Text>
+            Choose a goal so that we can <br />
+            help you effectively
+          </Text>
+          <ExtraContainer>
+            <ChooseText>Gender</ChooseText>
+            <LabelBlock role="group" aria-label="gender-group">
+              <Label>
+                <Field type="radio" name="gender" value="male" />
+                Male
+              </Label>
+              <Label>
+                <Field type="radio" name="gender" value="female" />
+                Female
+              </Label>
+            </LabelBlock>
+            <ChooseText>Your age</ChooseText>
+          </ExtraContainer>
+          <InputBox>
+            <label />
+            <InputText
+              type="text"
+              id="age"
+              name="age"
+              placeholder="Enter your age"
+              // required
+            />
+          </InputBox>
+          {/* <Field
                 type="text"
                 id="age"
                 name="age"
@@ -66,16 +66,13 @@ const AgeAndGender = ({ goNext, goBack, data }) => {
                 style={{ color: 'rgba(0, 0, 0, 0.5)' }}
               /> */}
 
-            <InputButton type="submit" onClick={goNext}>
-              Next
-            </InputButton>
+          <InputButton type="submit">Next</InputButton>
 
-            <BackButton type="button" onClick={goBack}>
-              Back
-            </BackButton>
-          </Form>
-        </AgeAndGenderContainer>
-      )}
+          <BackButton type="button" onClick={goBack}>
+            Back
+          </BackButton>
+        </Form>
+      </AgeAndGenderContainer>
     </Formik>
     // <>
     //   <h1>AgeAndGender</h1>
