@@ -1,4 +1,4 @@
-import { Formik, Field } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import React, { useState } from 'react';
 import image from '../../../assets/images/sport-and-fitness-tracker.png';
@@ -17,16 +17,43 @@ import {
   QuestionForm,
 } from './SignUpFirst.styled';
 
+import checkEmail from '../checkEmail';
+// import signUp from '../signUp';
+
 const schema = yup.object().shape({
-  name: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(6).max(16).required(),
+  name: yup.string().required('Please enter name'),
+  email: yup.string().email().required('Enter correct email'),
+
+  password: yup
+    .string()
+    .matches(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).*$',
+      'must include at least 1 uppercase and lowercase symbols'
+    )
+    .matches(
+      '^(?=.*\\d)(?=.*[~`!@#$%^&()_=+{}\\[\\]/|:;,"<>?]).*$',
+      'must include 1 number and special symbol'
+    )
+    .matches('^[^А-Яа-яЇїІіЄєҐґЁё]+$', 'must include only latin letters')
+    .required('Please Enter your Password'),
 });
 
 const SignUpFirst = ({ goNext, data }) => {
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = async (values, actions) => {
+    const res = await checkEmail(values.email);
+    const { message, status } = res.data;
+    if (!(message === 'Accept for registration' && status === 'available')) {
+      <ErrorMessage name="email" />;
+      console.log('Error');
+    }
     goNext(values);
   };
+
+  // const handleSubmit = async () => {
+  //   const res = await signUp();
+  //   console.log(res);
+  //   console.log('User was registered!!!');
+  // };
 
   return (
     <SignUpFirstContainer>
@@ -47,9 +74,10 @@ const SignUpFirst = ({ goNext, data }) => {
                 id="name"
                 name="name"
                 placeholder="Name"
-                required
+                // required
               />
             </InputBox>
+            <ErrorMessage name="name" />
             <InputBox>
               <label htmlFor="email" />
               <InputText
@@ -60,6 +88,7 @@ const SignUpFirst = ({ goNext, data }) => {
                 required
               />
             </InputBox>
+            <ErrorMessage name="email" />
             <InputBox>
               <label htmlFor="password" />
               <InputText
@@ -67,9 +96,10 @@ const SignUpFirst = ({ goNext, data }) => {
                 id="password"
                 name="password"
                 placeholder="Password"
-                required
+                // required
               />
             </InputBox>
+            <ErrorMessage name="password" />
             <InputButton type="submit">Sign Up</InputButton>
           </FormStyle>
         </Formik>
