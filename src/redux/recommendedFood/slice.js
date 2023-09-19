@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchRecommendedFood } from "./operations";
 
 const initialState={
-    products:[],
+    food:[],
     isLoading: false,
     error:null,
 }
@@ -23,7 +23,7 @@ const handleFulfild = (state, action) => {
 }
 
 export const recommendedFoodSlice = createSlice({
-    name: 'auth',
+    name: 'recommendedFood',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
