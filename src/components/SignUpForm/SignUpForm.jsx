@@ -25,26 +25,19 @@ const SignUpForm = () => {
     height: '',
     weight: '',
     activity: '',
+    age: '',
   });
 
   const handleNextStep = newData => {
     setUserData(prev => ({ ...prev, ...newData }));
-    setStep(prev => prev + 1);
     console.log(userData);
+    setStep(step + 1);
   };
 
   const handlePrevStep = () => {
     setStep(prev => prev - 1);
   };
 
-  // console.log('ster', step);
-  // console.log("name", name)
-  // console.log("email", email)
-  // console.log("password", password)
-  // console.log("goal", goal)
-  // console.log("gender", gender)
-  // console.log("bodyParams", bodyParams)
-  // console.log("activity", activity)
   return (
     <>
       <div className="container">
@@ -76,13 +69,21 @@ const SignUpForm = () => {
 
         {step === 4 && (
           <div>
-            <BodyParameters goNext={handleNextStep} goBack={handlePrevStep} />
+            <BodyParameters
+              goNext={handleNextStep}
+              goBack={handlePrevStep}
+              data={userData}
+            />
           </div>
         )}
 
         {step === 5 && (
           <div>
-            <YourActivity goBack={handlePrevStep} goNext={handleNextStep} />
+            <YourActivity
+              goBack={handlePrevStep}
+              goNext={handleNextStep}
+              data={userData}
+            />
           </div>
         )}
       </div>
