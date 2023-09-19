@@ -16,7 +16,7 @@ const SignUpForm = () => {
   // const  [bodyParams, setBodyParams]=useState('');
   // const [activity, setActivity] = useState('');
 
-  const [userData, setUserData] = useState({
+  const [data, setData] = useState({
     name: '',
     email: '',
     password: '',
@@ -29,9 +29,9 @@ const SignUpForm = () => {
   });
 
   const handleNextStep = newData => {
-    setUserData(prev => ({ ...prev, ...newData }));
-    console.log(userData);
-    setStep(step + 1);
+    setData(prev => ({ ...prev, ...newData }));
+    console.log(data);
+    setStep(prev => prev + 1);
   };
 
   const handlePrevStep = () => {
@@ -43,7 +43,7 @@ const SignUpForm = () => {
       <div className="container">
         {step === 1 && (
           <div>
-            <SignUpFirst goNext={handleNextStep} data={userData} />
+            <SignUpFirst goNext={handleNextStep} data={data} />
           </div>
         )}
 
@@ -52,7 +52,7 @@ const SignUpForm = () => {
             <YourGoal
               goNext={handleNextStep}
               goBack={handlePrevStep}
-              data={userData}
+              data={data}
             />
           </div>
         )}
@@ -62,7 +62,7 @@ const SignUpForm = () => {
             <AgeAndGender
               goNext={handleNextStep}
               goBack={handlePrevStep}
-              data={userData}
+              data={data}
             />
           </div>
         )}
@@ -72,7 +72,7 @@ const SignUpForm = () => {
             <BodyParameters
               goNext={handleNextStep}
               goBack={handlePrevStep}
-              data={userData}
+              data={data}
             />
           </div>
         )}
@@ -82,7 +82,7 @@ const SignUpForm = () => {
             <YourActivity
               goBack={handlePrevStep}
               goNext={handleNextStep}
-              data={userData}
+              data={data}
             />
           </div>
         )}
