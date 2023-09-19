@@ -35,9 +35,9 @@ export default function HeaderModalButton({
     <>
       {buttonType === 'goal' && (
         <Button type="button" onClick={onClick}>
-          {goal === 'Lose Fat' && (
+          {goal === 'lose fat' && (
             <ImageContainer>
-              {gender === 'Female' ? (
+              {gender === 'female' ? (
                 <img
                   srcSet={`${LoseFatGirl} 1x, ${LoseFatGirl2x} 2x`}
                   src={LoseFatGirl}
@@ -56,9 +56,9 @@ export default function HeaderModalButton({
               )}
             </ImageContainer>
           )}
-          {goal === 'Maintain' && (
+          {goal === 'maintain' && (
             <ImageContainer>
-              {gender === 'Female' ? (
+              {gender === 'female' ? (
                 <img
                   srcSet={`${MaintainGirl} 1x, ${MaintainGirl2x} 2x`}
                   src={MaintainGirl}
@@ -77,7 +77,7 @@ export default function HeaderModalButton({
               )}
             </ImageContainer>
           )}
-          {goal === 'Gain Muscle' && (
+          {goal === 'gain muscle' && (
             <ImageContainer>
               <img
                 srcSet={`${GainMuscule} 1x, ${GainMuscule2x} 2x`}
