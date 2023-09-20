@@ -44,7 +44,6 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div className="container">
         {step === 1 && (
           <div>
             <SignUpFirst
@@ -98,7 +97,6 @@ const SignUpForm = () => {
           </div>
         )}
         {step >= 6 && userRegister()}
-      </div>
     </>
   );
 };
