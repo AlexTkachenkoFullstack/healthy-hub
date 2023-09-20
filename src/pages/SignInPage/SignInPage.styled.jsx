@@ -76,6 +76,11 @@ export const TextField = styled.input`
     border: 1px solid var(--input-border-color-normal);
     margin-bottom: 16px;
     color: var(--text-color-primary-white);
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight:400;
+    line-height: 20px;
+
 }
 ::placeholder {
     color: var(--text-color-secondary-grey);
