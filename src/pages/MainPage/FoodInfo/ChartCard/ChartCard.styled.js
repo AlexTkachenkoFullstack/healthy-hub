@@ -12,10 +12,20 @@ export const ChartWrapper = styled.div`
 `;
 
 export const ChartElement = styled.div`
+  position: relative;
   width: 48px;
   height: 48px;
-  border-radius: 24px;
-  border: 1px solid rgba(41, 41, 40, 1);
+`;
+
+export const Percentage = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--text-color-secondary-grey);
+  font-size: 14px;
+  font-weight: 400;
 `;
 
 export const InfoWrapper = styled.div`
