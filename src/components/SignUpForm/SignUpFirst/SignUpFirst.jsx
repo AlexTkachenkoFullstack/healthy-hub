@@ -1,6 +1,5 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import React, { useState } from 'react';
 import image from '../../../assets/images/sport-and-fitness-tracker.png';
 import {
   SignUpFirstContainer,
@@ -32,10 +31,8 @@ const initialValues = {
 };
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
-  const handleSubmit = async (values, actions) => {
-    const { name, email, password } = values;
-    const res = await checkEmail(values.email);
-
+  const handleSubmit = async ({ name, email, password }) => {
+    const res = await checkEmail(email);
     const { message, status } = res.data;
     if (!(message === 'Accept for registration' && status === 'available')) {
       <ErrorMessage name="email" />;
@@ -65,7 +62,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                 id="name"
                 name="name"
                 placeholder="Name"
-                // required
+                required
               />
             </InputBox>
             <ErrorMessage name="name" />
@@ -87,7 +84,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                 id="password"
                 name="password"
                 placeholder="Password"
-                // required
+                required
               />
             </InputBox>
             <ErrorMessage name="password" />

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
 
 export const YourGoalContainer = styled.div`
   background-color: var(--bg-primary);

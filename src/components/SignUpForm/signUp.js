@@ -11,34 +11,20 @@ const signUp = async (
   age,
   activity
 ) => {
-  const res = await axios(
-    'https://backend-healthyhub.onrender.com/api/users/register',
-    {
-      method: 'post',
-      data: {
-        name,
-        email,
-        password,
-        goal,
-        gender,
-        height,
-        weight,
-        age,
-        activity,
-      },
-    }
-  );
-  console.log(
-    name,
-    email,
-    password,
-    goal,
-    gender,
-    height,
-    weight,
-    age,
-    activity
-  );
+  await axios('https://backend-healthyhub.onrender.com/api/users/register', {
+    method: 'post',
+    data: {
+      name,
+      email,
+      password,
+      goal,
+      gender,
+      height,
+      weight,
+      age,
+      activity,
+    },
+  });
 };
 
 export default signUp;

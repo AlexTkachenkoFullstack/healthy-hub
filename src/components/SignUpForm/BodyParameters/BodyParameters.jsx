@@ -12,14 +12,6 @@ import {
   BackButton,
 } from './BodyParameters.styled';
 
-import * as yup from 'yup';
-import { initializeUseSelector } from 'react-redux/es/hooks/useSelector';
-
-// const schema = yup.object().shape({
-//   height: yup.string().required('Goal is required is required'),
-//   weight: yup.string().required('Age is required'),
-// });
-
 const initialValues = {
   height: '',
   weight: '',
@@ -42,11 +34,11 @@ const BodyParameters = ({ goNext, goBack, setWeight, setHeight }) => {
           <Text>Enter your parameters for correct performance tracking</Text>
           <ChooseText>Height</ChooseText>
           <InputBox>
-            <InputText name="height" placeholder="Enter your height" />
+            <InputText name="height" placeholder="Enter your height" required />
           </InputBox>
           <ChooseText>Weight</ChooseText>
           <InputBox>
-            <InputText name="weight" placeholder="Enter your weight" />
+            <InputText name="weight" placeholder="Enter your weight" required />
           </InputBox>
           <p>
             <InputButton type="submit">Next</InputButton>
