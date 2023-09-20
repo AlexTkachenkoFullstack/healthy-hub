@@ -1,17 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-
-export const GlobalStyles = createGlobalStyle`
-  /* Приховуємо полосу прокрутки в WebKit (Chrome, Safari) */
-  ::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  /* Приховуємо полосу прокрутки в Firefox */
-  * {
-    scrollbar-width: none;
-  }
-`;
+import styled from "styled-components";
 
 export const ButtonStyle = styled.button`
   background-color: transparent;
@@ -29,6 +16,50 @@ export const SvgEdit = styled.svg`
   stroke: var(--icon-color-white);   
   width: 16px;
   height: 16px;
+`;
+
+export const ImgBreakfast = styled.img`
+  background-image: url('../../assets/images/meal-periods/breakfast.png');
+  width: 32px;
+  height: 32px;
+  @media (min-width: 1440px) {
+    background-image: url('../../assets/images/meal-periods/breakfast-2x.png');
+    width: 64px;
+    height: 64px;
+  }
+`;
+
+export const ImgDinner = styled.img`
+  background-image: url('../../assets/images/meal-periods/dinner.png');
+  width: 32px;
+  height: 32px;
+  @media (min-width: 1440px) {
+    background-image: url('../../assets/images/meal-periods/dinner-2x.png');
+    width: 64px;
+    height: 64px;
+  }
+`;
+
+export const ImgLunch = styled.img`
+  background-image: url('../../assets/images/meal-periods/lunch.png');
+  width: 32px;
+  height: 32px;
+  @media (min-width: 1440px) {
+    background-image: url('../../assets/images/meal-periods/lunch-2x.png');
+    width: 64px;
+    height: 64px;
+  }
+`;
+
+export const ImgSnack = styled.img`
+  background-image: url('../../assets/images/meal-periods/snack.png');
+  width: 32px;
+  height: 32px;
+  @media (min-width: 1440px) {
+    background-image: url('../../assets/images/meal-periods/snack-2x.png');
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 export const TitlePage = styled.h2`
@@ -55,10 +86,11 @@ export const TitleDiv = styled.div`
 `;
 
 export const NamePeriod = styled.h3`
+  display: inline;
   font-size: 18px;
 `;
 
-export const Ingredient  = styled.span`
+export const IngredientSpan  = styled.span`
   font-size: 18px;
 `;
 
@@ -85,34 +117,31 @@ export const TextIndexSpan  = styled.span`
 `;
 
 
-export const ListMeatContainer = styled.ul`
-  /* Общие стили для полосы прокрутки */
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
 
-  /* Стили для полосы прокрутки при фокусировке элемента */
-  &:focus::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  /* Стили для полосы прокрутки при наведении на элемент */
-  &:hover {
-    scrollbar-width: thin;
-  }
-
+export const ListMeatContainer = styled.div`
   margin-left: 0;
+  margin-top: 6px;
   padding-left: 0;
   border-radius: 12px;
   background-color: var(--bg-secondary);
-  background-color: green;  
-  padding: 0 14px;
+  // background-color: green;  
+  padding: 0 14px 32px;
+  // overflow: hidden;
+  // width: 676px;
+  heigth: 240px;
+  overflow-y: auto;
 `;
+
 
 export const Li = styled.li`
   list-style-type: none;
+  margin-top: 32px;
+`;
+export const Ul = styled.ul`
+  margin-left: 0;
+  padding-left: 0;
+  // width: 676px;
+  heigth: 240px;
 `;
 
 // @media (min-width: 834px) {
@@ -133,6 +162,7 @@ export const ItemFoodName = styled.input`
   border: none;
   background-color: transparent;
   width: 260px; 
+  outline:none;
 `;
 
 export const ItemFoodCarbon = styled.input`
@@ -142,6 +172,7 @@ export const ItemFoodCarbon = styled.input`
   border: none;
   background-color: transparent;
   width: 80px;
+  outline:none;
 `;
 export const ItemFoodProt = styled.input`
   color: var(--text-color-primary-white);
@@ -151,6 +182,7 @@ export const ItemFoodProt = styled.input`
   border: none;
   background-color: transparent;
   width: 80px;
+  outline:none;
 `;
 export const ItemFoodFat = styled.input`
   color: var(--text-color-primary-white);
@@ -160,16 +192,24 @@ export const ItemFoodFat = styled.input`
   border: none;
   background-color: transparent;
   width: 80px;
+  outline:none;
 `;
 export const ItemFoodIndex = styled.div`
   color: var(--text-color-primary-white);
 
   font-size: 14px;
   ${fontNorm}
-  border: none;
+  // border: none;
   background-color: transparent;
   width: 16px;
 `;
+
+
+
+
+
+
+
 
 
 // li {
