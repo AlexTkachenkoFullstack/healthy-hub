@@ -1,6 +1,5 @@
 import { Formik, Form, Field } from 'formik';
 import image from '../../../assets/images/summer-hiking.png';
-import './YourGoal.css';
 import {
   YourGoalContainer,
   Image,
@@ -10,6 +9,7 @@ import {
   LabelBlock,
   InputButton,
   BlockButton,
+  CustomRadioInput,
 } from './YourGoal.styled';
 
 import * as yup from 'yup';
@@ -37,15 +37,30 @@ const YourGoal = ({ goNext, setGoal }) => {
           <Text>Choose a goal so that we can help you effectively</Text>
           <LabelBlock role="group" aria-labelledby="yourGoalGroup">
             <Label>
-              <Field type="radio" name="goal" value="Lose Fat" />
+              <Field
+                type="radio"
+                name="goal"
+                value="Lose Fat"
+                as={CustomRadioInput}
+              />
               Lose fat
             </Label>
             <Label>
-              <Field type="radio" name="goal" value="Maintain" />
+              <Field
+                type="radio"
+                name="goal"
+                value="Maintain"
+                as={CustomRadioInput}
+              />
               Maintain
             </Label>
             <Label>
-              <Field type="radio" name="goal" value="Gain Muscle" />
+              <Field
+                type="radio"
+                name="goal"
+                value="Gain Muscle"
+                as={CustomRadioInput}
+              />
               Gain Muscle
             </Label>
           </LabelBlock>
