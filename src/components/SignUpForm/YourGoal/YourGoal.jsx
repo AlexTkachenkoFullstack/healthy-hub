@@ -18,14 +18,18 @@ const schema = yup.object().shape({
   yourGoalGroup: yup.string().required('Goal is required is required'),
 });
 
-const YourGoal = ({ goNext, data }) => {
-  const handleSubmit = values => {
-    console.log(values);
-    goNext(values);
+const initialValues = {
+  goal: '',
+};
+
+const YourGoal = ({ goNext, setGoal }) => {
+  const handleSubmit = ({ goal }) => {
+    setGoal(goal);
+    goNext();
   };
 
   return (
-    <Formik initialValues={data} onSubmit={handleSubmit}>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <YourGoalContainer>
         <Image src={image} alt="Summer hinking" />
         <Form>
@@ -33,15 +37,15 @@ const YourGoal = ({ goNext, data }) => {
           <Text>Choose a goal so that we can help you effectively</Text>
           <LabelBlock role="group" aria-labelledby="yourGoalGroup">
             <Label>
-              <Field type="radio" name="goal" value="lose fat" />
+              <Field type="radio" name="goal" value="Lose Fat" />
               Lose fat
             </Label>
             <Label>
-              <Field type="radio" name="goal" value="maintain" />
+              <Field type="radio" name="goal" value="Maintain" />
               Maintain
             </Label>
             <Label>
-              <Field type="radio" name="goal" value="main muscle" />
+              <Field type="radio" name="goal" value="Gain Muscle" />
               Gain Muscle
             </Label>
           </LabelBlock>
