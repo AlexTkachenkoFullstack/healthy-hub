@@ -44,11 +44,11 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
             <ChooseText>Gender</ChooseText>
             <LabelBlock role="group" aria-label="genderGroup">
               <Label>
-                <Field type="radio" name="gender" value="male" />
+                <Field type="radio" name="gender" value="male" required />
                 Male
               </Label>
               <Label>
-                <Field type="radio" name="gender" value="female" />
+                <Field type="radio" name="gender" value="female" required />
                 Female
               </Label>
             </LabelBlock>

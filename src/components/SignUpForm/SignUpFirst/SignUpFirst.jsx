@@ -62,7 +62,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                 id="name"
                 name="name"
                 placeholder="Name"
-                // required
+                required
               />
             </InputBox>
             <ErrorMessage name="name" />
@@ -84,7 +84,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                 id="password"
                 name="password"
                 placeholder="Password"
-                // required
+                required
               />
             </InputBox>
             <ErrorMessage name="password" />
