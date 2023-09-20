@@ -12,20 +12,19 @@ import RecommendedFoodPage from './pages/RecommendedFoodPage/RecommendedFoodPage
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
-// import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { getAuthStatus } from './redux/auth/selectors';
-// import { useDispatch } from 'react-redux';
-// import { instance, loginThunk, refreshThunk, registrationThunk } from './redux/auth/operations';
+import { instance, loginThunk, refreshThunk, registrationThunk } from './redux/auth/operations';
 
 function App() {
 
   let isAuth= useSelector(getAuthStatus); 
 
-// const dispatch=useDispatch();
-// useEffect(()=>{
-//   dispatch(refreshThunk())
-// },[dispatch])
+const dispatch=useDispatch();
+useEffect(()=>{
+  dispatch(refreshThunk())
+},[dispatch])
 
   return (
     <Routes>
