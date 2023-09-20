@@ -81,6 +81,7 @@ export const InputText = styled(Field)`
   border: none;
   outline: none;
   padding: 8px 10px;
+  width:300px;
 `;
 
 export const InputButton = styled.button`

@@ -12,6 +12,7 @@ import {
   InputButton,
   BackButton,
   ExtraContainer,
+  CustomRadioInput,
 } from './AgeAndGender.styled';
 import image from '../../../assets/images/elder-fitness.png';
 
@@ -44,11 +45,21 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
             <ChooseText>Gender</ChooseText>
             <LabelBlock role="group" aria-label="genderGroup">
               <Label>
-                <Field type="radio" name="gender" value="male" required />
+                <Field
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  as={CustomRadioInput}
+                />
                 Male
               </Label>
               <Label>
-                <Field type="radio" name="gender" value="female" required />
+                <Field
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  as={CustomRadioInput}
+                />
                 Female
               </Label>
             </LabelBlock>
