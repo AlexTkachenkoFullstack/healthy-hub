@@ -32,7 +32,7 @@ const SignUpForm = () => {
     setWeight('');
     setAge('');
     setActivity('');
-    redirect('/login');
+    redirect('/signin');
   };
 
   const handleNextStep = () => {
@@ -44,59 +44,59 @@ const SignUpForm = () => {
 
   return (
     <>
-        {step === 1 && (
-          <div>
-            <SignUpFirst
-              goNext={handleNextStep}
-              setName={setName}
-              setEmail={setEmail}
-              setPassword={setPassword}
-            />
-          </div>
-        )}
+      {step === 1 && (
+        <div>
+          <SignUpFirst
+            goNext={handleNextStep}
+            setName={setName}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
+        </div>
+      )}
 
-        {step === 2 && (
-          <div>
-            <YourGoal
-              goNext={handleNextStep}
-              goBack={handlePrevStep}
-              setGoal={setGoal}
-            />
-          </div>
-        )}
+      {step === 2 && (
+        <div>
+          <YourGoal
+            goNext={handleNextStep}
+            goBack={handlePrevStep}
+            setGoal={setGoal}
+          />
+        </div>
+      )}
 
-        {step === 3 && (
-          <div>
-            <AgeAndGender
-              goNext={handleNextStep}
-              goBack={handlePrevStep}
-              setAge={setAge}
-              setGender={setGender}
-            />
-          </div>
-        )}
+      {step === 3 && (
+        <div>
+          <AgeAndGender
+            goNext={handleNextStep}
+            goBack={handlePrevStep}
+            setAge={setAge}
+            setGender={setGender}
+          />
+        </div>
+      )}
 
-        {step === 4 && (
-          <div>
-            <BodyParameters
-              goNext={handleNextStep}
-              goBack={handlePrevStep}
-              setHeight={setHeight}
-              setWeight={setWeight}
-            />
-          </div>
-        )}
+      {step === 4 && (
+        <div>
+          <BodyParameters
+            goNext={handleNextStep}
+            goBack={handlePrevStep}
+            setHeight={setHeight}
+            setWeight={setWeight}
+          />
+        </div>
+      )}
 
-        {step === 5 && (
-          <div>
-            <YourActivity
-              goBack={handlePrevStep}
-              goNext={handleNextStep}
-              setActivity={setActivity}
-            />
-          </div>
-        )}
-        {step >= 6 && userRegister()}
+      {step === 5 && (
+        <div>
+          <YourActivity
+            goBack={handlePrevStep}
+            goNext={handleNextStep}
+            setActivity={setActivity}
+          />
+        </div>
+      )}
+      {step >= 6 && userRegister()}
     </>
   );
 };
