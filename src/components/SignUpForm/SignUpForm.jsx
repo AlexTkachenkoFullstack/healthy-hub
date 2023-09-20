@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
 import SignUpFirst from './SignUpFirst';
 import YourGoal from './YourGoal';
 import AgeAndGender from './AgeAndGender';
@@ -18,9 +19,22 @@ const SignUpForm = () => {
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
   const [activity, setActivity] = useState('');
+  const navigate = useNavigate();
 
   const userRegister = () => {
-    signUp(name, email, password, goal, gender, height, weight, age, activity);
+    // signUp(name, email, password, goal, gender, height, weight, age, activity);
+    setStep(1);
+    setName('');
+    setEmail('');
+    setPassword('');
+    setGoal('');
+    setGender('');
+    setHeight('');
+    setWeight('');
+    setAge('');
+    setActivity('');
+    // navigate('/login', { replace: true });
+    redirect('/login');
   };
 
   const handleNextStep = () => {
