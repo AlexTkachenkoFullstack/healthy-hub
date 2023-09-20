@@ -39,7 +39,6 @@ const signUp = async (
     age,
     activity
   );
-  return res;
 };
 
 export default signUp;
