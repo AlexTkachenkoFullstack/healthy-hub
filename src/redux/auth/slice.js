@@ -59,14 +59,14 @@ const handleRejected = (state, action) => {
 const handleFulfildUpdateGoal=(state, action)=>{
     handleFulfild(state);
     // data:{goal:'lose fat'}
-    state.user = {...state.user, ...action.payload.data};
+    state.user = {...state.user, ...action.payload};
 }
 
 const handleFulfildUpdateWeight=(state, action)=>{
     handleFulfild(state);
     // data:{date:'22.10.2023', weight: 67}
-    state.user = {...state.user, ...action.payload.data.weight};
-    state.dateLastWeight=action.payload.data.date;
+    state.user = {...state.user, ...action.payload.weight};
+    state.dateLastWeight=action.payload.date;
 }
 
 const handleFulfildUpdateProfile=(state, action)=>{
@@ -74,11 +74,7 @@ const handleFulfildUpdateProfile=(state, action)=>{
     // {profileInfo:{name:'Alex', age:23, height:176, avatarUrl:'http...', gender: 'male', activity: 1.2},
     // weightInfo:{weight:76, date:'22.11.2022'}
     // }
-    state.user = {...state.user, ...action.payload.data.profileInfo};
-    if(action.payload.data.weightInfo){
-        state.dateLastWeight=action.payload.data.weightInfo.date;
-        state.user.weight=action.payload.data.weightInfo.weight;
-    }
+    state.user = {...state.user, ...action.payload};
 }
 
 export const authSlice = createSlice({

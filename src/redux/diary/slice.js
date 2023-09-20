@@ -26,14 +26,14 @@ const handlePending = (state) => {
 const handleFulfildGet = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.food={...action.payload.data}
+    state.food={...action.payload}
 }
 
 const handleFulfildPost = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    const type=Object.keys(action.payload.data)[0];
-    state.food[type]=[...state.food[type], ...action.payload.data[type]]
+    const type=action.payload.type;
+    state.food[type]=[...state.food[type], ...action.payload.products]
 }
 
 const handleFulfildUpdate = (state, action) => {
