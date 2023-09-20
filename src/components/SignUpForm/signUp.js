@@ -1,14 +1,44 @@
 import axios from 'axios';
 
-const signUp = async data => {
-  const res = await axios({
-    method: 'post',
-    url: 'https://backend-healthyhub.onrender.com/api/users/register',
-    data: {
-      ...data,
-    },
-  });
-  console.log(data);
+const signUp = async (
+  name,
+  email,
+  password,
+  goal,
+  gender,
+  height,
+  weight,
+  age,
+  activity
+) => {
+  const res = await axios(
+    'https://backend-healthyhub.onrender.com/api/users/register',
+    {
+      method: 'post',
+      data: {
+        name,
+        email,
+        password,
+        goal,
+        gender,
+        height,
+        weight,
+        age,
+        activity,
+      },
+    }
+  );
+  console.log(
+    name,
+    email,
+    password,
+    goal,
+    gender,
+    height,
+    weight,
+    age,
+    activity
+  );
   return res;
 };
 
