@@ -124,7 +124,7 @@ export const ListMeatContainer = styled.div`
   padding-left: 0;
   border-radius: 12px;
   background-color: var(--bg-secondary);
-  background-color: green;  
+  // background-color: green;  
   padding: 0 14px 32px;
   // overflow: hidden;
   // width: 676px;
