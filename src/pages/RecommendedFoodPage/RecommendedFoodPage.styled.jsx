@@ -47,16 +47,21 @@ export const ProductsList = styled.div`
     align-items: center;
     }
     @media (min-width: 834px) {
+    width: 780px;
     padding: 10px;
     display: flex;
     gap: 20px;
-    /* flex-direction: row; */
     flex-wrap: wrap;
     justify-content: center;
     }
     @media (min-width: 1440px) {
     height: 536px;
     width: 560px;
+    display: flex;
+    gap: 20px;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    justify-content: center;
     }
     
 `
