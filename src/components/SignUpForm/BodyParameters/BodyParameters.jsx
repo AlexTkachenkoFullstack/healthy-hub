@@ -12,14 +12,6 @@ import {
   BackButton,
 } from './BodyParameters.styled';
 
-import * as yup from 'yup';
-import { initializeUseSelector } from 'react-redux/es/hooks/useSelector';
-
-// const schema = yup.object().shape({
-//   height: yup.string().required('Goal is required is required'),
-//   weight: yup.string().required('Age is required'),
-// });
-
 const initialValues = {
   height: '',
   weight: '',

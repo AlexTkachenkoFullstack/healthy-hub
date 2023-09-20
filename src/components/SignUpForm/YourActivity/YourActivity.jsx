@@ -12,12 +12,6 @@ import {
   BackButton,
 } from './YourActivity.styled';
 
-// import * as yup from 'yup';
-
-// const schema = yup.object().shape({
-//   yourActivityGroup: yup.string().required('Activity is required is required'),
-// });
-
 const initialValues = {
   activity: '',
 };

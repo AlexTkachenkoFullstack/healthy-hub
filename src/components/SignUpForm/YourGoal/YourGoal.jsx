@@ -12,12 +12,6 @@ import {
   BlockButton,
 } from './YourGoal.styled';
 
-import * as yup from 'yup';
-
-const schema = yup.object().shape({
-  yourGoalGroup: yup.string().required('Goal is required is required'),
-});
-
 const initialValues = {
   goal: '',
 };

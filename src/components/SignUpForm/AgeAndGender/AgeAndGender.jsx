@@ -15,13 +15,6 @@ import {
 } from './AgeAndGender.styled';
 import image from '../../../assets/images/elder-fitness.png';
 
-import * as yup from 'yup';
-
-const schema = yup.object().shape({
-  genderGroup: yup.string().required('Goal is required is required'),
-  age: yup.string().required('Age is required'),
-});
-
 const initialValues = {
   gender: '',
   age: '',
@@ -71,14 +64,6 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
               required
             />
           </InputBox>
-          {/* <Field
-                type="text"
-                id="age"
-                name="age"
-                placeholder="Enter your age"
-                style={{ color: 'rgba(0, 0, 0, 0.5)' }}
-              /> */}
-
           <InputButton type="submit">Next</InputButton>
 
           <BackButton type="button" onClick={goBack}>
@@ -87,11 +72,6 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
         </Form>
       </AgeAndGenderContainer>
     </Formik>
-    // <>
-    //   <h1>AgeAndGender</h1>
-    //   <button onClick={goNext}>Next</button>
-    //   <button onClick={goBack}>Back</button>
-    // </>
   );
 };
 
