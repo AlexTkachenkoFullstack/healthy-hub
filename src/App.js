@@ -27,7 +27,6 @@ function App() {
 //   dispatch(refreshThunk())
 // },[dispatch])
 
-
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
