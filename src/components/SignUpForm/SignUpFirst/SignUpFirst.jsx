@@ -18,7 +18,6 @@ import {
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
-// import signUp from '../signUp';
 
 const schema = yup.object().shape({
   name: yup.string().required('Please enter name'),
@@ -26,22 +25,26 @@ const schema = yup.object().shape({
   password: yup.string().required('Password is required'),
 });
 
-const SignUpFirst = ({ goNext, data }) => {
+const initialValues = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const handleSubmit = async (values, actions) => {
+    const { name, email, password } = values;
     const res = await checkEmail(values.email);
+
     const { message, status } = res.data;
     if (!(message === 'Accept for registration' && status === 'available')) {
       <ErrorMessage name="email" />;
-      console.log('Error');
     }
-    goNext(values);
+    setName(name);
+    setEmail(email);
+    setPassword(password);
+    goNext();
   };
-
-  // const handleSubmit = async () => {
-  //   const res = await signUp();
-  //   console.log(res);
-  //   console.log('User was registered!!!');
-  // };
 
   return (
     <SignUpFirstContainer>
@@ -50,7 +53,7 @@ const SignUpFirst = ({ goNext, data }) => {
         <MainHeader>Sign up</MainHeader>
         <Text>You need to register to use the service</Text>
         <Formik
-          initialValues={data}
+          initialValues={initialValues}
           onSubmit={handleSubmit}
           validationSchema={schema}
         >
