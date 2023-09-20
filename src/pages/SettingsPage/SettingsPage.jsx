@@ -1,7 +1,14 @@
+import {SettingContainer, Title, PhotoPage, } from './SettingsPage.styled'
+
+import { UserInformation } from 'components/UserInformation';
+
 const SettingsPage=()=>{
-    return (<>
-                <h2>SettingsPage</h2>
-            </>
+    return (
+        <SettingContainer>
+            <Title>Profile setting</Title>
+            <PhotoPage />
+            <UserInformation/>
+        </SettingContainer>
     )
 }
 
