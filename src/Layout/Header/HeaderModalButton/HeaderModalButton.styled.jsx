@@ -36,6 +36,7 @@ export const ButtonDescription = styled.p`
   font-weight: 500;
   line-height: 1.43;
   color: var(--text-color-primary-white);
+  text-transform: capitalize;
 `;
 
 export const EditWeightContainer = styled.div`

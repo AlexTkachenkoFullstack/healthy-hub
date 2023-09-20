@@ -1,63 +1,104 @@
 import { useState } from 'react';
+import { redirect } from 'react-router-dom';
 import SignUpFirst from './SignUpFirst';
 import YourGoal from './YourGoal';
 import AgeAndGender from './AgeAndGender';
 import BodyParameters from './BodyParameters';
 import YourActivity from './YourActivity';
+import signUp from './signUp';
 
-const SignUpForm=()=>{
+const SignUpForm = () => {
+  // зберігати у локальний стейт, а на сотанній частині форми зробити submit усіх стейтів
+  const [step, setStep] = useState(1);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [goal, setGoal] = useState('');
+  const [gender, setGender] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [age, setAge] = useState('');
+  const [activity, setActivity] = useState('');
 
-    // зберігати у локальний стейт, а на сотанній частині форми зробити submit усіх стейтів
-    const [step, setStep] = useState(1);
-    // const [name, setName]=useState('');
-    // const [email, setEmail]=useState('');
-    // const [password, setPassword]=useState('');
-    // const [goal, setGoal]=useState('')
+  const userRegister = () => {
+    signUp(name, email, password, goal, gender, height, weight, age, activity);
+    setStep(1);
+    setName('');
+    setEmail('');
+    setPassword('');
+    setGoal('');
+    setGender('');
+    setHeight('');
+    setWeight('');
+    setAge('');
+    setActivity('');
+    redirect('/signin');
+  };
 
+  const handleNextStep = () => {
+    setStep(prev => prev + 1);
+  };
+  const handlePrevStep = () => {
+    setStep(prev => prev - 1);
+  };
 
-    const handleNextStep = () => {
-      setStep(step + 1);
-    };
-  
-    const handlePrevStep = () => {
-      setStep(step - 1);
-    };
-
-    return (<>
-    <div className='container'>
+  return (
+    <>
       {step === 1 && (
         <div>
-          <SignUpFirst goNext={handleNextStep}/>
+          <SignUpFirst
+            goNext={handleNextStep}
+            setName={setName}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
         </div>
       )}
 
       {step === 2 && (
         <div>
-           <YourGoal goNext={handleNextStep} goBack={handlePrevStep}/>
+          <YourGoal
+            goNext={handleNextStep}
+            goBack={handlePrevStep}
+            setGoal={setGoal}
+          />
         </div>
       )}
 
       {step === 3 && (
         <div>
-          <AgeAndGender goNext={handleNextStep} goBack={handlePrevStep}/>
+          <AgeAndGender
+            goNext={handleNextStep}
+            goBack={handlePrevStep}
+            setAge={setAge}
+            setGender={setGender}
+          />
         </div>
       )}
 
-        {step === 4 && (
+      {step === 4 && (
         <div>
-          <BodyParameters goNext={handleNextStep} goBack={handlePrevStep}/>
+          <BodyParameters
+            goNext={handleNextStep}
+            goBack={handlePrevStep}
+            setHeight={setHeight}
+            setWeight={setWeight}
+          />
         </div>
       )}
 
-        {step === 5 && (
+      {step === 5 && (
         <div>
-          <YourActivity goBack={handlePrevStep}/>
+          <YourActivity
+            goBack={handlePrevStep}
+            goNext={handleNextStep}
+            setActivity={setActivity}
+          />
         </div>
       )}
+      {step >= 6 && userRegister()}
+    </>
+  );
+};
 
-    </div>
-    
-    </>)
-}
-
-export default SignUpForm
+export default SignUpForm;
