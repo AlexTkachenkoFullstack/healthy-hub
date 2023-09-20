@@ -13,21 +13,30 @@ import {
 } from './BodyParameters.styled';
 
 import * as yup from 'yup';
+import { initializeUseSelector } from 'react-redux/es/hooks/useSelector';
 
-const schema = yup.object().shape({
-  height: yup.string().required('Goal is required is required'),
-  weight: yup.string().required('Age is required'),
-});
+// const schema = yup.object().shape({
+//   height: yup.string().required('Goal is required is required'),
+//   weight: yup.string().required('Age is required'),
+// });
 
-const BodyParameters = ({ goNext, goBack, data }) => {
-  const handleSubmit = (values, actions) => {
-    goNext(values);
+const initialValues = {
+  height: '',
+  weight: '',
+};
+
+const BodyParameters = ({ goNext, goBack, setWeight, setHeight }) => {
+  const handleSubmit = values => {
+    const { height, weight } = values;
+    setHeight(height);
+    setWeight(weight);
+    goNext();
   };
 
   return (
     <BodyParametersContainer>
       <Image src={image} alt="Illustration Body parameters" />
-      <Formik initialValues={data} onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <BodyParametersHeader>Body parameters</BodyParametersHeader>
           <Text>Enter your parameters for correct performance tracking</Text>
