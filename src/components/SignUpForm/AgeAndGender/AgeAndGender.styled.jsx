@@ -205,3 +205,22 @@ export const BackButton = styled.button`
     margin-left: 82px;
   }
 `;
+
+export const CustomRadioInput = styled.input`
+  place-content: center;
+  appearance: none;
+  background-color: black;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid var(--text-color-button-grey);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  &:checked {
+    background-color: rgba(227, 255, 168, 1);
+    transform: scale(1);
+  }
+`;
