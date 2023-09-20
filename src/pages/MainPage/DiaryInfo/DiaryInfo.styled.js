@@ -40,9 +40,9 @@ export const CardsWrap = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 28px;
-  width: 518px;
 
   @media screen and (min-width: 834px) {
+    width: 518px;
     margin-bottom: 20px;
   }
 

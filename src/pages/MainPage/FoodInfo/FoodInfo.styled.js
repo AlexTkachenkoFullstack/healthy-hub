@@ -44,14 +44,10 @@ export const FoodInfoCard = styled.div`
 `;
 
 export const CaloriesChart = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+
   width: 168px;
   height: 168px;
-  border-radius: 84px;
-  border: 1px solid rgba(41, 41, 40, 1);
 
   font-size: 32px;
   font-weight: 500;
@@ -66,10 +62,21 @@ export const CaloriesChart = styled.div`
   }
 `;
 
+export const ChartInfoWrap = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transform: translate(-50%, -50%);
+`;
+
 export const InfoWrap = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 12px;
 `;
-
-
