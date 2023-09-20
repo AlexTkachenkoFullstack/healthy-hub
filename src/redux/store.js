@@ -14,6 +14,7 @@ import {
 import { recommendedFoodSlice } from "./recommendedFood/slice";
 import { dailyGoalSlice } from "./dailyGoal/slice";
 import { waterIntakeSlice } from "./dailyWater/slice";
+import { foodIntakeSlice } from "./diary/slice";
  
 const persistConfig = {
   key: 'user',
@@ -30,6 +31,7 @@ export const store = configureStore({
     goal: dailyGoalSlice.reducer,
     recommendedFood:recommendedFoodSlice.reducer,
     waterIntake:waterIntakeSlice.reducer,
+    foodIntake:foodIntakeSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
