@@ -22,15 +22,21 @@ const schema = yup.object().shape({
   age: yup.string().required('Age is required'),
 });
 
-const AgeAndGender = ({ goNext, goBack, data }) => {
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+const initialValues = {
+  gender: '',
+  age: '',
+};
 
-    goNext(values);
+const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
+  const handleSubmit = (values, actions) => {
+    const { age, gender } = values;
+    setAge(age);
+    setGender(gender);
+    goNext();
   };
 
   return (
-    <Formik initialValues={data} onSubmit={handleSubmit}>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <AgeAndGenderContainer>
         <Image src={image} alt="Elder fitness" />
         <Form>
@@ -62,7 +68,7 @@ const AgeAndGender = ({ goNext, goBack, data }) => {
               id="age"
               name="age"
               placeholder="Enter your age"
-              // required
+              required
             />
           </InputBox>
           {/* <Field
