@@ -1,5 +1,7 @@
 import { Formik, Form, Field } from 'formik';
-import image from '../../../assets/images/summer-hiking.png';
+import lowQualityImage from '../../../assets/images/summer-hiking.png';
+import highQualityImage from '../../../assets/images/summer-hiking-2x.png'
+
 import {
   YourGoalContainer,
   Image,
@@ -22,6 +24,14 @@ const YourGoal = ({ goNext, setGoal }) => {
     goNext();
   };
 
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
+    
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <YourGoalContainer>
