@@ -31,7 +31,6 @@ const Header = () => {
   const goal = user.goal.toLowerCase();
   const weight = user.weight;
   const name = user.name;
-
   const [today, setToday] = useState(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showTargetModal, setShowTargetModal] = useState(false);

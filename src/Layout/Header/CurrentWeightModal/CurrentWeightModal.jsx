@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateWeightThunk } from 'redux/auth/operations';
 import {
   Overlay,
   WeightContainer,
@@ -28,6 +30,8 @@ const schema = yup.object({
 });
 
 export default function CurrentWeightModal({ onClose, date }) {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -39,16 +43,20 @@ export default function CurrentWeightModal({ onClose, date }) {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
+
   const handleOverlayClick = event => {
     if (event.currentTarget === event.target) {
       onClose();
     }
   };
+
   const onSubmit = ({ weight }, actions) => {
-    console.log(weight);
+    console.log(date, weight);
+    dispatch(updateWeightThunk({ date: date, weight: weight }));
     actions.resetForm();
     onClose();
   };
+
   const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues: {
       weight: '',
@@ -56,6 +64,7 @@ export default function CurrentWeightModal({ onClose, date }) {
     validationSchema: schema,
     onSubmit,
   });
+
   return (
     <Overlay onClick={handleOverlayClick}>
       <WeightLayout>
