@@ -39,6 +39,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
     goNext();
   };
 
+  const togglePass = () => {
+    const pass = document.getElementById('password');
+    pass.type === 'password' ? (pass.type = 'text') : (pass.type = 'password');
+  };
+
   const isRetinaDisplay =
     window.matchMedia &&
     window.matchMedia(
@@ -93,6 +98,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   required
                 />
               </InputBox>
+              <button type="button" onClick={togglePass}>
+                Show
+              </button>
               <ErrorMessage name="password" component="div" />
               <InputButton type="submit">Sign Up</InputButton>
             </FormStyle>
