@@ -18,13 +18,30 @@ import {
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
 import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
 import { genderAgeSchema } from '../validationLibs';
+import { useEffect } from 'react';
 
-const initialValues = {
-  gender: '',
-  age: '',
-};
+const AgeAndGender = ({
+  goNext,
+  goBack,
+  setAge,
+  setGender,
+  dataGender,
+  dataAge,
+}) => {
+  const initialValues = {
+    gender: '',
+    age: dataAge ?? '',
+  };
 
-const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
+  useEffect(() => {
+    const selectorString = 'input[type="radio"][value="' + dataGender + '"]';
+    const checkedButton = document.querySelector(selectorString);
+    if (!checkedButton) {
+      return;
+    }
+    checkedButton.checked = true;
+  }, []);
+
   const handleSubmit = (values, actions) => {
     const { age, gender } = values;
     setAge(age);
@@ -65,6 +82,7 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
                   name="gender"
                   value="male"
                   as={CustomRadioInput}
+                  required
                 />
                 Male
               </Label>
@@ -74,6 +92,7 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
                   name="gender"
                   value="female"
                   as={CustomRadioInput}
+                  required
                 />
                 Female
               </Label>

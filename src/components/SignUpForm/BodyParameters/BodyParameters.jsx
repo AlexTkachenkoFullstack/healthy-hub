@@ -15,12 +15,19 @@ import {
 } from './BodyParameters.styled';
 import { bodyParamSchema } from '../validationLibs';
 
-const initialValues = {
-  height: '',
-  weight: '',
-};
+const BodyParameters = ({
+  goNext,
+  goBack,
+  setWeight,
+  setHeight,
+  dataHeight,
+  dataWeight,
+}) => {
+  const initialValues = {
+    height: dataHeight ?? '',
+    weight: dataWeight ?? '',
+  };
 
-const BodyParameters = ({ goNext, goBack, setWeight, setHeight }) => {
   const handleSubmit = values => {
     const { height, weight } = values;
     setHeight(height);
@@ -42,7 +49,7 @@ const BodyParameters = ({ goNext, goBack, setWeight, setHeight }) => {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={bodyParamSchema}
+        // validationSchema={bodyParamSchema}
       >
         <Form>
           <BodyParametersHeader>Body parameters</BodyParametersHeader>

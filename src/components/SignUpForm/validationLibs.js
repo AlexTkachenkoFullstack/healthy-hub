@@ -29,7 +29,12 @@ export const signupSchema = yup.object().shape({
     .required('Please enter password'),
 });
 
-export const goalSchema = yup.object().shape({});
+export const goalSchema = yup.object().shape({
+  goal: yup
+    .string()
+    .oneOf(['gain muscle', 'maintain', 'lose fat'])
+    .required('Choose on of ...'),
+});
 
 export const genderAgeSchema = yup.object().shape({
   age: yup

@@ -21,25 +21,19 @@ const initialValues = {
   goal: '',
 };
 
-const YourGoal = ({ goNext, setGoal, stateGoal }) => {
+const YourGoal = ({ goNext, setGoal, dataGoal }) => {
   useEffect(() => {
-    function checkBanana() {
-      // Find the "Banana" radio button by its value
-      var bananaRadioButton = document.querySelector(
-        'input[name="fruit"][value="banana"]'
-      );
-
-      if (bananaRadioButton) {
-        // Set the "Banana" radio button as checked
-        bananaRadioButton.checked = true;
-      } else {
-        console.log('Banana radio button not found.');
-      }
+    const selectorString = 'input[type="radio"][value="' + dataGoal + '"]';
+    const checkedButton = document.querySelector(selectorString);
+    if (!checkedButton) {
+      return;
     }
+    checkedButton.checked = true;
   }, []);
 
   const handleSubmit = ({ goal }) => {
-    setGoal(goal.toLoweCae);
+    setGoal(goal);
+    console.log(goal);
     goNext();
   };
 
@@ -68,8 +62,9 @@ const YourGoal = ({ goNext, setGoal, stateGoal }) => {
               <Field
                 type="radio"
                 name="goal"
-                value="Lose Fat"
+                value="lose fat"
                 as={CustomRadioInput}
+                // required
               />
               Lose fat
             </Label>
@@ -77,8 +72,9 @@ const YourGoal = ({ goNext, setGoal, stateGoal }) => {
               <Field
                 type="radio"
                 name="goal"
-                value="Maintain"
+                value="maintain"
                 as={CustomRadioInput}
+                // required
               />
               Maintain
             </Label>
@@ -86,13 +82,14 @@ const YourGoal = ({ goNext, setGoal, stateGoal }) => {
               <Field
                 type="radio"
                 name="goal"
-                value="Gain Muscle"
+                value="gain muscle"
                 as={CustomRadioInput}
+                // required
               />
               Gain Muscle
             </Label>
           </LabelBlock>
-          <ErrorMessage name="yourGoalGroup" />
+          <p><ErrorMessage name="yourGoalGroup" conponent="div" /></p>
           <BlockButton>
             <InputButton type="submit">Next</InputButton>
           </BlockButton>
