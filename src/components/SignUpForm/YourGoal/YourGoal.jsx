@@ -13,16 +13,23 @@ import {
 } from './YourGoal.styled';
 
 import { goalSchema } from '../validationLibs';
+import { useEffect } from 'react';
 
 const initialValues = {
   goal: '',
 };
 
-const YourGoal = ({ goNext, setGoal, goal }) => {
+const YourGoal = ({ goNext, setGoal, stateGoal }) => {
   const handleSubmit = ({ goal }) => {
     setGoal(goal.toLoweCae);
     goNext();
   };
+
+  useEffect(() => {
+    if (!stateGoal) {
+      return;
+    }
+  }, []);
 
   return (
     <Formik
@@ -42,7 +49,7 @@ const YourGoal = ({ goNext, setGoal, goal }) => {
                 type="radio"
                 name="goal"
                 value="Lose Fat"
-                checked={goal === 'Lose Fat'.toLowerCase()}
+                checked={stateGoal === 'lose fat' ? false : true}
                 as={CustomRadioInput}
               />
               Lose fat
@@ -52,7 +59,7 @@ const YourGoal = ({ goNext, setGoal, goal }) => {
                 type="radio"
                 name="goal"
                 value="Maintain"
-                checked={goal === 'Maintain'.toLowerCase()}
+                checked={stateGoal === 'maintain' ? false : true}
                 as={CustomRadioInput}
               />
               Maintain
@@ -62,7 +69,7 @@ const YourGoal = ({ goNext, setGoal, goal }) => {
                 type="radio"
                 name="goal"
                 value="Gain Muscle"
-                checked={goal === 'Gain Muscle'.toLowerCase()}
+                checked={stateGoal === 'gain muscle' ? false : true}
                 as={CustomRadioInput}
               />
               Gain Muscle
