@@ -12,6 +12,8 @@ import {
   CustomRadioInput,
 } from './YourGoal.styled';
 
+import { goalSchema } from '../validationLibs';
+
 const initialValues = {
   goal: '',
 };
@@ -23,7 +25,11 @@ const YourGoal = ({ goNext, setGoal }) => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={goalSchema}
+    >
       <YourGoalContainer>
         <Image src={image} alt="Summer hinking" />
         <Form>
