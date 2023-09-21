@@ -6,8 +6,8 @@ const instance = axios.create({
 });
 
 
-export const fetchWaterIntake=createAsyncThunk(
-    'waterIntake/get',
+export const fetchCaloriesIntake=createAsyncThunk(
+    'caloriesGoal/get',
     async (_, thunkAPI) => {
         try {
             const state = thunkAPI.getState();
@@ -15,7 +15,7 @@ export const fetchWaterIntake=createAsyncThunk(
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
-            const response=await instance('api/user/water-intake')
+            const response=await instance('api/user/dailyGoalCalories')
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
@@ -24,18 +24,4 @@ export const fetchWaterIntake=createAsyncThunk(
     }
 )
 
-
-export const addWaterIntake=createAsyncThunk(
-    'waterIntake/post',
-    async (credentials, thunkAPI) => {
-        try {
-            const response = await instance.post('api/user/water-intake', credentials)
-            console.log(response.data)
-            return response.data
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message)
-        }
-        
-    }
-)
 

@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchWaterIntake } from "./operations";
+import { addWaterIntake, fetchWaterIntake } from "./operations";
 
 const initialState={
     water:{
-        quantity:0,
-        date:null
+        value:0,
     },
     isLoading: false,
     error:null,
@@ -22,8 +21,13 @@ const handlePending = (state) => {
 const handleFulfildGet = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.water.quantity=action.payload.water;
-    state.water.date=action.payload.date;
+    state.water.value=action.payload.value;
+}
+
+const handleFulfildAdd=(state, action)=>{
+    state.isLoading = false;
+    state.error = null;
+    state.water.value=action.payload.value;
 }
 
 export const waterIntakeSlice = createSlice({
@@ -35,6 +39,9 @@ export const waterIntakeSlice = createSlice({
             .addCase(fetchWaterIntake.fulfilled, handleFulfildGet)
             .addCase(fetchWaterIntake.pending, handlePending)
             .addCase(fetchWaterIntake.rejected, handleRejected)
+            .addCase(addWaterIntake.fulfilled, handleFulfildAdd)
+            .addCase(addWaterIntake.pending, handlePending)
+            .addCase(addWaterIntake.rejected, handleRejected)
     }
 })
 

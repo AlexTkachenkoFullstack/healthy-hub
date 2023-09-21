@@ -47,14 +47,14 @@ export const postFoodIntake=createAsyncThunk(
 export const updateFoodIntake=createAsyncThunk(
     'foodIntake/update',
     // food={name, calories}, kindOfFood=dinner
-    async ({id, food, kindOfFood}, thunkAPI) => {
+    async ({id, type, product}, thunkAPI) => {
         try {
             const state = thunkAPI.getState();
             const persistToken = state.auth.token;
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
-            const response=await instance.put(`api/user/food-intake/${id}`, {food, kindOfFood})
+            const response=await instance.put(`api/user/food-intake/${id}`, {type, product})
             // {dinner:{name:'', ...}}
             return response.data
         } catch (error) {
