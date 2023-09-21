@@ -26,7 +26,7 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
   const handleSubmit = (values, actions) => {
     const { age, gender } = values;
     setAge(age);
-    setGender(gender);
+    setGender(gender.toLowerCase());
     goNext();
   };
 
