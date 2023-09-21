@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk } from "./operations";
-import { getCurrentDate } from "utils/currentDate";
+// import { getCurrentDate } from "utils/currentDate";
 const initialState = {
     user: { 
         name: null, 
@@ -16,7 +16,7 @@ const initialState = {
     token: null,
     isLoading: false,
     error:null,
-    dateLastWeight:getCurrentDate(),
+    dateLastWeight:null,
 }
 
 const handlePending = (state) => {
@@ -58,15 +58,13 @@ const handleRejected = (state, action) => {
 
 const handleFulfildUpdateGoal=(state, action)=>{
     handleFulfild(state);
-    // data:{goal:'lose fat'}
-    state.user = {...state.user, ...action.payload};
+    state.user.goal = action.payload.data.goal;
 }
 
 const handleFulfildUpdateWeight=(state, action)=>{
     handleFulfild(state);
-    // data:{date:'22.10.2023', weight: 67}
-    state.user.weight = action.payload.weight;
-    state.dateLastWeight=action.payload.date;
+    state.user.weight = action.payload.data.weight;
+    state.dateLastWeight=action.payload.data.date;
 }
 
 const handleFulfildUpdateProfile=(state, action)=>{
@@ -74,7 +72,7 @@ const handleFulfildUpdateProfile=(state, action)=>{
     // {profileInfo:{name:'Alex', age:23, height:176, avatarUrl:'http...', gender: 'male', activity: 1.2},
     // weightInfo:{weight:76, date:'22.11.2022'}
     // }
-    state.user = {...state.user, ...action.payload};
+    state.user = {...state.user, ...action.payload.data};
 }
 
 export const authSlice = createSlice({
