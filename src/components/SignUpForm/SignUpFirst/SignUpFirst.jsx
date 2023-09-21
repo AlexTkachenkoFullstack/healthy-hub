@@ -1,5 +1,4 @@
 import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
 import image from '../../../assets/images/sport-and-fitness-tracker.png';
 import {
   SignUpFirstContainer,
@@ -17,12 +16,7 @@ import {
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
-
-const schema = yup.object().shape({
-  name: yup.string().required('Please enter name'),
-  email: yup.string().email().required('Enter correct email'),
-  password: yup.string().required('Password is required'),
-});
+import { signupSchema } from '../validationLibs';
 
 const initialValues = {
   name: '',
@@ -52,7 +46,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
-          validationSchema={schema}
+          validationSchema={signupSchema}
         >
           <FormStyle autoComplete="off">
             <InputBox>
