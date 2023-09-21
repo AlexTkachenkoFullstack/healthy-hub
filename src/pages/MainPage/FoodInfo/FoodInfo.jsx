@@ -15,7 +15,7 @@ const fatBcg = 'rgba(182, 182, 182, 1)';
 
 export const FoodInfo = () => {
   const valueNorm = 1700;
-  let inputValue = 500;
+  let inputValue = 1600;
   let chartBcg = '#45FFBC';
 
   const { carbs, protein, fat } = calcElementsMacros(valueNorm, 'lose');

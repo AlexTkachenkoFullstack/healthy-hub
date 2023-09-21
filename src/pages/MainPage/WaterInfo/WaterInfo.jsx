@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   InfoTitle,
   WaterInfoCard,
@@ -14,14 +13,7 @@ import {
   ValueWrap,
 } from './WaterInfo.styled';
 
-export const WaterInfo = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const toggleModal = () => {
-    setIsOpenModal(prev => !prev);
-    console.log(isOpenModal);
-  };
-
+export const WaterInfo = ({ handleModal }) => {
   return (
     <div>
       <Title>Water</Title>
@@ -38,7 +30,7 @@ export const WaterInfo = () => {
               <Unit>ml</Unit>
             </LeftInfo>
           </ValueWrap>
-          <Button onClick={toggleModal}>
+          <Button onClick={handleModal}>
             <AddIcon />
             Add water intake
           </Button>
