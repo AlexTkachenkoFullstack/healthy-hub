@@ -19,7 +19,7 @@ const handlePending = (state) => {
 const handleFulfild = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.products=action.payload;
+    state.food=action.payload;
 }
 
 export const recommendedFoodSlice = createSlice({

@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk } from "./operations";
-
+import { getCurrentDate } from "utils/currentDate";
 const initialState = {
     user: { 
         name: null, 
@@ -8,15 +8,15 @@ const initialState = {
         goal:'',
         age:null,
         height:null,
-        avatarUrl:'',
-        gender:'Male',
+        avatarURL:'',
+        gender:'male',
         weight:null, 
         activity: '1.2'
     },
     token: null,
     isLoading: false,
     error:null,
-    dateLastWeight:null,
+    dateLastWeight:getCurrentDate(),
 }
 
 const handlePending = (state) => {
@@ -65,7 +65,7 @@ const handleFulfildUpdateGoal=(state, action)=>{
 const handleFulfildUpdateWeight=(state, action)=>{
     handleFulfild(state);
     // data:{date:'22.10.2023', weight: 67}
-    state.user = {...state.user, ...action.payload.weight};
+    state.user.weight = action.payload.weight;
     state.dateLastWeight=action.payload.date;
 }
 
