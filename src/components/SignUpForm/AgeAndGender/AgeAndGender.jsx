@@ -17,6 +17,7 @@ import {
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
 import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
+import { genderAgeSchema } from '../validationLibs';
 
 const initialValues = {
   gender: '',
