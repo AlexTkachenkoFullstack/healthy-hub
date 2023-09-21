@@ -32,13 +32,13 @@ const initialValues = {
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const handleSubmit = async ({ name, email, password }) => {
-    const res = await checkEmail(email);
+    const res = await checkEmail(email.toLowerCase());
     const { message, status } = res.data;
     if (!(message === 'Accept for registration' && status === 'available')) {
       <ErrorMessage name="email" />;
     }
     setName(name);
-    setEmail(email);
+    setEmail(email.toLowerCase());
     setPassword(password);
     goNext();
   };

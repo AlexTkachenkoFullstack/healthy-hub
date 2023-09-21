@@ -21,7 +21,18 @@ const SignUpForm = () => {
   const [activity, setActivity] = useState('');
 
   const userRegister = () => {
-    signUp(name, email, password, goal, gender, height, weight, age, activity);
+    const userData = {
+      name,
+      email,
+      password,
+      goal,
+      gender,
+      height,
+      weight,
+      age,
+      activity,
+    };
+    signUp(userData);
     setStep(1);
     setName('');
     setEmail('');
