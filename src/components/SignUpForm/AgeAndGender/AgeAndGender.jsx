@@ -15,6 +15,7 @@ import {
   CustomRadioInput,
 } from './AgeAndGender.styled';
 import image from '../../../assets/images/elder-fitness.png';
+import { genderAgeSchema } from '../validationLibs';
 
 const initialValues = {
   gender: '',
@@ -30,7 +31,11 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={genderAgeSchema}
+    >
       <AgeAndGenderContainer>
         <Image src={image} alt="Elder fitness" />
         <Form>
