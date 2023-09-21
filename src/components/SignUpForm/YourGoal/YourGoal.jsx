@@ -18,9 +18,9 @@ const initialValues = {
   goal: '',
 };
 
-const YourGoal = ({ goNext, setGoal }) => {
+const YourGoal = ({ goNext, setGoal, goal }) => {
   const handleSubmit = ({ goal }) => {
-    setGoal(goal);
+    setGoal(goal.toLoweCae);
     goNext();
   };
 
@@ -32,6 +32,7 @@ const YourGoal = ({ goNext, setGoal }) => {
     >
       <YourGoalContainer>
         <Image src={image} alt="Summer hinking" />
+
         <Form>
           <YourGoalHeader id="yourGoalGroup">Your Goal</YourGoalHeader>
           <Text>Choose a goal so that we can help you effectively</Text>
@@ -41,6 +42,7 @@ const YourGoal = ({ goNext, setGoal }) => {
                 type="radio"
                 name="goal"
                 value="Lose Fat"
+                checked={goal === 'Lose Fat'.toLowerCase()}
                 as={CustomRadioInput}
               />
               Lose fat
@@ -50,6 +52,7 @@ const YourGoal = ({ goNext, setGoal }) => {
                 type="radio"
                 name="goal"
                 value="Maintain"
+                checked={goal === 'Maintain'.toLowerCase()}
                 as={CustomRadioInput}
               />
               Maintain
@@ -59,6 +62,7 @@ const YourGoal = ({ goNext, setGoal }) => {
                 type="radio"
                 name="goal"
                 value="Gain Muscle"
+                checked={goal === 'Gain Muscle'.toLowerCase()}
                 as={CustomRadioInput}
               />
               Gain Muscle
