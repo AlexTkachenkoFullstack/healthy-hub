@@ -1,4 +1,4 @@
-import { Formik, Form } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import image from '../../../assets/images/body-contouring.png';
 import {
   BodyParametersContainer,
@@ -11,6 +11,7 @@ import {
   InputButton,
   BackButton,
 } from './BodyParameters.styled';
+import { bodyParamSchema } from '../validationLibs';
 
 const initialValues = {
   height: '',
@@ -28,18 +29,40 @@ const BodyParameters = ({ goNext, goBack, setWeight, setHeight }) => {
   return (
     <BodyParametersContainer>
       <Image src={image} alt="Illustration Body parameters" />
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={bodyParamSchema}
+      >
         <Form>
           <BodyParametersHeader>Body parameters</BodyParametersHeader>
           <Text>Enter your parameters for correct performance tracking</Text>
           <ChooseText>Height</ChooseText>
           <InputBox>
-            <InputText name="height" placeholder="Enter your height" required />
+            <label htmlFor="height" />
+            <InputText
+              name="height"
+              type="text"
+              id="height"
+              placeholder="Enter your height"
+              required
+            />
           </InputBox>
+          <ErrorMessage name="height" type="div" />
+
           <ChooseText>Weight</ChooseText>
+
           <InputBox>
-            <InputText name="weight" placeholder="Enter your weight" required />
+            <label htmlFor="weight" />
+            <InputText
+              type="text"
+              id="weight"
+              name="weight"
+              placeholder="Enter your weight"
+              required
+            />
           </InputBox>
+          <ErrorMessage name="weight" />
           <p>
             <InputButton type="submit">Next</InputButton>
           </p>
