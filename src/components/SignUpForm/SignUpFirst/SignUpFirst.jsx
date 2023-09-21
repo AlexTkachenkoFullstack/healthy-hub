@@ -1,5 +1,4 @@
 import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
 import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
 import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
 
