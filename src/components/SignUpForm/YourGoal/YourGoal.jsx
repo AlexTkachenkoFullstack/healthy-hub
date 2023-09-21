@@ -15,7 +15,6 @@ import {
 } from './YourGoal.styled';
 
 import { goalSchema } from '../validationLibs';
-import { useEffect } from 'react';
 
 const initialValues = {
   goal: '',
