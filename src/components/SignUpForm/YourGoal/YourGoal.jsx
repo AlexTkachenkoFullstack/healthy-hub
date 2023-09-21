@@ -29,11 +29,10 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
       return;
     }
     checkedButton.checked = true;
-  }, []);
+  }, [dataGoal]);
 
   const handleSubmit = ({ goal }) => {
     setGoal(goal);
-    console.log(goal);
     goNext();
   };
 
@@ -57,7 +56,7 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
         <Form>
           <YourGoalHeader id="yourGoalGroup">Your Goal</YourGoalHeader>
           <Text>Choose a goal so that we can help you effectively</Text>
-          <LabelBlock role="group" aria-labelledby="yourGoalGroup">
+          <LabelBlock role="group" aria-labelledby="goalGroup">
             <Label>
               <Field
                 type="radio"
@@ -89,7 +88,7 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
               Gain Muscle
             </Label>
           </LabelBlock>
-          <p><ErrorMessage name="yourGoalGroup" conponent="div" /></p>
+          <ErrorMessage name="goalGroup" />
           <BlockButton>
             <InputButton type="submit">Next</InputButton>
           </BlockButton>
