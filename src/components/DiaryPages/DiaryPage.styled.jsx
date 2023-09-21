@@ -85,7 +85,7 @@ export const TitleDiv = styled.div`
   gap: 20px;
 `;
 
-export const NamePeriod = styled.h3`
+export const NamePeriodH3 = styled.h3`
   display: inline;
   font-size: 18px;
 `;
