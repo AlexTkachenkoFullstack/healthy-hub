@@ -14,7 +14,10 @@ import {
   ExtraContainer,
   CustomRadioInput,
 } from './AgeAndGender.styled';
-import image from '../../../assets/images/elder-fitness.png';
+
+import lowQualityImage from '../../../assets/images/elder-fitness.png';
+import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
+
 
 const initialValues = {
   gender: '',
@@ -28,6 +31,15 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
     setGender(gender);
     goNext();
   };
+
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
+    
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
