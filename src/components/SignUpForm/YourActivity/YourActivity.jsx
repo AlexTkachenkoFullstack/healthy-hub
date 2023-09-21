@@ -42,6 +42,7 @@ const YourActivity = ({ goNext, goBack, setActivity }) => {
                 name="activity"
                 value="1.2"
                 as={CustomRadioInput}
+                checked="false"
               />
               1.2 - if you do not have physical activity and sedentary work
             </Label>
@@ -59,6 +60,7 @@ const YourActivity = ({ goNext, goBack, setActivity }) => {
                 type="radio"
                 name="activity"
                 value="1.55"
+                checked="false"
                 as={CustomRadioInput}
               />
               1.55 - if you play sports with average loads 3-5 times a week
@@ -68,6 +70,7 @@ const YourActivity = ({ goNext, goBack, setActivity }) => {
                 type="radio"
                 name="activity"
                 value="1.725"
+                checked="false"
                 as={CustomRadioInput}
               />
               1.725 ​​- if you train fully 6-7 times a week
@@ -77,6 +80,7 @@ const YourActivity = ({ goNext, goBack, setActivity }) => {
                 type="radio"
                 name="activity"
                 value="1.9"
+                checked="false"
                 as={CustomRadioInput}
               />
               1.9 - if your work is related to physical labor, you train 2 times
