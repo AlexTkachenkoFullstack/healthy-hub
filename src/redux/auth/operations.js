@@ -96,7 +96,10 @@ export const updateWeightThunk = createAsyncThunk(
     'auth/updateWeight',
     async (credentials, thunkAPI) => {
         try {
-            const response = await instance.put('api/user/weight', credentials)
+            const weight=credentials.weight;
+            const weightInf={weight}
+            console.log(weightInf)
+            const response = await instance.put('api/user/weight', weightInf)
             // має бути {date:'22.10.2023', weight: 67} або інша ціль
             console.log(response.data)
             return response.data
