@@ -1,5 +1,8 @@
 import { Formik, ErrorMessage } from 'formik';
-import image from '../../../assets/images/sport-and-fitness-tracker.png';
+import * as yup from 'yup';
+import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
+import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
+
 import {
   SignUpFirstContainer,
   Image,
@@ -36,6 +39,14 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
     setPassword(password);
     goNext();
   };
+
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
 
   return (
     <SignUpFirstContainer>

@@ -1,5 +1,7 @@
 import { Formik, Form, Field } from 'formik';
-import image from '../../../assets/images/workout-fashion.png';
+import lowQualityImage from '../../../assets/images/workout-fashion.png';
+import highQualityImage from '../../../assets/images/workout-fashion-2x.png';
+
 
 import {
   YourActivityContainer,
@@ -23,6 +25,14 @@ const YourActivity = ({ goNext, goBack, setActivity }) => {
     goNext();
   };
 
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
+    
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <YourActivityContainer>

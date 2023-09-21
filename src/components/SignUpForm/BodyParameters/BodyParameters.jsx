@@ -1,5 +1,7 @@
 import { Formik, Form, ErrorMessage } from 'formik';
-import image from '../../../assets/images/body-contouring.png';
+import lowQualityImage from '../../../assets/images/body-contouring.png';
+import highQualityImage from '../../../assets/images/body-contouring-2x.png';
+
 import {
   BodyParametersContainer,
   Image,
@@ -25,6 +27,14 @@ const BodyParameters = ({ goNext, goBack, setWeight, setHeight }) => {
     setWeight(weight);
     goNext();
   };
+
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
 
   return (
     <BodyParametersContainer>
