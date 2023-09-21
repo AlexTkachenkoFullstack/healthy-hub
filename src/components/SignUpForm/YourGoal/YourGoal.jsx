@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import lowQualityImage from '../../../assets/images/summer-hiking.png';
 import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
 
@@ -15,12 +15,29 @@ import {
 } from './YourGoal.styled';
 
 import { goalSchema } from '../validationLibs';
+import { useEffect } from 'react';
 
 const initialValues = {
   goal: '',
 };
 
 const YourGoal = ({ goNext, setGoal, stateGoal }) => {
+  useEffect(() => {
+    function checkBanana() {
+      // Find the "Banana" radio button by its value
+      var bananaRadioButton = document.querySelector(
+        'input[name="fruit"][value="banana"]'
+      );
+
+      if (bananaRadioButton) {
+        // Set the "Banana" radio button as checked
+        bananaRadioButton.checked = true;
+      } else {
+        console.log('Banana radio button not found.');
+      }
+    }
+  }, []);
+
   const handleSubmit = ({ goal }) => {
     setGoal(goal.toLoweCae);
     goNext();
@@ -52,7 +69,6 @@ const YourGoal = ({ goNext, setGoal, stateGoal }) => {
                 type="radio"
                 name="goal"
                 value="Lose Fat"
-                checked={stateGoal === 'lose fat' ? false : true}
                 as={CustomRadioInput}
               />
               Lose fat
@@ -62,7 +78,6 @@ const YourGoal = ({ goNext, setGoal, stateGoal }) => {
                 type="radio"
                 name="goal"
                 value="Maintain"
-                checked={stateGoal === 'maintain' ? false : true}
                 as={CustomRadioInput}
               />
               Maintain
@@ -72,12 +87,12 @@ const YourGoal = ({ goNext, setGoal, stateGoal }) => {
                 type="radio"
                 name="goal"
                 value="Gain Muscle"
-                checked={stateGoal === 'gain muscle' ? false : true}
                 as={CustomRadioInput}
               />
               Gain Muscle
             </Label>
           </LabelBlock>
+          <ErrorMessage name="yourGoalGroup" />
           <BlockButton>
             <InputButton type="submit">Next</InputButton>
           </BlockButton>
