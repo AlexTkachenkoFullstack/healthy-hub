@@ -72,6 +72,7 @@ const SignUpForm = () => {
             goNext={handleNextStep}
             goBack={handlePrevStep}
             setGoal={setGoal}
+            stateGoal={goal}
           />
         </div>
       )}
