@@ -42,16 +42,8 @@ export const genderAgeSchema = yup.object().shape({
 });
 
 export const bodyParamSchema = yup.object().shape({
-  heigh: yup
-    .number('Must be a number from 1 to 300')
-    .min(1, 'Must be a number from 1 to 300')
-    .max(300, 'Must be a number from 1 to 300')
-    .required('Must be a number from 1 to 300'),
-  weight: yup
-    .number('Must be a number from 1 to 300')
-    .min(1, 'Must be a number from 1 to 300')
-    .max(300, 'Must be a number from 1 to 300')
-    .required('Must be a number from 1 to 300'),
+  heigh: yup.number('Must be a number from 1 to 300'),
+  weight: yup.number('Must be a number from 1 to 300'),
 });
 
 export const activitySchema = yup.object().shape({});
