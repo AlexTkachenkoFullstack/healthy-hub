@@ -75,7 +75,7 @@ export const WaterLable = styled.label`
     bottom: -38px;
     right: 10px;
     content: '';
-    display: ${({ erroricon }) => erroricon};
+    display: ${({ $showIcon }) => $showIcon};
     margin-left: 16px;
     width: 16px;
     height: 16px;
@@ -92,6 +92,10 @@ export const InputField = styled(Field)`
   border-radius: 12px;
   margin-bottom: 16px;
   outline: none;
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   color: var(--text-color-secondary-grey);
   font-family: Poppins;
