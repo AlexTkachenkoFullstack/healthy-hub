@@ -21,7 +21,7 @@ const handlePending = (state) => {
 const handleFulfildGet = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.calories.value=action.payload.value;
+    state.calories.value=action.payload.data.value;
 }
 
 

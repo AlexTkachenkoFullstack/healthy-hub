@@ -69,7 +69,6 @@ const handleFulfildUpdateWeight=(state, action)=>{
 const handleFulfildUpdateProfile=(state, action)=>{
     handleFulfild(state);
     // {profileInfo:{name:'Alex', age:23, height:176, avatarUrl:'http...', gender: 'male', activity: 1.2},
-    // weightInfo:{weight:76, date:'22.11.2022'}
     // }
     state.user = {...state.user, ...action.payload.data};
 }
