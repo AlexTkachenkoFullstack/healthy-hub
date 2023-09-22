@@ -64,6 +64,7 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
                 value="lose fat"
                 as={CustomRadioInput}
                 required
+                checked
               />
               Lose fat
             </Label>
