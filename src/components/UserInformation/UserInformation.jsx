@@ -19,6 +19,8 @@ import {
 import * as yup from 'yup';
 import sprite from '../../assets/images/icons/icons.svg';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateProfileThunk, updateAvatarThunk } from 'redux/auth/operations';
 
 export const schema = yup.object({
   userName: yup.string().required('Please Enter your name'),
@@ -41,6 +43,7 @@ export const schema = yup.object({
 
 const UserInformation = ({ user }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const dispatch = useDispatch();
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -59,28 +62,20 @@ const UserInformation = ({ user }) => {
   }) => {
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('avatar', selectedFile);
+      formData.append('avatarURL', selectedFile);
 
-      console.log(
-        selectedFile,
-        userName,
-        age,
-        gender,
-        height,
-        weight,
-        activity
-      );
-    } else {
-      console.log(
-        userName,
-        user.avatarURL,
-        age,
-        gender,
-        height,
-        weight,
-        activity
-      );
+      dispatch(updateAvatarThunk(formData));
     }
+    dispatch(
+      updateProfileThunk({
+        name: userName,
+        age: age,
+        height: height,
+        gender: gender,
+        weight: weight,
+        activity: activity,
+      })
+    );
   };
 
   return (
