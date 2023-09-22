@@ -72,6 +72,7 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
                 value="1.2"
                 as={CustomRadioInput}
                 required
+                checked
               />
               1.2 - if you do not have physical activity and sedentary work
             </Label>
