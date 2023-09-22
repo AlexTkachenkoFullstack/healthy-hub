@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk } from "./operations";
+import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk, updateAvatarThunk } from "./operations";
 const initialState = {
     user: { 
         name: null, 
@@ -37,6 +37,7 @@ const handleFulfildLogIn = (state, action) => {
     handleFulfild(state);
     state.user = {...state.user, ...action.payload.user};
     state.token = action.payload.token;
+    state.dateLastWeight=action.payload.dateLastWeight
 }
 
 const handleFulfildLogOut = (state) => {
@@ -47,7 +48,8 @@ const handleFulfildLogOut = (state) => {
 
 const handleFulfildRefresh = (state, action) => {
     handleFulfild(state)
-    state.user = action.payload;
+    state.user = action.payload.user;
+    state.dateLastWeight=action.payload.dateLastWeight
 }
 
 const handleRejected = (state, action) => {
@@ -68,9 +70,14 @@ const handleFulfildUpdateWeight=(state, action)=>{
 
 const handleFulfildUpdateProfile=(state, action)=>{
     handleFulfild(state);
-    // {profileInfo:{name:'Alex', age:23, height:176, avatarUrl:'http...', gender: 'male', activity: 1.2},
+    // {profileInfo:{name:'Alex', age:23, height:176, gender: 'male', activity: 1.2},
     // }
     state.user = {...state.user, ...action.payload.data};
+}
+
+const handleFulfildUpdateAvatar=(state, action)=>{
+    handleFulfild(state);
+    state.user.avatarURL = action.payload.avatarURL;
 }
 
 export const authSlice = createSlice({
@@ -91,7 +98,8 @@ export const authSlice = createSlice({
             .addCase(updateGoalThunk.fulfilled, handleFulfildUpdateGoal)
             .addCase(updateWeightThunk.fulfilled, handleFulfildUpdateWeight)
             .addCase(updateProfileThunk.fulfilled, handleFulfildUpdateProfile)
-            .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending, refreshThunk.pending, updateGoalThunk.pending, updateWeightThunk.pending, updateProfileThunk.pending), handlePending)
-            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected), handleRejected)
+            .addCase(updateAvatarThunk.fulfilled, handleFulfildUpdateAvatar)
+            .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending, refreshThunk.pending, updateGoalThunk.pending, updateWeightThunk.pending, updateProfileThunk.pending, updateAvatarThunk.pending), handlePending)
+            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected, updateAvatarThunk.rejected), handleRejected)
     }
 })

@@ -68,7 +68,7 @@ export const refreshThunk = createAsyncThunk(
         try {
             setAuthHeader(persistToken);
            const response = await instance('api/users/current');
-           return response.data.user
+           return response.data
         } catch (error) {
           return  thunkAPI.rejectWithValue(error.message)
         }
@@ -112,6 +112,12 @@ export const updateProfileThunk=createAsyncThunk(
     'auth/updateProfile',
     async(credentials, thunkAPI)=>{
         try{
+            const state = thunkAPI.getState();
+            const persistToken = state.auth.token;
+            if (!persistToken) {
+                return thunkAPI.rejectWithValue('No token');
+            } 
+            setAuthHeader(persistToken);
             const response = await instance.put('api/user/updateProfile', credentials)
             // data:{name:'Alex', age:23, height:176...}
             return response.data
@@ -121,3 +127,23 @@ export const updateProfileThunk=createAsyncThunk(
     }
 )
 
+export const updateAvatarThunk=createAsyncThunk(
+    'auth/updateAvatar',
+    async(credentials, thunkAPI)=>{
+        try{
+            const state = thunkAPI.getState();
+            const persistToken = state.auth.token;
+            if (!persistToken) {
+                return thunkAPI.rejectWithValue('No token');
+            } 
+            setAuthHeader(persistToken);
+            const response = await instance.patch('api/users/avatar', credentials, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                }})
+            return response.data
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.message)
+        }
+    }
+)
