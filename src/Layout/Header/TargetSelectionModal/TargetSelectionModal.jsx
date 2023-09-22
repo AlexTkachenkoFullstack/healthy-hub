@@ -55,7 +55,6 @@ export default function TargetSelectionModal({ gender, onClose, target }) {
 
   const onSubmit = event => {
     event.preventDefault();
-    // console.log(goal);
     dispatch(updateGoalThunk({ goal: goal }));
     onClose();
   };
