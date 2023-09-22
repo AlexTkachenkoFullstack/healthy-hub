@@ -49,7 +49,7 @@ const BodyParameters = ({
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        // validationSchema={bodyParamSchema}
+        validationSchema={bodyParamSchema}
       >
         <Form>
           <BodyParametersHeader>Body parameters</BodyParametersHeader>
