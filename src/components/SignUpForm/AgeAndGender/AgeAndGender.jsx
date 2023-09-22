@@ -28,11 +28,6 @@ const AgeAndGender = ({
   dataGender,
   dataAge,
 }) => {
-  const initialValues = {
-    gender: '',
-    age: dataAge ?? '',
-  };
-
   useEffect(() => {
     const selectorString = 'input[type="radio"][value="' + dataGender + '"]';
     const checkedButton = document.querySelector(selectorString);
@@ -40,7 +35,12 @@ const AgeAndGender = ({
       return;
     }
     checkedButton.checked = true;
-  }, []);
+  }, [dataGender]);
+
+  const initialValues = {
+    gender: '',
+    age: '',
+  };
 
   const handleSubmit = (values, actions) => {
     const { age, gender } = values;
