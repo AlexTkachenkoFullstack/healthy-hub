@@ -1,0 +1,10 @@
+{"ownerId":11111,
+"breakfast":[
+  {"name":"eggs",
+  "carbohydrates":20,
+  "protein":23,
+  "fat":27,"calories":50,
+  "productId":2222
+  },
+  {"name":"apple","carbohydrates":18,"protein":20,"fat":23,"calories":30,"productId":2221},{"name":"avocado","carbohydrates":14,"protein":18,"fat":21,"calories":25,"productId":2220},{"name":"Buckwheat","carbohydrates":14,"protein":18,"fat":21,"calories":25,"productId":2209},{"date":"22.10.23"}],"lunch":[{"name":"Strawberries","carbohydrates":20,"protein":23,"fat":27,"calories":50,"productId":2219},{"name":"Blueberries","carbohydrates":18,"protein":20,"fat":23,"calories":30,"productId":2218},{"name":"Greek Yogurt","carbohydrates":18,"protein":20,"fat":23,"calories":30,"productId":2208},{"date":"22.10.23"}],"dinner":[{"name":"Salmon","carbohydrates":20,"protein":23,"fat":27,"calories":202,"productId":2217},{"name":"Beans","carbohydrates":18,"protein":20,"fat":23,"calories":30,"productId":2216},{"name":"Sweet Potatoes","carbohydrates":14,"protein":18,"fat":21,"calories":25,"productId":2215},{"name":"Chicken Breast","carbohydrates":14,"protein":18,"fat":21,"calories":25,"productId":2214},{"name":"Buckwheat","carbohydrates":14,"protein":18,"fat":21,"calories":25,"productId":2212},{"date":"22.10.23"}],"snack":[{"name":"Dark leafy greens","carbohydrates":20,"protein":23,"fat":27,"calories":50,"productId":2211},{"name":"Berries","carbohydrates":18,"protein":20,"fat":23,"calories":30,"productId":2210},{"date":"22.10.23"}]}
+  

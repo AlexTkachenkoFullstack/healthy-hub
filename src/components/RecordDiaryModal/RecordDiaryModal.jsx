@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
-// import ReactDOM from 'react-dom';
-// import { Formik, Field, Form } from 'formik';
+import React, { useState } from 'react';
+import axios from "axios";
 import breakfastImg from "../../assets/images/meal-periods/breakfast.png";
 import {
   ModalOverlay,
@@ -30,6 +29,8 @@ import {ButtonStyle} from "../DiaryPages/DiaryPage.styled"
 // //   alert(JSON.stringify(values, null, 2));
 // // }}
       
+
+
 const RecordDiaryModal = ({ isOpen, onClose }) => {
   const [fields, setFields] = useState(
     [{
@@ -42,9 +43,8 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
     }]
   );
 
-
   const handleAddMore = (e) => {
-    e.preventDefault(); // Убираем событие отправки формы
+    e.preventDefault(); // Прибирає подію відправки форми
     
     if (fields[fields.length - 1].name === "") return;
     setFields([
@@ -67,11 +67,30 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
     setFields(updatedFields);
   };
 
-  const handleSubmit = () => {
-    // Здесь можно отправить данные на сервер (backend) с помощью fetch или axios
-    console.log('Отправка данных на сервер:', fields);
+  const handleSubmit = async (e) => {    
+    // Відправка даних на сервер (backend) за допомогою fetch або axios
+    console.log('Відправка на сервер:', fields);
+    
+    e.preventDefault();  // ? можливо потрібен рендер для перерахунку сум
+    try {
+      // Відправка запросу POST
+      
+      // const response = await axios.post('/api/user/food-intake', foodIntake);
+      // const response = await axios.post('/api/user/food-intake', fields);
+      // console.log('Успішно відправлено:', response.data);
 
-    // Закрыть модальное окно
+//   dispatch(postFoodIntake({type:'lunch', products:[{name:'english breakfast', carbonohidrates:22, protein:22, fat:22, calories:59},
+// {name:'tea', carbonohidrates:22, protein:22, fat:22, calories:59}]}      
+      
+      //За потреби очищення форми або інші дії після успішної відправки
+
+      console.log('Успішно відправлено:', fields);
+    } catch (error) {
+      console.error('Помилкака при відправці:', error);
+      // Обробка помилки
+    }
+
+  // Закрити модальне вікно
     onClose();
   };
 
@@ -143,46 +162,3 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
 }
 
 export default RecordDiaryModal;
-
-// const Basic = () => (
-//   <div>
-//     <h1>Record your meal</h1>
-//     <p> <img src={breakfastImg} alt="Breakfast"/> Breakfast</p>
-//     <Formik
-//       initialValues={{
-//         name: '',
-//         carb: '',
-//         protein: '',
-//         fat: '',
-//         calories: '',
-//       }}
-//       onSubmit={async (values) => {
-//         await new Promise((r) => setTimeout(r, 500));
-//         alert(JSON.stringify(values, null, 2));
-//       }}
-//     >
-//       <Form>
-//         <label htmlFor="name"></label>
-//         <Field id="name" name="name" placeholder="The name of the product or dish" />
-
-//         <label htmlFor="carb"></label>
-//         <Field id="carb" name="carb" placeholder="Carbonoh." />
-
-//         <label htmlFor="protein"></label>
-//         <Field id="protein" name="protein" placeholder="Protein"/>
-        
-//         <label htmlFor="fat"></label>
-//         <Field id="fat" name="protein" placeholder="fat" />
-        
-//         <label htmlFor="calories"></label>
-//         <Field id="calories" name="calories" placeholder="Calories"/>
-        
-//         <button type="button" onClick={handleAddMore}>+ Add more</button>
-//         <button type="button" onClick={handleCancel}>Cancel</button>        
-//         <button type="submit" onClick={handleConfirm} >Confirm</button>
-//       </Form>
-//     </Formik>
-//   </div>
-// );
-
-// export default Basic;

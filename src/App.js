@@ -26,18 +26,38 @@ useEffect(()=>{
   dispatch(refreshThunk())
 },[dispatch])
 
+  // return (
+  //   <Routes>
+  //     <Route path='/' element={<Layout />}>
+  //       <Route index element={!isAuth ? <WellcomPage /> : <MainPage />}  />
+  //       <Route path='signup' element={<RestrictedRoute redirectTo='/' component={<SignUpPage />}  />}/>
+  //       <Route path='signin' element={<RestrictedRoute redirectTo='/' component={<SignInPage />}  />}/>
+  //       <Route path='forgot-password' element={<RestrictedRoute redirectTo='/' component={<ForgotPasswordPage />} />}/>
+
+  //       <Route path='dashboard' element={<PrivateRoute redirectTo='/signin' component= {<DashboardPage />} />}/>
+  //       <Route path='diary' element={<PrivateRoute redirectTo='/signin' component= {<DiaryPage />} />} />
+  //       <Route path='recommended-food' element={<PrivateRoute redirectTo='/signin' component= {<RecommendedFoodPage />} />} />
+  //       <Route path='settings' element={<PrivateRoute redirectTo='/signin' component= {<SettingsPage />} />} />
+  //       <Route path="*" element={<Navigate to="/" replace />} />
+  //     </Route>
+  //   </Routes>
+  // );
+
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-        <Route index element={!isAuth ? <WellcomPage /> : <MainPage />}  />
+        {/* <Route index element={!isAuth ? <WellcomPage /> : <MainPage />}  /> */}
+        <Route index element={!isAuth ? <DiaryPage /> : <MainPage />}  />
         <Route path='signup' element={<RestrictedRoute redirectTo='/' component={<SignUpPage />}  />}/>
         <Route path='signin' element={<RestrictedRoute redirectTo='/' component={<SignInPage />}  />}/>
         <Route path='forgot-password' element={<RestrictedRoute redirectTo='/' component={<ForgotPasswordPage />} />}/>
 
         <Route path='dashboard' element={<PrivateRoute redirectTo='/signin' component= {<DashboardPage />} />}/>
-        <Route path='diary' element={<PrivateRoute redirectTo='/signin' component= {<DiaryPage />} />} />
+        {/* <Route path='diary' element={<PrivateRoute redirectTo='/signin' component= {<DiaryPage />} />} /> */}
         <Route path='recommended-food' element={<PrivateRoute redirectTo='/signin' component= {<RecommendedFoodPage />} />} />
         <Route path='settings' element={<PrivateRoute redirectTo='/signin' component= {<SettingsPage />} />} />
+
+        <Route path="/main" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
