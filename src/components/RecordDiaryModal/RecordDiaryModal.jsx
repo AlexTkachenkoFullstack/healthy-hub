@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from "axios";
+
 import breakfastImg from "../../assets/images/meal-periods/breakfast.png";
 import {
   ModalOverlay,
@@ -9,6 +9,8 @@ import {
   FormDiv,
   Span,
   ButtonSubmit,
+  BlockButtonStyle,
+  ButtonStyleAdd,
 } from "./RecordDiaryModal.styled";
 
 import {ButtonStyle} from "../DiaryPages/DiaryPage.styled"
@@ -99,8 +101,8 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
       <ModalDiv>
 
       <TitleText>Record your meal</TitleText>
-      <div style={{display: "flex", gap: "12px"}}>
-        <img src={breakfastImg} alt="Breakfast" />
+      <div style={{display: "flex", gap: "12px", marginTop: "24px"}}>
+        <img style={{width:"32px", height: "32px"}} src={breakfastImg} alt="Breakfast" />
         <Span>Breakfast</Span> 
       </div>
       <form >
@@ -112,7 +114,7 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
               value={field.name}
               onChange={(e) => handleChange(field.id, e.target.name)}
               placeholder="The name of the product or dish"
-              style={{ width: "255px" }}
+              
             />
             <Field
               id='carb'
@@ -120,7 +122,7 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
               value={field.carb}
               onChange={(e) => handleChange(field.id, e.target.carb)}
               placeholder="Carbonoh."
-              style={{ width: "100px" }}
+              
             />
             <Field
               id='protein'
@@ -128,7 +130,7 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
               value={field.protein}
               onChange={(e) => handleChange(field.id, e.target.protein)}
               placeholder="Protein"
-              style={{ width: "86px" }}
+              
             />
             <Field
               id='fat'
@@ -149,11 +151,12 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
           </FormDiv>
           ))}
         
-        <ButtonStyle onClick={handleAddMore} style={{ color: "var(--text-color-active-page-green)" }}>+ Add more</ButtonStyle>
-        <div style={{position:'absolute', bottom: "24px", right: "24px"}}>
-          <ButtonStyle onClick={onClose} style={{ color: "var(--text-color-secondary-grey)", width:"192px"}}>Cancel</ButtonStyle>
+        <ButtonStyleAdd type="submit" onClick={handleAddMore} style={{ color: "var(--text-color-active-page-green)", marginTop: "24px", fontSize: "14px" }}>+ Add more</ButtonStyleAdd>
+        <BlockButtonStyle>
+          <ButtonStyle type="submit" onClick={onClose} style={{ color: "var(--text-color-secondary-grey)", width:"192px", position: "absolute", top:"45px", left: "25px",
+    }}>Cancel</ButtonStyle>
           <ButtonSubmit type="submit" onClick={handleSubmit} >Confirm</ButtonSubmit>
-        </div>
+        </BlockButtonStyle>
       </form>
       
       </ModalDiv>
