@@ -34,7 +34,7 @@ export const Image = styled.img`
   @media (min-width: 1440px) {
     width: 592px;
     height: 588px;
-    margin-left: 150px;
+    margin-left: 116px;
   }
 `;
 
@@ -68,6 +68,7 @@ export const InputBox = styled.div`
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
+ 
 `;
 
 export const InputText = styled(Field)`
@@ -81,7 +82,11 @@ export const InputText = styled(Field)`
   border: none;
   outline: none;
   padding: 8px 10px;
-  width:300px;
+  width: 300px;
+  :hover{
+    color:var(--text-color-primary-white);
+  } 
+  
 `;
 
 export const InputButton = styled.button`
@@ -102,6 +107,10 @@ export const InputButton = styled.button`
   @media (min-width: 834px) {
     width: 420px;
   }
+
+   @media (min-width: 1440px) {
+      width: 212px;
+    }
 `;
 
 export const FormStyle = styled(Form)`
@@ -116,6 +125,7 @@ export const FormStyle = styled(Form)`
 
   @media (min-width: 1440px) {
     margin-bottom: 208px;
+    width:212px;
   }
 `;
 
