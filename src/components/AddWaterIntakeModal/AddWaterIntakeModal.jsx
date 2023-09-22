@@ -47,7 +47,7 @@ export const AddWaterIntakeModal = ({ handleModal }) => {
             <WaterIntakeForm>
               <WaterLable
                 htmlFor="waterIntake"
-                erroricon={
+                $showIcon={
                   errors.waterIntake && touched.waterIntake ? 'block' : 'none'
                 }
               >
@@ -56,6 +56,7 @@ export const AddWaterIntakeModal = ({ handleModal }) => {
               <InputField
                 name="waterIntake"
                 type="number"
+                min={0}
                 placeholder="Enter milliliters"
                 borderstyle={
                   errors.waterIntake && touched.waterIntake

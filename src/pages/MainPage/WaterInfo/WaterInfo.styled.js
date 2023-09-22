@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as Icon } from '../../../assets/images/icons/add.svg';
 
-export const Title = styled.h2`
+export const WaterTitle = styled.h2`
   color: var(--text-color-primary-white);
   font-family: Poppins;
   font-size: 18px;
@@ -43,11 +43,35 @@ export const WaterInfoCard = styled.div`
 `;
 
 export const Level = styled.div`
+  position: relative;
   width: 80px;
   height: 192px;
   border-radius: 20px;
   border: 1px solid rgba(41, 41, 40, 1);
   background-color: var(--bg-primary);
+  padding: 7px;
+  padding-left: 7.5px;
+`;
+
+export const WaterPercentage = styled.p`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-${({ $offset }) => $offset}px);
+  color: ${({ $percentColor }) => $percentColor};
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+`;
+
+export const WaterBar = styled.div`
+  height: 176px;
+  width: 64px;
+  border-radius: 20px;
+  overflow: hidden;
 `;
 
 export const InfoWrapper = styled.div`
