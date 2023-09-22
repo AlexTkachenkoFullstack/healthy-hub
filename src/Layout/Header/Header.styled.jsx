@@ -140,3 +140,18 @@ export const UserSvg = styled.svg`
     height: 28px;
   }
 `;
+
+export const UserAvatar = styled.img`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 4px;
+
+  @media (min-width: 834px) {
+    width: 28px;
+    height: 28px;
+  }
+`;
