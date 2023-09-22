@@ -107,6 +107,10 @@ export const InputButton = styled.button`
   @media (min-width: 834px) {
     width: 420px;
   }
+
+   @media (min-width: 1440px) {
+      width: 212px;
+    }
 `;
 
 export const FormStyle = styled(Form)`
@@ -121,6 +125,7 @@ export const FormStyle = styled(Form)`
 
   @media (min-width: 1440px) {
     margin-bottom: 208px;
+    width:212px;
   }
 `;
 

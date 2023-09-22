@@ -113,10 +113,7 @@ export const updateProfileThunk=createAsyncThunk(
     async(credentials, thunkAPI)=>{
         try{
             const response = await instance.put('api/user/updateProfile', credentials)
-            // data:{profileInfo:{name:'Alex', age:23, height:176...},
-                  // weightInfo:{weight:74, data:'22.11.2022'}
-            // }
-            console.log(response.data)
+            // data:{name:'Alex', age:23, height:176...}
             return response.data
         }catch(error){
             return thunkAPI.rejectWithValue(error.message)
