@@ -1,4 +1,4 @@
-import { DoughnutChart } from 'components/RecommendedCard/DoughnutChart';
+import { DoughnutChart } from 'components/DoughnutChart';
 import {
   ChartWrapper,
   ChartElement,
