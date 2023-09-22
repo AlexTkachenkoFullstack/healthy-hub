@@ -27,7 +27,7 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
       return;
     }
     checkedButton.checked = true;
-  }, []);
+  }, [dataActivity]);
 
   const handleSubmit = async ({ activity }) => {
     setActivity(activity);
