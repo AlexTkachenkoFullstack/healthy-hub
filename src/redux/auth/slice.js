@@ -77,7 +77,8 @@ const handleFulfildUpdateProfile=(state, action)=>{
 
 const handleFulfildUpdateAvatar=(state, action)=>{
     handleFulfild(state);
-    state.user.avatarURL = action.payload.avatarURL;
+    console.log(action.payload)
+    state.user.avatarURL = action.payload;
 }
 
 export const authSlice = createSlice({

@@ -34,7 +34,6 @@ export const loginThunk = createAsyncThunk(
     async (credentials, thunkAPI) => {
         try {
             const response = await instance.post('api/users/login', credentials)
-            console.log(response.data)
             setAuthHeader(response.data.token)
             return response.data
         } catch (error) {
@@ -141,7 +140,8 @@ export const updateAvatarThunk=createAsyncThunk(
                 headers: {
                   'Content-Type': 'multipart/form-data',
                 }})
-            return response
+                console.log(response.data.avatarURL)
+            return response.data.avatarURL
         }catch(error){
             return thunkAPI.rejectWithValue(error.message)
         }
