@@ -118,7 +118,7 @@ export const updateProfileThunk=createAsyncThunk(
                 return thunkAPI.rejectWithValue('No token');
             } 
             setAuthHeader(persistToken);
-            const response = await instance.put('api/user/updateProfile', credentials)
+            const response = await instance.put('api/userS/update', credentials)
             // data:{name:'Alex', age:23, height:176...}
             return response.data
         }catch(error){
