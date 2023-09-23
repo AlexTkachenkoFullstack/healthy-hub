@@ -56,9 +56,6 @@ export const Title = styled.h3`
 `;
 
 export const ErrorText = styled.div`
-  position: absolute;
-  top: 69px;
-  left: 0;
   color: #e74a3b;
   font-family: Poppins;
   font-size: 12px;
