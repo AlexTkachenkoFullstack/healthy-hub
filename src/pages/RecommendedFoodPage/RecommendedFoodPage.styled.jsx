@@ -3,6 +3,17 @@ import styled from 'styled-components';
 export const RecommendedFood = styled.section`
   background-color: var(--bg-primary);
   color: var(--text-color-primary-white);
+  padding-top: 16px;
+  padding-bottom: 40px;
+
+  @media (min-width: 834px) {
+    padding-top: 24px;
+    padding-bottom: 290px;
+  }
+  @media (min-width: 1440px) {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
 `;
 export const Title = styled.h3`
   font-family: 'Poppins';
@@ -23,37 +34,32 @@ export const Title = styled.h3`
 
 export const DesctopContainer = styled.div`
   padding-top: 16px;
-  padding-bottom: 40px;
 
   @media (min-width: 834px) {
-    padding-top: 24px;
-    padding-bottom: 290px;
+    padding-top: 20px;
   }
   @media (min-width: 1440px) {
-    padding-top: 20px;
-    padding-bottom: 60px;
+    padding-top: 0;
     display: flex;
+    gap: 44px;
   }
 `;
 
 export const StyledImg = styled.img`
   height: 312px;
   width: 300px;
-  margin-top: 16px;
   margin-left: auto;
   margin-right: auto;
 
   @media (min-width: 834px) {
     height: 396px;
     width: 380px;
-    margin-top: 20px;
   }
   @media (min-width: 1440px) {
     height: 560px;
     width: 536px;
     margin-right: 0;
-    margin-top: 0;
-    margin-left: 116px;
+    margin-left: 110px;
   }
 `;
 
@@ -67,18 +73,15 @@ export const ProductsList = styled.div`
   }
   @media (min-width: 834px) {
     width: 780px;
-    display: flex;
-    gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: row;
   }
   @media (min-width: 1440px) {
+    width: 680px;
     padding: 0;
-    height: 536px;
-    width: 560px;
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    row-gap: 20px;
+    column-gap: 24px;
   }
 `;

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchRecommendedFood } from './operations';
 
 const initialState = {
-  food: [],
+  food: null,
   isLoading: false,
   error: null,
 };
