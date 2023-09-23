@@ -19,6 +19,8 @@ import {
 
 import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
+import { ErrorUserModal } from '../ErrorUser';
+import { useState } from 'react';
 
 const initialValues = {
   name: '',
@@ -27,6 +29,13 @@ const initialValues = {
 };
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const toggleIsOpenModal = () => {
+    setIsOpenModal(isOpenModal => !isOpenModal);
+  };
+
   const handleSubmit = async ({ name, email, password }) => {
     try {
       const res = await checkEmail(email.toLowerCase());
@@ -40,6 +49,8 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       setPassword(password);
       goNext();
     } catch (error) {
+      setErrorMessage(error);
+      setIsOpenModal(true);
       console.log(error.response.data.message);
     }
   };
@@ -137,6 +148,12 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           <SignInText to="/signin">Sign in</SignInText>
         </FinishBlock>
       </QuestionForm>
+      {isOpenModal && (
+        <ErrorUserModal
+          errorMessage={errorMessage}
+          handleModal={toggleIsOpenModal}
+        />
+      )}
     </SignUpFirstContainer>
   );
 };

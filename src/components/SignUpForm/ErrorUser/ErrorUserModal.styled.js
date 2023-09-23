@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
-import errorIcon from '../../assets/images/icons/error.svg';
+import errorIcon from '../../../assets/images/icons/error.svg';
 import correctIcon from '../../../assets/images/icons/correct.svg';
 import eyeOpen from '../../../assets/images/icons/eyeOpen.svg';
 import eyeClose from '../../../assets/images/icons/eyeClose.svg';
