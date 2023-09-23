@@ -96,7 +96,11 @@ const UserInformation = ({ user }) => {
         >
           {({ errors, touched }) => (
             <StyledForm>
-              <Label>
+              <Label
+                $showIcon={
+                  errors.userName && touched.userName ? 'block' : 'none'
+                }
+              >
                 Your name
                 <div>
                   <Input
@@ -114,7 +118,7 @@ const UserInformation = ({ user }) => {
                 </div>
               </Label>
 
-              <Label>
+              <Label $showIcon="none">
                 Your photo
                 <AvatarContainer>
                   {selectedFile ? (
@@ -137,11 +141,11 @@ const UserInformation = ({ user }) => {
                   />
                 </AvatarContainer>
               </Label>
-              <Label>
+              <Label $showIcon={errors.age && touched.age ? 'block' : 'none'}>
                 Your age
                 <div>
                   <Input
-                    type="text"
+                    type="number"
                     name="age"
                     borderstyle={
                       errors.age && touched.age
@@ -154,7 +158,7 @@ const UserInformation = ({ user }) => {
                   </ErrorMessage>
                 </div>
               </Label>
-              <Label>
+              <Label $showIcon="none">
                 Gender
                 <RadioContainer role="group">
                   <RadioLabel>
@@ -177,11 +181,13 @@ const UserInformation = ({ user }) => {
                   </RadioLabel>
                 </RadioContainer>
               </Label>
-              <Label>
+              <Label
+                $showIcon={errors.height && touched.height ? 'block' : 'none'}
+              >
                 Height
                 <div>
                   <Input
-                    type="text"
+                    type="number"
                     name="height"
                     borderstyle={
                       errors.height && touched.height
@@ -194,11 +200,13 @@ const UserInformation = ({ user }) => {
                   </ErrorMessage>
                 </div>
               </Label>
-              <Label>
+              <Label
+                $showIcon={errors.weight && touched.weight ? 'block' : 'none'}
+              >
                 Weight
                 <div>
                   <Input
-                    type="text"
+                    type="number"
                     name="weight"
                     borderstyle={
                       errors.weight && touched.weight

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import errorIcon from '../../assets/images/icons/error.svg';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -21,12 +22,29 @@ export const StyledForm = styled(Form)`
 
 export const Label = styled.label`
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 12px;
   font-size: 14px;
   line-height: 1.43;
   font-weight: 500;
   width: 100%;
+
+  &::after {
+    position: absolute;
+    bottom: 29px;
+    right: 10px;
+    content: '';
+    display: ${({ $showIcon }) => $showIcon};
+    width: 16px;
+    height: 16px;
+    background-image: url('${errorIcon}');
+
+    @media (min-width: 834px) {
+      bottom: 29px;
+      right: 14px;
+    }
+  }
 
   @media (min-width: 834px) {
     width: 219px;
@@ -44,6 +62,10 @@ export const Input = styled(Field)`
   outline: none;
   border: ${({ borderstyle }) => borderstyle};
   width: 100%;
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   @media (min-width: 834px) {
     width: 212px;
