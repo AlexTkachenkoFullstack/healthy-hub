@@ -18,6 +18,7 @@ ChartJS.register(
   Legend
 );
 
+
 const options = {
   responsive: true,
   aspectRatio: 0.364,
@@ -63,6 +64,7 @@ export const WaterChart = ({ waterIntake }) => {
         label: 'Water',
         data: [waterIntake],
         backgroundColor: '#B6C3FF',
+        hoverBackgroundColor: '#B6C3FF',
         barPercentage: 1,
         categoryPercentage: 1,
         grouped: false,
@@ -70,7 +72,6 @@ export const WaterChart = ({ waterIntake }) => {
       {
         label: 'Dataset 2',
         data: [100],
-        backgroundColor: '#red',
         barPercentage: 1,
         categoryPercentage: 1,
       },

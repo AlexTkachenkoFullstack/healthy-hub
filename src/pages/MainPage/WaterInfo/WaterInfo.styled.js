@@ -50,7 +50,6 @@ export const Level = styled.div`
   border: 1px solid rgba(41, 41, 40, 1);
   background-color: var(--bg-primary);
   padding: 7px;
-  padding-left: 7.5px;
 `;
 
 export const WaterPercentage = styled.p`

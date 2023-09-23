@@ -16,7 +16,7 @@ import {
   WaterPercentage,
 } from './WaterInfo.styled';
 
-const waterIntake = 63;
+const waterIntake = 90;
 
 const waterPercent = waterIntake <= 100 ? waterIntake : 100;
 const offset =

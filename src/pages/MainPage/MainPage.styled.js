@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const MainContainer = styled.div`
+  padding-top: 16px;
+
+  @media screen and (min-width: 834px) {
+    padding-top: 24px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-top: 20px;
+  }
+`;
+
 export const MainTitle = styled.h1`
   color: var(--text-color-primary-white);
   font-family: Poppins;
