@@ -19,7 +19,7 @@ import {
 
 import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
-import { ErrorUserModal } from '../ErrorUser';
+import { ErrorUserModal } from '../ErrorUserModal';
 import { useState } from 'react';
 
 const initialValues = {
@@ -151,7 +151,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       {isOpenModal && (
         <ErrorUserModal
           errorMessage={errorMessage}
-          handleModal={toggleIsOpenModal}
+          isOpenModal={toggleIsOpenModal}
         />
       )}
     </SignUpFirstContainer>
