@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import {
   Image,
   AgeAndGenderContainer,
@@ -13,6 +13,7 @@ import {
   BackButton,
   ExtraContainer,
   CustomRadioInput,
+  ValidationError,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -95,7 +96,9 @@ const AgeAndGender = ({
               placeholder="Enter your age"
             />
           </InputBox>
-          <ErrorMessage name="age" >{msg =><div>{msg}</div>}</ErrorMessage>
+          <ErrorMessage name="age">
+            {msg => <ValidationError>{msg}</ValidationError>}
+          </ErrorMessage>
           <InputButton type="submit">Next</InputButton>
 
           <BackButton type="button" onClick={goBack}>
