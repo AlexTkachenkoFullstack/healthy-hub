@@ -15,6 +15,7 @@ import {
   SignInText,
   FinishBlock,
   QuestionForm,
+  ErrorText,
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
@@ -71,83 +72,90 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   return (
     <SignUpFirstContainer>
       <Image src={image} alt="Sport and fitness tracker" />
-      <QuestionForm>
-        <MainHeader>Sign up</MainHeader>
-        <Text>You need to register to use the service</Text>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-          validationSchema={signupSchema}
-        >
-          {({ errors, touched }) => (
-            <FormStyle autoComplete="off">
-              <InputBox
-                htmlFor="name"
-                $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  borderstyle={
-                    errors.waterIntake && touched.waterIntake
-                      ? '1px solid red'
-                      : ''
-                  }
-                />
-              </InputBox>
-              <ErrorMessage name="name" component="div" />
-              <InputBox
-                htmlFor="email"
-                $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="E-mail"
-                  borderstyle={
-                    errors.waterIntake && touched.waterIntake
-                      ? '1px solid red'
-                      : ''
-                  }
-                />
-              </InputBox>
-              <ErrorMessage name="email">
-                {msg => <div>{msg}</div>}
-              </ErrorMessage>
+      {/* <QuestionForm> */}
+      <MainHeader>Sign up</MainHeader>
+      <Text>You need to register to use the service</Text>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={signupSchema}
+      >
+        {({ errors, touched }) => (
+          <FormStyle autoComplete="off">
+            <InputBox
+              htmlFor="name"
+              $showIcon={errors.name && touched.name ? 'block' : 'none'}
+            >
+              <InputText
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                borderstyle={
+                  errors.waterIntake && touched.waterIntake
+                    ? '1px solid red'
+                    : ''
+                }
+              />
+            </InputBox>
+            <ErrorMessage name="name">
+              {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
 
-              <InputBox
-                htmlFor="password"
-                $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  borderstyle={
-                    errors.waterIntake && touched.waterIntake
-                      ? '1px solid red'
-                      : ''
-                  }
-                />
-              </InputBox>
+            <InputBox
+              htmlFor="email"
+              $showIcon={errors.name && touched.name ? 'block' : 'none'}
+            >
+              <InputText
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                borderstyle={
+                  errors.waterIntake && touched.waterIntake
+                    ? '1px solid red'
+                    : ''
+                }
+              />
+            </InputBox>
 
-              <button type="button" onClick={togglePass}>
-                Show
-              </button>
-              <ErrorMessage name="password" component="div" />
-              <InputButton type="submit">Sign Up</InputButton>
-            </FormStyle>
-          )}
-        </Formik>
-        <FinishBlock>
-          <TextInEnd>Do you already have an account?</TextInEnd>
-          <SignInText to="/signin">Sign in</SignInText>
-        </FinishBlock>
-      </QuestionForm>
+            <ErrorMessage name="email">
+              {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
+
+            <InputBox
+              htmlFor="password"
+              $showIcon={errors.name && touched.name ? 'block' : 'none'}
+            >
+              <InputText
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                borderstyle={
+                  errors.waterIntake && touched.waterIntake
+                    ? '1px solid red'
+                    : ''
+                }
+              />
+            </InputBox>
+
+            <button type="button" onClick={togglePass}>
+              Show
+            </button>
+            <ErrorMessage name="password">
+              {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
+
+            <InputButton type="submit">Sign Up</InputButton>
+          </FormStyle>
+        )}
+      </Formik>
+      <FinishBlock>
+        <TextInEnd>Do you already have an account?</TextInEnd>
+        <SignInText to="/signin">Sign in</SignInText>
+      </FinishBlock>
+      {/* </QuestionForm> */}
       {isOpenModal && (
         <ErrorUserModal
           errorMessage={errorMessage}
