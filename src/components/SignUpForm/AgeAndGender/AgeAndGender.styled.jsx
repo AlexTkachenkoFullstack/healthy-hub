@@ -221,3 +221,11 @@ export const CustomRadioInput = styled(Field)`
     transform: scale(1);
   }
 `;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+`;
