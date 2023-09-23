@@ -12,6 +12,7 @@ import {
   InputText,
   InputButton,
   BackButton,
+  ValidationError,
 } from './BodyParameters.styled';
 import { bodyParamSchema } from '../validationLibs';
 
@@ -64,7 +65,9 @@ const BodyParameters = ({
                 placeholder="Enter your height"
               />
             </InputBox>
-            <ErrorMessage name="height">{msg => <div>{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="height">
+              {msg => <ValidationError>{msg}</ValidationError>}
+            </ErrorMessage>
 
             <ChooseText>Weight</ChooseText>
 
@@ -76,7 +79,9 @@ const BodyParameters = ({
                 placeholder="Enter your weight"
               />
             </InputBox>
-            <ErrorMessage name="weight">{msg => <div>{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="weight">
+              {msg => <ValidationError>{msg}</ValidationError>}
+            </ErrorMessage>
             <p>
               <InputButton type="submit">Next</InputButton>
             </p>
