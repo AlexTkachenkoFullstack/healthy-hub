@@ -149,6 +149,7 @@ export const UserAvatar = styled.img`
   height: 24px;
   border-radius: 50%;
   margin-right: 4px;
+  object-fit: cover;
 
   @media (min-width: 834px) {
     width: 28px;
