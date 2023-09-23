@@ -73,7 +73,7 @@ const UserInformation = ({ user }) => {
         height: height,
         gender: gender,
         weight: weight,
-        activity: activity,
+        activity: Number(activity),
       })
     );
   };
@@ -262,7 +262,12 @@ const UserInformation = ({ user }) => {
                     1.725 ​​- if you train fully 6-7 times a week
                   </RadioLabel>
                   <RadioLabel>
-                    <Field type="radio" name="activity" as={CustomRadioInput} />
+                    <Field
+                      value="1.9"
+                      type="radio"
+                      name="activity"
+                      as={CustomRadioInput}
+                    />
                     1.9 - if your work is related to physical labor, you train 2
                     times a day and include strength exercises in your training
                     program

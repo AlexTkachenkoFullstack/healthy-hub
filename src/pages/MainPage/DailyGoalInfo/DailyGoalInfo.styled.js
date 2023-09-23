@@ -39,11 +39,12 @@ export const DailyInfoCard = styled.div`
 export const InfoCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 202px;
+  width: 203px;
   height: 180px;
   gap: 20px;
 
   @media screen and (min-width: 834px) {
+    height: 192px;
     row-gap: 32px;
   }
 `;

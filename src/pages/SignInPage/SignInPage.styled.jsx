@@ -4,9 +4,18 @@ import SignImImageMobile from "../../assets/images/sport-and-fitness-tracker-mob
 import SignImImageTablet from "../../assets/images/sport-and-fitness-tracker-tablet.png";
 import SignImImageDesctop from "../../assets/images/sport-and-fitness-tracker.png";
 
+import SignImImageMobile2к from "../../assets/images/sport-and-fitness-tracker-mobile-2x.png";
+import SignImImageTablet2к from "../../assets/images/sport-and-fitness-tracker-tablet-2x.png";
+import SignImImageDesctop2к from "../../assets/images/sport-and-fitness-tracker-2x.png";
+
+
+
 export const ImageSignIn = styled.div`
 @media (min-width: 320px) {
-    background-image: url(${SignImImageMobile});
+    background-image: image-set(
+        url(${SignImImageMobile}) 1x,
+        url(${SignImImageMobile2к}) 2x
+    );
     height: 296px;
     width: 300px;
     background-repeat: no-repeat;
@@ -15,12 +24,18 @@ export const ImageSignIn = styled.div`
     margin-right: auto;
     }
 @media (min-width: 834px) {
-    background-image: url(${SignImImageTablet});
+    background-image: image-set(
+        url(${SignImImageTablet}) 1x,
+        url(${SignImImageTablet2к}) 2x
+    );
     height: 376px;
     width: 380px;
     }
 @media (min-width: 1440px) {
-    background-image: url(${SignImImageDesctop});
+    background-image: image-set(
+        url(${SignImImageDesctop}) 1x,
+        url(${SignImImageDesctop2к}) 2x
+    );
     height: 588px;
     width: 592px;
     margin: 0px;

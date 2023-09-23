@@ -7,6 +7,7 @@ import {
   CardWrap,
   CarbWrap,
   ProteinWrap,
+  ImageWrap,
 } from './DiaryCard.styled';
 import { TitleWrap } from './DiaryCard.styled';
 
@@ -20,7 +21,9 @@ export const DiaryCard = ({ title, image, image2x, info }) => {
   return (
     <CardWrap>
       <TitleWrap>
-        <img srcSet={`${image} 1x, ${image2x} 2x`} src={image} alt="Plate" />
+        <ImageWrap>
+          <img srcSet={`${image} 1x, ${image2x} 2x`} src={image} alt="Plate" />
+        </ImageWrap>
         <Title>{title}</Title>
       </TitleWrap>
       {carbonohidrates !== 0 && protein !== 0 && fat !== 0 ? (

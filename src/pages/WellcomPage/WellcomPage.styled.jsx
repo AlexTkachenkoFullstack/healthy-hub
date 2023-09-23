@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import { NavLink } from 'react-router-dom';
-import WelcomeImage from "../../assets/images/sport-and-fitness-tracker-mobile.png";
+import WelcomeImageMobile from "../../assets/images/sport-and-fitness-tracker-mobile.png";
 import WelcomeImageTablet from "../../assets/images/sport-and-fitness-tracker-tablet.png";
 import WelcomeImageDesctop from "../../assets/images/sport-and-fitness-tracker.png";
 
+import WelcomeImageMobile2k from "../../assets/images/sport-and-fitness-tracker-mobile-2x.png";
+import WelcomeImageTablet2k from "../../assets/images/sport-and-fitness-tracker-tablet-2x.png";
+import WelcomeImageDesctop2k from "../../assets/images/sport-and-fitness-tracker-2x.png";
 
 export const ImageContainerLog = styled.div`
 @media (min-width: 320px) {
-    background-image: url(${WelcomeImage});
+    background-image: image-set(
+        url(${WelcomeImageMobile}) 1x,
+        url(${WelcomeImageMobile2k}) 2x
+    );
     margin-top: 24px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,13 +23,19 @@ export const ImageContainerLog = styled.div`
     width: 300px;
     }
 @media (min-width: 834px) {
-    background-image: url(${WelcomeImageTablet});
+    background-image: image-set(
+        url(${WelcomeImageTablet}) 1x,
+        url(${WelcomeImageTablet2k}) 2x
+    );
     height: 376px;
     width: 380px;
     margin-top: 40px;
 };
 @media (min-width: 1440px) {
-    background-image: url(${WelcomeImageDesctop});
+    background-image: image-set(
+        url(${WelcomeImageDesctop}) 1x,
+        url(${WelcomeImageDesctop2k}) 2x
+    );
     height: 588px;
     width: 592px;
     margin-top: 40px;
