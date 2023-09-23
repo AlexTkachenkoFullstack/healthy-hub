@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const CloseButton = styled.button`
   display: none;
+  position: absolute;
 
   @media (min-width: 834px) {
     display: block;
