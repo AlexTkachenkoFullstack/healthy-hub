@@ -72,6 +72,7 @@ export const InputBox = styled.label`
   /* border: 1px solid var(--input-border-color-normal); */
   /* border: 1px solid var(--input-border-color-error); */
   background: var(--bg-secondary);
+  position: relative;
 `;
 
 export const InputText = styled(Field)`
@@ -91,6 +92,13 @@ export const InputText = styled(Field)`
   :hover {
     color: var(--text-color-primary-white);
   }
+`;
+
+export const IconTextPosition = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(-50%, -50%);
 `;
 
 export const InputButton = styled.button`

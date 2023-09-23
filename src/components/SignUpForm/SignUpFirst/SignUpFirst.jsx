@@ -16,12 +16,14 @@ import {
   FinishBlock,
   QuestionForm,
   ValidationError,
+  IconTextPosition,
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
 import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
+import SuccessButton from '../SuccessButton/SuccessButton';
 
 const initialValues = {
   name: '',
@@ -92,7 +94,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   name="name"
                   placeholder="Name"
                 />
+                <IconTextPosition>
+                  <SuccessButton />
+                </IconTextPosition>
               </InputBox>
+
               <ErrorMessage name="name">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
@@ -106,6 +112,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   name="email"
                   placeholder="E-mail"
                 />
+                <IconTextPosition>
+                  <SuccessButton />
+                </IconTextPosition>
               </InputBox>
               <ErrorMessage name="email">
                 {msg => <ValidationError>{msg}</ValidationError>}
@@ -123,7 +132,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   name="password"
                   placeholder="Password"
                 />
+                <IconTextPosition>
+                  <SuccessButton />
+                </IconTextPosition>
               </InputBox>
+
               <ErrorMessage name="password">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
