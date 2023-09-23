@@ -1,35 +1,8 @@
-# name: Build and deploy to GitHub Pages
-
-# on:
-#   push:
-#     branches: [main]
-
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout 🛎️
-#         uses: actions/checkout@v2.3.1
-
-#       - name: Install, lint, build 🔧
-#         run: |
-#           npm install
-#           npm run lint:js
-#           npm run build
-
-#       - name: Deploy 🚀
-#         uses: JamesIves/github-pages-deploy-action@4.1.0
-#         with:
-#           branch: gh-pages
-#           folder: build
-
-
 name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -38,19 +11,9 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
-      - name: Install dependencies 🔧
+      - name: Install, lint, build 🔧
         run: |
           npm install
-          # Добавьте следующую строку, чтобы убедиться, что react-scripts устанавливаются:
-          npm install react-scripts
-
-      - name: Lint and build 🔧
-        run: |
           npm run lint:js
           npm run build
 
