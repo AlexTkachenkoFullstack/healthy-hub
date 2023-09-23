@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { Backdrop, Title, Modal } from './ErrorUserModal.styled';
+import { Backdrop, Modal } from './ErrorUserModal.styled';
+import CloseModalButton from '../CloseModalButton/CloseModalButton';
 
-export const ErrorUserModal = ({ isOpenModal, errorMessage }) => {
+export const ErrorUserModal = ({ isOpenModal, errorMessage, children }) => {
   const handleCloseModal = e => {
     (e.code === 'Escape' || e.currentTarget === e.target) && isOpenModal();
   };
@@ -9,18 +10,17 @@ export const ErrorUserModal = ({ isOpenModal, errorMessage }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleCloseModal);
     document.documentElement.style.overflow = 'hidden';
-    // document.body.scroll = 'no';
+
     return () => {
       window.removeEventListener('keydown', handleCloseModal);
       document.documentElement.style.overflow = 'auto';
-      // document.body.scroll = 'yes';
     };
   });
   return (
     <Backdrop onClick={handleCloseModal}>
       <Modal>
-        <Title>Sorry.</Title>
-        <p>{errorMessage.response.data.message}</p>
+        <CloseModalButton onClose={isOpenModal} />
+        {children}
       </Modal>
     </Backdrop>
   );
