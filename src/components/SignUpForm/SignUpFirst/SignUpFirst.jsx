@@ -100,12 +100,13 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
             <ErrorMessage name="password" />
             <InputButton type="submit">Sign Up</InputButton>
           </FormStyle>
-        </Formik>
-        <FinishBlock>
-          <TextInEnd>Do you already have an account?</TextInEnd>
-          <SignInText to="/signin">Sign in</SignInText>
-        </FinishBlock>
+              </Formik>
+         <FinishBlock>
+        <TextInEnd>Do you already have an account?</TextInEnd>
+        <SignInText to="/signin">Sign in</SignInText>
+      </FinishBlock>     
       </QuestionForm>
+      
     </SignUpFirstContainer>
   );
 };
