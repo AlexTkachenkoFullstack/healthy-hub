@@ -58,31 +58,15 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
           <Text>Choose a goal so that we can help you effectively</Text>
           <LabelBlock role="group" aria-labelledby="goalGroup">
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="lose fat"
-                as={CustomRadioInput}
-                checked
-              />
+              <CustomRadioInput type="radio" name="goal" value="lose fat" />
               Lose fat
             </Label>
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="maintain"
-                as={CustomRadioInput}
-              />
+              <CustomRadioInput type="radio" name="goal" value="maintain" />
               Maintain
             </Label>
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="gain muscle"
-                as={CustomRadioInput}
-              />
+              <CustomRadioInput type="radio" name="goal" value="gain muscle" />
               Gain Muscle
             </Label>
           </LabelBlock>
