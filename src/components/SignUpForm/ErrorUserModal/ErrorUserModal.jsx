@@ -9,11 +9,11 @@ export const ErrorUserModal = ({ isOpenModal, errorMessage }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleCloseModal);
     document.documentElement.style.overflow = 'hidden';
-    document.body.scroll = 'no';
+    // document.body.scroll = 'no';
     return () => {
       window.removeEventListener('keydown', handleCloseModal);
-      document.documentElement.style.overflow = 'scroll';
-      document.body.scroll = 'yes';
+      document.documentElement.style.overflow = 'auto';
+      // document.body.scroll = 'yes';
     };
   });
   return (
