@@ -116,7 +116,6 @@ export const TextIndexSpan  = styled.span`
   color: var(--input-border-color-normal);  
 `;
 
-
 export const ListMeatContainer = styled.div`
   margin-left: 0;
   margin-top: 6px;
@@ -130,7 +129,6 @@ export const ListMeatContainer = styled.div`
   heigth: 240px;
   overflow-y: auto;
 `;
-
 
 export const Li = styled.li`
   list-style-type: none;
