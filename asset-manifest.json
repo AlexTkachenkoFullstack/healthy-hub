@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/healthy-hub/static/css/main.737528b0.css",
-    "main.js": "/healthy-hub/static/js/main.9c502bb7.js",
+    "main.js": "/healthy-hub/static/js/main.559eb113.js",
     "static/media/Poppins-Regular.ttf": "/healthy-hub/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/healthy-hub/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/healthy-hub/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
@@ -13,6 +13,7 @@
     "static/media/workout-fashion-2x.png": "/healthy-hub/static/media/workout-fashion-2x.2f56b5d3eda4bc7bbc37.png",
     "static/media/body-contouring-2x.png": "/healthy-hub/static/media/body-contouring-2x.e90dfcc3eac9224fb13e.png",
     "static/media/sport-and-fitness-tracker-2x.png": "/healthy-hub/static/media/sport-and-fitness-tracker-2x.50270a159791498cd0b8.png",
+    "static/media/noimage.png": "/healthy-hub/static/media/noimage.1a8a31657797f3b7d816.png",
     "static/media/interactive-learning-experience.png": "/healthy-hub/static/media/interactive-learning-experience.5603302f0747672e85d4.png",
     "static/media/ketogenic-diet.png": "/healthy-hub/static/media/ketogenic-diet.bd13d20fcd66588bb6fb.png",
     "static/media/summer-hiking.png": "/healthy-hub/static/media/summer-hiking.487152541279e1774b58.png",
@@ -30,10 +31,10 @@
     "static/media/arrow-right.svg": "/healthy-hub/static/media/arrow-right.d0c0c26f156afde714dd6305bb874a9a.svg",
     "static/media/add.svg": "/healthy-hub/static/media/add.f6a357611ea74d91cdfc643ffab7c968.svg",
     "main.737528b0.css.map": "/healthy-hub/static/css/main.737528b0.css.map",
-    "main.9c502bb7.js.map": "/healthy-hub/static/js/main.9c502bb7.js.map"
+    "main.559eb113.js.map": "/healthy-hub/static/js/main.559eb113.js.map"
   },
   "entrypoints": [
     "static/css/main.737528b0.css",
-    "static/js/main.9c502bb7.js"
+    "static/js/main.559eb113.js"
   ]
 }
