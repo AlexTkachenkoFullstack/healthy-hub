@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
     "chart.js": "^4.4.0",
+    "date-fns": "^2.30.0",
     "formik": "^2.4.4",
     "notiflix": "^3.2.6",
     "react": "^18.2.0",
@@ -29,6 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "test": "react-scripts test",
     "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {
