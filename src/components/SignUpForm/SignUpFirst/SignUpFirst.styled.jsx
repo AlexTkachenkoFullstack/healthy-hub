@@ -62,23 +62,26 @@ export const Text = styled.p`
 `;
 
 export const InputBox = styled.label`
-  border-radius: 12px;
-  border: 1px solid var(--text-color-active-page-green);
+  /* border-radius: 12px; */
+  /* border: 1px solid var(--input-border-color-normal); */
+  /* border: 1px solid var(--input-border-color-error); */
   background: var(--bg-secondary);
 `;
 
 export const InputText = styled(Field)`
   color: var(--text-color-secondary-grey);
+  border: 1px solid var(--input-border-color-normal);
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.429;
   background: transparent;
-  border: none;
+  border-radius: 12px;
+  /* border: none; */
   outline: none;
   padding: 8px 10px;
-  width: 300px;
+  width: 100%;
   :hover {
     color: var(--text-color-primary-white);
   }
@@ -103,9 +106,9 @@ export const InputButton = styled.button`
     width: 420px;
   }
 
-   @media (min-width: 1440px) {
-      width: 212px;
-    }
+  @media (min-width: 1440px) {
+    width: 212px;
+  }
 `;
 
 export const FormStyle = styled(Form)`
@@ -120,7 +123,7 @@ export const FormStyle = styled(Form)`
 
   @media (min-width: 1440px) {
     margin-bottom: 208px;
-    width:212px;
+    width: 212px;
   }
 `;
 
@@ -151,25 +154,13 @@ export const FinishBlock = styled.div`
   }
 `;
 
-export const ErrorText = styled.div`
-  position: absolute;
-  top: 69px;
-  left: 0;
+export const ValidationError = styled.span`
   color: #e74a3b;
   font-family: Poppins;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 14px;
-  padding-left: 10px;
-
-  @media screen and (min-width: 834px) {
-    left: 25px;
-  }
+  line-height: 1.17;
 `;
 
-export const ValidationError = styled.span`
-  color: #e74a3b;
-`;
 
 export const QuestionForm = styled.div``;
