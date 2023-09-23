@@ -20,7 +20,7 @@ import {
 
 import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
-import { ErrorUserModal } from '../ErrorUserModal';
+import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
 
 const initialValues = {
@@ -31,7 +31,7 @@ const initialValues = {
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorsMessage, setErrorsMessage] = useState('');
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
@@ -50,9 +50,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       setPassword(password);
       goNext();
     } catch (error) {
-      setErrorMessage(error);
+      console.log(error);
+      setErrorsMessage(error);
       setIsOpenModal(true);
-      console.log(error.response.data.message);
     }
   };
 
@@ -91,7 +91,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   id="name"
                   name="name"
                   placeholder="Name"
-                  borderColor={errors.name && touched.name ? 'red' : ''}
                 />
               </InputBox>
               <ErrorMessage name="name">
@@ -106,9 +105,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   id="email"
                   name="email"
                   placeholder="E-mail"
-                  borderStyle={
-                    errors.email && touched.email ? '1px solid #E74A3B' : ''
-                  }
                 />
               </InputBox>
               <ErrorMessage name="email">
@@ -126,7 +122,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   id="password"
                   name="password"
                   placeholder="Password"
-                  borderColor={errors.password && touched.password ? 'red' : ''}
                 />
               </InputBox>
               <ErrorMessage name="password">
@@ -147,10 +142,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         </FinishBlock>
       </QuestionForm>
       {isOpenModal && (
-        <ErrorUserModal
-          errorMessage={errorMessage}
-          isOpenModal={toggleIsOpenModal}
-        />
+        <ErrorUserModal isOpenModal={toggleIsOpenModal}>
+          <h1>Hello world</h1>
+          Sorry.
+          <p>{errorsMessage.response.data.message}</p>
+        </ErrorUserModal>
       )}
     </SignUpFirstContainer>
   );
