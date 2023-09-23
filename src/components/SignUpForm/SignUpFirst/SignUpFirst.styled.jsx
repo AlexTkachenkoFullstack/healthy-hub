@@ -167,3 +167,5 @@ export const ErrorText = styled.div`
     left: 25px;
   }
 `;
+
+export const QuestionForm = styled.div``;
