@@ -1,11 +1,6 @@
-// import { Formik, Field, Form } from 'formik';
-// const fn = (values, actions) => {
-//   console.log(values);
-//   console.log(actions);
-// }
-import { useFormik } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import {
-  Form,
+  StyledForm,
   Label,
   Input,
   RadioContainer,
@@ -14,9 +9,18 @@ import {
   SaveButton,
   CancelButton,
   ButtonContainer,
-  ErrorMessage,
+  ErrorText,
+  CustomRadioInput,
+  AvatarImg,
+  AvatarField,
+  AvatarContainer,
+  AvatarText,
 } from './UserInformation.styled';
 import * as yup from 'yup';
+import sprite from '../../assets/images/icons/icons.svg';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateProfileThunk, updateAvatarThunk } from 'redux/auth/operations';
 
 export const schema = yup.object({
   userName: yup.string().required('Please Enter your name'),
@@ -38,318 +42,240 @@ export const schema = yup.object({
 });
 
 const UserInformation = ({ user }) => {
-  const onSubmit = (
-    { userName, photo, age, gender, height, weight, activity },
-    actions
-  ) => {
-    console.log(userName, photo, age, gender, height, weight, activity);
-    console.log(actions);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+    }
   };
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: {
-        userName: user.name,
-        photo: user.avatar,
-        age: user.age,
-        gender: user.gender,
-        height: user.height,
-        weight: user.weight,
-        activity: String(user.activity),
-      },
-      validationSchema: schema,
-      onSubmit,
-    });
+  const handleSubmit = ({
+    userName,
+    age,
+    gender,
+    height,
+    weight,
+    activity,
+  }) => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('avatarURL', selectedFile);
+
+      dispatch(updateAvatarThunk(formData));
+    }
+    dispatch(
+      updateProfileThunk({
+        name: userName,
+        age: age,
+        height: height,
+        gender: gender,
+        weight: weight,
+        activity: activity,
+      })
+    );
+  };
 
   return (
     <>
       {user.name && (
-        <Form onSubmit={handleSubmit}>
-          <Label htmlFor="userName">
-            Your name
-            {errors.userName && touched.userName ? (
-              <>
-                <Input
-                  id="userName"
-                  value={values.userName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="text"
-                  name="userName"
-                  style={{
-                    border: '1px solid var(--input-border-color-error)',
-                  }}
-                />
-                <ErrorMessage>{errors.userName}</ErrorMessage>
-              </>
-            ) : (
-              <Input
-                value={values.userName}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                type="text"
-                name="userName"
-              />
-            )}
-          </Label>
+        <Formik
+          initialValues={{
+            userName: user.name,
+            photo: '',
+            age: user.age,
+            gender: user.gender,
+            height: user.height,
+            weight: user.weight,
+            activity: String(user.activity),
+          }}
+          validationSchema={schema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched }) => (
+            <StyledForm>
+              <Label>
+                Your name
+                <div>
+                  <Input
+                    type="text"
+                    name="userName"
+                    borderstyle={
+                      errors.userName && touched.userName
+                        ? '1px solid var(--input-border-color-error)'
+                        : ''
+                    }
+                  />
+                  <ErrorMessage name="userName">
+                    {msg => <ErrorText>{msg}</ErrorText>}
+                  </ErrorMessage>
+                </div>
+              </Label>
 
-          <Label>
-            Your photo
-            <Input
-              value={values.photo}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="text"
-              name="photo"
-            />
-          </Label>
-          <Label>
-            Your age
-            {errors.age && touched.age ? (
-              <>
-                <Input
-                  value={values.age}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="text"
-                  name="age"
-                  style={{
-                    border: '1px solid var(--input-border-color-error)',
-                  }}
-                />
-                <ErrorMessage>{errors.age}</ErrorMessage>
-              </>
-            ) : (
-              <Input
-                value={values.age}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                type="text"
-                name="age"
-              />
-            )}
-          </Label>
-          <Label>
-            Gender
-            <RadioContainer>
-              <RadioLabel>
-                <input
-                  value="male"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="gender"
-                  checked={values.gender === 'male'}
-                />
-                Male
-              </RadioLabel>
-              <RadioLabel>
-                <input
-                  value="female"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="gender"
-                  checked={values.gender === 'female'}
-                />
-                Female
-              </RadioLabel>
-            </RadioContainer>
-          </Label>
-          <Label>
-            Height
-            {errors.height && touched.height ? (
-              <>
-                <Input
-                  value={values.height}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="text"
-                  name="height"
-                  style={{
-                    border: '1px solid var(--input-border-color-error)',
-                  }}
-                />
-                <ErrorMessage>{errors.height}</ErrorMessage>
-              </>
-            ) : (
-              <Input
-                value={values.height}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                type="text"
-                name="height"
-              />
-            )}
-          </Label>
-          <Label>
-            Weight
-            {errors.weight && touched.weight ? (
-              <>
-                <Input
-                  value={values.weight}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="text"
-                  name="weight"
-                  style={{
-                    border: '1px solid var(--input-border-color-error)',
-                  }}
-                />
-                <ErrorMessage>{errors.weight}</ErrorMessage>
-              </>
-            ) : (
-              <Input
-                value={values.weight}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                type="text"
-                name="weight"
-              />
-            )}
-          </Label>
-          <RadioLabel>
-            Your activity
-            <ActivityContainer>
-              <RadioLabel>
-                <input
-                  value="1.2"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="activity"
-                  checked={values.activity === '1.2'}
-                />
-                1.2 - if you do not have physical activity and sedentary work
-              </RadioLabel>
-              <RadioLabel>
-                <input
-                  value="1.375"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="activity"
-                  checked={values.activity === '1.375'}
-                />
-                1.375 - if you do short runs or light gymnastics 1-3 times a
-                week
-              </RadioLabel>
-              <RadioLabel>
-                <input
-                  value="1.55"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="activity"
-                  checked={values.activity === '1.55'}
-                />
-                1.55 - if you play sports with average loads 3-5 times a week
-              </RadioLabel>
-              <RadioLabel>
-                <input
-                  value="1.725"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="activity"
-                  checked={values.activity === '1.725'}
-                />
-                1.725 ​​- if you train fully 6-7 times a week
-              </RadioLabel>
-              <RadioLabel>
-                <input
-                  value="1.9"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="radio"
-                  name="activity"
-                  checked={values.activity === '1.9'}
-                />
-                1.9 - if your work is related to physical labor, you train 2
-                times a day and include strength exercises in your training
-                program
-              </RadioLabel>
-            </ActivityContainer>
-          </RadioLabel>
-          <ButtonContainer>
-            <SaveButton type="submit">Save</SaveButton>
-            <CancelButton type="button">Cancel</CancelButton>
-          </ButtonContainer>
-        </Form>
+              <Label>
+                Your photo
+                <AvatarContainer>
+                  {selectedFile ? (
+                    <AvatarImg
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="Avatar"
+                    />
+                  ) : (
+                    <AvatarImg src={user.avatarURL} alt="Avatar" />
+                  )}
+                  <svg width={16} height={16} stroke="var(--icon-color-green)">
+                    <use href={sprite + '#icon-direct-inbox'} />
+                  </svg>
+                  <AvatarText>Download new photo</AvatarText>
+                  <AvatarField
+                    type="file"
+                    name="photo"
+                    accept="image/png, image/jpeg"
+                    onChange={handleFileChange}
+                  />
+                </AvatarContainer>
+              </Label>
+              <Label>
+                Your age
+                <div>
+                  <Input
+                    type="text"
+                    name="age"
+                    borderstyle={
+                      errors.age && touched.age
+                        ? '1px solid var(--input-border-color-error)'
+                        : ''
+                    }
+                  />
+                  <ErrorMessage name="age">
+                    {msg => <ErrorText>{msg}</ErrorText>}
+                  </ErrorMessage>
+                </div>
+              </Label>
+              <Label>
+                Gender
+                <RadioContainer role="group">
+                  <RadioLabel>
+                    <Field
+                      value="male"
+                      type="radio"
+                      name="gender"
+                      as={CustomRadioInput}
+                    />
+                    Male
+                  </RadioLabel>
+                  <RadioLabel>
+                    <Field
+                      value="female"
+                      type="radio"
+                      name="gender"
+                      as={CustomRadioInput}
+                    />
+                    Female
+                  </RadioLabel>
+                </RadioContainer>
+              </Label>
+              <Label>
+                Height
+                <div>
+                  <Input
+                    type="text"
+                    name="height"
+                    borderstyle={
+                      errors.height && touched.height
+                        ? '1px solid var(--input-border-color-error)'
+                        : ''
+                    }
+                  />
+                  <ErrorMessage name="height">
+                    {msg => <ErrorText>{msg}</ErrorText>}
+                  </ErrorMessage>
+                </div>
+              </Label>
+              <Label>
+                Weight
+                <div>
+                  <Input
+                    type="text"
+                    name="weight"
+                    borderstyle={
+                      errors.weight && touched.weight
+                        ? '1px solid var(--input-border-color-error)'
+                        : ''
+                    }
+                  />
+                  <ErrorMessage name="weight">
+                    {msg => <ErrorText>{msg}</ErrorText>}
+                  </ErrorMessage>
+                </div>
+              </Label>
+              <label style={{ lineHeight: 1.43, fontWeight: 500 }}>
+                Your activity
+                <ActivityContainer role="group">
+                  <RadioLabel>
+                    <Field
+                      value="1.2"
+                      type="radio"
+                      name="activity"
+                      as={CustomRadioInput}
+                    />
+                    1.2 - if you do not have physical activity and sedentary
+                    work
+                  </RadioLabel>
+                  <RadioLabel>
+                    <Field
+                      value="1.375"
+                      type="radio"
+                      name="activity"
+                      as={CustomRadioInput}
+                    />
+                    1.375 - if you do short runs or light gymnastics 1-3 times a
+                    week
+                  </RadioLabel>
+                  <RadioLabel>
+                    <Field
+                      value="1.55"
+                      type="radio"
+                      name="activity"
+                      as={CustomRadioInput}
+                    />
+                    1.55 - if you play sports with average loads 3-5 times a
+                    week
+                  </RadioLabel>
+                  <RadioLabel>
+                    <Field
+                      value="1.725"
+                      type="radio"
+                      name="activity"
+                      as={CustomRadioInput}
+                    />
+                    1.725 ​​- if you train fully 6-7 times a week
+                  </RadioLabel>
+                  <RadioLabel>
+                    <Field type="radio" name="activity" as={CustomRadioInput} />
+                    1.9 - if your work is related to physical labor, you train 2
+                    times a day and include strength exercises in your training
+                    program
+                  </RadioLabel>
+                </ActivityContainer>
+              </label>
+              <ButtonContainer>
+                <SaveButton type="submit">Save</SaveButton>
+                <CancelButton
+                  type="reset"
+                  onClick={() => setSelectedFile(null)}
+                >
+                  Cancel
+                </CancelButton>
+              </ButtonContainer>
+            </StyledForm>
+          )}
+        </Formik>
       )}
     </>
   );
 };
-
-// <div>
-//   <Formik
-//     initialValues={{
-//       userName: '',
-//       photo: '',
-//       age: '',
-//       gender:'',
-//       height: '',
-//       weight: '',
-//       activity: '',
-//     }}
-//     onSubmit={fn}
-//   >
-//     <Form>
-//       <p><label htmlFor="userName">Your name</label></p>
-//       <p><Field id="userName" name="userName" placeholder="Jane" /></p>
-
-//       <p><label htmlFor="photo">Your photo</label></p>
-//       <p><Field id="photo" name="photo" placeholder="Doe" /></p>
-
-//       <p><label htmlFor="age">Your age</label></p>
-//       <p><Field id="age" name="age" placeholder="Doe" /></p>
-
-//       <div id="userGender">Gender</div>
-//         <p><div role="group" aria-labelledby="my-radio-group">
-//           <label>
-//             <Field type="radio" name="gender" value="male" />
-//             Male
-//           </label>
-//           <label>
-//             <Field type="radio" name="gender" value="female" />
-//             Female
-//           </label>
-//         </div></p>
-
-//       <p><label htmlFor="height">Height</label></p>
-//       <p><Field id="height" name="height" placeholder="height" /></p>
-
-//       <p><label htmlFor="weight">Weight</label></p>
-//       <p><Field id="weight" name="weight" placeholder="weight" /></p>
-
-//       <div id="activity">Your activity</div>
-//         <p><div role="group" aria-labelledby="my-radio-group">
-//           <p><label>
-//             <Field type="radio" name="activity" value="1.2" />
-//             1.2 - if you do not have physical activity and sedentary work
-//           </label></p>
-//           <p><label>
-//             <Field type="radio" name="activity" value="1.375" />
-//             1,375 - if you do short runs or light gymnastics 1-3 times a week
-//           </label></p>
-//           <p><label>
-//             <Field type="radio" name="activity" value="1.55" />
-//             1.55 - if you play sports with average loads 3-5 times a week
-//           </label></p>
-//           <p><label>
-//             <Field type="radio" name="activity" value="1.725" />
-//             1,725 ​​- if you train fully 6-7 times a week
-//           </label></p>
-//           <p><label>
-//             <Field type="radio" name="activity" value="1.9" />
-//             1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program
-//           </label></p>
-//         </div></p>
-
-//       <p><button type="submit">Save</button></p>
-//       <button type="button">Cancel</button>
-//     </Form>
-//   </Formik>
-// </div>
 
 export default UserInformation;
