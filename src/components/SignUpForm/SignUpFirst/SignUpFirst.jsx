@@ -63,7 +63,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           onSubmit={handleSubmit}
           validationSchema={signupSchema}
         >
-          {() => (
+          {({ errors, thouched }) => (
             <FormStyle autoComplete="off">
               <InputBox>
                 <label htmlFor="name" />
@@ -86,7 +86,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   required
                 />
               </InputBox>
-              <ErrorMessage name="email" component="div" />
+              <ErrorMessage name="email">
+                {msg => (<div>{msg}</div>)}
+              </ErrorMessage>
 
               <InputBox>
                 <label htmlFor="password" />
