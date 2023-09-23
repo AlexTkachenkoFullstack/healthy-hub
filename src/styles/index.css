@@ -1,4 +1,4 @@
-:root{
+:root {
   /* COLOR */
   --bg-primary: rgba(5, 5, 5, 1);
   --bg-secondary: rgba(15, 15, 15, 1);
@@ -10,21 +10,19 @@
   --text-color-button-grey: rgba(182, 182, 182, 1);
   --text-color-active-page-green: rgba(227, 255, 168, 1);
 
-  --icon-color-green:rgba(227, 255, 168, 1);
+  --icon-color-green: rgba(227, 255, 168, 1);
   --icon-color-white: rgba(255, 255, 255, 1);
 
-  --water-color:rgba(182, 195, 255, 1);
+  --water-color: rgba(182, 195, 255, 1);
   --calories-donut-color: rgba(69, 255, 188, 1);
-  --carbonohidrates-donut-color:rgba(255, 196, 247, 1);
-  --protein-donut-color:rgba(255, 243, 183, 1);
-  --fat-donut-color:rgba(182, 182, 182, 1);
+  --carbonohidrates-donut-color: rgba(255, 196, 247, 1);
+  --protein-donut-color: rgba(255, 243, 183, 1);
+  --fat-donut-color: rgba(182, 182, 182, 1);
 
-  --input-border-color-normal:rgba(227, 255, 168, 1);
+  --input-border-color-normal: rgba(227, 255, 168, 1);
   --input-border-color-error: rgba(231, 74, 59, 1);
   --input-border-color-correct: rgba(60, 188, 129, 1);
 }
-
-
 
 html {
   scroll-behavior: smooth;
@@ -38,7 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
-  color:var(--text-color-primary-white);
+  color: var(--text-color-primary-white);
 }
 
 ul {
@@ -72,8 +70,9 @@ img {
   height: auto;
 }
 
-button{
+button {
   cursor: pointer;
+  font-family: inherit;
 }
 
 .container {

@@ -1,5 +1,4 @@
 import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
 import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
 import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
 
@@ -19,12 +18,7 @@ import {
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
-
-const schema = yup.object().shape({
-  name: yup.string().required('Please enter name'),
-  email: yup.string().email().required('Enter correct email'),
-  password: yup.string().required('Password is required'),
-});
+import { signupSchema } from '../validationLibs';
 
 const initialValues = {
   name: '',
@@ -34,25 +28,30 @@ const initialValues = {
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const handleSubmit = async ({ name, email, password }) => {
-    const res = await checkEmail(email);
+    const res = await checkEmail(email.toLowerCase());
     const { message, status } = res.data;
     if (!(message === 'Accept for registration' && status === 'available')) {
       <ErrorMessage name="email" />;
     }
     setName(name);
-    setEmail(email);
+    setEmail(email.toLowerCase());
     setPassword(password);
     goNext();
   };
 
-    const isRetinaDisplay =
-      window.matchMedia &&
-      window.matchMedia(
-        '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
-      ).matches;
+  const togglePass = () => {
+    const pass = document.getElementById('password');
+    pass.type === 'password' ? (pass.type = 'text') : (pass.type = 'password');
+  };
 
-     const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
-    
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
+
   return (
     <SignUpFirstContainer>
       <Image src={image} alt="Sport and fitness tracker" />
@@ -62,8 +61,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
-          validationSchema={schema}
+          validationSchema={signupSchema}
         >
+         signup-style-new-fix
           <FormStyle autoComplete="off">
             <InputBox>
               <label htmlFor="name" />

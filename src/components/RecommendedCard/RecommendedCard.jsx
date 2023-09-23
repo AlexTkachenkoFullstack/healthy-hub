@@ -8,12 +8,12 @@ import {
 } from './RecommendedCard.styled';
 
 export const RecommendedCard = ({ info }) => {
-  const { name, amount, img: image, calories } = info;
+  const { name, amount, img, calories } = info;
 
   return (
     <Card>
       <CardImage>
-        <img src={image} alt="name" />
+        <img src={img} alt="name" />
       </CardImage>
 
       <InfoWrap>

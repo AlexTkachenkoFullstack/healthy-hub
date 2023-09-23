@@ -17,18 +17,35 @@ import {
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
 import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
+import { genderAgeSchema } from '../validationLibs';
+import { useEffect } from 'react';
 
+const AgeAndGender = ({
+  goNext,
+  goBack,
+  setAge,
+  setGender,
+  dataGender,
+  dataAge,
+}) => {
+  useEffect(() => {
+    const selectorString = 'input[type="radio"][value="' + dataGender + '"]';
+    const checkedButton = document.querySelector(selectorString);
+    if (!checkedButton) {
+      return;
+    }
+    checkedButton.checked = true;
+  }, [dataGender]);
 
-const initialValues = {
-  gender: '',
-  age: '',
-};
+  const initialValues = {
+    gender: '',
+    age: '',
+  };
 
-const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
   const handleSubmit = (values, actions) => {
     const { age, gender } = values;
     setAge(age);
-    setGender(gender);
+    setGender(gender.toLowerCase());
     goNext();
   };
 
@@ -39,10 +56,13 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
     ).matches;
 
   const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
-    
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={genderAgeSchema}
+    >
       <AgeAndGenderContainer>
         <Image src={image} alt="Elder fitness" />
         <Form>
@@ -62,6 +82,7 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
                   name="gender"
                   value="male"
                   as={CustomRadioInput}
+                  required
                 />
                 Male
               </Label>
@@ -71,6 +92,7 @@ const AgeAndGender = ({ goNext, goBack, setAge, setGender }) => {
                   name="gender"
                   value="female"
                   as={CustomRadioInput}
+                  required
                 />
                 Female
               </Label>

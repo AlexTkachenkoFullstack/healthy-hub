@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
+import errorIcon from '../../../assets/images/icons/error.svg';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -111,10 +113,27 @@ export const Date = styled.p`
   font-weight: 500;
 `;
 
-export const WeightForm = styled.form`
+export const WeightForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    content: '';
+    display: ${({ $showIcon }) => $showIcon};
+    width: 16px;
+    height: 16px;
+    background-image: url('${errorIcon}');
+
+    @media (min-width: 834px) {
+      bottom: 29px;
+      left: 140px;
+    }
+  }
 
   @media (min-width: 834px) {
     flex-direction: row;
@@ -141,7 +160,7 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const WeightInput = styled.input`
+export const WeightInput = styled(Field)`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -153,6 +172,11 @@ export const WeightInput = styled.input`
   background: var(--bg-primary);
   border: 1px solid var(--bg-button-color);
   outline: none;
+  border: ${({ borderstyle }) => borderstyle};
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   &::placeholder {
     color: var(--text-color-secondary-grey);
@@ -164,7 +188,7 @@ export const WeightInput = styled.input`
   }
 `;
 
-export const ErrorMessage = styled.p`
+export const ErrorText = styled.p`
   color: var(--input-border-color-error);
   font-size: 12px;
   line-height: 1.17;
