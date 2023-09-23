@@ -6,7 +6,6 @@ import {
   ProductsList,
 } from './RecommendedFoodPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { getRecommendedFood } from 'redux/recommendedFood/selectors';
 import { fetchRecommendedFood } from 'redux/recommendedFood/operations';
 import { RecommendedCard } from 'components/RecommendedCard';
@@ -18,9 +17,9 @@ const RecommendedFoodPage = () => {
   const dispatch = useDispatch();
   const recommendedFood = useSelector(getRecommendedFood);
 
-  useEffect(() => {
+  if (!recommendedFood) {
     dispatch(fetchRecommendedFood());
-  }, [dispatch]);
+  }
 
   return (
     <RecommendedFood>
