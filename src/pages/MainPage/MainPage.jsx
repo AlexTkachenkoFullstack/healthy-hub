@@ -13,6 +13,7 @@ import {
   ElementsWrapper,
   GoalLink,
   LinkWrapper,
+  MainContainer,
   MainTitle,
   TitleWrapper,
 } from './MainPage.styled';
@@ -31,7 +32,7 @@ const MainPage = () => {
   }, [isOpenModal]);
 
   return (
-    <>
+    <MainContainer>
       <TitleWrapper>
         <MainTitle>Today</MainTitle>
         <LinkWrapper>
@@ -50,7 +51,7 @@ const MainPage = () => {
         <RecommendedFood />
       </DiaryAndRecommendFoodWrap>
       {isOpenModal && <AddWaterIntakeModal handleModal={toggleIsOpenModal} />}
-    </>
+    </MainContainer>
   );
 };
 
