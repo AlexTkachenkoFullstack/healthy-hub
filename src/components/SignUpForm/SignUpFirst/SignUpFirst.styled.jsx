@@ -6,9 +6,6 @@ export const SignUpFirstContainer = styled.div`
   background-color: var(--bg-primary);
   padding: 24px 0;
 
-  /* потім margin прибрати*/
-  /* margin-top: 60px; */
-
   @media (min-width: 834px) {
     padding: 40px 0;
     display: flex;
@@ -64,11 +61,10 @@ export const Text = styled.p`
   }
 `;
 
-export const InputBox = styled.div`
+export const InputBox = styled.label`
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
- 
 `;
 
 export const InputText = styled(Field)`
@@ -83,10 +79,9 @@ export const InputText = styled(Field)`
   outline: none;
   padding: 8px 10px;
   width: 300px;
-  :hover{
-    color:var(--text-color-primary-white);
-  } 
-  
+  :hover {
+    color: var(--text-color-primary-white);
+  }
 `;
 
 export const InputButton = styled.button`

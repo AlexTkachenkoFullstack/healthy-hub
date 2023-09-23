@@ -28,15 +28,20 @@ const initialValues = {
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const handleSubmit = async ({ name, email, password }) => {
-    const res = await checkEmail(email.toLowerCase());
-    const { message, status } = res.data;
-    if (!(message === 'Accept for registration' && status === 'available')) {
-      <ErrorMessage name="email" />;
+    try {
+      const res = await checkEmail(email.toLowerCase());
+
+      const { message, status } = res.data;
+      if (!(message === 'Accept for registration' && status === 'available')) {
+        <ErrorMessage name="email">{msg => <div>{msg}</div>}</ErrorMessage>;
+      }
+      setName(name);
+      setEmail(email.toLowerCase());
+      setPassword(password);
+      goNext();
+    } catch (error) {
+      console.log(error.response.data.message);
     }
-    setName(name);
-    setEmail(email.toLowerCase());
-    setPassword(password);
-    goNext();
   };
 
   const togglePass = () => {
@@ -63,43 +68,62 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           onSubmit={handleSubmit}
           validationSchema={signupSchema}
         >
-          {({ errors, thouched }) => (
+          {({ errors, touched }) => (
             <FormStyle autoComplete="off">
-              <InputBox>
-                <label htmlFor="name" />
+              <InputBox
+                htmlFor="name"
+                $showIcon={errors.name && touched.name ? 'block' : 'none'}
+              >
                 <InputText
                   type="text"
                   id="name"
                   name="name"
                   placeholder="Name"
-                  required
+                  borderstyle={
+                    errors.waterIntake && touched.waterIntake
+                      ? '1px solid red'
+                      : ''
+                  }
                 />
               </InputBox>
               <ErrorMessage name="name" component="div" />
-              <InputBox>
-                <label htmlFor="email" />
+              <InputBox
+                htmlFor="email"
+                $showIcon={errors.name && touched.name ? 'block' : 'none'}
+              >
                 <InputText
                   type="email"
                   id="email"
                   name="email"
                   placeholder="E-mail"
-                  required
+                  borderstyle={
+                    errors.waterIntake && touched.waterIntake
+                      ? '1px solid red'
+                      : ''
+                  }
                 />
               </InputBox>
               <ErrorMessage name="email">
-                {msg => (<div>{msg}</div>)}
+                {msg => <div>{msg}</div>}
               </ErrorMessage>
 
-              <InputBox>
-                <label htmlFor="password" />
+              <InputBox
+                htmlFor="password"
+                $showIcon={errors.name && touched.name ? 'block' : 'none'}
+              >
                 <InputText
                   type="password"
                   id="password"
                   name="password"
                   placeholder="Password"
-                  required
+                  borderstyle={
+                    errors.waterIntake && touched.waterIntake
+                      ? '1px solid red'
+                      : ''
+                  }
                 />
               </InputBox>
+
               <button type="button" onClick={togglePass}>
                 Show
               </button>
