@@ -37,6 +37,7 @@ export const goalSchema = yup.object().shape({
 });
 
 export const genderAgeSchema = yup.object().shape({
+  gender: yup.string().required('Choose on of ...'),
   age: yup
     .number('Must be a number from 1 to 200')
     .label('Age')
@@ -54,8 +55,10 @@ export const bodyParamSchema = yup.object().shape({
   weight: yup
     .number('Must be a number from 1 to 300')
     .label('Weight')
-    .min(1, 'Must be a number from 1 to 300')
-    .max(300, 'Must be a number from 1 to 200'),
+    .min(1, 'Must be a number from 1 to 400')
+    .max(300, 'Must be a number from 1 to 400'),
 });
 
-export const activitySchema = yup.object().shape({});
+export const activitySchema = yup.object().shape({
+  activity: yup.string().required('Choose on of ...'),
+});
