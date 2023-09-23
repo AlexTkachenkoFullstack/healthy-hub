@@ -51,44 +51,46 @@ const BodyParameters = ({
         onSubmit={handleSubmit}
         validationSchema={bodyParamSchema}
       >
-        <Form>
-          <BodyParametersHeader>Body parameters</BodyParametersHeader>
-          <Text>Enter your parameters for correct performance tracking</Text>
-          <ChooseText>Height</ChooseText>
-          <InputBox>
-            <label htmlFor="height" />
-            <InputText
-              name="height"
-              type="text"
-              id="height"
-              placeholder="Enter your height"
-              required
-            />
-          </InputBox>
-          <ErrorMessage name="height" type="div" />
+        {({ error, touched }) => (
+          <Form>
+            <BodyParametersHeader>Body parameters</BodyParametersHeader>
+            <Text>Enter your parameters for correct performance tracking</Text>
+            <ChooseText>Height</ChooseText>
+            <InputBox>
+              <label htmlFor="height" />
+              <InputText
+                name="height"
+                type="text"
+                id="height"
+                placeholder="Enter your height"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="height" type="div" />
 
-          <ChooseText>Weight</ChooseText>
+            <ChooseText>Weight</ChooseText>
 
-          <InputBox>
-            <label htmlFor="weight" />
-            <InputText
-              type="text"
-              id="weight"
-              name="weight"
-              placeholder="Enter your weight"
-              required
-            />
-          </InputBox>
-          <ErrorMessage name="weight" />
-          <p>
-            <InputButton type="submit">Next</InputButton>
-          </p>
-          <p>
-            <BackButton type="button" onClick={goBack}>
-              Back
-            </BackButton>
-          </p>
-        </Form>
+            <InputBox>
+              <label htmlFor="weight" />
+              <InputText
+                type="text"
+                id="weight"
+                name="weight"
+                placeholder="Enter your weight"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="weight">{msg => <div>{msg}</div>}</ErrorMessage>
+            <p>
+              <InputButton type="submit">Next</InputButton>
+            </p>
+            <p>
+              <BackButton type="button" onClick={goBack}>
+                Back
+              </BackButton>
+            </p>
+          </Form>
+        )}
       </Formik>
     </BodyParametersContainer>
   );
