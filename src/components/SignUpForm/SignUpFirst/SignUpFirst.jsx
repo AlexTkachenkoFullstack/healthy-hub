@@ -91,11 +91,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   id="name"
                   name="name"
                   placeholder="Name"
-                  borderstyle={
-                    errors.waterIntake && touched.waterIntake
-                      ? '1px solid red'
-                      : ''
-                  }
+                  borderColor={errors.name && touched.name ? 'red' : ''}
                 />
               </InputBox>
               <ErrorMessage name="name">
@@ -103,37 +99,34 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
               </ErrorMessage>
               <InputBox
                 htmlFor="email"
-                $showIcon={errors.name && touched.name ? 'block' : 'none'}
+                // $showIcon={errors.name && touched.name ? 'block' : 'none'}
               >
                 <InputText
                   type="email"
                   id="email"
                   name="email"
                   placeholder="E-mail"
-                  borderstyle={
-                    errors.waterIntake && touched.waterIntake
-                      ? '1px solid red'
-                      : ''
+                  borderStyle={
+                    errors.email && touched.email ? '1px solid #E74A3B' : ''
                   }
                 />
               </InputBox>
               <ErrorMessage name="email">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
+
               <InputBox
                 htmlFor="password"
-                $showIcon={errors.name && touched.name ? 'block' : 'none'}
+                $showIcon={
+                  errors.password && touched.password ? 'block' : 'none'
+                }
               >
                 <InputText
                   type="password"
                   id="password"
                   name="password"
                   placeholder="Password"
-                  borderstyle={
-                    errors.waterIntake && touched.waterIntake
-                      ? '1px solid red'
-                      : ''
-                  }
+                  borderColor={errors.password && touched.password ? 'red' : ''}
                 />
               </InputBox>
               <ErrorMessage name="password">
