@@ -23,7 +23,7 @@ import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
 import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
-import SuccessButton from '../SuccessButton/SuccessButton';
+import SuccessButton from '../InputSuccessIcon/InputSuccessIcon';
 
 const initialValues = {
   name: '',
@@ -34,6 +34,7 @@ const initialValues = {
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
