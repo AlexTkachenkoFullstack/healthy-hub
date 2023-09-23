@@ -63,7 +63,6 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
                 name="goal"
                 value="lose fat"
                 as={CustomRadioInput}
-                required
                 checked
               />
               Lose fat
@@ -74,7 +73,6 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
                 name="goal"
                 value="maintain"
                 as={CustomRadioInput}
-                required
               />
               Maintain
             </Label>
@@ -84,8 +82,6 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
                 name="goal"
                 value="gain muscle"
                 as={CustomRadioInput}
-                required
-                checked
               />
               Gain Muscle
             </Label>
