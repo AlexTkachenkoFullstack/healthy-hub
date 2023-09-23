@@ -151,4 +151,19 @@ export const FinishBlock = styled.div`
   }
 `;
 
-export const QuestionForm = styled.div``;
+export const ErrorText = styled.div`
+  position: absolute;
+  top: 69px;
+  left: 0;
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  padding-left: 10px;
+
+  @media screen and (min-width: 834px) {
+    left: 25px;
+  }
+`;
