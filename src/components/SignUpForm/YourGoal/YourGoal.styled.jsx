@@ -152,3 +152,7 @@ export const CustomRadioInput = styled.input`
     transform: scale(1);
   }
 `;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+`;
