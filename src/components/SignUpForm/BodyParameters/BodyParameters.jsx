@@ -56,28 +56,24 @@ const BodyParameters = ({
             <BodyParametersHeader>Body parameters</BodyParametersHeader>
             <Text>Enter your parameters for correct performance tracking</Text>
             <ChooseText>Height</ChooseText>
-            <InputBox>
-              <label htmlFor="height" />
+            <InputBox htmlFor="height">
               <InputText
                 name="height"
                 type="text"
                 id="height"
                 placeholder="Enter your height"
-                required
               />
             </InputBox>
-            <ErrorMessage name="height" type="div" />
+            <ErrorMessage name="height">{msg => <div>{msg}</div>}</ErrorMessage>
 
             <ChooseText>Weight</ChooseText>
 
-            <InputBox>
-              <label htmlFor="weight" />
+            <InputBox htmlFor="weight">
               <InputText
                 type="text"
                 id="weight"
                 name="weight"
                 placeholder="Enter your weight"
-                required
               />
             </InputBox>
             <ErrorMessage name="weight">{msg => <div>{msg}</div>}</ErrorMessage>
