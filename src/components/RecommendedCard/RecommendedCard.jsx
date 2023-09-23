@@ -13,6 +13,7 @@ export const RecommendedCard = ({ info }) => {
   const { name, amount, img: image, calories } = info;
   const onError = e => (e.target.src = noImage);
 
+
   return (
     <Card>
       <CardImage>

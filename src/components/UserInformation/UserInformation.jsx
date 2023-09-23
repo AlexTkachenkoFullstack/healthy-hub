@@ -19,6 +19,8 @@ import {
 import * as yup from 'yup';
 import sprite from '../../assets/images/icons/icons.svg';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateProfileThunk, updateAvatarThunk } from 'redux/auth/operations';
 
 export const schema = yup.object({
   userName: yup.string().required('Please Enter your name'),
@@ -41,6 +43,7 @@ export const schema = yup.object({
 
 const UserInformation = ({ user }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const dispatch = useDispatch();
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -59,28 +62,20 @@ const UserInformation = ({ user }) => {
   }) => {
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('avatar', selectedFile);
+      formData.append('avatarURL', selectedFile);
 
-      console.log(
-        selectedFile,
-        userName,
-        age,
-        gender,
-        height,
-        weight,
-        activity
-      );
-    } else {
-      console.log(
-        userName,
-        user.avatarURL,
-        age,
-        gender,
-        height,
-        weight,
-        activity
-      );
+      dispatch(updateAvatarThunk(formData));
     }
+    dispatch(
+      updateProfileThunk({
+        name: userName,
+        age: age,
+        height: height,
+        gender: gender,
+        weight: weight,
+        activity: Number(activity),
+      })
+    );
   };
 
   return (
@@ -101,7 +96,11 @@ const UserInformation = ({ user }) => {
         >
           {({ errors, touched }) => (
             <StyledForm>
-              <Label>
+              <Label
+                $showIcon={
+                  errors.userName && touched.userName ? 'block' : 'none'
+                }
+              >
                 Your name
                 <div>
                   <Input
@@ -119,7 +118,7 @@ const UserInformation = ({ user }) => {
                 </div>
               </Label>
 
-              <Label>
+              <Label $showIcon="none">
                 Your photo
                 <AvatarContainer>
                   {selectedFile ? (
@@ -142,11 +141,11 @@ const UserInformation = ({ user }) => {
                   />
                 </AvatarContainer>
               </Label>
-              <Label>
+              <Label $showIcon={errors.age && touched.age ? 'block' : 'none'}>
                 Your age
                 <div>
                   <Input
-                    type="text"
+                    type="number"
                     name="age"
                     borderstyle={
                       errors.age && touched.age
@@ -159,7 +158,7 @@ const UserInformation = ({ user }) => {
                   </ErrorMessage>
                 </div>
               </Label>
-              <Label>
+              <Label $showIcon="none">
                 Gender
                 <RadioContainer role="group">
                   <RadioLabel>
@@ -182,11 +181,13 @@ const UserInformation = ({ user }) => {
                   </RadioLabel>
                 </RadioContainer>
               </Label>
-              <Label>
+              <Label
+                $showIcon={errors.height && touched.height ? 'block' : 'none'}
+              >
                 Height
                 <div>
                   <Input
-                    type="text"
+                    type="number"
                     name="height"
                     borderstyle={
                       errors.height && touched.height
@@ -199,11 +200,13 @@ const UserInformation = ({ user }) => {
                   </ErrorMessage>
                 </div>
               </Label>
-              <Label>
+              <Label
+                $showIcon={errors.weight && touched.weight ? 'block' : 'none'}
+              >
                 Weight
                 <div>
                   <Input
-                    type="text"
+                    type="number"
                     name="weight"
                     borderstyle={
                       errors.weight && touched.weight
@@ -259,7 +262,12 @@ const UserInformation = ({ user }) => {
                     1.725 ​​- if you train fully 6-7 times a week
                   </RadioLabel>
                   <RadioLabel>
-                    <Field type="radio" name="activity" as={CustomRadioInput} />
+                    <Field
+                      value="1.9"
+                      type="radio"
+                      name="activity"
+                      as={CustomRadioInput}
+                    />
                     1.9 - if your work is related to physical labor, you train 2
                     times a day and include strength exercises in your training
                     program

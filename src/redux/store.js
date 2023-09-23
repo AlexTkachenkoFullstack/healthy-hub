@@ -18,7 +18,7 @@ import { caloriesGoalSlice} from "./dialyGoalCalories/slice";
 import { statisticsSlice } from "./statistic/slice";
  
 const persistConfig = {
-  key: 'user',
+  key: 'userRoot',
   storage,
   whitelist: ['token']
 }

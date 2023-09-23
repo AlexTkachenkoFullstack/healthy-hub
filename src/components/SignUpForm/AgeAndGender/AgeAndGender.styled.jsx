@@ -3,13 +3,10 @@ import { Field } from 'formik';
 
 export const AgeAndGenderContainer = styled.div`
   background-color: var(--bg-primary);
-  padding: 24px 0;
-
-  /* потім margin прибрати*/
-  margin-top: 60px;
+  padding-top: 24px;
 
   @media (min-width: 834px) {
-    padding: 40px 0;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +14,7 @@ export const AgeAndGenderContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
+    align-items:flex-start;
     gap: 104px;
   }
 `;
@@ -25,8 +23,6 @@ export const Image = styled.img`
   width: 300px;
   height: 288px;
   margin-bottom: 24px;
-
-  margin: 0 auto;
   display: block;
 
   @media (min-width: 834px) {
@@ -58,6 +54,7 @@ export const AgeAndGenderHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
+    padding-top:80px;
   }
 `;
 
