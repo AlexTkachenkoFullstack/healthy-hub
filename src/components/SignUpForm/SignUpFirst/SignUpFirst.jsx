@@ -15,7 +15,7 @@ import {
   SignInText,
   FinishBlock,
   QuestionForm,
-  ErrorText,
+  ValidationError,
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
@@ -84,7 +84,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
             <FormStyle autoComplete="off">
               <InputBox
                 htmlFor="name"
-                $showIcon={errors.name && touched.name ? 'block' : 'none'}
+                // $showIcon={errors.name && touched.name ? 'block' : 'none'}
               >
                 <InputText
                   type="text"
@@ -97,11 +97,10 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                       : ''
                   }
                 />
-                <ErrorMessage name="name">
-                  {msg => <ErrorText>{msg}</ErrorText>}
-                </ErrorMessage>
               </InputBox>
-
+              <ErrorMessage name="name">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
               <InputBox
                 htmlFor="email"
                 $showIcon={errors.name && touched.name ? 'block' : 'none'}
@@ -117,11 +116,10 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                       : ''
                   }
                 />
-                <ErrorMessage name="email">
-                  {msg => <ErrorText>{msg}</ErrorText>}
-                </ErrorMessage>
               </InputBox>
-
+              <ErrorMessage name="email">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
               <InputBox
                 htmlFor="password"
                 $showIcon={errors.name && touched.name ? 'block' : 'none'}
@@ -137,10 +135,10 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                       : ''
                   }
                 />
-                <ErrorMessage name="password">
-                  {msg => <ErrorText>{msg}</ErrorText>}
-                </ErrorMessage>
               </InputBox>
+              <ErrorMessage name="password">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
 
               <button type="button" onClick={togglePass}>
                 Show

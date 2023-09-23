@@ -168,4 +168,8 @@ export const ErrorText = styled.div`
   }
 `;
 
+export const ValidationError = styled.span`
+  color: #e74a3b;
+`;
+
 export const QuestionForm = styled.div``;
