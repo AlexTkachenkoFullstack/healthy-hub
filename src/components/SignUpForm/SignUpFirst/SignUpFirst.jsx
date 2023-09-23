@@ -63,54 +63,50 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           onSubmit={handleSubmit}
           validationSchema={signupSchema}
         >
-          {() => (
-            <FormStyle autoComplete="off">
-              <InputBox>
-                <label htmlFor="name" />
-                <InputText
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  required
-                />
-              </InputBox>
-              <ErrorMessage name="name" component="div" />
-              <InputBox>
-                <label htmlFor="email" />
-                <InputText
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="E-mail"
-                  required
-                />
-              </InputBox>
-              <ErrorMessage name="email" component="div" />
-
-              <InputBox>
-                <label htmlFor="password" />
-                <InputText
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                />
-              </InputBox>
-              <button type="button" onClick={togglePass}>
-                Show
-              </button>
-              <ErrorMessage name="password" component="div" />
-              <InputButton type="submit">Sign Up</InputButton>
-            </FormStyle>
-          )}
-        </Formik>
-        <FinishBlock>
-          <TextInEnd>Do you already have an account?</TextInEnd>
-          <SignInText to="/signin">Sign in</SignInText>
-        </FinishBlock>
+         signup-style-new-fix
+          <FormStyle autoComplete="off">
+            <InputBox>
+              <label htmlFor="name" />
+              <InputText
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="name" />
+            <InputBox>
+              <label htmlFor="email" />
+              <InputText
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="email" />
+            <InputBox>
+              <label htmlFor="password" />
+              <InputText
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="password" />
+            <InputButton type="submit">Sign Up</InputButton>
+          </FormStyle>
+              </Formik>
+         <FinishBlock>
+        <TextInEnd>Do you already have an account?</TextInEnd>
+        <SignInText to="/signin">Sign in</SignInText>
+      </FinishBlock>     
       </QuestionForm>
+      
     </SignUpFirstContainer>
   );
 };
