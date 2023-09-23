@@ -27,6 +27,11 @@ const handleFulfild = (state) => {
     state.error = null;
 }
 
+const handleRejected = (state, action) => {
+    state.isLoading = false;
+    state.error=action.payload
+}
+
 const handleFulfildReg = (state, action) => {
     handleFulfild(state)
     state.user = {...state.user, ...action.payload.user};
@@ -52,9 +57,9 @@ const handleFulfildRefresh = (state, action) => {
     state.dateLastWeight=action.payload.dateLastWeight
 }
 
-const handleRejected = (state, action) => {
-    state.isLoading = false;
-    state.error=action.payload
+const handleRejectedRefresh=(state, action)=>{
+    handleRejected(state, action)
+    state.token=null
 }
 
 const handleFulfildUpdateGoal=(state, action)=>{
@@ -96,11 +101,12 @@ export const authSlice = createSlice({
                 handleRejected()
             })
             .addCase(refreshThunk.fulfilled, handleFulfildRefresh)
+            .addCase(refreshThunk.rejected, handleRejectedRefresh)
             .addCase(updateGoalThunk.fulfilled, handleFulfildUpdateGoal)
             .addCase(updateWeightThunk.fulfilled, handleFulfildUpdateWeight)
             .addCase(updateProfileThunk.fulfilled, handleFulfildUpdateProfile)
             .addCase(updateAvatarThunk.fulfilled, handleFulfildUpdateAvatar)
             .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending, refreshThunk.pending, updateGoalThunk.pending, updateWeightThunk.pending, updateProfileThunk.pending, updateAvatarThunk.pending), handlePending)
-            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected, updateAvatarThunk.rejected), handleRejected)
+            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected, updateAvatarThunk.rejected), handleRejected)
     }
 })
