@@ -7,7 +7,6 @@ import {
   WeigthItem,
 } from '../../DashboardPage.styled';
 
-import { MonthWeightSet } from '../../../../utils/DashBoard/TempData/MonthWeightSet';
 import { YearWeightSet } from '../../../../utils/DashBoard/TempData/YearWeightSet';
 
 export const Weight = ({ name }) => {
