@@ -4,9 +4,13 @@ import { CloseButton } from './CloseModalButton.styled';
 export default function CloseModalButton({ onClose }) {
   return (
     <CloseButton onClick={onClose}>
-      <svg width="16" height="16" stroke="red">
-        <use href={closeIcon} />
-      </svg>
+      <img
+        src={closeIcon}
+        alt="Close button"
+        width="16"
+        height="16"
+        stroke="red"
+      />
     </CloseButton>
   );
 }
