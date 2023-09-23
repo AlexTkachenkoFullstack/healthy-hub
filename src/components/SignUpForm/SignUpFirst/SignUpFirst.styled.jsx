@@ -15,6 +15,7 @@ export const SignUpFirstContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     gap: 104px;
   }
 `;
@@ -26,7 +27,7 @@ export const Image = styled.img`
   @media (min-width: 834px) {
     width: 380px;
     height: 376px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
   @media (min-width: 1440px) {
     width: 592px;
@@ -45,6 +46,11 @@ export const MainHeader = styled.h1`
   @media (min-width: 834px) {
     font-size: 30px;
     line-height: 1.2;
+    text-align: center;
+    margin-bottom: 16px;
+    @media (min-width: 1440px) {
+      text-align: left;
+    }
   }
 `;
 
@@ -57,7 +63,7 @@ export const Text = styled.p`
   margin-bottom: 24px;
   @media (min-width: 834px) {
     font-size: 22px;
-    line-height: 1.44;
+    line-height: 1.45;
   }
 `;
 
@@ -93,6 +99,7 @@ export const InputButton = styled.button`
   outline: none;
   background: var(--text-color-active-page-green);
   padding: 8px 10px;
+  margin-bottom: 80px;
 
   color: var(--bg-primary);
   text-align: center;
@@ -103,10 +110,12 @@ export const InputButton = styled.button`
   line-height: 1.43;
 
   @media (min-width: 834px) {
-    width: 420px;
+    margin-bottom: 238px;
+    width: 380px;
   }
 
   @media (min-width: 1440px) {
+    margin-bottom: 192px;
     width: 212px;
   }
 `;
@@ -115,14 +124,12 @@ export const FormStyle = styled(Form)`
   display: flex;
   gap: 16px;
   flex-direction: column;
-  margin-bottom: 80px;
 
   @media (min-width: 834px) {
-    margin-bottom: 238px;
+    width: 380px;
   }
 
   @media (min-width: 1440px) {
-    margin-bottom: 208px;
     width: 212px;
   }
 `;
@@ -150,6 +157,7 @@ export const FinishBlock = styled.div`
   gap: 16px;
   flex-direction: column;
   @media (min-width: 834px) {
+    width: 380px;
     flex-direction: row;
   }
 `;
@@ -162,5 +170,14 @@ export const ValidationError = styled.span`
   line-height: 1.17;
 `;
 
-
-export const QuestionForm = styled.div``;
+export const QuestionForm = styled.div`
+  @media (min-width: 834px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  @media (min-width: 1440px) {
+    padding-top: 80px;
+    align-items: flex-start;
+  }
+`;

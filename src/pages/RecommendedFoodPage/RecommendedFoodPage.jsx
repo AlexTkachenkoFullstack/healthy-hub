@@ -17,7 +17,6 @@ import RecommendedFoodPhoto from '../../assets/images/ketogenic-diet.png';
 const RecommendedFoodPage = () => {
   const dispatch = useDispatch();
   const recommendedFood = useSelector(getRecommendedFood);
-  const recommendedProducts = randomArray(recommendedFood, 10);
 
   useEffect(() => {
     dispatch(fetchRecommendedFood());
@@ -25,18 +24,20 @@ const RecommendedFoodPage = () => {
 
   return (
     <RecommendedFood>
-      <Title>Recommended Food Page</Title>
+      <Title>Recommended food</Title>
       <DesctopContainer>
         <StyledImg
           srcSet={`${RecommendedFoodPhoto} 1x, ${RecommendedFoodPhoto2x} 2x`}
           src={RecommendedFoodPhoto}
           alt="Profile Setting Photo"
         />
-        <ProductsList>
-          {recommendedProducts.map(product => (
-            <RecommendedCard key={product.name} info={product} />
-          ))}
-        </ProductsList>
+        {recommendedFood && (
+          <ProductsList>
+            {randomArray(recommendedFood, 10).map(product => (
+              <RecommendedCard key={product.name} info={product} />
+            ))}
+          </ProductsList>
+        )}
       </DesctopContainer>
     </RecommendedFood>
   );

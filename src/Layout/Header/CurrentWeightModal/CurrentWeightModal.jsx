@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ import {
   WeightForm,
   SubmitButton,
   WeightInput,
-  ErrorMessage,
+  ErrorText,
   CancelButton,
 } from './CurrentWeightModal.styled';
 import CloseModalButton from '../CloseModalButton/CloseModalButton';
@@ -52,19 +52,11 @@ export default function CurrentWeightModal({ onClose, date }) {
     }
   };
 
-  const onSubmit = ({ weight }, actions) => {
+  const handleSubmit = ({ weight }, actions) => {
     dispatch(updateWeightThunk({ weight }));
     actions.resetForm();
     onClose();
   };
-
-  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      weight: '',
-    },
-    validationSchema: schema,
-    onSubmit,
-  });
 
   return (
     <Overlay onClick={handleOverlayClick}>
@@ -81,36 +73,40 @@ export default function CurrentWeightModal({ onClose, date }) {
             {dateLastWeight === date ? (
               <p>You already recorded your weight today</p>
             ) : (
-              <WeightForm onSubmit={handleSubmit}>
-                <div>
-                  {errors.weight && touched.weight ? (
-                    <>
-                      <WeightInput
-                        placeholder="Enter your weight"
-                        id="weight"
-                        name="weight"
-                        type="text"
-                        onChange={handleChange}
-                        value={values.weight}
-                        style={{
-                          border: '1px solid var(--input-border-color-error)',
-                        }}
-                      />
-                      <ErrorMessage> {errors.weight.slice(0, 30)}</ErrorMessage>
-                    </>
-                  ) : (
-                    <WeightInput
-                      placeholder="Enter your weight"
-                      id="weight"
-                      name="weight"
-                      type="text"
-                      onChange={handleChange}
-                      value={values.weight}
-                    />
-                  )}
-                </div>
-                <SubmitButton type="submit">Confirm</SubmitButton>
-              </WeightForm>
+              <Formik
+                initialValues={{
+                  weight: '',
+                }}
+                validationSchema={schema}
+                onSubmit={handleSubmit}
+              >
+                {({ errors, touched }) => (
+                  <WeightForm
+                    $showIcon={
+                      errors.weight && touched.weight ? 'block' : 'none'
+                    }
+                  >
+                    <div>
+                      <div>
+                        <WeightInput
+                          name="weight"
+                          type="number"
+                          placeholder="Enter your weight"
+                          borderstyle={
+                            errors.weight && touched.weight
+                              ? '1px solid var(--input-border-color-error)'
+                              : ''
+                          }
+                        />
+                        <ErrorMessage name="weight">
+                          {msg => <ErrorText>{msg}</ErrorText>}
+                        </ErrorMessage>
+                      </div>
+                    </div>
+                    <SubmitButton type="submit">Confirm</SubmitButton>
+                  </WeightForm>
+                )}
+              </Formik>
             )}
             <CancelButton type="button" onClick={onClose}>
               Cancel

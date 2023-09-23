@@ -2,13 +2,10 @@ import styled from 'styled-components';
 
 export const YourGoalContainer = styled.div`
   background-color: var(--bg-primary);
-  padding: 24px 0;
-
-  /* потім margin прибрати*/
-  margin-top: 60px;
+  padding-top: 24px;
 
   @media (min-width: 834px) {
-    padding: 40px 0;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +13,7 @@ export const YourGoalContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
+    align-items:flex-start;
     gap: 104px;
   }
 `;
@@ -51,6 +49,7 @@ export const YourGoalHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
+    margin-top:120px;
   }
 `;
 
@@ -100,7 +99,7 @@ export const LabelBlock = styled.div`
 
 export const InputButton = styled.button`
   border-radius: 12px;
-  /* border: none; */
+  border: none;
   outline: none;
   background: var(--text-color-active-page-green);
   padding: 8px 10px;
