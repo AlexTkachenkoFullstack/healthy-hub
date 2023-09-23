@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import lowQualityImage from '../../../assets/images/summer-hiking.png';
 import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
 
@@ -17,11 +17,11 @@ import {
 import { goalSchema } from '../validationLibs';
 import { useEffect } from 'react';
 
-const initialValues = {
-  goal: '',
-};
-
 const YourGoal = ({ goNext, setGoal, dataGoal }) => {
+  const initialValues = {
+    goal: dataGoal,
+  };
+
   useEffect(() => {
     const selectorString = 'input[type="radio"][value="' + dataGoal + '"]';
     const checkedButton = document.querySelector(selectorString);
@@ -58,7 +58,12 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
           <Text>Choose a goal so that we can help you effectively</Text>
           <LabelBlock role="group" aria-labelledby="goalGroup">
             <Label>
-              <CustomRadioInput type="radio" name="goal" value="lose fat" />
+              <CustomRadioInput
+                type="radio"
+                name="goal"
+                value="lose fat"
+                required
+              />
               Lose fat
             </Label>
             <Label>
@@ -70,7 +75,6 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
               Gain Muscle
             </Label>
           </LabelBlock>
-          <ErrorMessage name="goalGroup" />
           <BlockButton>
             <InputButton type="submit">Next</InputButton>
           </BlockButton>
