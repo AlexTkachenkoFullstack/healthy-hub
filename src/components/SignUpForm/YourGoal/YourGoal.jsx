@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import lowQualityImage from '../../../assets/images/summer-hiking.png';
 import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
 
@@ -17,11 +17,11 @@ import {
 import { goalSchema } from '../validationLibs';
 import { useEffect } from 'react';
 
-const initialValues = {
-  goal: '',
-};
-
 const YourGoal = ({ goNext, setGoal, dataGoal }) => {
+  const initialValues = {
+    goal: dataGoal,
+  };
+
   useEffect(() => {
     const selectorString = 'input[type="radio"][value="' + dataGoal + '"]';
     const checkedButton = document.querySelector(selectorString);
@@ -58,39 +58,23 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
           <Text>Choose a goal so that we can help you effectively</Text>
           <LabelBlock role="group" aria-labelledby="goalGroup">
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="goal"
                 value="lose fat"
-                as={CustomRadioInput}
                 required
-                checked
               />
               Lose fat
             </Label>
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="maintain"
-                as={CustomRadioInput}
-                required
-              />
+              <CustomRadioInput type="radio" name="goal" value="maintain" />
               Maintain
             </Label>
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="gain muscle"
-                as={CustomRadioInput}
-                required
-                checked
-              />
+              <CustomRadioInput type="radio" name="goal" value="gain muscle" />
               Gain Muscle
             </Label>
           </LabelBlock>
-          <ErrorMessage name="goalGroup" />
           <BlockButton>
             <InputButton type="submit">Next</InputButton>
           </BlockButton>

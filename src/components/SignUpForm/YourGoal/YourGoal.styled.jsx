@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
 export const YourGoalContainer = styled.div`
   background-color: var(--bg-primary);
@@ -13,7 +14,7 @@ export const YourGoalContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
-    align-items:flex-start;
+    align-items: flex-start;
     gap: 104px;
   }
 `;
@@ -49,7 +50,7 @@ export const YourGoalHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
-    margin-top:120px;
+    margin-top: 120px;
   }
 `;
 
@@ -133,7 +134,7 @@ export const BlockButton = styled.div`
   }
 `;
 
-export const CustomRadioInput = styled.input`
+export const CustomRadioInput = styled(Field)`
   place-content: center;
   appearance: none;
   background-color: black;
@@ -150,4 +151,8 @@ export const CustomRadioInput = styled.input`
     background-color: rgba(227, 255, 168, 1);
     transform: scale(1);
   }
+`;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
 `;

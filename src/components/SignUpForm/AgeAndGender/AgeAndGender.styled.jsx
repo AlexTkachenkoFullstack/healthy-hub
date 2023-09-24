@@ -79,7 +79,7 @@ export const Text = styled.p`
   }
 `;
 
-export const ExtraContainer = styled.div`
+export const ExtraContainer = styled.label`
   @media (min-width: 834px) {
     padding-left: 30px;
     padding-right: 30px;
@@ -126,7 +126,7 @@ export const LabelBlock = styled.div`
   }
 `;
 
-export const InputBox = styled.div`
+export const InputBox = styled.label`
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
@@ -203,7 +203,7 @@ export const BackButton = styled.button`
   }
 `;
 
-export const CustomRadioInput = styled.input`
+export const CustomRadioInput = styled(Field)`
   place-content: center;
   appearance: none;
   background-color: black;
@@ -220,4 +220,12 @@ export const CustomRadioInput = styled.input`
     background-color: rgba(227, 255, 168, 1);
     transform: scale(1);
   }
+`;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
 `;

@@ -96,7 +96,7 @@ export const ChooseText = styled.p`
   }
 `;
 
-export const InputBox = styled.div`
+export const InputBox = styled.label`
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
@@ -184,4 +184,12 @@ export const BackButton = styled.button`
     height: 36px;
     margin-left: 82px;
   }
+`;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
 `;

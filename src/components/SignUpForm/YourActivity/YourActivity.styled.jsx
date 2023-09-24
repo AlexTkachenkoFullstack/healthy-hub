@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Field } from 'formik';
 
 export const YourActivityContainer = styled.div`
   background-color: var(--bg-primary);
@@ -13,7 +14,7 @@ export const YourActivityContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
-    align-items:flex-start;
+    align-items: flex-start;
     gap: 104px;
   }
 `;
@@ -32,7 +33,7 @@ export const YourActivityHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
-    padding-top:80px;
+    padding-top: 80px;
   }
 `;
 
@@ -79,8 +80,8 @@ export const LabelBlock = styled.div`
   gap: 16px;
 
   @media (min-width: 834px) {
-   align-items:flex-start;
-   width:458px;
+    align-items: flex-start;
+    width: 458px;
   }
 
   @media (min-width: 1440px) {
@@ -101,7 +102,7 @@ export const Label = styled.label`
   gap: 8px;
   justify-items: start;
   @media (min-width: 1440px) {
-   width: 350px;
+    width: 350px;
   }
 `;
 
@@ -146,14 +147,14 @@ export const BackButton = styled.button`
   border: none;
   display: block;
   margin: 0 auto;
-  padding-bottom:24px;
+  padding-bottom: 24px;
 
   @media (min-width: 1440px) {
     height: 36px;
     margin-left: 82px;
   }
 `;
-export const CustomRadioInput = styled.input`
+export const CustomRadioInput = styled(Field)`
   place-content: center;
   appearance: none;
   background-color: black;

@@ -6,19 +6,22 @@ import AgeAndGender from './AgeAndGender';
 import BodyParameters from './BodyParameters';
 import YourActivity from './YourActivity';
 import signUp from './signUp';
+import { ErrorUserModal } from './ErrorUserModal/ErrorUserModal';
 
 const SignUpForm = () => {
   // зберігати у локальний стейт, а на сотанній частині форми зробити submit усіх стейтів
   const [step, setStep] = useState(1);
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [goal, setGoal] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [height, setHeight] = useState(null);
-  const [weight, setWeight] = useState(null);
-  const [age, setAge] = useState(null);
-  const [activity, setActivity] = useState(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [goal, setGoal] = useState('lose fat');
+  const [gender, setGender] = useState('female');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [age, setAge] = useState('');
+  const [activity, setActivity] = useState(1.2);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [errorsMessage, setErrorsMessage] = useState('');
 
   const userRegister = () => {
     const userData = {
@@ -27,23 +30,28 @@ const SignUpForm = () => {
       password,
       goal,
       gender,
-      height,
-      weight,
-      age,
-      activity,
+      height: Number(height),
+      weight: Number(weight),
+      age: Number(age),
+      activity: Number(activity),
     };
-    signUp(userData);
-    setStep(1);
-    setName('');
-    setEmail('');
-    setPassword('');
-    setGoal('');
-    setGender('');
-    setHeight('');
-    setWeight('');
-    setAge('');
-    setActivity('');
-    redirect('/signin');
+    try {
+      signUp(userData);
+      setStep(1);
+      setName('');
+      setEmail('');
+      setPassword('');
+      setGoal('lose fat');
+      setGender('female');
+      setHeight('');
+      setWeight('');
+      setAge('');
+      setActivity(1.2);
+      redirect('/signin');
+    } catch (error) {
+      setErrorsMessage(error);
+      setIsOpenModal(true);
+    }
   };
 
   const handleNextStep = () => {
@@ -51,6 +59,10 @@ const SignUpForm = () => {
   };
   const handlePrevStep = () => {
     setStep(prev => prev - 1);
+  };
+
+  const toggleIsOpenModal = () => {
+    setIsOpenModal(isOpenModal => !isOpenModal);
   };
 
   return (
@@ -114,6 +126,13 @@ const SignUpForm = () => {
         </div>
       )}
       {step >= 6 && userRegister()}
+      {isOpenModal && (
+        <ErrorUserModal
+          isOpenModal={toggleIsOpenModal}
+        >
+          {errorsMessage.message}
+        </ErrorUserModal>
+      )}
     </>
   );
 };

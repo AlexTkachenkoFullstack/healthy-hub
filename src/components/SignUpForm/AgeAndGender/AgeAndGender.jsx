@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import {
   Image,
   AgeAndGenderContainer,
@@ -13,6 +13,7 @@ import {
   BackButton,
   ExtraContainer,
   CustomRadioInput,
+  ValidationError,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -38,8 +39,8 @@ const AgeAndGender = ({
   }, [dataGender]);
 
   const initialValues = {
-    gender: '',
-    age: '',
+    gender: dataGender,
+    age: dataAge,
   };
 
   const handleSubmit = (values, actions) => {
@@ -73,25 +74,18 @@ const AgeAndGender = ({
             Choose a goal so that we can <br />
             help you effectively
           </Text>
-          <ExtraContainer>
+          <ExtraContainer htmlFor="gender">
             <ChooseText>Gender</ChooseText>
             <LabelBlock role="group" aria-label="genderGroup">
               <Label>
-                <Field
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  as={CustomRadioInput}
-                  required
-                />
+                <CustomRadioInput type="radio" name="gender" value="male" />
                 Male
               </Label>
               <Label>
-                <Field
+                <CustomRadioInput
                   type="radio"
                   name="gender"
                   value="female"
-                  as={CustomRadioInput}
                   required
                 />
                 Female
@@ -99,16 +93,17 @@ const AgeAndGender = ({
             </LabelBlock>
             <ChooseText>Your age</ChooseText>
           </ExtraContainer>
-          <InputBox>
-            <label />
+          <InputBox htmlFor="age">
             <InputText
               type="text"
               id="age"
               name="age"
               placeholder="Enter your age"
-              required
             />
           </InputBox>
+          <ErrorMessage name="age">
+            {msg => <ValidationError>{msg}</ValidationError>}
+          </ErrorMessage>
           <InputButton type="submit">Next</InputButton>
 
           <BackButton type="button" onClick={goBack}>

@@ -8,11 +8,13 @@ const onlyLatinRegexp = '^[^А-Яа-яЇїІіЄєҐґЁё]+$';
 export const signupSchema = yup.object().shape({
   name: yup
     .string()
+    .label('Name')
     .max(32, 'must be less 32 symbols')
     .required('Please enter name'),
   email: yup
     .string()
     .email('Example: your@email.com')
+    .label('Email')
     .max(255)
     .matches(onlyLatinRegexp, 'Must include only latin letters')
     .matches(emailRegexp, 'Example: your@email.com')
@@ -21,6 +23,7 @@ export const signupSchema = yup.object().shape({
     .string()
     .min(6, 'Password must be more than 6 symbols')
     .max(16, 'Password must be less 16 symbols')
+    .label('Password')
     .matches(
       letterRegexp,
       'Must include at least 1 uppercase and lowercase symbols'
@@ -34,16 +37,30 @@ export const goalSchema = yup.object().shape({
 });
 
 export const genderAgeSchema = yup.object().shape({
+  gender: yup.string().required('Choose on of ...'),
   age: yup
     .number('Must be a number from 1 to 200')
+    .label('Age')
     .min(1, 'Must be a number from 1 to 200')
     .max(200, 'Must be a number from 1 to 200')
     .required('Age required'),
 });
 
 export const bodyParamSchema = yup.object().shape({
-  heigh: yup.number('Must be a number from 1 to 300'),
-  weight: yup.number('Must be a number from 1 to 300'),
+  height: yup
+    .number('Must be a number from 1 to 300')
+    .label('Heigh')
+    .min(1, 'Must be a number from 1 to 300')
+    .max(300, 'Must be a number from 1 to 300')
+    .required('Height is required'),
+  weight: yup
+    .number('Must be a number from 1 to 300')
+    .label('Weight')
+    .min(1, 'Must be a number from 1 to 400')
+    .max(300, 'Must be a number from 1 to 400')
+    .required('Weight is required'),
 });
 
-export const activitySchema = yup.object().shape({});
+export const activitySchema = yup.object().shape({
+  activity: yup.string().required('Choose on of ...'),
+});
