@@ -71,7 +71,8 @@ export const InputBox = styled.label`
   /* border-radius: 12px; */
   /* border: 1px solid var(--input-border-color-normal); */
   /* border: 1px solid var(--input-border-color-error); */
-  background: var(--bg-secondary);
+  /* background: var(--bg-secondary); */
+  background: transparent;
   position: relative;
 `;
 
