@@ -136,7 +136,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   id="password"
                   name="password"
                   placeholder="Password"
-                  style={{ 'border-color': '#000000' }}
                 />
                 <IconTextPosition>
                   {errors.password && touched.password ? (
