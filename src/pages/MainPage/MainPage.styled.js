@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.main`
   padding-top: 16px;
 
   @media screen and (min-width: 834px) {
