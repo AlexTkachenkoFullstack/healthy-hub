@@ -12,7 +12,9 @@ export default function Loader() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(5, 5, 5, 0.8)',
+        background: 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: 'blur(3px)',
+        zIndex: 1,
       }}
     >
       <ThreeCircles
