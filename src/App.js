@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuthStatus } from './redux/auth/selectors';
 import { refreshThunk } from './redux/auth/operations';
+// import { fetchFoodIntake, postFoodIntake, updateFoodIntake } from 'redux/diary/operations';
 
 function App() {
 
@@ -23,7 +24,10 @@ function App() {
 
 const dispatch=useDispatch();
 useEffect(()=>{
-  dispatch(refreshThunk())
+   dispatch(refreshThunk())
+  // dispatch(fetchFoodIntake())
+// dispatch(postFoodIntake({type:"lunch", products:[{name: "Apple",carbohydrates: 23,protein:  55 ,fat: 44 ,calories: 60}]}))
+//  dispatch(updateFoodIntake({id:"650f8352565b69b1151714ea", type:"lunch", product:{name: "Mango",carbohydrates: 23,protein:  55, fat: 44, calories:60}}))
 },[dispatch])
 
   return (
