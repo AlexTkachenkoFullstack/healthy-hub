@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Backdrop, Modal } from './ErrorUserModal.styled';
-import CloseModalButton from '../CloseModalButton/CloseModalButton';
+import CloseModalButton from '../CloseModalButton';
 
 export const ErrorUserModal = ({ isOpenModal, errorMessage, children }) => {
   const handleCloseModal = e => {
