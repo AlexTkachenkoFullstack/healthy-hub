@@ -5,7 +5,7 @@ const letterRegexp = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).*$';
 const numberRegexp = '^(?=.*[0-9]).*$';
 const onlyLatinRegexp = '^[^А-Яа-яЇїІіЄєҐґЁё]+$';
 
-export const signupSchema = yup.object().shape({
+export const signupSchema = yup.object({
   name: yup
     .string()
     .label('Name')
@@ -32,11 +32,11 @@ export const signupSchema = yup.object().shape({
     .required('Please enter password'),
 });
 
-export const goalSchema = yup.object().shape({
+export const goalSchema = yup.object({
   goal: yup.string().required('Choose on of ...'),
 });
 
-export const genderAgeSchema = yup.object().shape({
+export const genderAgeSchema = yup.object({
   gender: yup.string().required('Choose on of ...'),
   age: yup
     .number('Must be a number from 1 to 200')
@@ -46,7 +46,7 @@ export const genderAgeSchema = yup.object().shape({
     .required('Age required'),
 });
 
-export const bodyParamSchema = yup.object().shape({
+export const bodyParamSchema = yup.object({
   height: yup
     .number('Must be a number from 1 to 300')
     .label('Heigh')
@@ -61,6 +61,6 @@ export const bodyParamSchema = yup.object().shape({
     .required('Weight is required'),
 });
 
-export const activitySchema = yup.object().shape({
+export const activitySchema = yup.object({
   activity: yup.string().required('Choose on of ...'),
 });
