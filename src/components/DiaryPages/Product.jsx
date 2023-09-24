@@ -1,18 +1,17 @@
 import React from 'react';
-import sprite from '../../assets/images/icons/icons.svg';
-import { ButtonStyle, SvgEdit, TextSpan } from './DiaryPage.styled';
 
-const Product = () => {
+const Product = ({ product }) => {
+  
+  const { name, carbohydrates, protein, fat, calories } = product;
+
   return (
     <>
       <div>
-        <h2>Тут буде страва</h2>
-        <ButtonStyle>
-          <SvgEdit>
-            <use href={sprite + '#icon-edit-2'}></use>
-          </SvgEdit>
-          <TextSpan> Edit</TextSpan>
-        </ButtonStyle>
+        <p>{name}</p>
+        <p>{carbohydrates}</p>
+        <p>{protein}</p>
+        <p>{fat}</p>
+        <p>{calories}</p>
       </div>
     </>
   );

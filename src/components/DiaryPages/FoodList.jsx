@@ -1,36 +1,59 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   ListMeatContainer,
   ButtonStyle,
   TextIndexSpan,
   Li,
-  ItemFoodIndex,
-  ItemFoodName,
-  ItemFoodFat,
-  ItemFoodCarbon,
-  ItemFoodProt,
 } from './DiaryPage.styled';
 import Product from './Product';
-import RecordDiaryModal from 'components/RecordDiaryModal';
 
-const FoodList = () => {
-  const breakfast = useSelector(state => state.foodIntake.food.breakfast);
+import { postFoodIntake } from 'redux/diary/operations';
+import RecordDiaryModal from 'components/RecordDiaryModalNew/RecordDiaryModal';
+
+const FoodList = ({ type, product}) => {
+  const dispatch = useDispatch();
+    console.log(product);
+  
+  const breakfast = useSelector(state => state.foodIntake.food[type]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <ListMeatContainer style={{ height: '240px' }}>
       <Li>
-        {breakfast.map(item => (
-          <Product key={item.id} type="breakfast" product={item} />
+        {breakfast?.map(item => (
+          <Product key={item.id} type={type} product={item} />
         ))}
       </Li>
-      <ButtonStyle>
+      <ButtonStyle onClick={openModal}>
         <TextIndexSpan>+ Record your meal</TextIndexSpan>
       </ButtonStyle>
-      <RecordDiaryModal type="breakfast" />
-      {/* <ModalWindow type='breakfast' /> */}
+      {isModalOpen && (
+        <RecordDiaryModal
+          type={type}
+          onClose={closeModal}
+          onSubmit={(data) => {
+        
+            console.log(data);
+            dispatch(postFoodIntake({ type, product: data }));
+            closeModal();
+          }}
+        />
+      )}
     </ListMeatContainer>
   );
 };
 
 export default FoodList;
+
+
+
