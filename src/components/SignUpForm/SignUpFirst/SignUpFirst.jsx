@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, getIn } from 'formik';
 import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
 import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
 
@@ -25,6 +25,7 @@ import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
 import InputSuccessIcon from '../InputSuccessIcon';
 import InputErrorIcon from '../InputErrorIcon';
+import PasswordOpenButtonIcon from '../PasswordOpenButtonIcon';
 
 const initialValues = {
   name: '',
@@ -32,13 +33,28 @@ const initialValues = {
   password: '',
 };
 
+function getStyles(errors, fieldName) {
+  if (getIn(errors, fieldName)) {
+    return {
+      border: '1px solid red',
+      borderRadius: '12px',
+    };
+  }
+}
+
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
-  // const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState('password');
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
+  };
+
+  const toggleIsOpenPassword = () => {
+    showPassword === 'password'
+      ? setShowPassword('text')
+      : setShowPassword('password');
   };
 
   const handleSubmit = async ({ name, email, password }) => {
@@ -58,11 +74,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       setErrorsMessage(error);
       setIsOpenModal(true);
     }
-  };
-
-  const togglePass = () => {
-    const pass = document.getElementById('password');
-    pass.type === 'password' ? (pass.type = 'text') : (pass.type = 'password');
   };
 
   const isRetinaDisplay =
@@ -86,72 +97,72 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         >
           {({ errors, touched }) => (
             <FormStyle autoComplete="off">
-              <InputBox
-                htmlFor="name"
-                // $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                />
-                <IconTextPosition>
-                  {errors.name && touched.name ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
+              <InputBox htmlFor="name">
+                <div style={getStyles(errors, 'name')}>
+                  <InputText
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                  />
+                  <IconTextPosition>
+                    {errors.name && touched.name ? (
+                      <InputErrorIcon />
+                    ) : (
+                      <InputSuccessIcon />
+                    )}
+                  </IconTextPosition>
+                </div>
               </InputBox>
 
               <ErrorMessage name="name">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-              <InputBox
-                htmlFor="email"
-                // $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="E-mail"
-                />
-                <IconTextPosition>
-                  {errors.email && touched.email ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
+              <InputBox htmlFor="email">
+                <div>
+                  <InputText
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
+                  />
+                  <IconTextPosition>
+                    {errors.email && touched.email ? (
+                      <InputErrorIcon />
+                    ) : (
+                      <InputSuccessIcon />
+                    )}
+                  </IconTextPosition>
+                </div>
               </InputBox>
               <ErrorMessage name="email">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
 
               <InputBox htmlFor="password">
-                <InputText
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <IconTextPosition>
-                  {errors.password && touched.password ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
+                <div>
+                  <InputText
+                    type={showPassword}
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <IconTextPosition>
+                    {errors.password && touched.password ? (
+                      <InputErrorIcon />
+                    ) : (
+                      <InputSuccessIcon />
+                    )}
+                  </IconTextPosition>
+                </div>
               </InputBox>
 
               <ErrorMessage name="password">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
 
-              <button type="button" onClick={togglePass}>
-                Show
+              <button type="button" onClick={toggleIsOpenPassword}>
+                <PasswordOpenButtonIcon />
               </button>
 
               <InputButton type="submit">Sign Up</InputButton>
