@@ -30,7 +30,7 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
   }, [dataActivity]);
 
   const handleSubmit = async ({ activity }) => {
-    setActivity(activity);
+    setActivity(Number(activity));
     goNext();
   };
   const handleBack = () => {
@@ -66,52 +66,47 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
           </Text>
           <LabelBlock role="group" aria-labelledby="yourActivityGroup">
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="activity"
                 value="1.2"
-                as={CustomRadioInput}
                 required
                 checked
               />
               1.2 - if you do not have physical activity and sedentary work
             </Label>
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="activity"
                 value="1.375"
-                as={CustomRadioInput}
                 required
               />
               1,375 - if you do short runs or light gymnastics 1-3 times a week
             </Label>
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="activity"
                 value="1.55"
-                as={CustomRadioInput}
                 required
               />
               1.55 - if you play sports with average loads 3-5 times a week
             </Label>
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="activity"
                 value="1.725"
-                as={CustomRadioInput}
                 required
               />
               1.725 ​​- if you train fully 6-7 times a week
             </Label>
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="activity"
                 value="1.9"
-                as={CustomRadioInput}
                 required
               />
               1.9 - if your work is related to physical labor, you train 2 times
