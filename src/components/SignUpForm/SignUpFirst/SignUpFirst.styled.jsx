@@ -68,10 +68,6 @@ export const Text = styled.p`
 `;
 
 export const InputBox = styled.label`
-  /* border-radius: 12px; */
-  /* border: 1px solid var(--input-border-color-normal); */
-  /* border: 1px solid var(--input-border-color-error); */
-  /* background: var(--bg-secondary); */
   background: transparent;
   position: relative;
 `;
@@ -86,7 +82,6 @@ export const InputText = styled(Field)`
   line-height: 1.429;
   background: transparent;
   border-radius: 12px;
-  /* border: none; */
   outline: none;
   padding: 8px 10px;
   width: 100%;
