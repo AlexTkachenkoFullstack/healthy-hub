@@ -95,7 +95,7 @@ const AgeAndGender = ({
           </ExtraContainer>
           <InputBox htmlFor="age">
             <InputText
-              type="text"
+              type="number"
               id="age"
               name="age"
               placeholder="Enter your age"
