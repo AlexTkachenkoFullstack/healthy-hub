@@ -37,7 +37,7 @@ const handleFulfildPost = (state, action) => {
     state.isLoading = false;
     state.error = null;
     const type=action.payload.data.type;
-    state.food[type]=[...state.food[type], ...action.payload.data.product]
+    state.food[type]=[...action.payload.data.product]
     state.totalCalories=action.payload.data.totalCalories;
 }
 
