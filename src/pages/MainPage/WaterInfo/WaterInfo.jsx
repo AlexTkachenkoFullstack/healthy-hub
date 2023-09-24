@@ -16,14 +16,17 @@ import {
   WaterPercentage,
 } from './WaterInfo.styled';
 
-const waterIntake = 90;
+export const WaterInfo = ({ handleModal, waterConsumtion }) => {
+  // const waterIntake = 900;
+  const leftWaterIntake = 1500 - waterConsumtion;
 
-const waterPercent = waterIntake <= 100 ? waterIntake : 100;
-const offset =
-  waterPercent <= 84 ? Math.ceil((waterPercent / 100) * 176 + 10) : 88;
-const percentColor = waterPercent <= 85 ? 'rgba(182, 195, 255, 1)' : 'green';
+  const waterPercent =
+    waterConsumtion <= 1500 ? Math.round((waterConsumtion * 100) / 1500) : 100;
 
-export const WaterInfo = ({ handleModal }) => {
+  const offset =
+    waterPercent <= 84 ? Math.ceil((waterPercent / 100) * 176 + 10) : 88;
+  const percentColor = waterPercent <= 85 ? 'rgba(182, 195, 255, 1)' : 'green';
+
   return (
     <div>
       <WaterTitle>Water</WaterTitle>
@@ -34,17 +37,17 @@ export const WaterInfo = ({ handleModal }) => {
               $offset={offset}
               $percentColor={percentColor}
             >{`${waterPercent}%`}</WaterPercentage>
-            <WaterChart waterIntake={waterIntake} />
+            <WaterChart waterIntake={waterPercent} />
           </WaterBar>
         </Level>
         <InfoWrapper>
           <InfoTitle>Water consumption</InfoTitle>
           <ValueWrap>
             <InfoNumber>
-              1050 <Unit>ml</Unit>
+              {waterConsumtion} <Unit>ml</Unit>
             </InfoNumber>
             <LeftInfo>
-              left:<LeftNumber>450</LeftNumber>
+              left:<LeftNumber>{leftWaterIntake}</LeftNumber>
               <Unit>ml</Unit>
             </LeftInfo>
           </ValueWrap>

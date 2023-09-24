@@ -1,5 +1,6 @@
-import { Formik, ErrorMessage } from 'formik';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import {
@@ -14,11 +15,15 @@ import {
   WaterLable,
 } from './AddWaterIntakeModal.styled';
 
+import { addWaterIntake } from 'redux/dailyWater/operations';
+
 const validationSchema = Yup.object({
   waterIntake: Yup.number().required('Required'),
 });
 
 export const AddWaterIntakeModal = ({ handleModal }) => {
+  const dispatch = useDispatch();
+
   const handleCloseModal = e => {
     (e.code === 'Escape' || e.currentTarget === e.target) && handleModal();
   };
@@ -31,8 +36,11 @@ export const AddWaterIntakeModal = ({ handleModal }) => {
   });
 
   const handleSubmit = (values, { resetForm }) => {
+    const { waterIntake } = values;
+    dispatch(addWaterIntake({ value: waterIntake }));
+
     resetForm();
-    console.log('values :>>', values);
+    handleModal();
   };
   return (
     <Backdrop onClick={handleCloseModal}>
@@ -54,6 +62,7 @@ export const AddWaterIntakeModal = ({ handleModal }) => {
                 How much water
               </WaterLable>
               <InputField
+                autoFocus
                 name="waterIntake"
                 type="number"
                 min={0}
@@ -64,6 +73,7 @@ export const AddWaterIntakeModal = ({ handleModal }) => {
                     : ''
                 }
               />
+
               <ErrorMessage name="waterIntake">
                 {msg => <ErrorText>{msg}</ErrorText>}
               </ErrorMessage>

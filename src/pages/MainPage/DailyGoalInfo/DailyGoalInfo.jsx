@@ -10,7 +10,7 @@ import {
   InfoWrapper,
 } from './DailyGoalInfo.styled';
 
-export const DailyGoalInfo = () => {
+export const DailyGoalInfo = ({ dailyCalories }) => {
   return (
     <div>
       <Title>Daily goal</Title>
@@ -19,7 +19,7 @@ export const DailyGoalInfo = () => {
           <BubbleSvg />
           <InfoWrapper>
             <InfoTitle>Calories</InfoTitle>
-            <InfoNumber>1700</InfoNumber>
+            <InfoNumber>{dailyCalories}</InfoNumber>
           </InfoWrapper>
           <MilkSvg />
           <InfoWrapper>
