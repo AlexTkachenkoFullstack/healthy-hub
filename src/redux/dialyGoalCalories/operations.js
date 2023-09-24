@@ -20,6 +20,7 @@ export const fetchCaloriesIntake=createAsyncThunk(
             } 
             setAuthHeader(persistToken);
             const response=await instance('api/user/daily-goal-calories')
+            console.log(response.data)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
