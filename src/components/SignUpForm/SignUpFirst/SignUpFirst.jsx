@@ -23,7 +23,8 @@ import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
 import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
-import SuccessButton from '../InputSuccessIcon/InputSuccessIcon';
+import InputSuccessIcon from '../InputSuccessIcon';
+import InputErrorIcon from '../InputErrorIcon';
 
 const initialValues = {
   name: '',
@@ -34,7 +35,7 @@ const initialValues = {
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
@@ -96,7 +97,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   placeholder="Name"
                 />
                 <IconTextPosition>
-                  <SuccessButton />
+                  {errors.name && touched.name ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
                 </IconTextPosition>
               </InputBox>
 
@@ -114,27 +119,31 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   placeholder="E-mail"
                 />
                 <IconTextPosition>
-                  <SuccessButton />
+                  {errors.email && touched.email ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
                 </IconTextPosition>
               </InputBox>
               <ErrorMessage name="email">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
 
-              <InputBox
-                htmlFor="password"
-                $showIcon={
-                  errors.password && touched.password ? 'block' : 'none'
-                }
-              >
+              <InputBox htmlFor="password">
                 <InputText
                   type="password"
                   id="password"
                   name="password"
                   placeholder="Password"
+                  style={{ 'border-color': '#000000' }}
                 />
                 <IconTextPosition>
-                  <SuccessButton />
+                  {errors.password && touched.password ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
                 </IconTextPosition>
               </InputBox>
 
