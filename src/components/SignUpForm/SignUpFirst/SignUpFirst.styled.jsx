@@ -70,24 +70,36 @@ export const Text = styled.p`
 export const InputBox = styled.label`
   background: transparent;
   position: relative;
+  border: 1px solid var(--input-border-color-normal);
+  border-radius: 12px;
+`;
+
+export const InputBoxError = styled.label`
+  background: transparent;
+  position: relative;
+  border: 1px solid var(--input-border-color-normal);
+  border-radius: 12px;
 `;
 
 export const InputText = styled(Field)`
   color: var(--text-color-secondary-grey);
-  border: 1px solid var(--input-border-color-normal);
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.429;
   background: transparent;
-  border-radius: 12px;
+  border-color: transparent;
   outline: none;
   padding: 8px 10px;
-  width: 100%;
+  width: 85%;
   :hover {
     color: var(--text-color-primary-white);
   }
+`;
+
+export const ValidationErrorField = styled.div`
+  color: var(--input-border-color-error);
 `;
 
 export const IconTextPosition = styled.div`
@@ -167,12 +179,13 @@ export const FinishBlock = styled.div`
 `;
 
 export const ValidationError = styled.span`
-  color: #e74a3b;
+  color: var(--input-border-color-error);
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17;
 `;
+
 
 export const QuestionForm = styled.div`
   @media (min-width: 834px) {
