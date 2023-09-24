@@ -6,12 +6,10 @@ import Breakfast from 'components/DiaryPages/Breakfast';
 // import Dinner from 'components/DiaryPages/Dinner';
 // import Snack from 'components/DiaryPages/Snack';
 
-
 const DiaryPage = () => {
-
   return (
     <>
-         <Link to="/">
+      <Link to="/">
         <GoBackPage />
       </Link>
       <h1>Diary Page</h1>
