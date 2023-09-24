@@ -60,7 +60,7 @@ const BodyParameters = ({
             <InputBox htmlFor="height">
               <InputText
                 name="height"
-                type="text"
+                type="number"
                 id="height"
                 placeholder="Enter your height"
               />
@@ -73,7 +73,7 @@ const BodyParameters = ({
 
             <InputBox htmlFor="weight">
               <InputText
-                type="text"
+                type="number"
                 id="weight"
                 name="weight"
                 placeholder="Enter your weight"
