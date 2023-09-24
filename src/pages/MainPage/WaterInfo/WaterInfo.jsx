@@ -17,7 +17,6 @@ import {
 } from './WaterInfo.styled';
 
 export const WaterInfo = ({ handleModal, waterConsumtion }) => {
-  // const waterIntake = 900;
   const leftWaterIntake = 1500 - waterConsumtion;
 
   const waterPercent =
@@ -47,7 +46,10 @@ export const WaterInfo = ({ handleModal, waterConsumtion }) => {
               {waterConsumtion} <Unit>ml</Unit>
             </InfoNumber>
             <LeftInfo>
-              left:<LeftNumber>{leftWaterIntake}</LeftNumber>
+              left:
+              <LeftNumber>
+                {leftWaterIntake > 0 ? leftWaterIntake : 0}
+              </LeftNumber>
               <Unit>ml</Unit>
             </LeftInfo>
           </ValueWrap>

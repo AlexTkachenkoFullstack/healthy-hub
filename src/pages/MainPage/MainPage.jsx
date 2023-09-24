@@ -65,10 +65,12 @@ const MainPage = () => {
         />
         <FoodInfo dailyCalories={dailyCalories} />
       </ElementsWrapper>
+
       <DiaryAndRecommendFoodWrap>
         <DiaryInfo />
         <RecommendedFood />
       </DiaryAndRecommendFoodWrap>
+      
       {isOpenModal && <AddWaterIntakeModal handleModal={toggleIsOpenModal} />}
     </MainContainer>
   );

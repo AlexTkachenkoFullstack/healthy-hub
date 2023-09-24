@@ -22,7 +22,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateProfileThunk, updateAvatarThunk } from 'redux/auth/operations';
 
-export const schema = yup.object({
+const schema = yup.object({
   userName: yup.string().required('Please Enter your name'),
   age: yup
     .number()
