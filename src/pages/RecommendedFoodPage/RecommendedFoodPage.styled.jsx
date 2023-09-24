@@ -1,84 +1,67 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import RecommendedFoodPhoto from "../../assets/images/ketogenic-diet.png";
+
+
+
 
 export const RecommendedFood = styled.section`
-  background-color: var(--bg-primary);
-  color: var(--text-color-primary-white);
-`;
+    background-color: var(--bg-primary);
+    color: var(--text-color-primary-white);
+`
 export const Title = styled.h3`
-  font-family: 'Poppins';
-  font-weight: 500;
-  font-style: sans-serif;
-  font-size: 24px;
-  line-height: 1.25;
-
-  @media (min-width: 834px) {
-    font-size: 30px;
-    line-height: 1.2;
-  }
-
-  @media (min-width: 1440px) {
-    margin-bottom: 20px;
-  }
-`;
-
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-style: sans-serif;
+`
 export const DesctopContainer = styled.div`
-  padding-top: 16px;
-  padding-bottom: 40px;
-
-  @media (min-width: 834px) {
-    padding-top: 24px;
-    padding-bottom: 290px;
-  }
-  @media (min-width: 1440px) {
-    padding-top: 20px;
-    padding-bottom: 60px;
+    @media (min-width: 1440px) {
     display: flex;
-  }
-`;
+    }
+`
 
-export const StyledImg = styled.img`
-  height: 312px;
-  width: 300px;
-  margin-top: 16px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media (min-width: 834px) {
-    height: 396px;
-    width: 380px;
-    margin-top: 20px;
-  }
-  @media (min-width: 1440px) {
-    height: 560px;
-    width: 536px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-left: 116px;
-  }
-`;
-
-export const ProductsList = styled.div`
-  @media (min-width: 320px) {
-    padding-top: 24px;
+export const PhotoPage = styled.img`
+   @media (min-width: 320px) {
+   background-image: url(${RecommendedFoodPhoto});
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    width: 312px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+   }
+   @media (min-width: 834px) {
+    height: 380px;
+    width: 396px;
+    display: block;
+    }
+    @media (min-width: 1440px) {
+    height: 536px;
+    width: 560px;  
+    }
+`
+export const ProductsList = styled.ul`
+    @media (min-width: 320px) {
+    padding: 10px;
     display: flex;
     gap: 20px;
     flex-direction: column;
     align-items: center;
-  }
-  @media (min-width: 834px) {
-    width: 780px;
+    }
+    @media (min-width: 834px) {
+    padding: 10px;
     display: flex;
     gap: 20px;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  @media (min-width: 1440px) {
-    padding: 0;
-    height: 536px;
-    width: 560px;
+    }
+    
+`
+export const ProductItem = styled.li`
+    @media (min-width: 834px) {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-basis: calc((100% - 160px) / 2);
     justify-content: center;
-  }
-`;
+    }
+`

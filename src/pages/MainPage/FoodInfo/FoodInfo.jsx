@@ -1,4 +1,4 @@
-import { DoughnutChart } from 'components/DoughnutChart';
+import { DoughnutChart } from 'components/RecommendedCard/DoughnutChart';
 import { calcElementsMacros } from 'utils';
 import { ChartCard } from './ChartCard';
 import {
@@ -15,7 +15,7 @@ const fatBcg = 'rgba(182, 182, 182, 1)';
 
 export const FoodInfo = () => {
   const valueNorm = 1700;
-  let inputValue = 1600;
+  let inputValue = 500;
   let chartBcg = '#45FFBC';
 
   const { carbs, protein, fat } = calcElementsMacros(valueNorm, 'lose');

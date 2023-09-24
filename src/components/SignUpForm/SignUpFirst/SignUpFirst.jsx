@@ -1,7 +1,6 @@
 import { Formik, ErrorMessage } from 'formik';
-import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
-import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
-
+import * as yup from 'yup';
+import image from '../../../assets/images/sport-and-fitness-tracker.png';
 import {
   SignUpFirstContainer,
   Image,
@@ -18,7 +17,12 @@ import {
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
-import { signupSchema } from '../validationLibs';
+
+const schema = yup.object().shape({
+  name: yup.string().required('Please enter name'),
+  email: yup.string().email().required('Enter correct email'),
+  password: yup.string().required('Password is required'),
+});
 
 const initialValues = {
   name: '',
@@ -28,29 +32,16 @@ const initialValues = {
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const handleSubmit = async ({ name, email, password }) => {
-    const res = await checkEmail(email.toLowerCase());
+    const res = await checkEmail(email);
     const { message, status } = res.data;
     if (!(message === 'Accept for registration' && status === 'available')) {
       <ErrorMessage name="email" />;
     }
     setName(name);
-    setEmail(email.toLowerCase());
+    setEmail(email);
     setPassword(password);
     goNext();
   };
-
-  const togglePass = () => {
-    const pass = document.getElementById('password');
-    pass.type === 'password' ? (pass.type = 'text') : (pass.type = 'password');
-  };
-
-  const isRetinaDisplay =
-    window.matchMedia &&
-    window.matchMedia(
-      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
-    ).matches;
-
-  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
 
   return (
     <SignUpFirstContainer>
@@ -61,50 +52,44 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
-          validationSchema={signupSchema}
+          validationSchema={schema}
         >
-          {() => (
-            <FormStyle autoComplete="off">
-              <InputBox>
-                <label htmlFor="name" />
-                <InputText
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  required
-                />
-              </InputBox>
-              <ErrorMessage name="name" component="div" />
-              <InputBox>
-                <label htmlFor="email" />
-                <InputText
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="E-mail"
-                  required
-                />
-              </InputBox>
-              <ErrorMessage name="email" component="div" />
-
-              <InputBox>
-                <label htmlFor="password" />
-                <InputText
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                />
-              </InputBox>
-              <button type="button" onClick={togglePass}>
-                Show
-              </button>
-              <ErrorMessage name="password" component="div" />
-              <InputButton type="submit">Sign Up</InputButton>
-            </FormStyle>
-          )}
+          <FormStyle autoComplete="off">
+            <InputBox>
+              <label htmlFor="name" />
+              <InputText
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="name" />
+            <InputBox>
+              <label htmlFor="email" />
+              <InputText
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="email" />
+            <InputBox>
+              <label htmlFor="password" />
+              <InputText
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </InputBox>
+            <ErrorMessage name="password" />
+            <InputButton type="submit">Sign Up</InputButton>
+          </FormStyle>
         </Formik>
         <FinishBlock>
           <TextInEnd>Do you already have an account?</TextInEnd>

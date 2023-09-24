@@ -34,6 +34,7 @@ export const loginThunk = createAsyncThunk(
     async (credentials, thunkAPI) => {
         try {
             const response = await instance.post('api/users/login', credentials)
+            console.log(response.data)
             setAuthHeader(response.data.token)
             return response.data
         } catch (error) {
@@ -67,7 +68,7 @@ export const refreshThunk = createAsyncThunk(
         try {
             setAuthHeader(persistToken);
            const response = await instance('api/users/current');
-           return response.data
+           return response.data.user
         } catch (error) {
           return  thunkAPI.rejectWithValue(error.message)
         }
@@ -111,14 +112,11 @@ export const updateProfileThunk=createAsyncThunk(
     'auth/updateProfile',
     async(credentials, thunkAPI)=>{
         try{
-            const state = thunkAPI.getState();
-            const persistToken = state.auth.token;
-            if (!persistToken) {
-                return thunkAPI.rejectWithValue('No token');
-            } 
-            setAuthHeader(persistToken);
-            const response = await instance.patch('api/users/update', credentials)
-            // data:{name:'Alex', age:23, height:176...}
+            const response = await instance.put('api/user/updateProfile', credentials)
+            // data:{profileInfo:{name:'Alex', age:23, height:176...},
+                  // weightInfo:{weight:74, data:'22.11.2022'}
+            // }
+            console.log(response.data)
             return response.data
         }catch(error){
             return thunkAPI.rejectWithValue(error.message)
@@ -126,24 +124,3 @@ export const updateProfileThunk=createAsyncThunk(
     }
 )
 
-export const updateAvatarThunk=createAsyncThunk(
-    'auth/updateAvatar',
-    async(credentials, thunkAPI)=>{
-        try{
-            const state = thunkAPI.getState();
-            const persistToken = state.auth.token;
-            if (!persistToken) {
-                return thunkAPI.rejectWithValue('No token');
-            } 
-            setAuthHeader(persistToken);
-            const response = await instance.patch('api/users/avatar', credentials, {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                }})
-                console.log(response.data.avatarURL)
-            return response.data.avatarURL
-        }catch(error){
-            return thunkAPI.rejectWithValue(error.message)
-        }
-    }
-)

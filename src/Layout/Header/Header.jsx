@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getAuthStatus, getUserInfo } from 'redux/auth/selectors';
-import { getCurrentDate } from 'utils/currentDate';
 import HeaderModalButton from './HeaderModalButton/HeaderModalButton';
 import MobileMenu from './MobileMenu/MobileMenu';
 import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
@@ -22,18 +21,17 @@ import {
   UserName,
   UserInfoButton,
   UserSvg,
-  UserAvatar,
 } from './Header.styled';
 import sprite from '../../assets/images/icons/icons.svg';
 
 const Header = () => {
   const isAuth = useSelector(getAuthStatus);
   const user = useSelector(getUserInfo);
-  const avatar = user.avatarURL;
   const gender = user.gender.toLowerCase();
   const goal = user.goal.toLowerCase();
   const weight = user.weight;
   const name = user.name;
+
   const [today, setToday] = useState(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showTargetModal, setShowTargetModal] = useState(false);
@@ -72,7 +70,7 @@ const Header = () => {
   };
 
   const openWeightModal = () => {
-    setToday(getCurrentDate());
+    setToday(new Date().toLocaleString().slice(0, 10));
     setShowWeightModal(!showWeightModal);
     setShowMobileMenu(false);
     setShowTargetModal(false);
@@ -129,14 +127,9 @@ const Header = () => {
 
               <UserInfoButton type="button" onClick={openUserModal}>
                 <UserName>{name}</UserName>
-                {avatar ? (
-                  <UserAvatar src={avatar} alt="user avatar" />
-                ) : (
-                  <UserSvg>
-                    <use href={sprite + '#icon-profile-circle'} />
-                  </UserSvg>
-                )}
-
+                <UserSvg>
+                  <use href={sprite + '#icon-profile-circle'} />
+                </UserSvg>
                 {showUserModal ? (
                   <svg
                     width="14"

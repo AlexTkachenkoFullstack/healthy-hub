@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk, updateAvatarThunk } from "./operations";
+import { loginThunk, registrationThunk, logOutThunk, refreshThunk, updateGoalThunk, updateWeightThunk, updateProfileThunk } from "./operations";
+
 const initialState = {
     user: { 
         name: null, 
@@ -7,8 +8,8 @@ const initialState = {
         goal:'',
         age:null,
         height:null,
-        avatarURL:'',
-        gender:'male',
+        avatarUrl:'',
+        gender:'Male',
         weight:null, 
         activity: '1.2'
     },
@@ -37,7 +38,6 @@ const handleFulfildLogIn = (state, action) => {
     handleFulfild(state);
     state.user = {...state.user, ...action.payload.user};
     state.token = action.payload.token;
-    state.dateLastWeight=action.payload.dateLastWeight
 }
 
 const handleFulfildLogOut = (state) => {
@@ -48,8 +48,7 @@ const handleFulfildLogOut = (state) => {
 
 const handleFulfildRefresh = (state, action) => {
     handleFulfild(state)
-    state.user = action.payload.user;
-    state.dateLastWeight=action.payload.dateLastWeight
+    state.user = action.payload;
 }
 
 const handleRejected = (state, action) => {
@@ -59,26 +58,27 @@ const handleRejected = (state, action) => {
 
 const handleFulfildUpdateGoal=(state, action)=>{
     handleFulfild(state);
-    state.user.goal = action.payload.data.goal;
+    // data:{goal:'lose fat'}
+    state.user = {...state.user, ...action.payload.data};
 }
 
 const handleFulfildUpdateWeight=(state, action)=>{
     handleFulfild(state);
-    state.user.weight = action.payload.data.weight;
+    // data:{date:'22.10.2023', weight: 67}
+    state.user = {...state.user, ...action.payload.data.weight};
     state.dateLastWeight=action.payload.data.date;
 }
 
 const handleFulfildUpdateProfile=(state, action)=>{
     handleFulfild(state);
-    // {profileInfo:{name:'Alex', age:23, height:176, gender: 'male', activity: 1.2},
+    // {profileInfo:{name:'Alex', age:23, height:176, avatarUrl:'http...', gender: 'male', activity: 1.2},
+    // weightInfo:{weight:76, date:'22.11.2022'}
     // }
-    state.user = {...state.user, ...action.payload.data};
-}
-
-const handleFulfildUpdateAvatar=(state, action)=>{
-    handleFulfild(state);
-    console.log(action.payload)
-    state.user.avatarURL = action.payload;
+    state.user = {...state.user, ...action.payload.data.profileInfo};
+    if(action.payload.data.weightInfo){
+        state.dateLastWeight=action.payload.data.weightInfo.date;
+        state.user.weight=action.payload.data.weightInfo.weight;
+    }
 }
 
 export const authSlice = createSlice({
@@ -99,8 +99,7 @@ export const authSlice = createSlice({
             .addCase(updateGoalThunk.fulfilled, handleFulfildUpdateGoal)
             .addCase(updateWeightThunk.fulfilled, handleFulfildUpdateWeight)
             .addCase(updateProfileThunk.fulfilled, handleFulfildUpdateProfile)
-            .addCase(updateAvatarThunk.fulfilled, handleFulfildUpdateAvatar)
-            .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending, refreshThunk.pending, updateGoalThunk.pending, updateWeightThunk.pending, updateProfileThunk.pending, updateAvatarThunk.pending), handlePending)
-            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected, updateAvatarThunk.rejected), handleRejected)
+            .addMatcher(isAnyOf(registrationThunk.pending, loginThunk.pending, logOutThunk.pending, refreshThunk.pending, updateGoalThunk.pending, updateWeightThunk.pending, updateProfileThunk.pending), handlePending)
+            .addMatcher(isAnyOf(registrationThunk.rejected,loginThunk.rejected,refreshThunk.rejected, updateGoalThunk.rejected, updateWeightThunk.rejected, updateProfileThunk.rejected), handleRejected)
     }
 })

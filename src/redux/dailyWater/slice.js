@@ -1,9 +1,10 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { addWaterIntake, fetchWaterIntake } from "./operations";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchWaterIntake } from "./operations";
 
 const initialState={
     water:{
-        value:0,
+        quantity:0,
+        date:null
     },
     isLoading: false,
     error:null,
@@ -18,17 +19,12 @@ const handlePending = (state) => {
     state.isLoading = true;
 }
 
-const handleFulfild = (state, action) => {
+const handleFulfildGet = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.water.value=action.payload.data.value;
+    state.water.quantity=action.payload.water;
+    state.water.date=action.payload.date;
 }
-
-// const handleFulfild=(state, action)=>{
-//     state.isLoading = false;
-//     state.error = null;
-//     state.water.value=action.payload.value;
-// }
 
 export const waterIntakeSlice = createSlice({
     name: 'waterIntake',
@@ -36,9 +32,9 @@ export const waterIntakeSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addMatcher(isAnyOf(fetchWaterIntake.pending, addWaterIntake.pending), handlePending)
-            .addMatcher(isAnyOf(fetchWaterIntake.rejected, addWaterIntake.rejected), handleRejected)
-            .addMatcher(isAnyOf(fetchWaterIntake.fulfilled, addWaterIntake.fulfilled), handleFulfild)
+            .addCase(fetchWaterIntake.fulfilled, handleFulfildGet)
+            .addCase(fetchWaterIntake.pending, handlePending)
+            .addCase(fetchWaterIntake.rejected, handleRejected)
     }
 })
 

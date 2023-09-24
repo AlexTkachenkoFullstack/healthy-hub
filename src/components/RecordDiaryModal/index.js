@@ -1,1 +1,1 @@
-export {default} from './RecordDiaryModalB.jsx'
+export {default} from './RecordDiaryModal.jsx'

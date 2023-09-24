@@ -1,1 +1,0 @@
-export { AddWaterIntakeModal }from"./AddWaterIntakeModal";
