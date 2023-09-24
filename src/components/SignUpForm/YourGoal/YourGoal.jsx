@@ -1,4 +1,4 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import lowQualityImage from '../../../assets/images/summer-hiking.png';
 import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
 
