@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as ArrowRigth } from '../../assets/images/icons/arrow-right.svg';
 import { DailyGoalInfo } from './DailyGoalInfo';
 import { FoodInfo } from './FoodInfo';
@@ -18,8 +18,18 @@ import {
   TitleWrapper,
 } from './MainPage.styled';
 
+import { fetchCaloriesIntake } from 'redux/dialyGoalCalories/operations';
+import { fetchRecommendedFood } from 'redux/recommendedFood/operations';
+import { fetchWaterIntake } from 'redux/dailyWater/operations';
+
+import { getCaloriesGoal } from 'redux/dialyGoalCalories/selectors';
+import { getWaterIntake } from 'redux/dailyWater/selectors';
+
 const MainPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const dailyCalories = useSelector(getCaloriesGoal);
+  const waterConsumtion = useSelector(getWaterIntake);
+  const dispatch = useDispatch();
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
@@ -30,6 +40,12 @@ const MainPage = () => {
       ? (document.body.style.overflow = 'hidden')
       : (document.body.style.overflow = '');
   }, [isOpenModal]);
+
+  useEffect(() => {
+    dispatch(fetchCaloriesIntake());
+    dispatch(fetchRecommendedFood());
+    dispatch(fetchWaterIntake());
+  }, [dispatch]);
 
   return (
     <MainContainer>
@@ -42,9 +58,12 @@ const MainPage = () => {
       </TitleWrapper>
 
       <ElementsWrapper>
-        <DailyGoalInfo />
-        <WaterInfo handleModal={toggleIsOpenModal} />
-        <FoodInfo />
+        <DailyGoalInfo dailyCalories={dailyCalories} />
+        <WaterInfo
+          handleModal={toggleIsOpenModal}
+          waterConsumtion={waterConsumtion}
+        />
+        <FoodInfo dailyCalories={dailyCalories} />
       </ElementsWrapper>
       <DiaryAndRecommendFoodWrap>
         <DiaryInfo />
