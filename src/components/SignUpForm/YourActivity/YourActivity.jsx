@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import lowQualityImage from '../../../assets/images/workout-fashion.png';
 import highQualityImage from '../../../assets/images/workout-fashion-2x.png';
 
