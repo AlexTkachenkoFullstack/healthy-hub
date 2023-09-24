@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [goal, setGoal] = useState('lose fat');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('female');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
@@ -30,10 +30,10 @@ const SignUpForm = () => {
       password,
       goal,
       gender,
-      height,
-      weight,
-      age,
-      activity,
+      height: Number(height),
+      weight: Number(weight),
+      age: Number(age),
+      activity: Number(activity),
     };
     try {
       signUp(userData);
@@ -42,11 +42,11 @@ const SignUpForm = () => {
       setEmail('');
       setPassword('');
       setGoal('lose fat');
-      setGender('');
+      setGender('female');
       setHeight('');
       setWeight('');
       setAge('');
-      setActivity('');
+      setActivity(1.2);
       redirect('/signin');
     } catch (error) {
       setErrorsMessage(error);
