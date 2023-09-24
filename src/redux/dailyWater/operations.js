@@ -5,6 +5,9 @@ const instance = axios.create({
     baseURL: 'https://backend-healthyhub.onrender.com/'
 });
 
+export const setAuthHeader = (token) => {
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
 
 export const fetchWaterIntake=createAsyncThunk(
     'waterIntake/get',
@@ -15,6 +18,7 @@ export const fetchWaterIntake=createAsyncThunk(
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
+            setAuthHeader(persistToken);
             const response=await instance('api/user/water-intake')
             return response.data
         } catch (error) {
@@ -25,12 +29,17 @@ export const fetchWaterIntake=createAsyncThunk(
 )
 
 
-export const postWaterIntake=createAsyncThunk(
+export const addWaterIntake=createAsyncThunk(
     'waterIntake/post',
     async (credentials, thunkAPI) => {
         try {
+            const state = thunkAPI.getState();
+            const persistToken = state.auth.token;
+            if (!persistToken) {
+                return thunkAPI.rejectWithValue('No token');
+            } 
+            setAuthHeader(persistToken);
             const response = await instance.post('api/user/water-intake', credentials)
-            console.log(response.data)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
@@ -38,3 +47,4 @@ export const postWaterIntake=createAsyncThunk(
         
     }
 )
+

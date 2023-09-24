@@ -1,5 +1,7 @@
-import { Formik, Form, Field } from 'formik';
-import image from '../../../assets/images/summer-hiking.png';
+import { Formik, Form } from 'formik';
+import lowQualityImage from '../../../assets/images/summer-hiking.png';
+import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
+
 import {
   YourGoalContainer,
   Image,
@@ -12,49 +14,64 @@ import {
   CustomRadioInput,
 } from './YourGoal.styled';
 
-const initialValues = {
-  goal: '',
-};
+import { goalSchema } from '../validationLibs';
+import { useEffect } from 'react';
 
-const YourGoal = ({ goNext, setGoal }) => {
+const YourGoal = ({ goNext, setGoal, dataGoal }) => {
+  const initialValues = {
+    goal: dataGoal,
+  };
+
+  useEffect(() => {
+    const selectorString = 'input[type="radio"][value="' + dataGoal + '"]';
+    const checkedButton = document.querySelector(selectorString);
+    if (!checkedButton) {
+      return;
+    }
+    checkedButton.checked = true;
+  }, [dataGoal]);
+
   const handleSubmit = ({ goal }) => {
     setGoal(goal);
     goNext();
   };
 
+  const isRetinaDisplay =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+
+  const image = isRetinaDisplay ? highQualityImage : lowQualityImage;
+
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={goalSchema}
+    >
       <YourGoalContainer>
         <Image src={image} alt="Summer hinking" />
+
         <Form>
           <YourGoalHeader id="yourGoalGroup">Your Goal</YourGoalHeader>
           <Text>Choose a goal so that we can help you effectively</Text>
-          <LabelBlock role="group" aria-labelledby="yourGoalGroup">
+          <LabelBlock role="group" aria-labelledby="goalGroup">
             <Label>
-              <Field
+              <CustomRadioInput
                 type="radio"
                 name="goal"
-                value="Lose Fat"
-                as={CustomRadioInput}
+                value="lose fat"
+                required
               />
               Lose fat
             </Label>
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="Maintain"
-                as={CustomRadioInput}
-              />
+              <CustomRadioInput type="radio" name="goal" value="maintain" />
               Maintain
             </Label>
             <Label>
-              <Field
-                type="radio"
-                name="goal"
-                value="Gain Muscle"
-                as={CustomRadioInput}
-              />
+              <CustomRadioInput type="radio" name="goal" value="gain muscle" />
               Gain Muscle
             </Label>
           </LabelBlock>

@@ -1,37 +1,32 @@
-import React, {useState} from 'react';
-// import ReactDOM from 'react-dom';
-// import { Formik, Field, Form } from 'formik';
-import breakfastImg from "../../assets/images/meal-periods/breakfast.png";
+import React, { useState } from 'react';
+
+// import axios from "axios";
 import {
   ModalOverlay,
   ModalDiv,
-  Field,
+  Input,
   TitleText,
   FormDiv,
   Span,
   ButtonSubmit,
+  BlockButtonStyle,
+  ButtonStyleAdd,
+  Form,
+  TitleBlok,
+  Img,
+  ButtonCancel,
 } from "./RecordDiaryModal.styled";
 
-import {ButtonStyle} from "../DiaryPages/DiaryPage.styled"
+import breakfastImg from "../../assets/images/meal-periods/breakfast.png";
+import breakfastImg2 from "../../assets/images/meal-periods/breakfast-2x.png";
 
-
-// const handleAddMore = () => {
-//   console.log("Add more button");
-// }
-// const handleCancel = () => {
-//   console.log("Cancel button");
-// }
-// const handleConfirm = () => {
-//   console.log("Confirm button");
-// }
-
-// // const onSubmit={async (values) => {
-// //   await new Promise((r) => setTimeout(r, 500));
-// //   alert(JSON.stringify(values, null, 2));
-// // }}
-      
-const RecordDiaryModal = ({ isOpen, onClose }) => {
-  const [fields, setFields] = useState(
+const isRetina = window.devicePixelRatio > 1;
+const imgPeriod = isRetina ? breakfastImg2 : breakfastImg;
+// const typeName = "Breakfast";
+  
+const RecordDiaryModal = ({ isOpen, onClose, typeName}) => {
+  // проміжковий масив для збереження даних в модалці
+  const [foodData, setFoodData] = useState(    
     [{
       id: "1",
       name: "",
@@ -42,13 +37,14 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
     }]
   );
 
-
+  // кнопка + Add more
   const handleAddMore = (e) => {
-    e.preventDefault(); // Убираем событие отправки формы
+    e.preventDefault(); // Прибирає подію відправки форми
     
-    if (fields[fields.length - 1].name === "") return;
-    setFields([
-      ...fields,
+    if (foodData[foodData.length - 1].name === "") return;  // не дозволя додавати, якщо не введено дані
+
+    setFoodData([
+      ...foodData,
       {
         id: Date.now(),
         name: "",
@@ -59,83 +55,162 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
       }
     ]);
   };
+  
+  // const handleChange = (e) => {
+    // const { name, value } = e.target;
+  const handleChange = (id, targ, fieldName) => {
+    // console.log();
+    if (fieldName === "") return
+    
+    // валідація
+    // if (fieldName !== "name" && fieldName !== "") {
+    //   try {
+    //     /^\d+$/.test(targ.value)
+    //     targ.value = Math.abs(Number(targ.value))
+    //     // targ.value = Math.abs(/^\d+$/.test(value))
+    //     // typeof targ.value
+    //   } catch (error) {
+    //     console.log("Value must be a number");
+    //     return
+    //   }
+    // }
 
-  const handleChange = (id, newValue) => {
-    const updatedFields = fields.map((field) =>
-      field.id === id ? { ...field, value: newValue } : field
-    );
-    setFields(updatedFields);
+    const updatedFields = foodData.flatMap((field) => {
+      // console.log(field);
+      return field.id === id ? { ...field, [fieldName]: targ.value } : field
+    });
+    //  setfoodData({...foodData, [name]: value,});
+    setFoodData(updatedFields);
   };
 
-  const handleSubmit = () => {
-    // Здесь можно отправить данные на сервер (backend) с помощью fetch или axios
-    console.log('Отправка данных на сервер:', fields);
+//   const handleSubmit = async (e) => {
+//     // Відправка даних на сервер (backend) за допомогою fetch або axios
+//     console.log('Відправка на сервер:', foodData);
+    
+//     e.preventDefault();  // ? можливо потрібен рендер для перерахунку сум
+//     try {
+//       // Відправка запросу POST
+      
+//       // const response = await axios.post('/api/user/food-intake', foodIntake);
+//       // const response = await axios.post('/api/user/food-intake', foodData);
+//       // console.log('Успішно відправлено:', response.data);
+// //зразок запиту
+// //   dispatch(postFoodIntake({type:'lunch', products:[{name:'english breakfast', carbonohidrates:22, protein:22, fat:22, calories:59},
+// // {name:'tea', carbonohidrates:22, protein:22, fat:22, calories:59}]}
+      
+//       //За потреби очищення форми або інші дії після успішної відправки
+//       console.log('Успішно відправлено:', foodData);
 
-    // Закрыть модальное окно
-    onClose();
+//     } catch (error) {
+//       console.error('Помилкака при відправці:', error);
+//       // Обробка помилки
+//     }
+      
+//     // Закрити модальне вікно
+//     onClose();
+  //   };
+  
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('URL', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(formData.fields),
+        body: JSON.stringify(foodData.fields),
+      });
+
+      if (response.ok) {
+        console.log('Дані успішно відправлено на бекенд.');
+        onClose();
+      } else {
+        console.error('Помилка відправки даних на бекенд.');
+      }
+    } catch (error) {
+      console.error('Помилка під час відправки даних:', error);
+    }
   };
+
+  const pageWidth = document.documentElement.clientWidth;  
 
   return isOpen ? (
     <ModalOverlay>
-      <ModalDiv>
-
-      <TitleText>Record your meal</TitleText>
-      <div style={{display: "flex", gap: "12px"}}>
-        <img src={breakfastImg} alt="Breakfast" />
-        <Span>Breakfast</Span> 
-      </div>
-      <form >
-        {fields.map((field) => (
-          <FormDiv key={field.id}>
-            <Field
-              id='name'
-              type="text"
-              value={field.name}
-              onChange={(e) => handleChange(field.id, e.target.name)}
-              placeholder="The name of the product or dish"
-              style={{ width: "255px" }}
-            />
-            <Field
-              id='carb'
-              type="number"
-              value={field.carb}
-              onChange={(e) => handleChange(field.id, e.target.carb)}
-              placeholder="Carbonoh."
-              style={{ width: "100px" }}
-            />
-            <Field
-              id='protein'
-              type="number"
-              value={field.protein}
-              onChange={(e) => handleChange(field.id, e.target.protein)}
-              placeholder="Protein"
-              style={{ width: "86px" }}
-            />
-            <Field
-              id='fat'
-              type="number"
-              value={field.fat}
-              onChange={(e) => handleChange(field.id, e.target.fat)}
-              placeholder="Fat"
-              style={{ width: "61px" }}
-            />
-            <Field
-              id='calories'
-              type="number"
-              value={field.calories}
-              onChange={(e) => handleChange(field.id, e.target.calories)}
-              placeholder="Calories"
-              style={{ width: "78px" }}
-            />
-          </FormDiv>
-          ))}
-        
-        <ButtonStyle onClick={handleAddMore} style={{ color: "var(--text-color-active-page-green)" }}>+ Add more</ButtonStyle>
-        <div style={{position:'absolute', bottom: "24px", right: "24px"}}>
-          <ButtonStyle onClick={onClose} style={{ color: "var(--text-color-secondary-grey)", width:"192px"}}>Cancel</ButtonStyle>
-          <ButtonSubmit type="submit" onClick={handleSubmit} >Confirm</ButtonSubmit>
-        </div>
-      </form>
+      <ModalDiv> 
+        {<TitleText>Record your meal</TitleText>}
+        {/* {isEdit ? <TitleText>Edit your meal</TitleText> :  <TitleText>Record your meal</TitleText>} */}
+        <TitleBlok >
+          <Img src={imgPeriod} alt={typeName} style={{width: "32px", height: "32px"}}/>
+          <Span>{typeName}</Span> 
+        </TitleBlok>
+        <Form >
+          {/* <div style={{display: "flex", flexWrap: "wrap", gap: "16px"}}> */}
+          {foodData.map((field) => (
+            <FormDiv key={field.id}>
+              <Input
+                id='name'
+                type="text"
+                // value={field.name}
+                defaultValue={field.name}
+                onChange={(e) => handleChange(field.id, e.target, "name")}
+                placeholder="The name of the product or dish"  
+                style={pageWidth< 834 ? { width: "100%" } : { width: "255px" }}
+                required
+              />
+              <Input
+                id='carb'
+                // type="text"
+                type="number"
+                // value={field.carb}
+                defaultValue={field.carb}
+                onChange={(e) => handleChange(field.id, e.target, "carb")}
+                placeholder="Carbonoh."
+                // style={{ width: "100px" }}
+                style={pageWidth< 834 ? { width: "100%" } : { width: "100px" }}
+                required
+              />
+              <Input
+                id='protein'
+                // type="text"
+                type="number"
+                // value={field.protein}
+                defaultValue={field.protein}
+                onChange={(e) => handleChange(field.id, e.target,"protein")}
+                placeholder="Protein"
+                style={pageWidth < 834 ? { width: "100%" } : { width: "86px" }} 
+                required
+              />
+              <Input
+                id='fat'
+                // type="text"
+                type="number"
+                // value={field.fat}
+                defaultValue={field.fat}
+                onChange={(e) => handleChange(field.id, e.target, "fat")}
+                placeholder="Fat"
+                style={pageWidth < 834 ? { width: "100%" } : { width: "61px" }}
+                required
+              />
+              <Input
+                id='calories'
+                // type="text"
+                type="number"
+                // value={field.calories}
+                defaultValue={field.calories}
+                onChange={(e) => handleChange(field.id, e.target, "calories")}
+                placeholder="Calories"
+                style={pageWidth < 834 ? { width: "100%" } : { width: "78px" }}
+                required
+              />
+            </FormDiv>
+            ))}          
+          <ButtonStyleAdd onClick={handleAddMore} >+ Add more</ButtonStyleAdd>
+          {/* </div> */}
+            <BlockButtonStyle>
+            <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+            <ButtonSubmit type="submit" onClick={handleSubmit} >Confirm</ButtonSubmit>
+          </BlockButtonStyle>
+        </Form>
       
       </ModalDiv>
     </ModalOverlay>
@@ -143,46 +218,3 @@ const RecordDiaryModal = ({ isOpen, onClose }) => {
 }
 
 export default RecordDiaryModal;
-
-// const Basic = () => (
-//   <div>
-//     <h1>Record your meal</h1>
-//     <p> <img src={breakfastImg} alt="Breakfast"/> Breakfast</p>
-//     <Formik
-//       initialValues={{
-//         name: '',
-//         carb: '',
-//         protein: '',
-//         fat: '',
-//         calories: '',
-//       }}
-//       onSubmit={async (values) => {
-//         await new Promise((r) => setTimeout(r, 500));
-//         alert(JSON.stringify(values, null, 2));
-//       }}
-//     >
-//       <Form>
-//         <label htmlFor="name"></label>
-//         <Field id="name" name="name" placeholder="The name of the product or dish" />
-
-//         <label htmlFor="carb"></label>
-//         <Field id="carb" name="carb" placeholder="Carbonoh." />
-
-//         <label htmlFor="protein"></label>
-//         <Field id="protein" name="protein" placeholder="Protein"/>
-        
-//         <label htmlFor="fat"></label>
-//         <Field id="fat" name="protein" placeholder="fat" />
-        
-//         <label htmlFor="calories"></label>
-//         <Field id="calories" name="calories" placeholder="Calories"/>
-        
-//         <button type="button" onClick={handleAddMore}>+ Add more</button>
-//         <button type="button" onClick={handleCancel}>Cancel</button>        
-//         <button type="submit" onClick={handleConfirm} >Confirm</button>
-//       </Form>
-//     </Formik>
-//   </div>
-// );
-
-// export default Basic;

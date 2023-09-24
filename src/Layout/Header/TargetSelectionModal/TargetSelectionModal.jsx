@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import CloseModalButton from '../CloseModalButton/CloseModalButton';
+import { updateGoalThunk } from 'redux/auth/operations';
 import {
   Overlay,
   TargetLayout,
@@ -30,6 +32,7 @@ import MaintainMan from '../../../assets/images/emoji/maintake-men.png';
 import MaintainMan2x from '../../../assets/images/emoji/maintake-men-2x.png';
 
 export default function TargetSelectionModal({ gender, onClose, target }) {
+  const dispatch = useDispatch();
   const [goal, setGoal] = useState(target);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function TargetSelectionModal({ gender, onClose, target }) {
 
   const onSubmit = event => {
     event.preventDefault();
-    console.log(goal);
+    dispatch(updateGoalThunk({ goal: goal }));
     onClose();
   };
 

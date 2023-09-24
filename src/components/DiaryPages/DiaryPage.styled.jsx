@@ -1,4 +1,17 @@
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+  /* Приховуємо полосу прокрутки в WebKit (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  /* Приховуємо полосу прокрутки в Firefox */
+  * {
+    scrollbar-width: none;
+  }
+`;
 
 export const ButtonStyle = styled.button`
   background-color: transparent;

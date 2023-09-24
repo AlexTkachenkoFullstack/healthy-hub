@@ -25,6 +25,11 @@ export const TitleWrap = styled.div`
   }
 `;
 
+export const ImageWrap = styled.div`
+  width: 36px;
+  height: 36px;
+`;
+
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 500;

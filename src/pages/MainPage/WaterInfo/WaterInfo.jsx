@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { WaterChart } from 'components/WaterChart';
 import {
   InfoTitle,
   WaterInfoCard,
-  Title,
+  WaterTitle,
   InfoNumber,
   Unit,
   InfoWrapper,
@@ -12,33 +12,48 @@ import {
   Button,
   AddIcon,
   ValueWrap,
+  WaterBar,
+  WaterPercentage,
 } from './WaterInfo.styled';
 
-export const WaterInfo = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+export const WaterInfo = ({ handleModal, waterConsumtion }) => {
+  const leftWaterIntake = 1500 - waterConsumtion;
 
-  const toggleModal = () => {
-    setIsOpenModal(prev => !prev);
-    console.log(isOpenModal);
-  };
+  const waterPercent =
+    waterConsumtion <= 1500 ? Math.round((waterConsumtion * 100) / 1500) : 100;
+
+  const offset =
+    waterPercent <= 84 ? Math.ceil((waterPercent / 100) * 176 + 10) : 88;
+  const percentColor = waterPercent <= 85 ? 'rgba(182, 195, 255, 1)' : 'green';
 
   return (
     <div>
-      <Title>Water</Title>
+      <WaterTitle>Water</WaterTitle>
       <WaterInfoCard>
-        <Level></Level>
+        <Level>
+          <WaterBar>
+            <WaterPercentage
+              $offset={offset}
+              $percentColor={percentColor}
+            >{`${waterPercent}%`}</WaterPercentage>
+            <WaterChart waterIntake={waterPercent} />
+          </WaterBar>
+        </Level>
         <InfoWrapper>
           <InfoTitle>Water consumption</InfoTitle>
           <ValueWrap>
             <InfoNumber>
-              1050 <Unit>ml</Unit>
+              {waterConsumtion} <Unit>ml</Unit>
             </InfoNumber>
             <LeftInfo>
-              left:<LeftNumber>450</LeftNumber>
+              left:
+              <LeftNumber>
+                {leftWaterIntake > 0 ? leftWaterIntake : 0}
+              </LeftNumber>
               <Unit>ml</Unit>
             </LeftInfo>
           </ValueWrap>
-          <Button onClick={toggleModal}>
+          <Button onClick={handleModal}>
             <AddIcon />
             Add water intake
           </Button>

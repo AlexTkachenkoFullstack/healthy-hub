@@ -4,26 +4,40 @@ import ForgotImageMobile from "../../assets/images/sport-and-fitness-tracker-mob
 import ForgotImageTablet from "../../assets/images/sport-and-fitness-tracker-tablet.png";
 import ForgotImageDesctop from "../../assets/images/sport-and-fitness-tracker.png";
 
+import ForgotImageDesctop2k from "../../assets/images/sport-and-fitness-tracker-2x.png";
+import ForgotImageMobile2k from "../../assets/images/sport-and-fitness-tracker-mobile-2x.png";
+import ForgotImageTablet2k from "../../assets/images/sport-and-fitness-tracker-tablet-2x.png";
 
 export const ImageForgot = styled.div`
 @media (min-width: 320px) {
-    background-image: url(${ForgotImageMobile});
+    background-image: image-set(
+        url(${ForgotImageMobile}) 1x,
+        url(${ForgotImageMobile2k}) 2x
+    );
     height: 296px;
     width: 300px;
     background-repeat: no-repeat;
     background-size: cover;
     }
 @media (min-width: 834px) {
-    background-image: url(${ForgotImageTablet});
+    background-image: image-set(
+            url(${ForgotImageTablet}) 1x,
+            url(${ForgotImageTablet2k}) 2x
+        );
     height: 376px;
     width: 380px;
     }
+
 @media (min-width: 1440px) {
-    background-image: url(${ForgotImageDesctop});
+    background-image: image-set(
+            url(${ForgotImageDesctop}) 1x,
+            url(${ForgotImageDesctop2k}) 2x
+        );
     height: 588px;
     width: 592px;
     margin-right: 48px;
 }`;
+
 
 export const ForgotContainer = styled.div`
 @media (min-width: 320px) {
