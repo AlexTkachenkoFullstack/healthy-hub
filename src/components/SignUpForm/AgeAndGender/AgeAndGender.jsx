@@ -82,7 +82,12 @@ const AgeAndGender = ({
                 Male
               </Label>
               <Label>
-                <CustomRadioInput type="radio" name="gender" value="female" />
+                <CustomRadioInput
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  required
+                />
                 Female
               </Label>
             </LabelBlock>
