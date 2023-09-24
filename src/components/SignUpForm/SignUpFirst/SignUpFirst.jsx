@@ -161,7 +161,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
 
-              <button type="button" onClick={toggleIsOpenPassword}>
+              <button
+                type="button"
+                alt="Show or hide password"
+                onClick={toggleIsOpenPassword}
+              >
                 <PasswordOpenButtonIcon />
               </button>
 
