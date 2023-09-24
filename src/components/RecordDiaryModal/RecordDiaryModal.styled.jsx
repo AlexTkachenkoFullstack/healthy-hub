@@ -100,9 +100,10 @@ export const Form = styled.form`
   }
 `
 export const FormDiv = styled.div`
-  display: flex;
+  display: flex;  
 
-  @media (min-width: 320px) {    
+  @media (min-width: 320px) { 
+    margin-bottom: 24px;   
     flex-direction: column;
     width: 100%;
     gap: 16px;
@@ -110,6 +111,7 @@ export const FormDiv = styled.div`
 
   @media (min-width: 834px) {
     // display: flex;
+    margin-bottom: 16px;
     column-gap: 12px;
     justify-content: space-between;
     flex-direction: row;

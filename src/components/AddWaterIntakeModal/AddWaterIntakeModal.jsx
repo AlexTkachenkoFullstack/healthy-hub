@@ -19,6 +19,7 @@ const validationSchema = Yup.object({
 });
 
 export const AddWaterIntakeModal = ({ handleModal }) => {
+  
   const handleCloseModal = e => {
     (e.code === 'Escape' || e.currentTarget === e.target) && handleModal();
   };

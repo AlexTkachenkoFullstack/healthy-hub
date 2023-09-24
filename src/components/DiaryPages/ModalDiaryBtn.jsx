@@ -4,13 +4,19 @@ import {
   TextIndexSpan
 } from './DiaryPage.styled';
 
-import RecordDiaryModal from '../RecordDiaryModal/RecordDiaryModal';
+import RecordDiaryModalB from "../../components/RecordDiaryModal/RecordDiaryModalB"
+import RecordDiaryModalL from "../../components/RecordDiaryModal/RecordDiaryModalL"
+import RecordDiaryModalD from "../../components/RecordDiaryModal/RecordDiaryModalD"
+import RecordDiaryModalS from "../../components/RecordDiaryModal/RecordDiaryModalS"
 
-const ModalDiaryBtn = () => {
+const ModalDiaryBtn = (index) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showRecordDiaryModal, setShowRecordDiaryModal] = useState(false);
+  
+
+
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -44,7 +50,7 @@ const ModalDiaryBtn = () => {
   };  
   
   useEffect(() => {
-    if (RecordDiaryModal) {
+    if (RecordDiaryModalB || RecordDiaryModalL || RecordDiaryModalD || RecordDiaryModalS) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -54,7 +60,41 @@ const ModalDiaryBtn = () => {
     };
   }, [showRecordDiaryModal]);
 
+  // const Ggg = <RecordDiaryModalB isOpen={isModalOpen} onClose={closeModal} />;
+  // let Ggg;
+  // if(index.data === "b") {Ggg = RecordDiaryModalB}
+  // else if(index.data === "l") {Ggg = RecordDiaryModalL}
+  // else if(index.data === "d") {Ggg = RecordDiaryModalD}
+  // else if (index.data === "s") {Ggg = RecordDiaryModalS }
+  
+  // const modalOpen = () => {
+  //   if (index.data === "b") return <RecordDiaryModalB isOpen={isModalOpen} onClose={closeModal} />
+  //   else if (index.data === "l") return <RecordDiaryModalL isOpen={isModalOpen} onClose={closeModal} />
+  //   else if (index.data === "d") return <RecordDiaryModalD isOpen={isModalOpen} onClose={closeModal} />
+  //   else return <RecordDiaryModalS isOpen={isModalOpen} onClose={closeModal} />
+  // }
+  const modalOpen = (index) => {
+    if (index === "b") {
+      return RecordDiaryModalB
+    } else if (index === "l") {
+      return RecordDiaryModalL
+    } else if (index === "d") {
+      return RecordDiaryModalD
+    } else {return RecordDiaryModalS}
+  }
 
+  // const openModalB = () => {
+  //   return RecordDiaryModalB
+  // }
+
+  // const openModalL = () => {
+  //   return RecordDiaryModalL
+  // }
+  // const openModalD = () => {
+  //   return <RecordDiaryModalD isOpen={isModalOpen} onClose={closeModal}/>
+  // }
+
+  
   return (
     <>
       <ButtonStyle onClick={handleClick}
@@ -69,10 +109,21 @@ const ModalDiaryBtn = () => {
           + Record your meal
         </TextIndexSpan>
       </ButtonStyle>
+      {modalOpen(index.data)}
 
-      <RecordDiaryModal isOpen={isModalOpen} onClose={closeModal}>
-        <RecordDiaryModal />
-      </RecordDiaryModal>
+      {/* <RecordDiaryModal isOpen={isModalOpen} onClose={closeModal} /> */}
+      {/* <RecordDiaryModalD isOpen={isModalOpen} onClose={closeModal} /> */}
+      
+      {/* <Ggg isOpen={isModalOpen} onClose={closeModal}/> */}
+      {/* {index.data === 'b' && openModalB()}
+      {index.data === 'l' && openModalL()}
+      {index.data === 'd' && openModalD()} */}
+      {/* {index.data === "b" && <RecordDiaryModalB isOpen={isModalOpen} onClose={closeModal} />}
+      {index.data === "l" && <RecordDiaryModalL isOpen={isModalOpen} onClose={closeModal} />}
+      {index.data === "d" && <RecordDiaryModalD isOpen={isModalOpen} onClose={closeModal} />}
+      {index.data === "s" && <RecordDiaryModalS isOpen={isModalOpen} onClose={closeModal} />}       */}
+        {/* <RecordDiaryModal />
+      </RecordDiaryModal> */}
     </>
   );
 };

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Formik, ErrorMessage } from 'formik';
 
-import axios from "axios";
-import breakfastImg from "../../assets/images/meal-periods/breakfast.png";
+// import axios from "axios";
 import {
   ModalOverlay,
   ModalDiv,
@@ -19,21 +17,16 @@ import {
   ButtonCancel,
 } from "./RecordDiaryModal.styled";
 
+import dinnerImg from "../../assets/images/meal-periods/dinner.png";
+import dinnerImg2 from "../../assets/images/meal-periods/dinner-2x.png";
 
-// import {ButtonStyle} from "../DiaryPages/DiaryPage.styled"
-// import { type } from '@testing-library/user-event/dist/type';
+const isRetina = window.devicePixelRatio > 1;
+const imgPeriod = isRetina ? dinnerImg2 : dinnerImg;
+const typeName = "Dinner";
 
-// // const onSubmit={async (values) => {
-// //   await new Promise((r) => setTimeout(r, 500));
-// //   alert(JSON.stringify(values, null, 2));
-// // }}
-      
-
-const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
-  // const { isOpen, initialValues, onClose } = props;
-  const [formData, setFormData] = useState(initialValues);
-  
-  const [foodData, setFoodData] = useState(
+const RecordDiaryModal = ({ isOpen, onClose }) => {
+  // проміжковий масив для збереження даних в модалці
+  const [foodData, setFoodData] = useState(    
     [{
       id: "1",
       name: "",
@@ -44,10 +37,12 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
     }]
   );
 
+  // кнопка + Add more
   const handleAddMore = (e) => {
     e.preventDefault(); // Прибирає подію відправки форми
     
-    if (foodData[foodData.length - 1].name === "") return;
+    if (foodData[foodData.length - 1].name === "") return;  // не дозволя додавати, якщо не введено дані
+
     setFoodData([
       ...foodData,
       {
@@ -67,6 +62,7 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
     // console.log();
     if (fieldName === "") return
     
+    // валідація
     // if (fieldName !== "name" && fieldName !== "") {
     //   try {
     //     /^\d+$/.test(targ.value)
@@ -80,55 +76,48 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
     // }
 
     const updatedFields = foodData.flatMap((field) => {
-      console.log(field);
-      const sd = field.id === id ? { ...field, [fieldName]: targ.value } : field
+      // console.log(field);
       return field.id === id ? { ...field, [fieldName]: targ.value } : field
-    
-      // field.id === id ? { ...field, value: newValue } : field
     });
     //  setfoodData({...foodData, [name]: value,});
     setFoodData(updatedFields);
   };
 
-  const handleSubmit = async (e) => {    
-    // Відправка даних на сервер (backend) за допомогою fetch або axios
-    console.log('Відправка на сервер:', foodData);
-    
-    e.preventDefault();  // ? можливо потрібен рендер для перерахунку сум
+  const handleSubmit = async () => {
     try {
-      // Відправка запросу POST
-      
-      // const response = await axios.post('/api/user/food-intake', foodIntake);
-      // const response = await axios.post('/api/user/food-intake', foodData);
-      // console.log('Успішно відправлено:', response.data);
+      const response = await fetch('URL', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(formData.fields),
+        body: JSON.stringify(foodData.fields),
+      });
 
-//   dispatch(postFoodIntake({type:'lunch', products:[{name:'english breakfast', carbonohidrates:22, protein:22, fat:22, calories:59},
-// {name:'tea', carbonohidrates:22, protein:22, fat:22, calories:59}]}      
-      
-      //За потреби очищення форми або інші дії після успішної відправки
-
-      console.log('Успішно відправлено:', foodData);
+      if (response.ok) {
+        console.log('Дані успішно відправлено на бекенд.');
+        onClose();
+      } else {
+        console.error('Помилка відправки даних на бекенд.');
+      }
     } catch (error) {
-      console.error('Помилкака при відправці:', error);
-      // Обробка помилки
+      console.error('Помилка під час відправки даних:', error);
     }
-    
-  // Закрити модальне вікно
-    onClose();
   };
 
-  const pageWidth = document.documentElement.clientWidth
+  const pageWidth = document.documentElement.clientWidth;  
+
   return isOpen ? (
     <ModalOverlay>
-      <ModalDiv>      
-        <TitleText>Record your meal</TitleText>
+      <ModalDiv> 
+        {<TitleText>Record your meal</TitleText>}
+        {/* {isEdit ? <TitleText>Edit your meal</TitleText> :  <TitleText>Record your meal</TitleText>} */}
         <TitleBlok >
-          <Img src={breakfastImg} alt="Breakfast" />
-          <Span>Breakfast</Span> 
+          <Img src={imgPeriod} alt={typeName} style={{width: "32px", height: "32px"}}/>
+          <Span>{typeName}</Span> 
         </TitleBlok>
         <Form >
           {/* <div style={{display: "flex", flexWrap: "wrap", gap: "16px"}}> */}
-
           {foodData.map((field) => (
             <FormDiv key={field.id}>
               <Input
@@ -136,9 +125,6 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
                 type="text"
                 // value={field.name}
                 defaultValue={field.name}
-                // onChange={handleInputChange}
-                // onChange={handleChange}
-                // onChange={(e) => handleChange(field.id, e.target.carb)}
                 onChange={(e) => handleChange(field.id, e.target, "name")}
                 placeholder="The name of the product or dish"  
                 style={pageWidth< 834 ? { width: "100%" } : { width: "255px" }}
@@ -150,12 +136,11 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
                 type="number"
                 // value={field.carb}
                 defaultValue={field.carb}
-                // onChange={(e) => handleChange(field.id, e.target.carb)}
                 onChange={(e) => handleChange(field.id, e.target, "carb")}
                 placeholder="Carbonoh."
                 // style={{ width: "100px" }}
                 style={pageWidth< 834 ? { width: "100%" } : { width: "100px" }}
-                
+                required
               />
               <Input
                 id='protein'
@@ -163,12 +148,10 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
                 type="number"
                 // value={field.protein}
                 defaultValue={field.protein}
-                // onChange={(e) => handleChange(field.id, e.target.protein)}
                 onChange={(e) => handleChange(field.id, e.target,"protein")}
                 placeholder="Protein"
-                // style={{ width: "86px" }}
-                style={pageWidth< 834 ? { width: "100%" } : { width: "86px" }}
-                
+                style={pageWidth < 834 ? { width: "100%" } : { width: "86px" }} 
+                required
               />
               <Input
                 id='fat'
@@ -176,11 +159,10 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
                 type="number"
                 // value={field.fat}
                 defaultValue={field.fat}
-                // onChange={(e) => handleChange(field.id, e.target.fat)}
                 onChange={(e) => handleChange(field.id, e.target, "fat")}
                 placeholder="Fat"
-                // style={{ width: "61px" }}
-                style={pageWidth< 834 ? { width: "100%" } : { width: "61px" }}
+                style={pageWidth < 834 ? { width: "100%" } : { width: "61px" }}
+                required
               />
               <Input
                 id='calories'
@@ -188,21 +170,17 @@ const RecordDiaryModal = ({ isOpen, initialValues, onClose }) => {
                 type="number"
                 // value={field.calories}
                 defaultValue={field.calories}
-                // onChange={(e) => handleChange(field.id, e.target.calories)}
                 onChange={(e) => handleChange(field.id, e.target, "calories")}
                 placeholder="Calories"
-                // style={{ width: "78px" }}
-                style={pageWidth< 834 ? { width: "100%" } : { width: "78px" }}
+                style={pageWidth < 834 ? { width: "100%" } : { width: "78px" }}
+                required
               />
             </FormDiv>
             ))}          
-          {/* <ButtonStyleAdd type="submit" onClick={handleAddMore} >+ Add more</ButtonStyleAdd> */}
           <ButtonStyleAdd onClick={handleAddMore} >+ Add more</ButtonStyleAdd>
           {/* </div> */}
             <BlockButtonStyle>
-            {/* <ButtonStyle type="submit" onClick={onClose} style={{ color: "var(--text-color-secondary-grey)", width:"192px", position: "absolute", top:"45px", left: "25px", }}>Cancel</ButtonStyle> */}
             <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
-            {/* <ButtonStyle onClick={onClose} style={{ color: "var(--text-color-secondary-grey)", width:"192px", position: "absolute", top:"45px", left: "25px", }}>Cancel</ButtonStyle> */}
             <ButtonSubmit type="submit" onClick={handleSubmit} >Confirm</ButtonSubmit>
           </BlockButtonStyle>
         </Form>

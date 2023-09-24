@@ -8,6 +8,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage';
 import MainPage from './pages/MainPage/MainPage';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import DiaryPage from './pages/DiaryPage/DiaryPage';
+import DiaryPage1 from './pages/DiaryPage/DiaryPage1';
 import RecommendedFoodPage from './pages/RecommendedFoodPage/RecommendedFoodPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -19,35 +20,36 @@ import { refreshThunk } from './redux/auth/operations';
 
 function App() {
 
-  let isAuth= useSelector(getAuthStatus); 
+  let isAuth = useSelector(getAuthStatus);
 
-const dispatch=useDispatch();
-useEffect(()=>{
-  dispatch(refreshThunk())
-},[dispatch])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk())
+  }, [dispatch])
 
-  // return (
-  //   <Routes>
-  //     <Route path='/' element={<Layout />}>
-  //       <Route index element={!isAuth ? <WellcomPage /> : <MainPage />}  />
-  //       <Route path='signup' element={<RestrictedRoute redirectTo='/' component={<SignUpPage />}  />}/>
-  //       <Route path='signin' element={<RestrictedRoute redirectTo='/' component={<SignInPage />}  />}/>
-  //       <Route path='forgot-password' element={<RestrictedRoute redirectTo='/' component={<ForgotPasswordPage />} />}/>
+//   return (
+//     <Routes>
+//       <Route path='/' element={<Layout />}>
+//         <Route index element={!isAuth ? <WellcomPage /> : <MainPage />} />
+//         <Route path='signup' element={<RestrictedRoute redirectTo='/' component={<SignUpPage />} />} />
+//         <Route path='signin' element={<RestrictedRoute redirectTo='/' component={<SignInPage />} />} />
+//         <Route path='forgot-password' element={<RestrictedRoute redirectTo='/' component={<ForgotPasswordPage />} />} />
 
-  //       <Route path='dashboard' element={<PrivateRoute redirectTo='/signin' component= {<DashboardPage />} />}/>
-  //       <Route path='diary' element={<PrivateRoute redirectTo='/signin' component= {<DiaryPage />} />} />
-  //       <Route path='recommended-food' element={<PrivateRoute redirectTo='/signin' component= {<RecommendedFoodPage />} />} />
-  //       <Route path='settings' element={<PrivateRoute redirectTo='/signin' component= {<SettingsPage />} />} />
-  //       <Route path="*" element={<Navigate to="/" replace />} />
-  //     </Route>
-  //   </Routes>
-  // );
+//         <Route path='dashboard' element={<PrivateRoute redirectTo='/signin' component={<DashboardPage />} />} />
+//         <Route path='diary' element={<PrivateRoute redirectTo='/signin' component={<DiaryPage />} />} />
+//         <Route path='recommended-food' element={<PrivateRoute redirectTo='/signin' component={<RecommendedFoodPage />} />} />
+//         <Route path='settings' element={<PrivateRoute redirectTo='/signin' component={<SettingsPage />} />} />
+//         <Route path="*" element={<Navigate to="/" replace />} />
+//       </Route>
+//     </Routes>
+//   );
+// }
 
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
         {/* <Route index element={!isAuth ? <WellcomPage /> : <MainPage />}  /> */}
-        <Route index element={!isAuth ? <DiaryPage /> : <MainPage />}  />
+        <Route index element={!isAuth ? <MainPage /> :<DiaryPage1 /> } />
         <Route path='signup' element={<RestrictedRoute redirectTo='/' component={<SignUpPage />}  />}/>
         <Route path='signin' element={<RestrictedRoute redirectTo='/' component={<SignInPage />}  />}/>
         <Route path='forgot-password' element={<RestrictedRoute redirectTo='/' component={<ForgotPasswordPage />} />}/>
