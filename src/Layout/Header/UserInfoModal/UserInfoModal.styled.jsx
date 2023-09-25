@@ -7,6 +7,7 @@ export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 999;
+  font-family: Poppins;
 
   @media (min-width: 834px) {
     top: 100px;

@@ -6,6 +6,7 @@ export const SettingContainer = styled.section`
   padding-bottom: 40px;
   background-color: var(--bg-primary);
   color: var(--text-color-primary-white);
+  font-family: Poppins;
 
   @media (min-width: 834px) {
     padding-top: 24px;

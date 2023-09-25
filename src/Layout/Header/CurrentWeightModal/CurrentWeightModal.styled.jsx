@@ -9,6 +9,7 @@ export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 999;
+  font-family: Poppins;
 
   @media (min-width: 834px) {
     top: 100px;
@@ -173,6 +174,7 @@ export const WeightInput = styled(Field)`
   border: 1px solid var(--bg-button-color);
   outline: none;
   border: ${({ borderstyle }) => borderstyle};
+  font-family: Poppins;
 
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
