@@ -2,11 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchStatistics } from "./operations";
 
 const initialState={
-    statistics:{
-        water:{lastMonth:[], lastYear:[]},
-        weight:{lastMonth:[], lastYear:[]},
-        calories:{lastMonth:[], lastYear:[]},
-    },
+    statistics:null,
     isLoading: false,
     error:null,
 }
