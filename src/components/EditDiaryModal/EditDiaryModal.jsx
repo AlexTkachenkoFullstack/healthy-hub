@@ -28,7 +28,7 @@ import * as yup from 'yup';
 
 export const schema = yup.object({
   name: yup.string().required('Please Enter product name'),
-  carb: yup
+  carbohydrates: yup
     .number()
     .min(0, 'you can not enter less 0')
     .required('please enter Carboh.'),
@@ -49,10 +49,10 @@ export const schema = yup.object({
 const EditDiaryModal = ({ onClose, type, product }) => {
   const dispatch = useDispatch();
 
-  const handleSubmit = ({ name, carb, protein, fat, calories }) => {
+  const handleSubmit = ({ name, carbohydrates, protein, fat, calories }) => {
     const currentProduct = {
       name: name,
-      carbonohidrates: carb,
+      carbohydrates: carbohydrates,
       protein: protein,
       fat: fat,
       calories: calories,
@@ -118,7 +118,7 @@ const EditDiaryModal = ({ onClose, type, product }) => {
         <Formik
           initialValues={{
             name: product.name,
-            carb: product.carbonohidrates,
+            carbohydrates: product.carbohydrates,
             protein: product.protein,
             fat: product.fat,
             calories: product.calories,
@@ -145,14 +145,14 @@ const EditDiaryModal = ({ onClose, type, product }) => {
               <FieldContainer>
                 <StyledField
                   type="number"
-                  name="carb"
+                  name="carbohydrates"
                   borderstyle={
-                    errors.carb && touched.carb
+                    errors.carbohydrates && touched.carbohydrates
                       ? '1px solid var(--input-border-color-error)'
                       : ''
                   }
                 />
-                <ErrorMessage name="carb">
+                <ErrorMessage name="carbohydrates">
                   {msg => <ErrorText>{msg}</ErrorText>}
                 </ErrorMessage>
               </FieldContainer>

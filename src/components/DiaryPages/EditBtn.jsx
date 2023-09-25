@@ -6,9 +6,9 @@ import {
 } from './DiaryPage.styled';
 import sprite from '../../assets/images/icons/icons.svg';
 
-const EditBtn = () => {
+const EditBtn = ({onClick}) => {
   return (
-    <ButtonStyle >
+    <ButtonStyle onClick={onClick} >
       <SvgEdit style={{transform: "rotate(0deg)"}}>
         <use href={sprite + '#icon-edit-2'}></use>
       </SvgEdit>
