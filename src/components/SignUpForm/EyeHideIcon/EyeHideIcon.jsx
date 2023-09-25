@@ -1,5 +1,5 @@
 import icon from '../../../assets/images/icons/eyeClose.svg';
-import { IconContainer } from './PasswordHideButtonIcon.styled';
+import { IconContainer } from './EyeHideIcon.styled';
 
 export default function PasswordHideButtonIcon() {
   return (
