@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { WaterChart } from 'components/WaterChart';
 import {
   InfoTitle,
@@ -16,6 +17,10 @@ import {
   WaterPercentage,
 } from './WaterInfo.styled';
 
+import { bubbles } from 'utils/bubbles';
+
+
+
 export const WaterInfo = ({ handleModal, waterConsumtion }) => {
   const leftWaterIntake = 1500 - waterConsumtion;
 
@@ -26,12 +31,21 @@ export const WaterInfo = ({ handleModal, waterConsumtion }) => {
     waterPercent <= 84 ? Math.ceil((waterPercent / 100) * 176 + 10) : 88;
   const percentColor = waterPercent <= 85 ? 'rgba(182, 195, 255, 1)' : 'green';
 
+  useEffect(() => {
+    const bubbleId = setInterval(bubbles, 1000);
+    return () => {
+      clearInterval(bubbleId);
+    };
+  }, []);
+
   return (
     <div>
       <WaterTitle>Water</WaterTitle>
+
       <WaterInfoCard>
         <Level>
-          <WaterBar>
+          {/* <Bubbles /> */}
+          <WaterBar id="bubbles">
             <WaterPercentage
               $offset={offset}
               $percentColor={percentColor}
