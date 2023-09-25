@@ -1,3 +1,5 @@
+import RecordDiaryModalNew from 'components/RecordDiaryModalNew';
+import { useState } from 'react';
 import {
   AddButton,
   InfoWrap,
@@ -11,11 +13,19 @@ import {
 } from './DiaryCard.styled';
 import { TitleWrap } from './DiaryCard.styled';
 
+const elementSum = (arr, elem) => {
+  return Math.round((arr.reduce((sum, dish) => sum + dish[elem], 0) * 10) / 10);
+};
+
 export const DiaryCard = ({ title, image, image2x, info }) => {
-  const { carbonohidrates, protein, fat } = info;
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const proteinSum = elementSum(info, 'protein');
+  const carbonohidratesSum = elementSum(info, 'carbonohidrates');
+  const fatSum = elementSum(info, 'fat');
 
   const handleRecordMeal = () => {
-    console.log('click record meal');
+    setIsOpenModal(isOpen => !isOpen);
   };
 
   return (
@@ -26,16 +36,17 @@ export const DiaryCard = ({ title, image, image2x, info }) => {
         </ImageWrap>
         <Title>{title}</Title>
       </TitleWrap>
-      {carbonohidrates !== 0 && protein !== 0 && fat !== 0 ? (
+      {info.length !== 0 ? (
         <InfoWrap>
           <CarbWrap>
-            Carbonohidrates: <Value>{carbonohidrates}</Value>
+            Carbonohidrates:{' '}
+            <Value>{isNaN(carbonohidratesSum) ? 0 : carbonohidratesSum}</Value>
           </CarbWrap>
           <ProteinWrap>
-            Protein: <Value>{protein}</Value>
+            Protein: <Value>{isNaN(proteinSum) ? 0 : proteinSum}</Value>
           </ProteinWrap>
           <p>
-            Fat:: <Value>{fat}</Value>
+            Fat: <Value>{isNaN(fatSum) ? 0 : fatSum}</Value>
           </p>
         </InfoWrap>
       ) : (
@@ -43,6 +54,12 @@ export const DiaryCard = ({ title, image, image2x, info }) => {
           <AddIcon />
           Record your meal
         </AddButton>
+      )}
+      {isOpenModal && (
+        <RecordDiaryModalNew
+          onClose={handleRecordMeal}
+          type={title.toLowerCase()}
+        />
       )}
     </CardWrap>
   );

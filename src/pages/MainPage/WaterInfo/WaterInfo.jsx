@@ -41,10 +41,8 @@ export const WaterInfo = ({ handleModal, waterConsumtion }) => {
   return (
     <div>
       <WaterTitle>Water</WaterTitle>
-
       <WaterInfoCard>
         <Level>
-          {/* <Bubbles /> */}
           <WaterBar id="bubbles">
             <WaterPercentage
               $offset={offset}

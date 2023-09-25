@@ -13,6 +13,7 @@ import { getCaloriesGoalLoading } from 'redux/dialyGoalCalories/selectors';
 import { getRecommendedFoodLoading } from 'redux/recommendedFood/selectors';
 import { refreshThunk } from './redux/auth/operations';
 import Loader from 'components/Loader/Loader';
+import { fetchFoodIntake } from 'redux/diary/operations';
 // import { fetchFoodIntake, postFoodIntake, updateFoodIntake } from 'redux/diary/operations';
 
 const WellcomPage = lazy(() => import('./pages/WellcomPage/WellcomPage'));
@@ -41,7 +42,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshThunk());
-    // dispatch(fetchFoodIntake())
+    dispatch(fetchFoodIntake());
     // dispatch(postFoodIntake({type:"lunch", products:[{name: "Apple",carbohydrates: 23,protein:  55 ,fat: 44 ,calories: 60}]}))
     //  dispatch(updateFoodIntake({id:"650f8352565b69b1151714ea", type:"lunch", product:{name: "Mango",carbohydrates: 23,protein:  55, fat: 44, calories:60}}))
   }, [dispatch]);
