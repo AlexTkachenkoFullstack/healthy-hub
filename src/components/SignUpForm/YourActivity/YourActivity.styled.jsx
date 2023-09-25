@@ -1,14 +1,12 @@
 import styled from "styled-components";
+import { Field } from 'formik';
 
 export const YourActivityContainer = styled.div`
   background-color: var(--bg-primary);
-  padding: 24px 0;
-
-  /* потім margin прибрати*/
-  margin-top: 60px;
+  padding-top: 24px;
 
   @media (min-width: 834px) {
-    padding: 40px 0;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +14,7 @@ export const YourActivityContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     gap: 104px;
   }
 `;
@@ -34,6 +33,7 @@ export const YourActivityHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
+    padding-top: 80px;
   }
 `;
 
@@ -41,8 +41,6 @@ export const Image = styled.img`
   width: 300px;
   height: 304px;
   margin-bottom: 24px;
-
-  margin: 0 auto;
   display: block;
 
   @media (min-width: 834px) {
@@ -82,8 +80,8 @@ export const LabelBlock = styled.div`
   gap: 16px;
 
   @media (min-width: 834px) {
-   align-items:flex-start;
-   width:458px;
+    align-items: flex-start;
+    width: 458px;
   }
 
   @media (min-width: 1440px) {
@@ -103,6 +101,9 @@ export const Label = styled.label`
   align-items: center;
   gap: 8px;
   justify-items: start;
+  @media (min-width: 1440px) {
+    width: 350px;
+  }
 `;
 
 export const InputButton = styled.button`
@@ -146,13 +147,14 @@ export const BackButton = styled.button`
   border: none;
   display: block;
   margin: 0 auto;
+  padding-bottom: 24px;
 
   @media (min-width: 1440px) {
     height: 36px;
     margin-left: 82px;
   }
 `;
-export const CustomRadioInput = styled.input`
+export const CustomRadioInput = styled(Field)`
   place-content: center;
   appearance: none;
   background-color: black;

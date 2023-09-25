@@ -3,13 +3,10 @@ import styled from 'styled-components';
 
 export const BodyParametersContainer = styled.div`
   background-color: var(--bg-primary);
-  padding: 24px 0;
-
-  /* потім margin прибрати*/
-  margin-top: 60px;
+  padding-top: 24px;
 
   @media (min-width: 834px) {
-    padding: 40px 0;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +14,7 @@ export const BodyParametersContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
+    align-items:flex-start;
     gap: 104px;
   }
 `;
@@ -55,6 +53,7 @@ export const BodyParametersHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
+    margin-top:80px;
   }
 `;
 
@@ -97,7 +96,7 @@ export const ChooseText = styled.p`
   }
 `;
 
-export const InputBox = styled.div`
+export const InputBox = styled.label`
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
@@ -185,4 +184,12 @@ export const BackButton = styled.button`
     height: 36px;
     margin-left: 82px;
   }
+`;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
 `;

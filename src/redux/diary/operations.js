@@ -5,6 +5,9 @@ const instance = axios.create({
     baseURL: 'https://backend-healthyhub.onrender.com/'
 });
 
+const setAuthHeader = token => {
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  };
 
 export const fetchFoodIntake=createAsyncThunk(
     'foodIntake/get',
@@ -15,7 +18,9 @@ export const fetchFoodIntake=createAsyncThunk(
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
+            setAuthHeader(persistToken);
             const response=await instance('api/user/food-intake')
+            console.log(response.data)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
@@ -34,7 +39,9 @@ export const postFoodIntake=createAsyncThunk(
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
+            setAuthHeader(persistToken);
             const response=await instance.post('api/user/food-intake', credentials)
+            console.log(response.data)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
@@ -47,15 +54,16 @@ export const postFoodIntake=createAsyncThunk(
 export const updateFoodIntake=createAsyncThunk(
     'foodIntake/update',
     // food={name, calories}, kindOfFood=dinner
-    async ({id, food, kindOfFood}, thunkAPI) => {
+    async ({id, type, product}, thunkAPI) => {
         try {
             const state = thunkAPI.getState();
             const persistToken = state.auth.token;
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
-            const response=await instance.put(`api/user/food-intake/${id}`, {food, kindOfFood})
-            // {dinner:{name:'', ...}}
+            setAuthHeader(persistToken);
+            const response=await instance.put(`api/user/food-intake/${id}`, {type, product})
+            console.log(response.data)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)

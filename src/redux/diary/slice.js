@@ -7,8 +7,8 @@ const initialState={
         lunch:[],
         dinner:[],
         snack:[],
-        date:null
     },
+    totalCalories:0,
     isLoading: false,
     error:null,
 }
@@ -26,23 +26,29 @@ const handlePending = (state) => {
 const handleFulfildGet = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.food={...action.payload.data}
+    state.food.breakfast=action.payload.data.userProducts.breakfast;
+    state.food.lunch=action.payload.data.userProducts.lunch;
+    state.food.dinner=action.payload.data.userProducts.dinner;
+    state.food.snack=action.payload.data.userProducts.snack;
+    state.totalCalories=action.payload.data.userProducts.totalCalories;
 }
 
 const handleFulfildPost = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    const type=Object.keys(action.payload.data)[0];
-    state.food[type]=[...state.food[type], ...action.payload.data[type]]
+    const type=action.payload.data.type;
+    state.food[type]=[...action.payload.data.product]
+    state.totalCalories=action.payload.data.totalCalories;
 }
 
 const handleFulfildUpdate = (state, action) => {
     state.isLoading = false;
     state.error = null;
     // {dinner:{name:', id} }
-    const type=Object.keys(action.payload.data)[0];
-    const indexOfFood=state.food[type].findIndex(item=>item.id===action.payload.data[type].id);
-    state.food[type][indexOfFood]=action.payload.data[type];
+    const type=action.payload.data.type;
+    const indexOfFood=state.food[type].findIndex(item=>item.id===action.payload.data.product.id);
+    state.food[type][indexOfFood]=action.payload.data.product;
+    state.totalCalories=action.payload.data.totalCalories;
 }
 
 export const foodIntakeSlice = createSlice({

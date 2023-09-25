@@ -45,12 +45,12 @@ const bcgCircle = {
   },
 };
 
-export const DoughnutChart = ({ valueNorm, inputValue, chartBcg }) => {
-  if (inputValue > valueNorm) {
+export const DoughnutChart = ({ dailyCalories, inputValue, chartBcg }) => {
+  if (inputValue > dailyCalories) {
     inputValue = 1700;
     chartBcg = 'red';
   }
-  const emptyValue = valueNorm - inputValue;
+  const emptyValue = dailyCalories - inputValue;
 
   const data = {
     datasets: [

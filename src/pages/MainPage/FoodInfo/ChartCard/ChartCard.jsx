@@ -1,4 +1,4 @@
-import { DoughnutChart } from 'components/RecommendedCard/DoughnutChart';
+import { DoughnutChart } from 'components/DoughnutChart';
 import {
   ChartWrapper,
   ChartElement,
@@ -14,14 +14,18 @@ export const ChartCard = props => {
   const { title, chartBcg, elementGoal, elementValue } = props;
 
   const left = elementGoal - elementValue;
-  const elementPercentage = Math.round((elementValue * 100) / elementGoal);
+  let elementPercentage = Math.round((elementValue * 100) / elementGoal);
+
+  if (elementPercentage === Infinity) {
+    elementPercentage = 0;
+  }
 
   return (
     <>
       <ChartWrapper>
         <ChartElement>
           <DoughnutChart
-            valueNorm={elementGoal}
+            dailyCalories={elementGoal}
             inputValue={elementValue}
             chartBcg={chartBcg}
           />

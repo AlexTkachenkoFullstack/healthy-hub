@@ -3,13 +3,10 @@ import { Field } from 'formik';
 
 export const AgeAndGenderContainer = styled.div`
   background-color: var(--bg-primary);
-  padding: 24px 0;
-
-  /* потім margin прибрати*/
-  margin-top: 60px;
+  padding-top: 24px;
 
   @media (min-width: 834px) {
-    padding: 40px 0;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +14,7 @@ export const AgeAndGenderContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
+    align-items:flex-start;
     gap: 104px;
   }
 `;
@@ -25,8 +23,6 @@ export const Image = styled.img`
   width: 300px;
   height: 288px;
   margin-bottom: 24px;
-
-  margin: 0 auto;
   display: block;
 
   @media (min-width: 834px) {
@@ -58,6 +54,7 @@ export const AgeAndGenderHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
+    padding-top:80px;
   }
 `;
 
@@ -82,7 +79,7 @@ export const Text = styled.p`
   }
 `;
 
-export const ExtraContainer = styled.div`
+export const ExtraContainer = styled.label`
   @media (min-width: 834px) {
     padding-left: 30px;
     padding-right: 30px;
@@ -129,7 +126,7 @@ export const LabelBlock = styled.div`
   }
 `;
 
-export const InputBox = styled.div`
+export const InputBox = styled.label`
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
@@ -206,7 +203,7 @@ export const BackButton = styled.button`
   }
 `;
 
-export const CustomRadioInput = styled.input`
+export const CustomRadioInput = styled(Field)`
   place-content: center;
   appearance: none;
   background-color: black;
@@ -223,4 +220,12 @@ export const CustomRadioInput = styled.input`
     background-color: rgba(227, 255, 168, 1);
     transform: scale(1);
   }
+`;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
 `;
