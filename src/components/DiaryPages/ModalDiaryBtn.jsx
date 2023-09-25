@@ -4,10 +4,10 @@ import {
   TextIndexSpan
 } from './DiaryPage.styled';
 
-import Modal from '../../components/DiaryPages/Modal';
-import RecordDiaryModal from './RecordDiaryModal/RecordDiaryModal';
 
-const ModalDiaryBtn = () => {
+import RecordDiaryModal from '../RecordDiaryModal/RecordDiaryModal';
+
+const ModalDiaryBtn = (mob) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,11 +41,11 @@ const ModalDiaryBtn = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  
 
   return (
     <>
       <ButtonStyle onClick={handleClick}
-        // className={`record-meal-btn ${isHovered || isFocused ? 'scroll-active' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onFocus={handleFocus}
@@ -58,11 +58,7 @@ const ModalDiaryBtn = () => {
         </TextIndexSpan>
       </ButtonStyle>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {/* <div style={{backgroundColor: "var(--bg-primary)", opacity: "0.8", width:"100%", heigth:"100%", zIndex:"999"}}> */}
-          <RecordDiaryModal style={{boxShadow: "50% 50% 50% 50% rgba(5,5,5,0.8)"}} />
-        {/* </div> */}
-      </Modal>
+      <RecordDiaryModal isOpen={isModalOpen} onClose={closeModal} typeName={mob.nameType} />
     </>
   );
 };

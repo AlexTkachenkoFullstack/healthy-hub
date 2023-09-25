@@ -21,7 +21,7 @@ const EditBtn = () => {
 
   return (
     // <ButtonStyle onClick={toggleEditing}>
-    <div onClick={toggleEditing}>
+    <div onClick={toggleEditing} style={{ display: "flex", alignItems: "center" }}>
       <SvgEdit style={{ stroke: colorEdit }}>
         <use href={sprite + '#icon-edit-2'}></use>
       </SvgEdit>

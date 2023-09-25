@@ -7,13 +7,11 @@ import {
   TitleDiv,
 } from '../../components/DiaryPages/DiaryPage.styled';
 
-// import { createGlobalStyle } from 'styled-components';
-
 import GoBackPage from "../../components/DiaryPages/GoBackPage";
 import TitlePeriod from "../../components/DiaryPages/TitlePeriod";
 import FootListPeriod from "../../components/DiaryPages/FootListPeriod";
 
-// const FootToDo = () => {
+
 const footToDo = index => {
   return (
     <div>
@@ -26,37 +24,24 @@ const footToDo = index => {
 };
 
 const DiaryPage = () => {
-  //   useEffect(() => {
-  // //     // Загружаем данные из JSON-файла при монтировании компонента
-  // //     // Замените путь на путь к вашему JSON-файлу
-  // //     // axios.get('./breakfast.json')
-  //   await axios.get(filePath)
-  //     .then((response) => {
-  // //         setData(response.data); // Устанавливаем данные в состояние
-  //       this.data = response;
-  //     })
-  //     .catch((error) => {
-  //       console.error('Ошибка при загрузке данных из JSON:', error);
-  //     });
-  //   }, []);
-
-
   return (
     <>
-      {/* <Link to="/signin"> */}
-      {/* <Link to="/"> */}
-      <Link to="/main">
+      <Link to="/">
+      {/* <Link to="/main"> */}
         <GoBackPage />
       </Link>
       <TitlePage>Diary</TitlePage>
       <SectionDiary>
-        {footToDo('b')}
-        {footToDo('l')}
-        {footToDo('d')}
-        {footToDo('c')}
+        {footToDo('Breakfast')}
+        {footToDo('Lunch')}
+        {footToDo('Dinner')}
+        {footToDo('Snack')}
       </SectionDiary>
     </>
   );
 };
 
 export default DiaryPage;
+
+
+// export default App;

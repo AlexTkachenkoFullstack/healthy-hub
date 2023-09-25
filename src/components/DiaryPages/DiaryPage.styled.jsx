@@ -1,4 +1,17 @@
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+  /* Приховуємо полосу прокрутки в WebKit (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  /* Приховуємо полосу прокрутки в Firefox */
+  * {
+    scrollbar-width: none;
+  }
+`;
 
 export const ButtonStyle = styled.button`
   background-color: transparent;
@@ -16,50 +29,7 @@ export const SvgEdit = styled.svg`
   stroke: var(--icon-color-white);   
   width: 16px;
   height: 16px;
-`;
-
-export const ImgBreakfast = styled.img`
-  background-image: url('../../assets/images/meal-periods/breakfast.png');
-  width: 32px;
-  height: 32px;
-  @media (min-width: 1440px) {
-    background-image: url('../../assets/images/meal-periods/breakfast-2x.png');
-    width: 64px;
-    height: 64px;
-  }
-`;
-
-export const ImgDinner = styled.img`
-  background-image: url('../../assets/images/meal-periods/dinner.png');
-  width: 32px;
-  height: 32px;
-  @media (min-width: 1440px) {
-    background-image: url('../../assets/images/meal-periods/dinner-2x.png');
-    width: 64px;
-    height: 64px;
-  }
-`;
-
-export const ImgLunch = styled.img`
-  background-image: url('../../assets/images/meal-periods/lunch.png');
-  width: 32px;
-  height: 32px;
-  @media (min-width: 1440px) {
-    background-image: url('../../assets/images/meal-periods/lunch-2x.png');
-    width: 64px;
-    height: 64px;
-  }
-`;
-
-export const ImgSnack = styled.img`
-  background-image: url('../../assets/images/meal-periods/snack.png');
-  width: 32px;
-  height: 32px;
-  @media (min-width: 1440px) {
-    background-image: url('../../assets/images/meal-periods/snack-2x.png');
-    width: 64px;
-    height: 64px;
-  }
+  margin: 6px;
 `;
 
 export const TitlePage = styled.h2`
@@ -74,13 +44,13 @@ export const SectionDiary = styled.section`
   align-items: flex-end;
   justify-content: space-between;
   gap: 20px;
-  padding: 0 14px;
+  // padding: 0 14px;
 `;
 export const TitleDiv = styled.div`
   display: flex;  
   flex-wrap: wrap;
   /* max-width: 676px; */
-  align-items: flex-end;
+  align-items: center;
   /* justify-content: space-between; */
   gap: 20px;
 `;
@@ -113,7 +83,8 @@ export const TextIndexSpan  = styled.span`
   font-style: normal;
   font-weight: 500;
   line - height: 1.43; /* 20px;  142.857% */
-  color: var(--input-border-color-normal);  
+  color: var(--input-border-color-normal); 
+  width: 160px; 
 `;
 
 
@@ -123,20 +94,64 @@ export const ListMeatContainer = styled.div`
   margin-top: 6px;
   padding-left: 0;
   border-radius: 12px;
-  background-color: var(--bg-secondary);
-  // background-color: green;  
-  padding: 0 14px 32px;
-  // overflow: hidden;
-  // width: 676px;
+  background-color: var(--bg-secondary);  
   heigth: 240px;
   overflow-y: auto;
+  // width: 100vw;
+
+  @media (min-width: 320px) {
+    padding: 0 12px 16px;
+    width: 300px;
+  }
+
+  @media (min-width: 834px) {
+    padding: 0 14px 32px;
+    width: 720px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 676px;
+  }
 `;
 
 
 export const Li = styled.li`
   list-style-type: none;
-  margin-top: 32px;
+  margin-top: 30px;
+
+  // width: 100px;
+
+  @media (min-width: 320px) {
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 834px) {
+    flex-wrap: nowrap;
+}
+  }
+
+  @media (min-width: 1440px) {
+    
+  }
 `;
+export const ItemBox = styled.div`
+  display: flex;
+
+  @media (min-width: 320px) {
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 834px) {
+    flex-wrap: nowrap;
+}
+  }
+
+  @media (min-width: 1440px) {
+    
+  }
+`;
+
+
 export const Ul = styled.ul`
   margin-left: 0;
   padding-left: 0;
@@ -156,47 +171,101 @@ export const Ul = styled.ul`
 
 export const ItemFoodName = styled.input`
   color: var(--text-color-primary-white);
-
+  margin-right: 12px;
   font-size: 14px;
   ${fontNorm} 
   border: none;
-  background-color: transparent;
-  width: 260px; 
+  background-color: transparent; 
   outline:none;
+
+  @media (min-width: 320px) {
+    width: 164px;
+  }
+
+  @media (min-width: 834px) {
+    width: 275px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 260px;
+  }
 `;
+
+
 
 export const ItemFoodCarbon = styled.input`
   color: var(--text-color-primary-white);
   font-size: 14px;
+  margin-right: 12px;
   ${fontNorm}
   border: none;
   background-color: transparent;
-  width: 80px;
   outline:none;
+  
+  @media (min-width: 320px) {
+    width: 30px; 
+    margin-left: 6px;   
+  }
+
+  @media (min-width: 834px) {
+    width: 90px;
+    margin-left: 0;
+  }
+
+  @media (min-width: 1440px) {
+    width: 80px;
+  }
 `;
+
 export const ItemFoodProt = styled.input`
   color: var(--text-color-primary-white);
-
+  margin-right: 12px;
   font-size: 14px;
   ${fontNorm}
   border: none;
   background-color: transparent;
-  width: 80px;
   outline:none;
+
+  @media (min-width: 320px) {
+    width: 30px;
+    margin-left: 6px;
+  }
+
+  @media (min-width: 834px) {
+    width: 90px;
+    margin-left: 0;
+  }
+
+  @media (min-width: 1440px) {
+    width: 80px;
+  }
 `;
 export const ItemFoodFat = styled.input`
   color: var(--text-color-primary-white);
-
+  margin-right: 12px;
   font-size: 14px;
   ${fontNorm}
   border: none;
   background-color: transparent;
-  width: 80px;
   outline:none;
+
+  @media (min-width: 320px) {
+    width: 30px;
+    margin-left: 6px;
+  }
+
+  @media (min-width: 834px) {
+    width: 90px;
+    margin-left: 0;
+  }
+
+  @media (min-width: 1440px) {
+    width: 80px;
+  }
 `;
 export const ItemFoodIndex = styled.div`
   color: var(--text-color-primary-white);
-
+  margin-right: 16px;
   font-size: 14px;
   ${fontNorm}
   // border: none;
@@ -204,107 +273,45 @@ export const ItemFoodIndex = styled.div`
   width: 16px;
 `;
 
-
-
-
-
-
-
-
-
-// li {
-//   list-style-type: none;
-//   /* Убираем маркеры */
-// }
-
-// ul {
-//   margin-left: 0;
-//   /* Отступ слева в браузере IE и Opera */
-//   padding-left: 0;
-//   /* Отступ слева в браузере Firefox, Safari, Chrome */
-// }
-
-
-// export const IngredientDiv  = styled.div`
-//   font-size: 18px;
-// `;
-
-
-
-// export const HeaderButtonContainer = styled.div`
-//   display: none;
-
-//   @media (min-width: 834px) {
-//     display: flex;
-//     align-items: center;
-//     gap: 40px;
-//   }
-
+// export const ImgBreakfast = styled.img`
+//   background-image: url('../../assets/images/meal-periods/breakfast.png');
+//   width: 32px;
+//   height: 32px;
 //   @media (min-width: 1440px) {
-//     gap: 80px;
+//     background-image: url('../../assets/images/meal-periods/breakfast-2x.png');
+    
 //   }
 // `;
 
-// export const UserInfoButton = styled.button`
-//   border: none;
-//   padding: 0;
-//   display: flex;
-//   align-items: center;
-//   background: transparent;
-// `;
-
-// export const UserName = styled.p`
-//   font-size: 12px;
-//   line-height: 1.43;
-//   color: var(--text-color-primary-white);
-//   margin-right: 6px;
-
-//   @media (min-width: 834px) {
-//     font-size: 14px;
+// export const ImgDinner = styled.img`
+//   background-image: url('../../assets/images/meal-periods/dinner.png');
+//   width: 32px;
+//   height: 32px;
+//   @media (min-width: 1440px) {
+//     background-image: url('../../assets/images/meal-periods/dinner-2x.png');
+//     width: 64px;
+//     height: 64px;
 //   }
 // `;
 
-// export const UserSvg = styled.svg`
-//   width: 24px;
-//   height: 24px;
-//   stroke: var(--icon-color-white);
-//   margin-right: 4px;
-
-//   @media (min-width: 834px) {
-//     width: 28px;
-//     height: 28px;
+// export const ImgLunch = styled.img`
+//   background-image: url('../../assets/images/meal-periods/lunch.png');
+//   width: 32px;
+//   height: 32px;
+//   @media (min-width: 1440px) {
+//     background-image: url('../../assets/images/meal-periods/lunch-2x.png');
+//     width: 64px;
+//     height: 64px;
 //   }
 // `;
 
-
-// export const BtnBack
-
-
-
-// export const ModalContainer = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgba(0, 0, 0, 0.5);
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-// export const ModalContent = styled.div`
-//   background-color: white;
-//   padding: 20px;
-//   border-radius: 4px;
-// `;
-
-// export const ButtonGroup = styled.div`
-//   display: flex;
-//   justify-content: flex-end;
-//   margin-top: 20px;
-// `;
-
-// export const Button = styled.button`
-//   margin-left: 10px;
+// export const ImgSnack = styled.img`
+//   background-image: url('../../assets/images/meal-periods/snack.png');
+//   width: 32px;
+//   height: 32px;
+//   @media (min-width: 1440px) {
+//     background-image: url('../../assets/images/meal-periods/snack-2x.png');
+//     width: 64px;
+//     height: 64px;
+//   }
 // `;
