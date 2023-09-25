@@ -26,19 +26,19 @@ const TitlePeriod = indexList => {
   const titleObject = { img: "", name: "" };
   const isRetina = window.devicePixelRatio > 1;
 
-  if (indexList.data === 'Breakfast') {
+  if (indexList.data === 'breakfast') {
     data = breakfast;
     titleObject.img = isRetina ? breakfastImg2 : breakfastImg;
     titleObject.name = 'Breakfast';
-  } else if (indexList.data === 'Lunch') {
+  } else if (indexList.data === 'lunch') {
     data = lunch;
     titleObject.img = isRetina ? lunchImg2 : lunchImg;
     titleObject.name = 'Lunch';
-  } else if (indexList.data === 'Dinner') {
+  } else if (indexList.data === 'dinner') {
     data = dinner;
     titleObject.img = isRetina ? dinnerImg2 : dinnerImg;
     titleObject.name = 'Dinner';
-  } else if (indexList.data === 'Snack') {
+  } else if (indexList.data === 'snack') {
     data = snack;
     titleObject.img = isRetina ? snackImg2 : snackImg;
     titleObject.name = 'Snack';

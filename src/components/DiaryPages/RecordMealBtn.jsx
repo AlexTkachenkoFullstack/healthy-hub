@@ -58,7 +58,7 @@ const ModalDiaryBtn = (type) => {
         </TextIndexSpan>
       </ButtonStyle>
 
-      {isModalOpen && <RecordDiaryModal onClose={closeModal} typeName={type.nameType} />}
+      {isModalOpen && <RecordDiaryModal onClose={closeModal} type={type.nameType} />}
     </>
   );
 };

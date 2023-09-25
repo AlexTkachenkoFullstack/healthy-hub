@@ -32,10 +32,10 @@ const DiaryPage = () => {
       </Link>
       <TitlePage>Diary</TitlePage>
       <SectionDiary>
-        {footCard('Breakfast')}
-        {footCard('Lunch')}
-        {footCard('Dinner')}
-        {footCard('Snack')}
+        {footCard('breakfast')}
+        {footCard('lunch')}
+        {footCard('dinner')}
+        {footCard('snack')}
       </SectionDiary>
     </>
   );

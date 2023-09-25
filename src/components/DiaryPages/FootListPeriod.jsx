@@ -65,13 +65,13 @@ const FootListPeriod = indexList => {
 
   let data = {};
 
-  if (indexList.data === 'Breakfast') {
+  if (indexList.data === 'breakfast') {
     data = breakfast;
-  } else if (indexList.data === 'Lunch') {
+  } else if (indexList.data === 'lunch') {
     data = lunch;
-  } else if (indexList.data === 'Dinner') {
+  } else if (indexList.data === 'dinner') {
     data = dinner;
-  } else if (indexList.data === 'Snack') {
+  } else if (indexList.data === 'snack') {
     data = snack;
   }
 
@@ -103,7 +103,6 @@ const FootListPeriod = indexList => {
                 </label>
                 {windowInnerWidth < 834 && (<ButtonStyle onClick={() => toggleEdit(index)}>
                   <EditBtn>Edit</EditBtn>
-                  {/* <ModalDiaryEditBtn nameType={propsModal}/> */}
                 </ButtonStyle>)}
                 {windowInnerWidth < 834 && (<span style={{marginLeft: "34px"}}>Carb.  </span>)}
                 <label>
