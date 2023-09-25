@@ -9,6 +9,7 @@ export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(3px);
 `;
 
 export const WaterIntakeModal = styled.div`
