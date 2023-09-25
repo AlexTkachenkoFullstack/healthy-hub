@@ -33,7 +33,7 @@ const FoodList = ({ type }) => {
     <Container>
       {breakfast.length > 0 ? (
         breakfast?.map(item => (
-          <Product key={item.id} type={type} product={item} />
+          <Product key={item.ident} type={type} product={item} />
         ))
       ) : (
         <p>no data</p>

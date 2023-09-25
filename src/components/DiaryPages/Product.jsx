@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux';
 
 const Product = ({ product, type }) => {
   const dispatch = useDispatch();
-  const { name, carbohydrates, protein, fat, id } = product;
-  console.log(id);
+  const { name, carbohydrates, protein, fat, ident } = product;
+  console.log(ident);
   console.log('product', product);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,7 +47,7 @@ const Product = ({ product, type }) => {
           handleDataUpdate={handleDataUpdate}
           onSubmit={data => {
             console.log(data);
-            dispatch(updateFoodIntake({ id: id, type: type, product: data }));
+            dispatch(updateFoodIntake({ ident, type: type, product: data }));
           }}
         />
       )}

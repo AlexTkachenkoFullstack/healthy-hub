@@ -4,7 +4,7 @@ import GoBackPage from 'components/DiaryPages/GoBackPage';
 import Breakfast from 'components/DiaryPages/Breakfast';
 import { MainTitle } from 'components/DiaryPages/DiaryPage.styled';
 // import Lunch from 'components/DiaryPages/Lunch';
-// import Dinner from 'components/DiaryPages/Dinner';
+import Dinner from 'components/DiaryPages/Dinner';
 // import Snack from 'components/DiaryPages/Snack';
 
 const DiaryPage = () => {
@@ -19,7 +19,7 @@ const DiaryPage = () => {
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
         <Breakfast />
-        <Breakfast />
+        <Dinner />
         <Breakfast />
         <Breakfast />
       </div>

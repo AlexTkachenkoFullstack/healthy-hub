@@ -29,7 +29,6 @@ const RecordDiaryModal = ({ onClose, type}) => {
   const [formData, setFormData] = useState({
     fields: [
       {
-        id: '1',
         name: '',
         carbohydrates: '',
         protein: '',
@@ -51,7 +50,6 @@ const RecordDiaryModal = ({ onClose, type}) => {
       fields: [
         ...formData.fields,
         {
-          id: Date.now(),
           name: '',
           carbohydrates: null,
           protein: null,
