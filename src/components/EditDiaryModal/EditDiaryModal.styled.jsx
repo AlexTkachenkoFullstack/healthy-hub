@@ -175,3 +175,18 @@ export const ErrorText = styled.p`
   line-height: 1.17;
   margin-top: 4px;
 `;
+
+export const CloseButton = styled.button`
+  display: block;
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  @media (min-width: 834px) {
+    top: 24px;
+    right: 24px;
+  }
+`;
