@@ -1,5 +1,17 @@
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 import { ReactComponent as Icon } from '../../../assets/images/icons/add.svg';
+
+const animate = keyframes` 
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1400%);
+        opacity: 1;
+    }
+  `;
 
 export const WaterTitle = styled.h2`
   color: var(--text-color-primary-white);
@@ -67,10 +79,29 @@ export const WaterPercentage = styled.p`
 `;
 
 export const WaterBar = styled.div`
-  height: 176px;
+  height: 177px;
   width: 64px;
   border-radius: 20px;
   overflow: hidden;
+
+  span {
+    position: absolute;
+    bottom: 15px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 3px var(--carbonohidrates-donut-color);
+    animation: ${animate} 4s linear infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      transform: scale(0.25) translate(-60%, -60%);
+      background: radial-gradient(#fff, transparent);
+      border-radius: 50%;
+    }
+  }
 `;
 
 export const InfoWrapper = styled.div`
