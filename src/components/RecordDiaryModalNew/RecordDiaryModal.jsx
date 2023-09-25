@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
 import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
 import lunchImg from '../../assets/images/meal-periods/lunch.png';
@@ -62,6 +62,24 @@ const RecordDiaryModal = ({ onClose, type }) => {
     });
   };
 
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  const handleOverlayClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
+
   const handleChange = (id, fieldId, newValue) => {
     const updatedFields = formData.fields.map(field =>
       field.id === id ? { ...field, [fieldId]: newValue } : field
@@ -94,7 +112,7 @@ const RecordDiaryModal = ({ onClose, type }) => {
   };
 
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={handleOverlayClick}>
       <ModalDiv>
         <TitleText>Record your meal</TitleText>
         {type === 'breakfast' && (
