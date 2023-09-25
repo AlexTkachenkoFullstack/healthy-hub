@@ -1,5 +1,13 @@
 import { getDate, parseISO } from 'date-fns';
-import { GraphicHeader, GraphicBody } from '../DashboardPage.styled';
+import {
+  GraphicHeader,
+  GraphicBody,
+  GraficFrame,
+  ScrollWrap,
+  GraphicTitle,
+  Avarage,
+  Value,
+} from '../DashboardPage.styled';
 // import { YearCaloriesSet } from '../../../utils/DashBoard/TempData/YearCaloriesSet';
 import { MonthCaloriesSet } from '../../../utils/DashBoard/TempData/MonthCaloriesSet';
 import { avarageValue } from '../../../utils/DashBoard/avarageValue';
@@ -8,31 +16,27 @@ import {
   Chart as ChartJS,
   LineElement,
   CategoryScale,
-  LinearScale,
   PointElement,
 } from 'chart.js';
 
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
+ChartJS.register(LineElement, CategoryScale, PointElement);
 
 export const Calories = ({ name }) => {
   const lables = MonthCaloriesSet.map(({ date }) => getDate(parseISO(date)));
-  // const dat = getDate(parseISO(lables[0]))
-  // console.log(dat);
 
   const caloriesData = MonthCaloriesSet.map(({ data }) => data);
 
-   const titleTooltip = tooltipItems => {
-     return '';
+  const titleTooltip = tooltipItems => {
+    return '';
   };
-  
-  // console.log(caloriesData);
+
   const data = {
     labels: lables,
 
     datasets: [
       {
         data: caloriesData,
-        tension: 0.2,
+        tension: 0.1,
         borderColor: 'rgba(227, 255, 168, 1)',
         backgroundColor: 'rgba(227, 255, 168, 1)',
         borderWidth: 1,
@@ -41,13 +45,24 @@ export const Calories = ({ name }) => {
   };
 
   const options = {
-    // responsive: true,
+    // responsive:true,
     interaction: {
       mode: 'nearest',
       axis: 'x',
       intersect: false,
     },
+    layout: {
+      padding: {
+        left: 14,
+        right: 31,
+        top: 25,
+        bottom: 24,
+      },
+    },
     plugins: {
+      legend: {
+        display: false,
+      },
       tooltip: {
         yAlign: 'false',
         displayColors: false,
@@ -62,12 +77,11 @@ export const Calories = ({ name }) => {
     pointRadius: 0,
     scales: {
       y: {
-        // beginAtZero: true,
         color: '#B6B6B6',
         min: 0,
         max: 3000,
         ticks: {
-          padding: 8,
+          padding: 14,
           stepSize: 1000,
           callback: value => {
             if (value !== 0) {
@@ -86,32 +100,36 @@ export const Calories = ({ name }) => {
       },
       x: {
         color: '#B6B6B6',
+        grace: 5,
         ticks: {
           padding: 6,
-          align: 'center',
         },
         grid: {
           lineWidth: 0.5,
           color: 'rgba(182, 182, 182, 1)',
           drawTicks: false,
+          // offset: true,
         },
-
         min: 0,
         max: 31,
       },
     },
   };
 
-
   return (
     <>
-      <GraphicHeader>
-        <p>{name}</p>
-        <p>Avarage value: {avarageValue(MonthCaloriesSet)} cal</p>
-      </GraphicHeader>
-      <GraphicBody>
-        <Line data={data} options={options}></Line>
-      </GraphicBody>
+      <GraficFrame>
+        <GraphicHeader>
+          <GraphicTitle>{name}</GraphicTitle>
+          <Avarage>Avarage value:<Value>{avarageValue(MonthCaloriesSet)} cal</Value>
+        </Avarage>
+        </GraphicHeader>
+        <ScrollWrap>
+          <GraphicBody>
+            <Line data={data} options={options}></Line>
+          </GraphicBody>
+        </ScrollWrap>
+      </GraficFrame>
     </>
   );
 };
