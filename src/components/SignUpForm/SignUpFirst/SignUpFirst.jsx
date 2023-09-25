@@ -97,10 +97,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       : setShowPassword('password');
   };
 
-  const changeColor = (color, id) => {
-    const changeColor = document.getElementById(`id`);
-    changeColor.style.borderColor = `$color`;
-  };
 
   const handleSubmit = async ({ name, email, password }) => {
     try {
@@ -140,10 +136,20 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           onSubmit={handleSubmit}
           validationSchema={signupSchema}
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, status }) => (
             <FormStyle autoComplete="off">
+              {/* {console.log(touched)} */}
+              {/* {console.log(errors)} */}
+              {console.log(status)}
               <label htmlFor="name">
-                <InputContainer>
+                <InputContainer
+                  style={{
+                    borderColor:
+                      errors.name && touched.name
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                  }}
+                >
                   <InputText
                     type="text"
                     id="name"
@@ -164,7 +170,14 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
               <label htmlFor="email">
-                <InputContainer>
+                <InputContainer
+                  style={{
+                    borderColor:
+                      errors.email && touched.email
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                  }}
+                >
                   <InputText
                     type="email"
                     id="email"
@@ -185,14 +198,23 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
               </ErrorMessage>
 
               <label htmlFor="password">
-                <InputContainer>
+                <InputContainer
+                  style={{
+                    borderColor:
+                      errors.password && touched.password
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                  }}
+                >
                   <InputText
                     type={showPassword}
                     id="password"
                     name="password"
                     placeholder="Password"
                   />
-                  <IconTextPosition>
+                  <IconTextPosition
+                    style={{ display: touched.password ? 'block' : 'none' }}
+                  >
                     <div
                       onClick={toggleIsOpenPassword}
                       alt="Show or hide password"
