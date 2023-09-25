@@ -62,6 +62,7 @@ export const Input = styled(Field)`
   outline: none;
   border: ${({ borderstyle }) => borderstyle};
   width: 100%;
+  font-family: Poppins;
 
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -189,6 +190,6 @@ export const AvatarContainer = styled.div`
 
 export const AvatarText = styled.p`
   margin-left: 6px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.43;
 `;
