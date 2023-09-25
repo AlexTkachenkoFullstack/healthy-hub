@@ -46,6 +46,7 @@ export const SectionDiary = styled.section`
   gap: 20px;
   // padding: 0 14px;
 `;
+
 export const TitleDiv = styled.div`
   display: flex;  
   flex-wrap: wrap;
@@ -87,8 +88,6 @@ export const TextIndexSpan  = styled.span`
   width: 160px; 
 `;
 
-
-
 export const ListMeatContainer = styled.div`
   margin-left: 0;
   margin-top: 6px;
@@ -127,11 +126,6 @@ export const Li = styled.li`
 
   @media (min-width: 834px) {
     flex-wrap: nowrap;
-}
-  }
-
-  @media (min-width: 1440px) {
-    
   }
 `;
 export const ItemBox = styled.div`
@@ -145,12 +139,7 @@ export const ItemBox = styled.div`
     flex-wrap: nowrap;
 }
   }
-
-  @media (min-width: 1440px) {
-    
-  }
 `;
-
 
 export const Ul = styled.ul`
   margin-left: 0;
@@ -158,16 +147,6 @@ export const Ul = styled.ul`
   // width: 676px;
   heigth: 240px;
 `;
-
-// @media (min-width: 834px) {
-//     display: flex;
-//     align-items: center;
-//     gap: 40px;
-//   }
-
-//   @media (min-width: 1440px) {
-//     gap: 80px;
-//   }
 
 export const ItemFoodName = styled.input`
   color: var(--text-color-primary-white);
@@ -190,7 +169,6 @@ export const ItemFoodName = styled.input`
     width: 260px;
   }
 `;
-
 
 
 export const ItemFoodCarbon = styled.input`
@@ -240,6 +218,7 @@ export const ItemFoodProt = styled.input`
     width: 80px;
   }
 `;
+
 export const ItemFoodFat = styled.input`
   color: var(--text-color-primary-white);
   margin-right: 12px;
@@ -263,6 +242,7 @@ export const ItemFoodFat = styled.input`
     width: 80px;
   }
 `;
+
 export const ItemFoodIndex = styled.div`
   color: var(--text-color-primary-white);
   margin-right: 16px;
@@ -272,46 +252,3 @@ export const ItemFoodIndex = styled.div`
   background-color: transparent;
   width: 16px;
 `;
-
-// export const ImgBreakfast = styled.img`
-//   background-image: url('../../assets/images/meal-periods/breakfast.png');
-//   width: 32px;
-//   height: 32px;
-//   @media (min-width: 1440px) {
-//     background-image: url('../../assets/images/meal-periods/breakfast-2x.png');
-    
-//   }
-// `;
-
-// export const ImgDinner = styled.img`
-//   background-image: url('../../assets/images/meal-periods/dinner.png');
-//   width: 32px;
-//   height: 32px;
-//   @media (min-width: 1440px) {
-//     background-image: url('../../assets/images/meal-periods/dinner-2x.png');
-//     width: 64px;
-//     height: 64px;
-//   }
-// `;
-
-// export const ImgLunch = styled.img`
-//   background-image: url('../../assets/images/meal-periods/lunch.png');
-//   width: 32px;
-//   height: 32px;
-//   @media (min-width: 1440px) {
-//     background-image: url('../../assets/images/meal-periods/lunch-2x.png');
-//     width: 64px;
-//     height: 64px;
-//   }
-// `;
-
-// export const ImgSnack = styled.img`
-//   background-image: url('../../assets/images/meal-periods/snack.png');
-//   width: 32px;
-//   height: 32px;
-//   @media (min-width: 1440px) {
-//     background-image: url('../../assets/images/meal-periods/snack-2x.png');
-//     width: 64px;
-//     height: 64px;
-//   }
-// `;

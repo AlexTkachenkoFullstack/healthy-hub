@@ -16,20 +16,14 @@ import {
 
 import ModalDiaryBtn from "./RecordMealBtn";
 import EditBtn from "./EditBtn";
-// import { getFoodIntakeFood } from '../../redux/diary/selectors';
 
-// import userFood from './json/userFood1.json';
 
 const FootListPeriod = indexList => {
   
-  const userFood = useSelector(state => state.foodIntake.food)
-  // const userFood = useSelector(getFoodIntakeFood)
+  const userFood = useSelector(state => state.foodIntake.food);
   
   const { breakfast, lunch, dinner, snack } = userFood;
   const propsModal = indexList.data;
-
-  // const [isEditing, setIsEditing] = useState(false);
-  // const [colorEdit, setColorEdit] = useState('white');
 
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -52,18 +46,6 @@ const FootListPeriod = indexList => {
     console.log(isHovered);
   };
 
-  // const [idBtn, setIdBtn] = useState('');
-
-  // const toggleEditing = () => {
-  //   setIsEditing(!isEditing);
-  //   setColorEdit(isEditing ? 'red' : 'white');
-  //   console.log('toggleEditing', colorEdit);
-  // };
-  
-  const toggleEdit = (index) => {
-    console.log();
-  };
-
   let data = {};
 
   if (indexList.data === 'breakfast') {
@@ -77,8 +59,7 @@ const FootListPeriod = indexList => {
   }
 
   const windowInnerWidth = document.documentElement.clientWidth;
-  //   console.log();
-
+  
   return (
     <>
       <GlobalStyles />
@@ -102,7 +83,7 @@ const FootListPeriod = indexList => {
                     disabled={true}
                   />
                 </label>
-                {windowInnerWidth < 834 && (<ButtonStyle onClick={() => toggleEdit(index)}>
+                {windowInnerWidth < 834 && (<ButtonStyle>
                   <EditBtn>Edit</EditBtn>
                 </ButtonStyle>)}
                 {windowInnerWidth < 834 && (<span style={{marginLeft: "34px"}}>Carb.  </span>)}
@@ -130,15 +111,14 @@ const FootListPeriod = indexList => {
                   />
                 </label>
 
-                {windowInnerWidth > 833 && (<ButtonStyle onClick={() => toggleEdit(index)}>
-                  <EditBtn>Edit</EditBtn>
-                  {/* <ModalDiaryEditBtn nameType={propsModal}/> */}
-                </ButtonStyle>)}
+                {windowInnerWidth > 833 && (<ButtonStyle >
+                  <EditBtn type={indexList.data} product={item}>Edit</EditBtn>
+                </ButtonStyle>
+                )}
               </ItemBox>
             </Li>
           ))}
           <Li>
-            {/* {data.length + 1} <ModalDiaryBtn nameType={indexList.data} /> */}
             {data.length + 1} <ModalDiaryBtn nameType={propsModal}/>
           </Li>
           {data.length < 3 && <Li>{'4'}</Li>}

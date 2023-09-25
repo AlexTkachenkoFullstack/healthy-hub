@@ -15,8 +15,6 @@ import lunchImg2 from '../../assets/images/meal-periods/lunch-2x.png';
 import snackImg from '../../assets/images/meal-periods/snack.png';
 import snackImg2 from '../../assets/images/meal-periods/snack-2x.png';
 
-// import userFood from './json/userFood1.json';
-
 
 const TitlePeriod = indexList => {
   const userFood = useSelector(state => state.foodIntake.food);

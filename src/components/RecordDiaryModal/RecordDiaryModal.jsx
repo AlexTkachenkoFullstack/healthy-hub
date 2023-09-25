@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// import axios from "axios";
 import {
   ModalOverlay,
   ModalDiv,
@@ -25,8 +24,8 @@ import { postFoodIntake } from 'redux/diary/operations';
 
 const isRetina = window.devicePixelRatio > 1;
 const imgPeriod = isRetina ? breakfastImg2 : breakfastImg;
-// const typeName = "Breakfast";
-  
+
+
 const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
   const dispatch = useDispatch();
   // проміжковий масив для збереження даних в модалці
@@ -42,6 +41,7 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
       },
     ],
   });
+
   // кнопка + Add more
   const handleAddMore = (e) => {
     e.preventDefault(); // Прибирає подію відправки форми
@@ -61,41 +61,15 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
     ]);
   };
   
-  // const handleChange = (e) => {
-    // const { name, value } = e.target;
-  const handleChange = (id, fieldId, newValue) => {
+ const handleChange = (id, fieldId, newValue) => {
     const updatedFields = foodData.fields.map(field =>
       field.id === id ? { ...field, [fieldId]: newValue } : field
     );
     setFoodData({ fields: updatedFields });
   };
 
-
-  // const handleSubmit = async () => {
-  //   try {
-  //     const response = await fetch('URL', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       // body: JSON.stringify(formData.fields),
-  //       body: JSON.stringify(foodData.fields),
-  //     });
-
-  //     if (response.ok) {
-  //       console.log('Дані успішно відправлено на бекенд.');
-  //       onClose();
-  //     } else {
-  //       console.error('Помилка відправки даних на бекенд.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Помилка під час відправки даних:', error);
-  //   }
-  // };
-
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(type, formData.fields);
     dispatch(postFoodIntake({ typeName, products: foodData.fields }));
     onClose();
   };
@@ -106,19 +80,16 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
     <ModalOverlay>
       <ModalDiv> 
         {<TitleText>Record your meal</TitleText>}
-        {/* {isEdit ? <TitleText>Edit your meal</TitleText> :  <TitleText>Record your meal</TitleText>} */}
         <TitleBlok >
           <Img src={imgPeriod} alt={typeName} style={{width: "32px", height: "32px"}}/>
           <Span>{typeName}</Span> 
         </TitleBlok>
         <Form onSubmit={handleSubmit}>
-          {/* <div style={{display: "flex", flexWrap: "wrap", gap: "16px"}}> */}
           {foodData.map((field) => (
             <FormDiv key={field.id}>
               <Input
                 id='name'
                 type="text"
-                // value={field.name}
                 defaultValue={field.name}
                 onChange={(e) => handleChange(field.id, e.target, "name")}
                 placeholder="The name of the product or dish"  
@@ -127,21 +98,16 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
               />
               <Input
                 id='carb'
-                // type="text"
                 type="number"
-                // value={field.carb}
                 defaultValue={field.carb}
                 onChange={(e) => handleChange(field.id, e.target, "carb")}
                 placeholder="Carbonoh."
-                // style={{ width: "100px" }}
                 style={pageWidth< 834 ? { width: "100%" } : { width: "100px" }}
                 required
               />
               <Input
                 id='protein'
-                // type="text"
                 type="number"
-                // value={field.protein}
                 defaultValue={field.protein}
                 onChange={(e) => handleChange(field.id, e.target,"protein")}
                 placeholder="Protein"
@@ -150,9 +116,7 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
               />
               <Input
                 id='fat'
-                // type="text"
                 type="number"
-                // value={field.fat}
                 defaultValue={field.fat}
                 onChange={(e) => handleChange(field.id, e.target, "fat")}
                 placeholder="Fat"
@@ -161,9 +125,7 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
               />
               <Input
                 id='calories'
-                // type="text"
                 type="number"
-                // value={field.calories}
                 defaultValue={field.calories}
                 onChange={(e) => handleChange(field.id, e.target, "calories")}
                 placeholder="Calories"

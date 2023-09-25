@@ -5,9 +5,9 @@ import {
 } from './DiaryPage.styled';
 import sprite from '../../assets/images/icons/icons.svg';
 
-import RecordDiaryModal from '../../components/RecordDiaryModalNew/RecordDiaryModal';
+import EditDiaryModal from '../../components/EditDiaryModal/EditDiaryModal';
 
-const EditBtn = (type) => {  
+const EditBtn = (type) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -71,8 +71,7 @@ const EditBtn = (type) => {
         <use href={sprite + '#icon-edit-2'}></use>
       </SvgEdit>
       <TextSpan style={{ color: colorEdit }}> Edit</TextSpan>
-      {/* <RecordDiaryModal isOpen={isModalOpen} onClose={closeModal} typeName={type.nameType} /> */}
-      {isModalOpen && <RecordDiaryModal onClose={closeModal} type={type.nameType} />}
+      {isModalOpen && <EditDiaryModal onClose={closeModal} type={type.type} product={type.product}/>}
     </div>
   );
 };

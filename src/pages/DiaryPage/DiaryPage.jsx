@@ -1,5 +1,4 @@
-import React from 'react';
-// import axios from 'axios'; 
+import React from 'react'; 
 import { Link } from 'react-router-dom';
 import {
   SectionDiary,
@@ -9,7 +8,7 @@ import {
 
 import GoBackPage from "../../components/DiaryPages/GoBackPage";
 import TitlePeriod from "../../components/DiaryPages/TitlePeriod";
-import FootListPeriod from "../../components/DiaryPages/FootListPeriod";
+import FootListPeriod from "../../components/DiaryPages/FoodListPeriod";
 
 
 const footCard = index => {
@@ -27,7 +26,6 @@ const DiaryPage = () => {
   return (
     <>
       <Link to="/">
-      {/* <Link to="/main"> */}
         <GoBackPage />
       </Link>
       <TitlePage>Diary</TitlePage>
@@ -42,6 +40,3 @@ const DiaryPage = () => {
 };
 
 export default DiaryPage;
-
-
-// export default App;

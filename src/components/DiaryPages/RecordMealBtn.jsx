@@ -6,7 +6,6 @@ import {
 
 
 import RecordDiaryModal from '../RecordDiaryModalNew/RecordDiaryModal';
-// import RecordDiaryModal from '../RecordDiaryModal/RecordDiaryModal';
 
 const ModalDiaryBtn = (type) => {
   const [isHovered, setIsHovered] = useState(false);
