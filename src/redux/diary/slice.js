@@ -37,18 +37,18 @@ const handleFulfildPost = (state, action) => {
     state.isLoading = false;
     state.error = null;
     const type=action.payload.data.type;
-    state.food[type]=[...state.food[type], ...action.payload.data.product]
-    // state.totalCalories=action.payload.data.totalCalories;
+    state.food[type]=[...action.payload.data.product]
+    state.totalCalories=action.payload.data.totalCalories;
 }
 
 const handleFulfildUpdate = (state, action) => {
     state.isLoading = false;
     state.error = null;
     // {dinner:{name:', id} }
-    // const type=action.payload.type;
-    // const indexOfFood=state.food[type].findIndex(item=>item.id===action.payload.product.id);
-    // state.food[type][indexOfFood]=action.payload.product;
-    // state.totalCalories=action.payload.totalCalories;
+    const type=action.payload.data.type;
+    const indexOfFood=state.food[type].findIndex(item=>item.id===action.payload.data.product.id);
+    state.food[type][indexOfFood]=action.payload.data.product;
+    state.totalCalories=action.payload.data.totalCalories;
 }
 
 export const foodIntakeSlice = createSlice({

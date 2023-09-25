@@ -23,7 +23,7 @@ const handlePending = (state) => {
 const handleFulfildGet = (state, action) => {
     state.isLoading = false;
     state.error = null;
-    state.statistics=action.payload;
+    state.statistics=action.payload.data;
 }
 
 export const statisticsSlice = createSlice({
