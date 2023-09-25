@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   /* Приховуємо полосу прокрутки в WebKit (Chrome, Safari) */
@@ -13,20 +13,28 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
+export const MainTitle = styled.h2`
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-family: Poppins;
+`;
+
 export const ButtonStyle = styled.button`
   background-color: transparent;
-  border: none;  
+  border: none;
 `;
 
 export const SvgArrowRight = styled.svg`
-  stroke: var(--icon-color-white); 
+  stroke: var(--icon-color-white);
   transform: rotate(180deg);
   width: 24px;
   height: 24px;
 `;
 
 export const SvgEdit = styled.svg`
-  stroke: var(--icon-color-white);   
+  stroke: var(--icon-color-white);
   width: 16px;
   height: 16px;
   margin: 6px;
@@ -47,7 +55,7 @@ export const SectionDiary = styled.section`
   // padding: 0 14px;
 `;
 export const TitleDiv = styled.div`
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
   /* max-width: 676px; */
   align-items: center;
@@ -60,24 +68,24 @@ export const NamePeriodH3 = styled.h3`
   font-size: 18px;
 `;
 
-export const IngredientSpan  = styled.span`
-  font-size: 18px;
-`;
+// export const IngredientSpan  = styled.span`
+//   font-size: 18px;
+// `;
 
 const fontNorm = `
   font-family: Poppins;
   font-style: normal;
   font-weight: 400;
   line-height: 1.43; /* 20px;  142.857% */
-`
-
-export const TextSpan  = styled.span`
-  font-size: 14px;
-  ${fontNorm}
-  color: var(--text-color-primary-white);  
 `;
 
-export const TextIndexSpan  = styled.span`
+export const TextSpan = styled.span`
+  font-size: 14px;
+  ${fontNorm}
+  color: var(--text-color-primary-white);
+`;
+
+export const TextIndexSpan = styled.span`
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -87,14 +95,12 @@ export const TextIndexSpan  = styled.span`
   width: 160px; 
 `;
 
-
-
 export const ListMeatContainer = styled.div`
   margin-left: 0;
   margin-top: 6px;
   padding-left: 0;
   border-radius: 12px;
-  background-color: var(--bg-secondary);  
+  background-color: var(--bg-secondary);
   heigth: 240px;
   overflow-y: auto;
   // width: 100vw;
@@ -113,7 +119,6 @@ export const ListMeatContainer = styled.div`
     max-width: 676px;
   }
 `;
-
 
 export const Li = styled.li`
   list-style-type: none;
@@ -151,7 +156,6 @@ export const ItemBox = styled.div`
   }
 `;
 
-
 export const Ul = styled.ul`
   margin-left: 0;
   padding-left: 0;
@@ -173,10 +177,10 @@ export const ItemFoodName = styled.input`
   color: var(--text-color-primary-white);
   margin-right: 12px;
   font-size: 14px;
-  ${fontNorm} 
+  ${fontNorm}
   border: none;
-  background-color: transparent; 
-  outline:none;
+  background-color: transparent;
+  outline: none;
 
   @media (min-width: 320px) {
     width: 164px;
@@ -191,8 +195,6 @@ export const ItemFoodName = styled.input`
   }
 `;
 
-
-
 export const ItemFoodCarbon = styled.input`
   color: var(--text-color-primary-white);
   font-size: 14px;
@@ -200,11 +202,11 @@ export const ItemFoodCarbon = styled.input`
   ${fontNorm}
   border: none;
   background-color: transparent;
-  outline:none;
-  
+  outline: none;
+
   @media (min-width: 320px) {
-    width: 30px; 
-    margin-left: 6px;   
+    width: 30px;
+    margin-left: 6px;
   }
 
   @media (min-width: 834px) {
@@ -224,7 +226,7 @@ export const ItemFoodProt = styled.input`
   ${fontNorm}
   border: none;
   background-color: transparent;
-  outline:none;
+  outline: none;
 
   @media (min-width: 320px) {
     width: 30px;
@@ -247,7 +249,7 @@ export const ItemFoodFat = styled.input`
   ${fontNorm}
   border: none;
   background-color: transparent;
-  outline:none;
+  outline: none;
 
   @media (min-width: 320px) {
     width: 30px;
@@ -279,7 +281,7 @@ export const ItemFoodIndex = styled.div`
 //   height: 32px;
 //   @media (min-width: 1440px) {
 //     background-image: url('../../assets/images/meal-periods/breakfast-2x.png');
-    
+
 //   }
 // `;
 

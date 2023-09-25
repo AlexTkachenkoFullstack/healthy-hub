@@ -1,18 +1,22 @@
 import React from 'react';
-import {
-  ButtonStyle,
-  SvgEdit,
-  TextSpan
-} from './DiaryPage.styled';
+import { ButtonStyle, SvgEdit } from './DiaryPage.styled';
 import sprite from '../../assets/images/icons/icons.svg';
 
-const EditBtn = ({onClick}) => {
+const EditBtn = ({ onClick }) => {
   return (
-    <ButtonStyle onClick={onClick} >
-      <SvgEdit style={{transform: "rotate(0deg)"}}>
+    <ButtonStyle
+      onClick={onClick}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        color: 'var(--text-color-secondary-grey)',
+        fontSize: 14,
+      }}
+    >
+      <SvgEdit style={{ transform: 'rotate(0deg)' }}>
         <use href={sprite + '#icon-edit-2'}></use>
       </SvgEdit>
-      <TextSpan> Edit</TextSpan>
+      Edit
     </ButtonStyle>
   );
 };
