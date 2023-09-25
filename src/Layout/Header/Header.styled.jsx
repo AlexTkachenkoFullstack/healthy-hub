@@ -5,6 +5,7 @@ export const HeaderContainer = styled.div`
   background-color: var(--bg-secondary);
   color: var(--text-color-primary-white);
   padding: 11px 0;
+  font-family: Poppins;
 
   @media (min-width: 834px) {
     padding: 26px 0;

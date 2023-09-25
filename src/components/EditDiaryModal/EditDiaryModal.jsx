@@ -19,9 +19,12 @@ import {
   ButtonContainer,
   ErrorText,
   FieldContainer,
+  CloseButton,
 } from './EditDiaryModal.styled';
 import { useDispatch } from 'react-redux';
 import { updateFoodIntake } from 'redux/diary/operations';
+import { useEffect } from 'react';
+import sprite from '../../assets/images/icons/icons.svg';
 
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -63,10 +66,33 @@ const EditDiaryModal = ({ onClose, type, product }) => {
     onClose();
   };
 
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  const handleOverlayClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
+
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={handleOverlayClick}>
       <ModalDiv>
         <TitleText>Edit your meal</TitleText>
+        <CloseButton onClick={onClose}>
+          <svg width="24" height="24" stroke="var(--text-color-button-grey)">
+            <use href={sprite + '#icon-close-circle'} />
+          </svg>
+        </CloseButton>
         {type === 'breakfast' && (
           <SubtitleContainer>
             <img
