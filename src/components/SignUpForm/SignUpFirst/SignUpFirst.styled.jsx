@@ -67,17 +67,17 @@ export const Text = styled.p`
   }
 `;
 
-export const InputBox = styled.label`
+export const InputContainer = styled.div`
   background: transparent;
   position: relative;
   border: 1px solid var(--input-border-color-normal);
   border-radius: 12px;
 `;
 
-export const InputBoxError = styled.label`
+export const InputContainerError = styled.div`
   background: transparent;
   position: relative;
-  border: 1px solid var(--input-border-color-normal);
+  border: 1px solid var(--input-border-color-error);
   border-radius: 12px;
 `;
 
