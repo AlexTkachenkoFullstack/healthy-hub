@@ -19,7 +19,7 @@ const TitlePeriod = ({ product }) => {
   }
 
   const sumCarbohydrates = product.reduce((acc, item) => {
-    return acc + item.carbohydrates;
+    return acc + item.carbonohidrates;
   }, 0);
 
   const sumProtein = product.reduce((acc, item) => {

@@ -117,6 +117,12 @@ export const StyledField = styled(Field)`
   outline: none;
   border: ${({ borderstyle }) => borderstyle};
 
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  
+
   ::placeholder {
     color: var(--text-color-secondary-grey);
   }
