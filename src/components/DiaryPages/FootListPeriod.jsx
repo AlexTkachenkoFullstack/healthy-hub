@@ -1,5 +1,6 @@
-// import React, { useState, useSelector } from 'react';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import {
   GlobalStyles,
   ButtonStyle,
@@ -17,11 +18,11 @@ import ModalDiaryBtn from "./RecordMealBtn";
 import EditBtn from "./EditBtn";
 // import { getFoodIntakeFood } from '../../redux/diary/selectors';
 
-import userFood from './json/userFood1.json';
+// import userFood from './json/userFood1.json';
 
 const FootListPeriod = indexList => {
   
-  // // const userFood = useSelector(state => state.foodIntake.food)
+  const userFood = useSelector(state => state.foodIntake.food)
   // const userFood = useSelector(getFoodIntakeFood)
   
   const { breakfast, lunch, dinner, snack } = userFood;

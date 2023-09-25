@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import {
   NamePeriodH3,
@@ -15,11 +15,11 @@ import lunchImg2 from '../../assets/images/meal-periods/lunch-2x.png';
 import snackImg from '../../assets/images/meal-periods/snack.png';
 import snackImg2 from '../../assets/images/meal-periods/snack-2x.png';
 
-import userFood from './json/userFood1.json';
+// import userFood from './json/userFood1.json';
 
 
 const TitlePeriod = indexList => {
-  // const userFood = useSelector(state => state.foodIntake.food);
+  const userFood = useSelector(state => state.foodIntake.food);
   const { breakfast, lunch, dinner, snack } = userFood;
     
   let data = {};
