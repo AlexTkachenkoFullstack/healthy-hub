@@ -83,7 +83,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
   const [showPassword, setShowPassword] = useState('password');
-  const [emailStatus, setEmailStatus] = useState('pending');
+  const [status, setStatus] = useState('pending');
   const [nameStatus, setNameStatus] = useState('pending');
   const [passwordStatus, setPasswordStatus] = useState('pending');
 
@@ -96,7 +96,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       ? setShowPassword('text')
       : setShowPassword('password');
   };
-
 
   const handleSubmit = async ({ name, email, password }) => {
     try {
@@ -136,11 +135,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           onSubmit={handleSubmit}
           validationSchema={signupSchema}
         >
-          {({ errors, touched, status }) => (
+          {({ errors, touched, values }) => (
             <FormStyle autoComplete="off">
-              {/* {console.log(touched)} */}
-              {/* {console.log(errors)} */}
-              {console.log(status)}
+              {console.log('Touched >>:', touched)}
+              {console.log('Errors >>:', errors)}
+              {/* {console.log('Values >>:', values)} */}
               <label htmlFor="name">
                 <InputContainer
                   style={{
@@ -156,7 +155,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                     name="name"
                     placeholder="Name"
                   />
-                  <IconTextPosition>
+                  <IconTextPosition
+                    style={{
+                      display: values.name ? 'block' : 'none',
+                    }}
+                  >
                     {errors.name && touched.name ? (
                       <ErrorIcon />
                     ) : (
@@ -184,7 +187,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                     name="email"
                     placeholder="E-mail"
                   />
-                  <IconTextPosition>
+                  <IconTextPosition
+                    style={{
+                      display: values.email ? 'block' : 'none',
+                    }}
+                  >
                     {errors.email && touched.email ? (
                       <ErrorIcon />
                     ) : (
@@ -213,7 +220,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                     placeholder="Password"
                   />
                   <IconTextPosition
-                    style={{ display: touched.password ? 'block' : 'none' }}
+                    style={{
+                      display: values.password ? 'block' : 'none',
+                    }}
                   >
                     <div
                       onClick={toggleIsOpenPassword}

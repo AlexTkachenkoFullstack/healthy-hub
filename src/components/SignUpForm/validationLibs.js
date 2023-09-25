@@ -9,6 +9,7 @@ export const signupSchema = yup.object({
   name: yup
     .string()
     .label('Name')
+    .min(3, 'must be more 3 symbols')
     .max(32, 'must be less 32 symbols')
     .required('Please enter name'),
   email: yup
