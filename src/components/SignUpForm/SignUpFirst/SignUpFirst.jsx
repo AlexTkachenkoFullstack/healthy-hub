@@ -23,9 +23,10 @@ import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
 import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
-import InputSuccessIcon from '../InputSuccessIcon';
-import InputErrorIcon from '../InputErrorIcon';
-import PasswordOpenButtonIcon from '../PasswordOpenButtonIcon';
+import SuccessIcon from '../SuccessIcon';
+import ErrorIcon from '../ErrorIcon';
+import EyeOpenIcon from '../EyeOpenIcon';
+import EyeHideIcon from '../EyeHideIcon';
 
 const initialValues = {
   name: '',
@@ -107,9 +108,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   />
                   <IconTextPosition>
                     {errors.name && touched.name ? (
-                      <InputErrorIcon />
+                      <ErrorIcon />
                     ) : (
-                      <InputSuccessIcon />
+                      <SuccessIcon />
                     )}
                   </IconTextPosition>
                 </div>
@@ -128,9 +129,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                   />
                   <IconTextPosition>
                     {errors.email && touched.email ? (
-                      <InputErrorIcon />
+                      <ErrorIcon />
                     ) : (
-                      <InputSuccessIcon />
+                      <SuccessIcon />
                     )}
                   </IconTextPosition>
                 </div>
@@ -148,11 +149,16 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                     placeholder="Password"
                   />
                   <IconTextPosition>
-                    {errors.password && touched.password ? (
-                      <InputErrorIcon />
-                    ) : (
-                      <InputSuccessIcon />
-                    )}
+                    <div
+                      onClick={toggleIsOpenPassword}
+                      alt="Show or hide password"
+                    >
+                      {showPassword === 'password' ? (
+                        <EyeOpenIcon />
+                      ) : (
+                        <EyeHideIcon />
+                      )}
+                    </div>
                   </IconTextPosition>
                 </div>
               </InputBox>
@@ -160,14 +166,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
               <ErrorMessage name="password">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-
-              <button
-                type="button"
-                alt="Show or hide password"
-                onClick={toggleIsOpenPassword}
-              >
-                <PasswordOpenButtonIcon />
-              </button>
 
               <InputButton type="submit">Sign Up</InputButton>
             </FormStyle>
