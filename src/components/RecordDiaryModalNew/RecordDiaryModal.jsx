@@ -23,7 +23,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { postFoodIntake } from 'redux/diary/operations';
 
-const RecordDiaryModal = ({ onClose, type }) => {
+const RecordDiaryModal = ({ onClose, type}) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ const RecordDiaryModal = ({ onClose, type }) => {
       {
         id: '1',
         name: '',
-        carb: '',
+        carbohydrates: '',
         protein: '',
         fat: '',
         calories: '',
@@ -53,7 +53,7 @@ const RecordDiaryModal = ({ onClose, type }) => {
         {
           id: Date.now(),
           name: '',
-          carb: null,
+          carbohydrates: null,
           protein: null,
           fat: null,
           calories: null,
@@ -157,12 +157,12 @@ const RecordDiaryModal = ({ onClose, type }) => {
                 placeholder="The name of the product or dish"
               />
               <Field
-                id="carb"
+                id="carbohydrates"
                 type="number"
                 min={0}
                 required={true}
-                value={field.carb}
-                onChange={e => handleChange(field.id, 'carb', e.target.value)}
+                value={field.carbohydrates}
+                onChange={e => handleChange(field.id, 'carbohydrates', e.target.value)}
                 placeholder="Carbonoh."
               />
               <Field

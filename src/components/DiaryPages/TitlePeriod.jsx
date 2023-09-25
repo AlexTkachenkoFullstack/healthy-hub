@@ -1,37 +1,40 @@
 import React from 'react';
 import { IngredientSpan } from './DiaryPage.styled';
-import { useSelector } from 'react-redux';
 
-const TitlePeriod = () => {
-  const breakfast = useSelector(state => state.foodIntake.food.breakfast);
+const TitlePeriod = ({ product }) => {
+  const sumCarbohydrates = product.reduce((acc, item) => {
+    return acc + item.carbohydrates;
+  }, 0);
 
-  const sumCarb =
-    Math.round(
-      breakfast.reduce((acc, val) => acc + val.nutrition.carbohydrates, 0) * 100
-    ) / 100;
-  const sumProt =
-    Math.round(
-      breakfast.reduce((acc, val) => acc + val.nutrition.protein, 0) * 100
-    ) / 100;
-  const sumFat =
-    Math.round(
-      breakfast.reduce((acc, val) => acc + val.nutrition.fat, 0) * 100
-    ) / 100;
+  const sumProtein = product.reduce((acc, item) => {
+    return acc + item.protein;
+  }, 0);
+
+  const sumFat = product.reduce((acc, item) => {
+    return acc + item.fat;
+  }, 0);
+
+  const sumCalorises = product.reduce((acc, item) => {
+    return acc + item.calories;
+  }, 0);
+
+  console.log(sumCalorises);
 
   return (
     <>
       <div style={{ display: 'inline' }}>
         <IngredientSpan>Carbonohidrates: </IngredientSpan>
-        <IngredientSpan>{sumCarb}</IngredientSpan>
+        <IngredientSpan>{sumCarbohydrates}</IngredientSpan>
       </div>
       <div style={{ display: 'inline' }}>
         <IngredientSpan>Protein: </IngredientSpan>
-        <IngredientSpan>{sumProt}</IngredientSpan>
+        <IngredientSpan>{sumProtein}</IngredientSpan>
       </div>
       <div style={{ display: 'inline' }}>
         <IngredientSpan>Fat: </IngredientSpan>
         <IngredientSpan>{sumFat}</IngredientSpan>
       </div>
+      {/* <p>{sumCalorises}</p>/ */}
     </>
   );
 };

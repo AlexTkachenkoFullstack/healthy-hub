@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   ListMeatContainer,
@@ -8,16 +8,19 @@ import {
 } from './DiaryPage.styled';
 import Product from './Product';
 
-import { postFoodIntake } from 'redux/diary/operations';
+import { fetchFoodIntake, postFoodIntake } from 'redux/diary/operations';
 import RecordDiaryModal from 'components/RecordDiaryModalNew/RecordDiaryModal';
 
-const FoodList = ({ type, product}) => {
-  const dispatch = useDispatch();
-    console.log(product);
-  
-  const breakfast = useSelector(state => state.foodIntake.food[type]);
-
+const FoodList = ({ type }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const breakfast = useSelector(state => state.foodIntake.food[type]);
+  console.log(breakfast);
+
+  useEffect(() => {
+    dispatch(fetchFoodIntake(type));
+  }, [type, dispatch]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -26,13 +29,20 @@ const FoodList = ({ type, product}) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const handleDataUpdate = () => {
+    dispatch(fetchFoodIntake(type));
+  };
 
   return (
     <ListMeatContainer style={{ height: '240px' }}>
       <Li>
-        {breakfast?.map(item => (
-          <Product key={item.id} type={type} product={item} />
-        ))}
+        {breakfast.length > 0 ? (
+          breakfast?.map(item => (
+            <Product key={item.id} type={type} product={item} />
+          ))
+        ) : (
+          <p>no data</p>
+        )}
       </Li>
       <ButtonStyle onClick={openModal}>
         <TextIndexSpan>+ Record your meal</TextIndexSpan>
@@ -41,11 +51,10 @@ const FoodList = ({ type, product}) => {
         <RecordDiaryModal
           type={type}
           onClose={closeModal}
-          onSubmit={(data) => {
-        
+          onSubmit={data => {
             console.log(data);
             dispatch(postFoodIntake({ type, product: data }));
-            closeModal();
+            handleDataUpdate();
           }}
         />
       )}
@@ -54,6 +63,3 @@ const FoodList = ({ type, product}) => {
 };
 
 export default FoodList;
-
-
-
