@@ -47,7 +47,7 @@ const bcgCircle = {
 
 export const DoughnutChart = ({ dailyCalories, inputValue, chartBcg }) => {
   if (inputValue > dailyCalories) {
-    inputValue = 1700;
+    inputValue = dailyCalories;
     chartBcg = 'red';
   }
   const emptyValue = dailyCalories - inputValue;
