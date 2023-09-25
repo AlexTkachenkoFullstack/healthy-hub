@@ -46,7 +46,7 @@ const handleFulfildUpdate = (state, action) => {
     state.error = null;
     // {dinner:{name:', id} }
     const type=action.payload.data.type;
-    const indexOfFood=state.food[type].findIndex(item=>item.id===action.payload.data.product.id);
+    const indexOfFood=state.food[type].findIndex(item=>item.ident===action.payload.data.product.ident);
     state.food[type][indexOfFood]=action.payload.data.product;
     state.totalCalories=action.payload.data.totalCalories;
 }
