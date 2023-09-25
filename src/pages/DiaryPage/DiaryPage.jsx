@@ -12,7 +12,7 @@ import TitlePeriod from "../../components/DiaryPages/TitlePeriod";
 import FootListPeriod from "../../components/DiaryPages/FootListPeriod";
 
 
-const footToDo = index => {
+const footCard = index => {
   return (
     <div>
       <TitleDiv>
@@ -32,10 +32,10 @@ const DiaryPage = () => {
       </Link>
       <TitlePage>Diary</TitlePage>
       <SectionDiary>
-        {footToDo('Breakfast')}
-        {footToDo('Lunch')}
-        {footToDo('Dinner')}
-        {footToDo('Snack')}
+        {footCard('Breakfast')}
+        {footCard('Lunch')}
+        {footCard('Dinner')}
+        {footCard('Snack')}
       </SectionDiary>
     </>
   );

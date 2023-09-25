@@ -15,17 +15,15 @@ import lunchImg2 from '../../assets/images/meal-periods/lunch-2x.png';
 import snackImg from '../../assets/images/meal-periods/snack.png';
 import snackImg2 from '../../assets/images/meal-periods/snack-2x.png';
 
-import userF from './json/userFoot1.json';
+import userFood from './json/userFood1.json';
 
 
 const TitlePeriod = indexList => {
-  // const dispatch = useDispatch();
-  // const dateGlobal = useSelector(state => state.foodIntake.food.breakfast);
-  const { breakfast, lunch, dinner, snack } = userF;
-  // const windowInnerWidth = document.documentElement.clientWidth;
+  // const userFood = useSelector(state => state.foodIntake.food);
+  const { breakfast, lunch, dinner, snack } = userFood;
     
   let data = {};
-  const titleObject = { img: "", name: "", isEdit: false };
+  const titleObject = { img: "", name: "" };
   const isRetina = window.devicePixelRatio > 1;
 
   if (indexList.data === 'Breakfast') {

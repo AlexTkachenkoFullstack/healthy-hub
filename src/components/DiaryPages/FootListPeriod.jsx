@@ -1,3 +1,4 @@
+// import React, { useState, useSelector } from 'react';
 import React, { useState } from 'react';
 import {
   GlobalStyles,
@@ -12,13 +13,18 @@ import {
   ItemFoodFat,  
 } from './DiaryPage.styled';
 
-import ModalDiaryBtn from "./ModalDiaryBtn";
+import ModalDiaryBtn from "./RecordMealBtn";
 import EditBtn from "./EditBtn";
-import userF from './json/userFoot1.json';
+// import { getFoodIntakeFood } from '../../redux/diary/selectors';
 
+import userFood from './json/userFood1.json';
 
 const FootListPeriod = indexList => {
-  const { breakfast, lunch, dinner, snack } = userF;
+  
+  // // const userFood = useSelector(state => state.foodIntake.food)
+  // const userFood = useSelector(getFoodIntakeFood)
+  
+  const { breakfast, lunch, dinner, snack } = userFood;
   const propsModal = indexList.data;
 
   // const [isEditing, setIsEditing] = useState(false);
@@ -56,8 +62,6 @@ const FootListPeriod = indexList => {
   const toggleEdit = (index) => {
     console.log();
   };
-
-
 
   let data = {};
 

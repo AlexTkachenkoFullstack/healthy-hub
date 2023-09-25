@@ -20,23 +20,28 @@ import {
 import breakfastImg from "../../assets/images/meal-periods/breakfast.png";
 import breakfastImg2 from "../../assets/images/meal-periods/breakfast-2x.png";
 
+import { useDispatch } from 'react-redux';
+import { postFoodIntake } from 'redux/diary/operations';
+
 const isRetina = window.devicePixelRatio > 1;
 const imgPeriod = isRetina ? breakfastImg2 : breakfastImg;
 // const typeName = "Breakfast";
   
-const RecordDiaryModal = ({ isOpen, onClose, typeName}) => {
+const RecordDiaryModal = ({ isOpen, onClose, typeName }) => {
+  const dispatch = useDispatch();
   // проміжковий масив для збереження даних в модалці
-  const [foodData, setFoodData] = useState(    
-    [{
-      id: "1",
-      name: "",
-      carb: null,
-      protein: null,
-      fat: null,
-      calories: null
-    }]
-  );
-
+  const [foodData, setFoodData] = useState({
+    fields: [
+      {
+        id: '1',
+        name: '',
+        carb: '',
+        protein: '',
+        fat: '',
+        calories: '',
+      },
+    ],
+  });
   // кнопка + Add more
   const handleAddMore = (e) => {
     e.preventDefault(); // Прибирає подію відправки форми
@@ -58,78 +63,41 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName}) => {
   
   // const handleChange = (e) => {
     // const { name, value } = e.target;
-  const handleChange = (id, targ, fieldName) => {
-    // console.log();
-    if (fieldName === "") return
-    
-    // валідація
-    // if (fieldName !== "name" && fieldName !== "") {
-    //   try {
-    //     /^\d+$/.test(targ.value)
-    //     targ.value = Math.abs(Number(targ.value))
-    //     // targ.value = Math.abs(/^\d+$/.test(value))
-    //     // typeof targ.value
-    //   } catch (error) {
-    //     console.log("Value must be a number");
-    //     return
-    //   }
-    // }
-
-    const updatedFields = foodData.flatMap((field) => {
-      // console.log(field);
-      return field.id === id ? { ...field, [fieldName]: targ.value } : field
-    });
-    //  setfoodData({...foodData, [name]: value,});
-    setFoodData(updatedFields);
+  const handleChange = (id, fieldId, newValue) => {
+    const updatedFields = foodData.fields.map(field =>
+      field.id === id ? { ...field, [fieldId]: newValue } : field
+    );
+    setFoodData({ fields: updatedFields });
   };
 
-//   const handleSubmit = async (e) => {
-//     // Відправка даних на сервер (backend) за допомогою fetch або axios
-//     console.log('Відправка на сервер:', foodData);
-    
-//     e.preventDefault();  // ? можливо потрібен рендер для перерахунку сум
-//     try {
-//       // Відправка запросу POST
-      
-//       // const response = await axios.post('/api/user/food-intake', foodIntake);
-//       // const response = await axios.post('/api/user/food-intake', foodData);
-//       // console.log('Успішно відправлено:', response.data);
-// //зразок запиту
-// //   dispatch(postFoodIntake({type:'lunch', products:[{name:'english breakfast', carbonohidrates:22, protein:22, fat:22, calories:59},
-// // {name:'tea', carbonohidrates:22, protein:22, fat:22, calories:59}]}
-      
-//       //За потреби очищення форми або інші дії після успішної відправки
-//       console.log('Успішно відправлено:', foodData);
 
-//     } catch (error) {
-//       console.error('Помилкака при відправці:', error);
-//       // Обробка помилки
-//     }
-      
-//     // Закрити модальне вікно
-//     onClose();
-  //   };
-  
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch('URL', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // body: JSON.stringify(formData.fields),
-        body: JSON.stringify(foodData.fields),
-      });
+  // const handleSubmit = async () => {
+  //   try {
+  //     const response = await fetch('URL', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       // body: JSON.stringify(formData.fields),
+  //       body: JSON.stringify(foodData.fields),
+  //     });
 
-      if (response.ok) {
-        console.log('Дані успішно відправлено на бекенд.');
-        onClose();
-      } else {
-        console.error('Помилка відправки даних на бекенд.');
-      }
-    } catch (error) {
-      console.error('Помилка під час відправки даних:', error);
-    }
+  //     if (response.ok) {
+  //       console.log('Дані успішно відправлено на бекенд.');
+  //       onClose();
+  //     } else {
+  //       console.error('Помилка відправки даних на бекенд.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Помилка під час відправки даних:', error);
+  //   }
+  // };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    // console.log(type, formData.fields);
+    dispatch(postFoodIntake({ typeName, products: foodData.fields }));
+    onClose();
   };
 
   const pageWidth = document.documentElement.clientWidth;  
@@ -143,7 +111,7 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName}) => {
           <Img src={imgPeriod} alt={typeName} style={{width: "32px", height: "32px"}}/>
           <Span>{typeName}</Span> 
         </TitleBlok>
-        <Form >
+        <Form onSubmit={handleSubmit}>
           {/* <div style={{display: "flex", flexWrap: "wrap", gap: "16px"}}> */}
           {foodData.map((field) => (
             <FormDiv key={field.id}>
@@ -205,13 +173,12 @@ const RecordDiaryModal = ({ isOpen, onClose, typeName}) => {
             </FormDiv>
             ))}          
           <ButtonStyleAdd onClick={handleAddMore} >+ Add more</ButtonStyleAdd>
-          {/* </div> */}
-            <BlockButtonStyle>
+            
+          <BlockButtonStyle>
             <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
             <ButtonSubmit type="submit" onClick={handleSubmit} >Confirm</ButtonSubmit>
           </BlockButtonStyle>
-        </Form>
-      
+        </Form>      
       </ModalDiv>
     </ModalOverlay>
   ) : null;

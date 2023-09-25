@@ -5,9 +5,10 @@ import {
 } from './DiaryPage.styled';
 
 
-import RecordDiaryModal from '../RecordDiaryModal/RecordDiaryModal';
+import RecordDiaryModal from '../RecordDiaryModalNew/RecordDiaryModal';
+// import RecordDiaryModal from '../RecordDiaryModal/RecordDiaryModal';
 
-const ModalDiaryBtn = (mob) => {
+const ModalDiaryBtn = (type) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,13 +53,12 @@ const ModalDiaryBtn = (mob) => {
         onBlur={handleBlur}
         tabIndex="0"
       >
-        {/* <TextIndexSpan style={ssds()}>+ Record your meal</TextIndexSpan> */}
         <TextIndexSpan style={isHovered || isFocused ? { fontSize: '18px' } : { fontSize: '14px' }}>
           + Record your meal
         </TextIndexSpan>
       </ButtonStyle>
 
-      <RecordDiaryModal isOpen={isModalOpen} onClose={closeModal} typeName={mob.nameType} />
+      {isModalOpen && <RecordDiaryModal onClose={closeModal} typeName={type.nameType} />}
     </>
   );
 };

@@ -1,32 +1,78 @@
 import React, { useState } from 'react';
 import {
-  // ButtonStyle,
   SvgEdit,
   TextSpan
 } from './DiaryPage.styled';
 import sprite from '../../assets/images/icons/icons.svg';
 
-const EditBtn = () => {
+import RecordDiaryModal from '../../components/RecordDiaryModalNew/RecordDiaryModal';
+
+const EditBtn = (type) => {  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isEditing, setIsEditing] = useState(false);
   const [colorEdit, setColorEdit] = useState('white');
 
-  const toggleEditing = () => {
-    setIsEditing(!isEditing);
-    setColorEdit(isEditing ? 'red' : 'white');
+  // --- Блок керування hover-ом і focus-ом 
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
-    console.log('toggleEditing', colorEdit);
-    // setIdBtn(e.id);
-    // console.log("e=",e);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setIsEditing(true);
+    setColorEdit(isEditing ? 'red' : 'white');
   };
 
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsEditing(false);
+    setColorEdit(isEditing ? 'red' : 'white');
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    setIsEditing(true);
+    setColorEdit(isEditing ? 'red' : 'white');
+    console.log(isFocused);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    setIsEditing(false);
+    setColorEdit(isEditing ? 'red' : 'white');
+    console.log(isHovered);
+  };
+  // ---------
+  
+  const handleClick = () => {
+    setIsFocused(false);
+    openModal();
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  
   return (
-    // <ButtonStyle onClick={toggleEditing}>
-    <div onClick={toggleEditing} style={{ display: "flex", alignItems: "center" }}>
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      tabIndex="0"
+      onClick={handleClick}
+      style={{ display: "flex", alignItems: "center" }}
+    >
       <SvgEdit style={{ stroke: colorEdit }}>
         <use href={sprite + '#icon-edit-2'}></use>
       </SvgEdit>
       <TextSpan style={{ color: colorEdit }}> Edit</TextSpan>
-      {/* </ButtonStyle> */}
+      {/* <RecordDiaryModal isOpen={isModalOpen} onClose={closeModal} typeName={type.nameType} /> */}
+      {isModalOpen && <RecordDiaryModal onClose={closeModal} typeName={type.nameType} />}
     </div>
   );
 };
