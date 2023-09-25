@@ -61,7 +61,11 @@ const EditDiaryModal = ({ onClose, type, product }) => {
       calories: calories,
     };
     dispatch(
-      updateFoodIntake({ id: product.id, type: type, product: currentProduct })
+      updateFoodIntake({
+        ident: product.ident,
+        type: type,
+        product: currentProduct,
+      })
     );
     onClose();
   };
