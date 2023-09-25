@@ -1,11 +1,15 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { Formik, ErrorMessage } from 'formik';
+
+import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
+import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
+import { signInSchema } from '../../components/SignInFormValidation/SignInFormValidation';
 import {
     ImageSignIn,
     SignInText,
     TextTitle,
     Text,
-    TextField,
     ButtonSignIn,
     FotmSignIn,
     TextSecond,
@@ -13,8 +17,17 @@ import {
     TextBlock,
     SignInContainer,
     TextFogot,
+    IconTextPosition,
+    InputBox,
+    InputText,
+    ValidationError,
 } from './SignInPage.styled';
 import {loginThunk} from '../../redux/auth/operations'
+
+const initialValues = {
+    email: '',
+    password: '',
+};
 
 const SignInPage = () => {
     const dispatch = useDispatch();
@@ -27,18 +40,53 @@ const SignInPage = () => {
     formLogin.reset();
 }
 
-
     return (<>
         <SignInContainer>
             < ImageSignIn />
             <SignInText>
                 <TextTitle>Sign in</TextTitle>
                 <Text>You need to login to use the   service</Text>
-                <FotmSignIn onSubmit={handleSubmit}>
-                    <TextField placeholder="E-mail" label="email"   type='email' name="email" />
-                    <TextField placeholder="Password"  label="password"  type='password'name="password" />
-                    <ButtonSignIn  type='submit'>Sign In</ButtonSignIn>
-                </FotmSignIn>
+                <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signInSchema}>
+                    {({ errors, touched }) => (
+                        <FotmSignIn onSubmit={handleSubmit}>
+                            <InputBox htmlFor="email">
+                            <InputText
+                                placeholder="E-mail"
+                                label="email"
+                                type='email'
+                                name="email" />
+                            <IconTextPosition>
+                                {errors.email && touched.email ? (
+                                <InputErrorIcon />
+                                ) : (
+                                <InputSuccessIcon />
+                                )}
+                            </IconTextPosition>
+                            </InputBox>
+                                <ErrorMessage name="email">
+                                    {msg => <ValidationError>{msg}</ValidationError>}
+                                </ErrorMessage>
+                            <InputBox htmlFor="password">
+                            <InputText
+                                placeholder="Password"
+                                label="password"
+                                type='password'
+                                name="password" />
+                            <IconTextPosition>
+                                {errors.password && touched.password ? (
+                                <InputErrorIcon />
+                                ) : (
+                                <InputSuccessIcon />
+                                )}
+                            </IconTextPosition>
+                            </InputBox>
+                            <ErrorMessage name="password">
+                                {msg => <ValidationError>{msg}</ValidationError>}
+                            </ErrorMessage>
+                            <ButtonSignIn type='submit'>Sign In</ButtonSignIn>
+                        </FotmSignIn>
+                    )}
+                </Formik>
                 <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
                 <TextBlock>
                     <TextSecond>If you don't have an account yet</TextSecond>

@@ -7,7 +7,7 @@ import SignImImageDesctop from "../../assets/images/sport-and-fitness-tracker.pn
 import SignImImageMobile2к from "../../assets/images/sport-and-fitness-tracker-mobile-2x.png";
 import SignImImageTablet2к from "../../assets/images/sport-and-fitness-tracker-tablet-2x.png";
 import SignImImageDesctop2к from "../../assets/images/sport-and-fitness-tracker-2x.png";
-
+import { Field} from 'formik';
 
 
 export const ImageSignIn = styled.div`
@@ -82,7 +82,7 @@ export const Text = styled.p`
     line-height: 32px;
 }`;
 
-export const TextField = styled.input`
+export const InputText = styled(Field)`
 @media (min-width: 320px) {
     background-color: var(--bg-primary);
     height: 36px;
@@ -212,3 +212,24 @@ export const TextFogot = styled(NavLink)`
 @media (min-width: 1441px) {
     margin-bottom: 0px;
 }`;
+
+export const InputBox = styled.label`
+  background: transparent;
+  position: relative;
+`;
+export const IconTextPosition = styled.div`
+  position: absolute;
+  top: 35%;
+  right: 10px;
+  transform: translate(-50%, -50%);
+`;
+
+export const ValidationError = styled.span`
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+   margin-top: -13px;
+   margin-bottom: 14px;
+  font-weight: 400;
+  line-height: 1.17;
+`;
