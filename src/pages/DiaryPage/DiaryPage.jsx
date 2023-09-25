@@ -1,47 +1,35 @@
 import React from 'react';
-// import axios from 'axios'; 
 import { Link } from 'react-router-dom';
-import {
-  SectionDiary,
-  TitlePage,
-  TitleDiv,
-} from '../../components/DiaryPages/DiaryPage.styled';
+import GoBackPage from 'components/DiaryPages/GoBackPage';
+import Breakfast from 'components/DiaryPages/Breakfast';
+import { MainTitle } from 'components/DiaryPages/DiaryPage.styled';
+// import Lunch from 'components/DiaryPages/Lunch';
+import Dinner from 'components/DiaryPages/Dinner';
+import Lunch from 'components/DiaryPages/Lunch';
+import Snack from 'components/DiaryPages/Snack';
 
-import GoBackPage from "../../components/DiaryPages/GoBackPage";
-import TitlePeriod from "../../components/DiaryPages/TitlePeriod";
-import FootListPeriod from "../../components/DiaryPages/FootListPeriod";
-
-
-const footToDo = index => {
+const DiaryPage = () => {
   return (
-    <div>
-      <TitleDiv>
-        <TitlePeriod data={index} />
-      </TitleDiv>
-      <FootListPeriod data={index} />
+    <div style={{ padding: '20px 0 52px' }}>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <Link to="/">
+          <GoBackPage />
+        </Link>
+        <MainTitle>Diary</MainTitle>
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
+        <Breakfast />
+        <Dinner />
+        <Lunch />
+        <Snack />
+      </div>
+
+      {/* <Lunch /> */}
+      {/* <Dinner /> */}
+      {/* <Snack /> */}
     </div>
   );
 };
 
-const DiaryPage = () => {
-  return (
-    <>
-      <Link to="/">
-      {/* <Link to="/main"> */}
-        <GoBackPage />
-      </Link>
-      <TitlePage>Diary</TitlePage>
-      <SectionDiary>
-        {footToDo('Breakfast')}
-        {footToDo('Lunch')}
-        {footToDo('Dinner')}
-        {footToDo('Snack')}
-      </SectionDiary>
-    </>
-  );
-};
-
 export default DiaryPage;
-
-
-// export default App;
