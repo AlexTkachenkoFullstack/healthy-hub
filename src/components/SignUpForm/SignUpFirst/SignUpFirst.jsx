@@ -7,7 +7,6 @@ import {
   Image,
   MainHeader,
   Text,
-  InputBox,
   InputText,
   InputButton,
   FormStyle,
@@ -17,6 +16,8 @@ import {
   QuestionForm,
   ValidationError,
   IconTextPosition,
+  InputContainer,
+  InputContainerError,
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
@@ -98,8 +99,8 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         >
           {({ errors, touched }) => (
             <FormStyle autoComplete="off">
-              <InputBox htmlFor="name">
-                <div style={getStyles(errors, 'name')}>
+              <label htmlFor="name">
+                <InputContainer>
                   <InputText
                     type="text"
                     id="name"
@@ -113,14 +114,14 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                       <SuccessIcon />
                     )}
                   </IconTextPosition>
-                </div>
-              </InputBox>
+                </InputContainer>
+              </label>
 
               <ErrorMessage name="name">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-              <InputBox htmlFor="email">
-                <div>
+              <label htmlFor="email">
+                <InputContainer>
                   <InputText
                     type="email"
                     id="email"
@@ -134,14 +135,14 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                       <SuccessIcon />
                     )}
                   </IconTextPosition>
-                </div>
-              </InputBox>
+                </InputContainer>
+              </label>
               <ErrorMessage name="email">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
 
-              <InputBox htmlFor="password">
-                <div>
+              <label htmlFor="password">
+                <InputContainer>
                   <InputText
                     type={showPassword}
                     id="password"
@@ -160,8 +161,8 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                       )}
                     </div>
                   </IconTextPosition>
-                </div>
-              </InputBox>
+                </InputContainer>
+              </label>
 
               <ErrorMessage name="password">
                 {msg => <ValidationError>{msg}</ValidationError>}
