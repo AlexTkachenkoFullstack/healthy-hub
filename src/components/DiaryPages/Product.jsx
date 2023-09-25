@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 const Product = ({ product, type }) => {
   const dispatch = useDispatch();
-  const { name, carbohydrates, protein, fat, ident } = product;
+  const { name, carbonohidrates, protein, fat, ident } = product;
   console.log(ident);
   console.log('product', product);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +33,7 @@ const Product = ({ product, type }) => {
         }}
       >
         <p>{name}</p>
-        <p>{carbohydrates}</p>
+        <p>{carbonohidrates}</p>
         <p>{protein}</p>
         <p>{fat}</p>
         <EditBtn onClick={openModal} />

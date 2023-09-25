@@ -90,6 +90,9 @@ export const NameField = styled.input`
   width: 100%;
   outline: none;
 
+
+
+
   @media (min-width: 834px) {
     margin-top: 16px;
     width: 235px;
@@ -107,6 +110,10 @@ export const Field = styled.input`
   line-height: 1.43; /* 20px */
   width: 100%;
   outline: none;
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   ::placeholder {
     color: var(--text-color-secondary-grey);
