@@ -23,14 +23,15 @@ import {
 import { useDispatch } from 'react-redux';
 import { postFoodIntake } from 'redux/diary/operations';
 
-const RecordDiaryModal = ({ onClose, type}) => {
+const RecordDiaryModal = ({ onClose, type }) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     fields: [
       {
+        ident: '1',
         name: '',
-        carbohydrates: '',
+        carbonohidrates: '',
         protein: '',
         fat: '',
         calories: '',
@@ -50,8 +51,9 @@ const RecordDiaryModal = ({ onClose, type}) => {
       fields: [
         ...formData.fields,
         {
+          ident: Date.now(),
           name: '',
-          carbohydrates: null,
+          carbonohidrates: null,
           protein: null,
           fat: null,
           calories: null,
@@ -78,9 +80,9 @@ const RecordDiaryModal = ({ onClose, type}) => {
     }
   };
 
-  const handleChange = (id, fieldId, newValue) => {
+  const handleChange = (ident, fieldId, newValue) => {
     const updatedFields = formData.fields.map(field =>
-      field.id === id ? { ...field, [fieldId]: newValue } : field
+      field.ident === ident ? { ...field, [fieldId]: newValue } : field
     );
     setFormData({ fields: updatedFields });
   };
@@ -163,22 +165,26 @@ const RecordDiaryModal = ({ onClose, type}) => {
         )}
         <form onSubmit={handleSubmit}>
           {formData.fields.map(field => (
-            <FormDiv key={field.id}>
+            <FormDiv key={field.ident}>
               <NameField
                 id="name"
                 type="string"
                 required={true}
                 value={field.name}
-                onChange={e => handleChange(field.id, 'name', e.target.value)}
+                onChange={e =>
+                  handleChange(field.ident, 'name', e.target.value)
+                }
                 placeholder="The name of the product or dish"
               />
               <Field
-                id="carbohydrates"
+                id="carbonohidrates"
                 type="number"
                 min={0}
                 required={true}
-                value={field.carbohydrates}
-                onChange={e => handleChange(field.id, 'carbohydrates', e.target.value)}
+                value={field.carbonohidrates}
+                onChange={e =>
+                  handleChange(field.ident, 'carbonohidrates', e.target.value)
+                }
                 placeholder="Carbonoh."
               />
               <Field
@@ -188,7 +194,7 @@ const RecordDiaryModal = ({ onClose, type}) => {
                 required={true}
                 value={field.protein}
                 onChange={e =>
-                  handleChange(field.id, 'protein', e.target.value)
+                  handleChange(field.ident, 'protein', e.target.value)
                 }
                 placeholder="Protein"
               />
@@ -198,7 +204,7 @@ const RecordDiaryModal = ({ onClose, type}) => {
                 min={0}
                 required={true}
                 value={field.fat}
-                onChange={e => handleChange(field.id, 'fat', e.target.value)}
+                onChange={e => handleChange(field.ident, 'fat', e.target.value)}
                 placeholder="Fat"
               />
               <Field
@@ -208,7 +214,7 @@ const RecordDiaryModal = ({ onClose, type}) => {
                 required={true}
                 value={field.calories}
                 onChange={e =>
-                  handleChange(field.id, 'calories', e.target.value)
+                  handleChange(field.ident, 'calories', e.target.value)
                 }
                 placeholder="Calories"
               />

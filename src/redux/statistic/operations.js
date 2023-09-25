@@ -5,6 +5,9 @@ const instance = axios.create({
     baseURL: 'https://backend-healthyhub.onrender.com/'
 });
 
+export const setAuthHeader = token => {
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const fetchStatistics=createAsyncThunk(
     'statistics/get',
@@ -15,7 +18,10 @@ export const fetchStatistics=createAsyncThunk(
             if (!persistToken) {
                 return thunkAPI.rejectWithValue('No token');
             } 
-            const response=await instance('api/user/statistics')
+            setAuthHeader(persistToken);
+            const response = await instance('api/user/statistics')
+            
+            console.log(response)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message)

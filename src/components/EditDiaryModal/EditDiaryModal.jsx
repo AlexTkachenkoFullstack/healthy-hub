@@ -31,7 +31,7 @@ import * as yup from 'yup';
 
 export const schema = yup.object({
   name: yup.string().required('Please Enter product name'),
-  carbohydrates: yup
+  carb: yup
     .number()
     .min(0, 'you can not enter less 0')
     .required('please enter Carboh.'),
@@ -52,16 +52,20 @@ export const schema = yup.object({
 const EditDiaryModal = ({ onClose, type, product }) => {
   const dispatch = useDispatch();
 
-  const handleSubmit = ({ name, carbohydrates, protein, fat, calories }) => {
+  const handleSubmit = ({ name, carb, protein, fat, calories }) => {
     const currentProduct = {
       name: name,
-      carbohydrates: carbohydrates,
+      carbonohidrates: carb,
       protein: protein,
       fat: fat,
       calories: calories,
     };
     dispatch(
-      updateFoodIntake({id: product.ident, type: type, product: currentProduct })
+      updateFoodIntake({
+        ident: product.ident,
+        type: type,
+        product: currentProduct,
+      })
     );
     onClose();
   };
@@ -144,7 +148,7 @@ const EditDiaryModal = ({ onClose, type, product }) => {
         <Formik
           initialValues={{
             name: product.name,
-            carbohydrates: product.carbohydrates,
+            carb: product.carbonohidrates,
             protein: product.protein,
             fat: product.fat,
             calories: product.calories,
@@ -171,14 +175,14 @@ const EditDiaryModal = ({ onClose, type, product }) => {
               <FieldContainer>
                 <StyledField
                   type="number"
-                  name="carbohydrates"
+                  name="carb"
                   borderstyle={
-                    errors.carbohydrates && touched.carbohydrates
+                    errors.carb && touched.carb
                       ? '1px solid var(--input-border-color-error)'
                       : ''
                   }
                 />
-                <ErrorMessage name="carbohydrates">
+                <ErrorMessage name="carb">
                   {msg => <ErrorText>{msg}</ErrorText>}
                 </ErrorMessage>
               </FieldContainer>

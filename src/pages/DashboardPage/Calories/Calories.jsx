@@ -21,8 +21,9 @@ import {
 
 ChartJS.register(LineElement, CategoryScale, PointElement);
 
-export const Calories = ({ name }) => {
+export const Calories = ({ name, stat }) => {
   const lables = MonthCaloriesSet.map(({ date }) => getDate(parseISO(date)));
+  console.log(stat)
 
   const caloriesData = MonthCaloriesSet.map(({ data }) => data);
 
