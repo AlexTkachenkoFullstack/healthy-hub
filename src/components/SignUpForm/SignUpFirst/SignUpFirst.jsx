@@ -17,15 +17,14 @@ import {
   ValidationError,
   IconTextPosition,
   InputContainer,
-  InputContainerError,
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
 import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
-import { useState } from 'react';
-import SuccessIcon from '../SuccessIcon';
-import ErrorIcon from '../ErrorIcon';
+import { useEffect, useState } from 'react';
+import SuccessIcon from '../InputSuccessIcon';
+import ErrorIcon from '../InputErrorIcon';
 import EyeOpenIcon from '../EyeOpenIcon';
 import EyeHideIcon from '../EyeHideIcon';
 
@@ -44,10 +43,49 @@ function getStyles(errors, fieldName) {
   }
 }
 
+const nameValidation = status => {
+  switch (status) {
+    case 'error':
+      break;
+
+    case 'success':
+      break;
+    default:
+      break;
+  }
+};
+
+const emailValidation = status => {
+  switch (status) {
+    case 'error':
+      break;
+
+    case 'success':
+      break;
+    default:
+      break;
+  }
+};
+
+const passwordValidation = status => {
+  switch (status) {
+    case 'error':
+      break;
+
+    case 'success':
+      break;
+    default:
+      break;
+  }
+};
+
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
   const [showPassword, setShowPassword] = useState('password');
+  const [emailStatus, setEmailStatus] = useState('pending');
+  const [nameStatus, setNameStatus] = useState('pending');
+  const [passwordStatus, setPasswordStatus] = useState('pending');
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
@@ -57,6 +95,11 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
     showPassword === 'password'
       ? setShowPassword('text')
       : setShowPassword('password');
+  };
+
+  const changeColor = (color, id) => {
+    const changeColor = document.getElementById(`id`);
+    changeColor.style.borderColor = `$color`;
   };
 
   const handleSubmit = async ({ name, email, password }) => {
