@@ -7,7 +7,6 @@ import {
   Image,
   MainHeader,
   Text,
-  InputBox,
   InputText,
   InputButton,
   FormStyle,
@@ -17,6 +16,7 @@ import {
   QuestionForm,
   ValidationError,
   IconTextPosition,
+  InputContainer,
 } from './SignUpFirst.styled';
 
 import checkEmail from '../checkEmail';
@@ -25,6 +25,8 @@ import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 import { useState } from 'react';
 import InputSuccessIcon from '../InputSuccessIcon';
 import InputErrorIcon from '../InputErrorIcon';
+import EyeOpenIcon from '../EyeOpenIcon';
+import EyeHideIcon from '../EyeHideIcon';
 
 const initialValues = {
   name: '',
@@ -35,10 +37,16 @@ const initialValues = {
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
-  // const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState('password');
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
+  };
+
+  const toggleIsOpenPassword = () => {
+    showPassword === 'password'
+      ? setShowPassword('text')
+      : setShowPassword('password');
   };
 
   const handleSubmit = async ({ name, email, password }) => {
@@ -60,11 +68,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
     }
   };
 
-  const togglePass = () => {
-    const pass = document.getElementById('password');
-    pass.type === 'password' ? (pass.type = 'text') : (pass.type = 'password');
-  };
-
   const isRetinaDisplay =
     window.matchMedia &&
     window.matchMedia(
@@ -84,75 +87,109 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
           onSubmit={handleSubmit}
           validationSchema={signupSchema}
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, values }) => (
             <FormStyle autoComplete="off">
-              <InputBox
-                htmlFor="name"
-                // $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                />
-                <IconTextPosition>
-                  {errors.name && touched.name ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
-              </InputBox>
+              <label htmlFor="name">
+                <InputContainer
+                  style={{
+                    borderColor:
+                      errors.name && touched.name
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                  }}
+                >
+                  <InputText
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                  />
+                  <IconTextPosition
+                    style={{
+                      display: values.name ? 'block' : 'none',
+                    }}
+                  >
+                    {errors.name && touched.name ? (
+                      <InputErrorIcon />
+                    ) : (
+                      <InputSuccessIcon />
+                    )}
+                  </IconTextPosition>
+                </InputContainer>
+              </label>
 
               <ErrorMessage name="name">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-              <InputBox
-                htmlFor="email"
-                // $showIcon={errors.name && touched.name ? 'block' : 'none'}
-              >
-                <InputText
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="E-mail"
-                />
-                <IconTextPosition>
-                  {errors.email && touched.email ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
-              </InputBox>
+              <label htmlFor="email">
+                <InputContainer
+                  style={{
+                    borderColor:
+                      errors.email && touched.email
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                  }}
+                >
+                  <InputText
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
+                  />
+                  <IconTextPosition
+                    style={{
+                      display: values.email ? 'block' : 'none',
+                    }}
+                  >
+                    {errors.email && touched.email ? (
+                      <InputErrorIcon />
+                    ) : (
+                      <InputSuccessIcon />
+                    )}
+                  </IconTextPosition>
+                </InputContainer>
+              </label>
               <ErrorMessage name="email">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
 
-              <InputBox htmlFor="password">
-                <InputText
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <IconTextPosition>
-                  {errors.password && touched.password ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
-              </InputBox>
+              <label htmlFor="password">
+                <InputContainer
+                  style={{
+                    borderColor:
+                      errors.password && touched.password
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                  }}
+                >
+                  <InputText
+                    type={showPassword}
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <IconTextPosition
+                    style={{
+                      display: values.password ? 'block' : 'none',
+                    }}
+                  >
+                    <div
+                      onClick={toggleIsOpenPassword}
+                      alt="Show or hide password"
+                    >
+                      {showPassword === 'password' ? (
+                        <EyeOpenIcon />
+                      ) : (
+                        <EyeHideIcon />
+                      )}
+                    </div>
+                  </IconTextPosition>
+                </InputContainer>
+              </label>
 
               <ErrorMessage name="password">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-
-              <button type="button" onClick={togglePass}>
-                Show
-              </button>
 
               <InputButton type="submit">Sign Up</InputButton>
             </FormStyle>

@@ -86,6 +86,7 @@ export const RadioLabel = styled.label`
   align-items: center;
   gap: 8px;
   justify-content: flex-start;
+  cursor: pointer;
 `;
 
 export const CustomRadioInput = styled.input`

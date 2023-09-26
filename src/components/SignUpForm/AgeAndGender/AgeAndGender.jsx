@@ -14,12 +14,15 @@ import {
   ExtraContainer,
   CustomRadioInput,
   ValidationError,
+  IconTextPosition,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
 import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
 import { genderAgeSchema } from '../validationLibs';
 import { useEffect } from 'react';
+import InputSuccessIcon from '../InputSuccessIcon';
+import InputErrorIcon from '../InputErrorIcon';
 
 const AgeAndGender = ({
   goNext,
@@ -64,53 +67,75 @@ const AgeAndGender = ({
       onSubmit={handleSubmit}
       validationSchema={genderAgeSchema}
     >
-      <AgeAndGenderContainer>
-        <Image src={image} alt="Elder fitness" />
-        <Form>
-          <AgeAndGenderHeader id="genderGroup">
-            Select gender, Age
-          </AgeAndGenderHeader>
-          <Text>
-            Choose a goal so that we can <br />
-            help you effectively
-          </Text>
-          <ExtraContainer htmlFor="gender">
-            <ChooseText>Gender</ChooseText>
-            <LabelBlock role="group" aria-label="genderGroup">
-              <Label>
-                <CustomRadioInput type="radio" name="gender" value="male" />
-                Male
-              </Label>
-              <Label>
-                <CustomRadioInput
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  required
+      {({ errors, touched, values }) => (
+        <AgeAndGenderContainer>
+          <Image src={image} alt="Elder fitness" />
+          <Form autoComplete="off">
+            <AgeAndGenderHeader id="genderGroup">
+              Select gender, Age
+            </AgeAndGenderHeader>
+            <Text>
+              Choose a goal so that we can <br />
+              help you effectively
+            </Text>
+            <ExtraContainer htmlFor="gender">
+              <ChooseText>Gender</ChooseText>
+              <LabelBlock role="group" aria-label="genderGroup">
+                <Label>
+                  <CustomRadioInput type="radio" name="gender" value="male" />
+                  Male
+                </Label>
+                <Label>
+                  <CustomRadioInput
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    required
+                  />
+                  Female
+                </Label>
+              </LabelBlock>
+              <ChooseText>Your age</ChooseText>
+            </ExtraContainer>
+            <label htmlFor="age">
+              <InputBox
+                style={{
+                  borderColor:
+                    errors.age && touched.age
+                      ? 'var(--input-border-color-error)'
+                      : '',
+                }}
+              >
+                <InputText
+                  type="number"
+                  id="age"
+                  name="age"
+                  placeholder="Enter your age"
                 />
-                Female
-              </Label>
-            </LabelBlock>
-            <ChooseText>Your age</ChooseText>
-          </ExtraContainer>
-          <InputBox htmlFor="age">
-            <InputText
-              type="text"
-              id="age"
-              name="age"
-              placeholder="Enter your age"
-            />
-          </InputBox>
-          <ErrorMessage name="age">
-            {msg => <ValidationError>{msg}</ValidationError>}
-          </ErrorMessage>
-          <InputButton type="submit">Next</InputButton>
+                <IconTextPosition
+                  style={{
+                    display: values.age ? 'block' : 'none',
+                  }}
+                >
+                  {errors.age && touched.age ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
+                </IconTextPosition>
+              </InputBox>
+            </label>
+            <ErrorMessage name="age">
+              {msg => <ValidationError>{msg}</ValidationError>}
+            </ErrorMessage>
+            <InputButton type="submit">Next</InputButton>
 
-          <BackButton type="button" onClick={goBack}>
-            Back
-          </BackButton>
-        </Form>
-      </AgeAndGenderContainer>
+            <BackButton type="button" onClick={goBack}>
+              Back
+            </BackButton>
+          </Form>
+        </AgeAndGenderContainer>
+      )}
     </Formik>
   );
 };

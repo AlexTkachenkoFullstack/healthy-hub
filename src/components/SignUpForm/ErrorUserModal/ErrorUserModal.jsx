@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { Backdrop, Modal } from './ErrorUserModal.styled';
-import CloseModalButton from '../CloseModalButton/CloseModalButton';
+import CloseModalButton from '../CloseModalButton';
 
 export const ErrorUserModal = ({ isOpenModal, errorMessage, children }) => {
-  const handleCloseModal = e => {
-    (e.code === 'Escape' || e.currentTarget === e.target) && isOpenModal();
+  const handleCloseModal = ({ code, currentTarget, target }) => {
+    if (code === 'Escape' || currentTarget === target) {
+      isOpenModal();
+      return;
+    }
   };
 
   useEffect(() => {

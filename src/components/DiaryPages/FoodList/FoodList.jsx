@@ -11,8 +11,7 @@ const FoodList = ({ type }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const breakfast = useSelector(state => state.foodIntake.food[type]);
-  console.log(breakfast);
+  const arrayMeal = useSelector(state => state.foodIntake.food[type]);
 
   useEffect(() => {
     dispatch(fetchFoodIntake(type));
@@ -31,12 +30,18 @@ const FoodList = ({ type }) => {
 
   return (
     <Container>
-      {breakfast.length > 0 ? (
-        breakfast?.map(item => (
+      {arrayMeal && arrayMeal.length > 0 ? (
+        arrayMeal?.map(item => (
           <Product key={item.ident} type={type} product={item} />
         ))
       ) : (
-        <p>no data</p>
+        <p
+          style={{
+            display: 'none',
+          }}
+        >
+          no data
+        </p>
       )}
       <ButtonStyle onClick={openModal}>
         <TextIndexSpan>+ Record your meal</TextIndexSpan>

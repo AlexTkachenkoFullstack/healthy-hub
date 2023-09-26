@@ -12,7 +12,7 @@ import {
   DiaryAndRecommendFoodWrap,
   ElementsWrapper,
   GoalLink,
-  LinkWrapper,
+  LinkText,
   MainContainer,
   MainTitle,
   TitleWrapper,
@@ -49,12 +49,13 @@ const MainPage = () => {
 
   return (
     <MainContainer>
+      
       <TitleWrapper>
         <MainTitle>Today</MainTitle>
-        <LinkWrapper>
-          <GoalLink to="dashboard">On the way to the goal</GoalLink>
+        <GoalLink to="dashboard">
+          <LinkText>On the way to the goal</LinkText>
           <ArrowRigth />
-        </LinkWrapper>
+        </GoalLink>
       </TitleWrapper>
 
       <ElementsWrapper>
@@ -70,7 +71,7 @@ const MainPage = () => {
         <DiaryInfo />
         <RecommendedFood />
       </DiaryAndRecommendFoodWrap>
-      
+
       {isOpenModal && <AddWaterIntakeModal handleModal={toggleIsOpenModal} />}
     </MainContainer>
   );

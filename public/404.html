@@ -1,0 +1,22 @@
+<!-- 404.html or 200.html -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- ... Ваш оригінальний index.html код ... -->
+  // Цей скрипт перенаправить користувача на правильну сторінку
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HealthyHub</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var location = window.location.href;
+    var path = location.replace(window.location.origin, '');
+    window.location.replace(path);
+  });
+</script>
+</html>

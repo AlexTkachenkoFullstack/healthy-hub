@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { redirect } from 'react-router-dom';
 import SignUpFirst from './SignUpFirst';
 import YourGoal from './YourGoal';
 import AgeAndGender from './AgeAndGender';
 import BodyParameters from './BodyParameters';
 import YourActivity from './YourActivity';
-import signUp from './signUp';
 import { ErrorUserModal } from './ErrorUserModal/ErrorUserModal';
+import { useDispatch } from 'react-redux';
+import { registrationThunk } from 'redux/auth/operations';
 
 const SignUpForm = () => {
   // зберігати у локальний стейт, а на сотанній частині форми зробити submit усіх стейтів
@@ -22,6 +22,7 @@ const SignUpForm = () => {
   const [activity, setActivity] = useState(1.2);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
+  const dispatch = useDispatch();
 
   const userRegister = () => {
     const userData = {
@@ -36,7 +37,7 @@ const SignUpForm = () => {
       activity: Number(activity),
     };
     try {
-      signUp(userData);
+      dispatch(registrationThunk(userData));
       setStep(1);
       setName('');
       setEmail('');
@@ -47,7 +48,6 @@ const SignUpForm = () => {
       setWeight('');
       setAge('');
       setActivity(1.2);
-      redirect('/signin');
     } catch (error) {
       setErrorsMessage(error);
       setIsOpenModal(true);
@@ -127,9 +127,7 @@ const SignUpForm = () => {
       )}
       {step >= 6 && userRegister()}
       {isOpenModal && (
-        <ErrorUserModal
-          isOpenModal={toggleIsOpenModal}
-        >
+        <ErrorUserModal isOpenModal={toggleIsOpenModal}>
           {errorsMessage.message}
         </ErrorUserModal>
       )}
