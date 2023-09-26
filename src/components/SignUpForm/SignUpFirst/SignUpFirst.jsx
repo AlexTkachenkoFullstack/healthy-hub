@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, getIn } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
 import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
 
@@ -33,7 +33,6 @@ const initialValues = {
   email: '',
   password: '',
 };
-
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
