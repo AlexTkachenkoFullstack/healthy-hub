@@ -8,8 +8,6 @@ import {
   Avarage,
   Value,
 } from '../DashboardPage.styled';
-// import { YearCaloriesSet } from '../../../utils/DashBoard/TempData/YearCaloriesSet';
-import { MonthCaloriesSet } from '../../../utils/DashBoard/TempData/MonthCaloriesSet';
 import { avarageValue } from '../../../utils/DashBoard/avarageValue';
 import { Line } from 'react-chartjs-2';
 import {
@@ -21,11 +19,19 @@ import {
 
 ChartJS.register(LineElement, CategoryScale, PointElement);
 
-export const Calories = ({ name, stat }) => {
-  const lables = MonthCaloriesSet.map(({ date }) => getDate(parseISO(date)));
-  console.log(stat)
+export const Calories = ({ name, data: dataCalories, period }) => {
+  if (!dataCalories) {
+    return;
+  }
 
-  const caloriesData = MonthCaloriesSet.map(({ data }) => data);
+  const lables = dataCalories.map(({ date }) => {
+    if (period.value === 'lastYear') {
+      return date.substring(0, 3);
+    }
+    return getDate(parseISO(date));
+  });
+
+  const caloriesData = dataCalories.map(({ value }) => value);
 
   const titleTooltip = tooltipItems => {
     return '';
@@ -46,7 +52,7 @@ export const Calories = ({ name, stat }) => {
   };
 
   const options = {
-    // responsive:true,
+    maintainAspectRatio: false,
     interaction: {
       mode: 'nearest',
       axis: 'x',
@@ -65,11 +71,38 @@ export const Calories = ({ name, stat }) => {
         display: false,
       },
       tooltip: {
-        yAlign: 'false',
+        shadowOffsetX: 3,
+        shadowOffsetY: 3,
+        shadowBlur: 10,
+        shadowColor: 'rgba(231, 219, 219, 0.5)',
+
+        yAlign: false,
         displayColors: false,
+        cornerRadius: 8,
+        backgroundColor: '#0F0F0F',
+        titleColor: '#FFF',
+        bodyAlign: 'center',
+        footerAlign: 'center',
+        shadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
+        bodyFont: {
+          size: 32,
+          weight: 'bold',
+          family: 'Poppins',
+          lineHeight: 1.19,
+          style: 'normal',
+        },
+        caretSize: 0,
+        footerFont: {
+          size: 14,
+          weight: 'normal',
+          family: 'Poppins',
+          lineHeight: 1.43,
+          style: 'normal',
+        },
+        footerColor: '#B6B6B6',
         callbacks: {
           title: titleTooltip,
-          afterLabel: function (context) {
+          footer: function (context) {
             return 'milliliters';
           },
         },
@@ -82,7 +115,7 @@ export const Calories = ({ name, stat }) => {
         min: 0,
         max: 3000,
         ticks: {
-          padding: 14,
+          padding: 8,
           stepSize: 1000,
           callback: value => {
             if (value !== 0) {
@@ -100,16 +133,17 @@ export const Calories = ({ name, stat }) => {
         },
       },
       x: {
+        stacked: true,
+        beginAtZero: false,
         color: '#B6B6B6',
-        grace: 5,
         ticks: {
           padding: 6,
         },
+
         grid: {
           lineWidth: 0.5,
           color: 'rgba(182, 182, 182, 1)',
           drawTicks: false,
-          // offset: true,
         },
         min: 0,
         max: 31,
@@ -122,12 +156,17 @@ export const Calories = ({ name, stat }) => {
       <GraficFrame>
         <GraphicHeader>
           <GraphicTitle>{name}</GraphicTitle>
-          <Avarage>Avarage value:<Value>{avarageValue(MonthCaloriesSet)} cal</Value>
-        </Avarage>
+          <Avarage>
+            Avarage value:<Value>{avarageValue(dataCalories)} cal</Value>
+          </Avarage>
         </GraphicHeader>
         <ScrollWrap>
           <GraphicBody>
-            <Line data={data} options={options}></Line>
+            {dataCalories.length ? (
+              <Line data={data} options={options}></Line>
+            ) : (
+              <p> Created by HealthyHub🍎Team</p>
+            )}
           </GraphicBody>
         </ScrollWrap>
       </GraficFrame>

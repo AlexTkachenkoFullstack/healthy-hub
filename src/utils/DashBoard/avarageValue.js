@@ -1,5 +1,5 @@
 export const avarageValue = data => {
-  const numbers = data.map(({ data }) => data);
+  const numbers = data.map(({ value }) => value);
   const quantity = numbers.length;
   const total = numbers.reduce((prevValue, number) => {
     return prevValue + number;

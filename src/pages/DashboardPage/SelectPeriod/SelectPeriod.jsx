@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as Arrow } from '../../../assets/images/icons/arrow-right.svg';
 import Select from 'react-select';
 import { useState } from 'react';
+import { getMonthOrYear } from 'utils/DashBoard/getMonthOrYear';
 import {
   SelectFrame,
   SelectAndBackWrapper,
   DateTitle,
+  ArrowWrap,
 } from './SelectPeriod.styled';
 
-export const SelectPeriod = () => {
+export const SelectPeriod = ({ onChange, data }) => {
   const [toggleSelect, setToggleSelect] = useState({
     value: 'lastYear',
     label: 'Last Year',
@@ -27,15 +28,18 @@ export const SelectPeriod = () => {
         label: 'Last Month',
       });
     }
+    onChange(toggleSelect);
+
     return;
   };
+
   const options = [toggleSelect];
 
   return (
     <SelectFrame>
       <SelectAndBackWrapper>
         <Link to={'/'}>
-          <Arrow
+          <ArrowWrap
             style={{
               transform: 'rotate(180deg)',
             }}
@@ -50,8 +54,6 @@ export const SelectPeriod = () => {
             control: baseStyles => ({
               ...baseStyles,
               backgroundColor: 'rgba(5, 5, 5, 1)',
-              // width: '150px',
-              // height: '36px',
               border: 'none',
               placeHolder: 'none',
             }),
@@ -99,7 +101,9 @@ export const SelectPeriod = () => {
           }}
         />
       </SelectAndBackWrapper>
-      <DateTitle>Month</DateTitle>
+      <DateTitle>{data && getMonthOrYear(data, toggleSelect.value)}</DateTitle>
     </SelectFrame>
   );
 };
+
+// getMonthOrYear(data, toggleSelect.value);
