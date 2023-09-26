@@ -1,1 +1,1 @@
-export { default } from './InputSuccessIcon';
+export { default } from './SuccessIcon';

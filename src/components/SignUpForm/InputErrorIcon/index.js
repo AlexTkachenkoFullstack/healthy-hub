@@ -1,1 +1,1 @@
-export { default } from './InputErrorIcon';
+export { default } from './ErrorIcon';

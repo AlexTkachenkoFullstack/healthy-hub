@@ -7,6 +7,7 @@ export const YourGoalContainer = styled.div`
 
   @media (min-width: 834px) {
     padding-top: 40px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
