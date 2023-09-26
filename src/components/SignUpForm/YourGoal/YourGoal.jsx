@@ -53,7 +53,7 @@ const YourGoal = ({ goNext, setGoal, dataGoal }) => {
       <YourGoalContainer>
         <Image src={image} alt="Summer hinking" />
 
-        <Form>
+        <Form autoComplete="off">
           <YourGoalHeader id="yourGoalGroup">Your Goal</YourGoalHeader>
           <Text>Choose a goal so that we can help you effectively</Text>
           <LabelBlock role="group" aria-labelledby="goalGroup">

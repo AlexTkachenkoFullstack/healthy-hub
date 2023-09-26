@@ -56,7 +56,7 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <YourActivityContainer>
         <Image src={image} alt="Illustration Activity" />
-        <Form>
+        <Form autoComplete="off">
           <YourActivityHeader id="yourActivityGroup">
             Your Activity
           </YourActivityHeader>
