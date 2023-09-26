@@ -7,6 +7,7 @@ export const AgeAndGenderContainer = styled.div`
 
   @media (min-width: 834px) {
     padding-top: 40px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +15,7 @@ export const AgeAndGenderContainer = styled.div`
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row;
-    align-items:flex-start;
+    align-items: flex-start;
     gap: 104px;
   }
 `;
