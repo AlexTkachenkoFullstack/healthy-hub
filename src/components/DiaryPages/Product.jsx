@@ -4,6 +4,15 @@ import EditDiaryModal from '../EditDiaryModal/EditDiaryModal';
 import { updateFoodIntake, fetchFoodIntake } from 'redux/diary/operations';
 import { useDispatch } from 'react-redux';
 
+import {
+  ProductContainer,
+  Text,
+  SpanElement,
+  ProductName,
+  ProductInfo,
+  ProductPower,
+} from '../DiaryPages/Product.styled';
+
 const Product = ({ product, type }) => {
   const dispatch = useDispatch();
   const { name, carbonohidrates, protein, fat, ident } = product;
@@ -26,18 +35,27 @@ const Product = ({ product, type }) => {
 
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <p>{name}</p>
-        <p>{carbonohidrates}</p>
-        <p>{protein}</p>
-        <p>{fat}</p>
-        <EditBtn onClick={openModal} />
-      </div>
+      <ProductContainer>
+        {' '}
+        <ProductInfo>
+          <ProductName>{name}</ProductName>
+          <EditBtn onClick={openModal} />
+        </ProductInfo>
+        <ProductPower>
+          <Text>
+            <SpanElement>Carb. </SpanElement>
+            {carbonohidrates}
+          </Text>
+          <Text>
+            <SpanElement>Prot. </SpanElement>
+            {protein}
+          </Text>
+          <Text>
+            <SpanElement>Fat. </SpanElement>
+            {fat}
+          </Text>
+        </ProductPower>
+      </ProductContainer>
 
       {isModalOpen && (
         <EditDiaryModal
