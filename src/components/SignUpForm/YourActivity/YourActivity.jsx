@@ -25,11 +25,11 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
   useEffect(() => {
     const selectorString = 'input[type="radio"][value="' + dataActivity + '"]';
     const putCheckToButton = document.querySelector(selectorString);
-    const delCheckFromButton = document.querySelector('checked');
+
     if (!putCheckToButton) {
       return;
     }
-    // delCheckFromButton.checked = false;
+
     putCheckToButton.checked = true;
   }, [dataActivity]);
 
