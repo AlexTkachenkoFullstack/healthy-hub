@@ -15,7 +15,7 @@ const TitlePeriod = ({ product }) => {
         </Title>
         <ProteinAndFatContainer>
           <Title>
-            Protein big:<Span>0</Span>
+            Protein:<Span>0</Span>
           </Title>
           <Title>
             Fat:<Span>0</Span>

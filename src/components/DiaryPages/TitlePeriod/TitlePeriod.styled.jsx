@@ -4,6 +4,14 @@ export const PeriodContainer = styled.div`
   display: flex;
   gap: 20px;
   flex-direction: column;
+
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
+  
+  @media (min-width: 1440px) {
+    
+  }
 `;
 
 export const Title = styled.p`

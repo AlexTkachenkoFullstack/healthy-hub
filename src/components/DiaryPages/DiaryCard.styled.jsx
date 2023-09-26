@@ -1,9 +1,19 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  /* width: 676px; */
   font-family: Poppins;
+
+  @media (min-width: 834px) {
+    
+    /* display: flex;
+    flex-direction: row; */
+   
+  }
+  @media (min-width: 1440px) {
+    
+  }
 `;
+
 
 export const Container = styled.div`
   display: flex;
