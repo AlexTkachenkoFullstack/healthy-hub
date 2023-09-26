@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const PeriodContainer = styled.div`
   display: flex;
   gap: 20px;
-  margin-right: 40px;
   flex-direction: column;
 `;
 
@@ -19,7 +18,8 @@ export const Span = styled.span`
   margin-left: 4px;
 `;
 
-export const ElementOfFoodList = styled.div`
+export const ProteinAndFatContainer = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 20px;
 `;

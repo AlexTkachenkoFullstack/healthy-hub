@@ -23,6 +23,7 @@ export const MainTitle = styled.h2`
 export const ButtonStyle = styled.button`
   background-color: transparent;
   border: none;
+  
 `;
 
 export const SvgArrowRight = styled.svg`

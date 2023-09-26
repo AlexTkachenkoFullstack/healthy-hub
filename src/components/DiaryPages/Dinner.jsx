@@ -8,7 +8,7 @@ import FoodList from './FoodList/FoodList';
 import { useSelector } from 'react-redux';
 import {
   CardContainer,
-  Container,
+  // Container,
   CardTitleContainer,
   Title,
 } from './DiaryCard.styled';
@@ -17,7 +17,7 @@ const Dinner = () => {
   const product = useSelector(state => state.foodIntake.food.dinner);
   return (
     <CardContainer>
-      <Container>
+      {/* <Container> */}
         <CardTitleContainer>
           <img
             srcSet={`${dinnerImg} 1x, ${dinnerImg2x} 2x`}
@@ -30,7 +30,7 @@ const Dinner = () => {
         </CardTitleContainer>
 
         <TitlePeriod product={product} />
-      </Container>
+      {/* </Container> */}
 
       <FoodList type="dinner" product={product} />
     </CardContainer>

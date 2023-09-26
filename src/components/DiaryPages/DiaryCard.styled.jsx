@@ -16,18 +16,23 @@ export const CardTitleContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom:12px;
+  margin-bottom: 12px;
 `;
 
 export const Title = styled.h3`
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.45; /* 145.455% */
+  line-height: 1.45; 
 `;
 
 export const DiaryCardHeader = styled.div`
   display: flex;
-   gap: 12px;
-   align-items: center;
-   margin-bottom:16px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+export const PartsOfMeal = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-direction:column;
 `;
