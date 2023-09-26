@@ -58,7 +58,7 @@ export const bodyParamSchema = yup.object({
     .number('Must be a number from 1 to 300')
     .label('Weight')
     .min(1, 'Must be a number from 1 to 400')
-    .max(300, 'Must be a number from 1 to 400')
+    .max(500, 'Must be a number from 1 to 400')
     .required('Weight is required'),
 });
 

@@ -14,6 +14,7 @@ import {
   BackButton,
   ValidationError,
   IconTextPosition,
+  InputContainer,
 } from './BodyParameters.styled';
 import { bodyParamSchema } from '../validationLibs';
 import InputErrorIcon from '../InputErrorIcon';
@@ -55,12 +56,12 @@ const BodyParameters = ({
         onSubmit={handleSubmit}
         validationSchema={bodyParamSchema}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form autoComplete="off">
             <BodyParametersHeader>Body parameters</BodyParametersHeader>
             <Text>Enter your parameters for correct performance tracking</Text>
             <ChooseText>Height</ChooseText>
-            <label htmlFor="height">
+            <InputContainer htmlFor="height">
               <InputBox
                 style={{
                   borderColor:
@@ -74,6 +75,15 @@ const BodyParameters = ({
                   type="number"
                   id="height"
                   placeholder="Enter your height"
+                  onChange={e => {
+                    e.preventDefault();
+                    const { value } = e.target;
+                    const regex =
+                      /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                    if (!value || regex.test(value.toString())) {
+                      setFieldValue('height', value);
+                    }
+                  }}
                 />
                 <IconTextPosition
                   style={{
@@ -87,14 +97,14 @@ const BodyParameters = ({
                   )}
                 </IconTextPosition>
               </InputBox>
-            </label>
-            <ErrorMessage name="height">
-              {msg => <ValidationError>{msg}</ValidationError>}
-            </ErrorMessage>
+              <ErrorMessage name="height">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+            </InputContainer>
 
             <ChooseText>Weight</ChooseText>
 
-            <label htmlFor="weight">
+            <InputContainer htmlFor="weight">
               <InputBox
                 style={{
                   borderColor:
@@ -108,6 +118,15 @@ const BodyParameters = ({
                   id="weight"
                   name="weight"
                   placeholder="Enter your weight"
+                  onChange={e => {
+                    e.preventDefault();
+                    const { value } = e.target;
+                    const regex =
+                      /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                    if (!value || regex.test(value.toString())) {
+                      setFieldValue('weight', value);
+                    }
+                  }}
                 />
                 <IconTextPosition
                   style={{
@@ -121,10 +140,11 @@ const BodyParameters = ({
                   )}
                 </IconTextPosition>
               </InputBox>
-            </label>
-            <ErrorMessage name="weight">
-              {msg => <ValidationError>{msg}</ValidationError>}
-            </ErrorMessage>
+              <ErrorMessage name="weight">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+            </InputContainer>
+
             <p>
               <InputButton type="submit">Next</InputButton>
             </p>

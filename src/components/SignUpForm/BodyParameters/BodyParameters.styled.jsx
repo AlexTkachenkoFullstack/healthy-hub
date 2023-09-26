@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const BodyParametersContainer = styled.div`
   background-color: var(--bg-primary);
   padding-top: 24px;
+  padding-bottom: 24px;
 
   @media (min-width: 834px) {
     padding-top: 40px;
@@ -54,7 +55,7 @@ export const BodyParametersHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
-    margin-top:80px;
+    margin-top: 80px;
   }
 `;
 
@@ -94,6 +95,16 @@ export const ChooseText = styled.p`
 
   @media (min-width: 1440px) {
     padding-left: 0;
+  }
+`;
+
+export const InputContainer = styled.div`
+  margin: 0 auto;
+  @media (min-width: 834px) {
+    width: 380px;
+  }
+  @media (min-width: 1440px) {
+    margin: 0;
   }
 `;
 

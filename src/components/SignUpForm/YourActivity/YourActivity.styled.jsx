@@ -4,6 +4,7 @@ import { Field } from 'formik';
 export const YourActivityContainer = styled.div`
   background-color: var(--bg-primary);
   padding-top: 24px;
+  padding-bottom: 24px;
 
   @media (min-width: 834px) {
     padding-top: 40px;

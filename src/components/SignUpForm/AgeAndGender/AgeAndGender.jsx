@@ -5,7 +5,7 @@ import {
   AgeAndGenderHeader,
   Text,
   ChooseText,
-  Label,
+  LabelContainer,
   LabelBlock,
   InputBox,
   InputText,
@@ -15,6 +15,7 @@ import {
   CustomRadioInput,
   ValidationError,
   IconTextPosition,
+  InputContainer,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -67,7 +68,7 @@ const AgeAndGender = ({
       onSubmit={handleSubmit}
       validationSchema={genderAgeSchema}
     >
-      {({ errors, touched, values }) => (
+      {({ errors, touched, values, setFieldValue }) => (
         <AgeAndGenderContainer>
           <Image src={image} alt="Elder fitness" />
           <Form autoComplete="off">
@@ -81,23 +82,23 @@ const AgeAndGender = ({
             <ExtraContainer htmlFor="gender">
               <ChooseText>Gender</ChooseText>
               <LabelBlock role="group" aria-label="genderGroup">
-                <Label>
+                <LabelContainer>
                   <CustomRadioInput type="radio" name="gender" value="male" />
                   Male
-                </Label>
-                <Label>
+                </LabelContainer>
+                <LabelContainer>
                   <CustomRadioInput
                     type="radio"
                     name="gender"
                     value="female"
-                    required
+                    checked
                   />
                   Female
-                </Label>
+                </LabelContainer>
               </LabelBlock>
               <ChooseText>Your age</ChooseText>
             </ExtraContainer>
-            <label htmlFor="age">
+            <InputContainer htmlFor="age">
               <InputBox
                 style={{
                   borderColor:
@@ -111,6 +112,15 @@ const AgeAndGender = ({
                   id="age"
                   name="age"
                   placeholder="Enter your age"
+                  onChange={e => {
+                    e.preventDefault();
+                    const { value } = e.target;
+                    const regex =
+                      /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                    if (!value || regex.test(value.toString())) {
+                      setFieldValue('age', value);
+                    }
+                  }}
                 />
                 <IconTextPosition
                   style={{
@@ -124,10 +134,11 @@ const AgeAndGender = ({
                   )}
                 </IconTextPosition>
               </InputBox>
-            </label>
-            <ErrorMessage name="age">
-              {msg => <ValidationError>{msg}</ValidationError>}
-            </ErrorMessage>
+              <ErrorMessage name="age">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+            </InputContainer>
+
             <InputButton type="submit">Next</InputButton>
 
             <BackButton type="button" onClick={goBack}>
