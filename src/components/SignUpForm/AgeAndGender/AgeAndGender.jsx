@@ -5,7 +5,7 @@ import {
   AgeAndGenderHeader,
   Text,
   ChooseText,
-  Label,
+  LabelContainer,
   LabelBlock,
   InputBox,
   InputText,
@@ -15,6 +15,7 @@ import {
   CustomRadioInput,
   ValidationError,
   IconTextPosition,
+  InputContainer,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -81,23 +82,23 @@ const AgeAndGender = ({
             <ExtraContainer htmlFor="gender">
               <ChooseText>Gender</ChooseText>
               <LabelBlock role="group" aria-label="genderGroup">
-                <Label>
+                <LabelContainer>
                   <CustomRadioInput type="radio" name="gender" value="male" />
                   Male
-                </Label>
-                <Label>
+                </LabelContainer>
+                <LabelContainer>
                   <CustomRadioInput
                     type="radio"
                     name="gender"
                     value="female"
-                    required
+                    checked
                   />
                   Female
-                </Label>
+                </LabelContainer>
               </LabelBlock>
               <ChooseText>Your age</ChooseText>
             </ExtraContainer>
-            <label htmlFor="age">
+            <InputContainer htmlFor="age">
               <InputBox
                 style={{
                   borderColor:
@@ -124,10 +125,11 @@ const AgeAndGender = ({
                   )}
                 </IconTextPosition>
               </InputBox>
-            </label>
-            <ErrorMessage name="age">
-              {msg => <ValidationError>{msg}</ValidationError>}
-            </ErrorMessage>
+              <ErrorMessage name="age">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+            </InputContainer>
+
             <InputButton type="submit">Next</InputButton>
 
             <BackButton type="button" onClick={goBack}>

@@ -14,6 +14,7 @@ import {
   BackButton,
   ValidationError,
   IconTextPosition,
+  InputContainer,
 } from './BodyParameters.styled';
 import { bodyParamSchema } from '../validationLibs';
 import InputErrorIcon from '../InputErrorIcon';
@@ -60,7 +61,7 @@ const BodyParameters = ({
             <BodyParametersHeader>Body parameters</BodyParametersHeader>
             <Text>Enter your parameters for correct performance tracking</Text>
             <ChooseText>Height</ChooseText>
-            <label htmlFor="height">
+            <InputContainer htmlFor="height">
               <InputBox
                 style={{
                   borderColor:
@@ -87,14 +88,14 @@ const BodyParameters = ({
                   )}
                 </IconTextPosition>
               </InputBox>
-            </label>
-            <ErrorMessage name="height">
-              {msg => <ValidationError>{msg}</ValidationError>}
-            </ErrorMessage>
+              <ErrorMessage name="height">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+            </InputContainer>
 
             <ChooseText>Weight</ChooseText>
 
-            <label htmlFor="weight">
+            <InputContainer htmlFor="weight">
               <InputBox
                 style={{
                   borderColor:
@@ -121,10 +122,11 @@ const BodyParameters = ({
                   )}
                 </IconTextPosition>
               </InputBox>
-            </label>
-            <ErrorMessage name="weight">
-              {msg => <ValidationError>{msg}</ValidationError>}
-            </ErrorMessage>
+              <ErrorMessage name="weight">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+            </InputContainer>
+
             <p>
               <InputButton type="submit">Next</InputButton>
             </p>
