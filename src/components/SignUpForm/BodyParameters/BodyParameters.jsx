@@ -56,7 +56,7 @@ const BodyParameters = ({
         onSubmit={handleSubmit}
         validationSchema={bodyParamSchema}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form autoComplete="off">
             <BodyParametersHeader>Body parameters</BodyParametersHeader>
             <Text>Enter your parameters for correct performance tracking</Text>
@@ -75,6 +75,15 @@ const BodyParameters = ({
                   type="number"
                   id="height"
                   placeholder="Enter your height"
+                  onChange={e => {
+                    e.preventDefault();
+                    const { value } = e.target;
+                    const regex =
+                      /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                    if (!value || regex.test(value.toString())) {
+                      setFieldValue('height', value);
+                    }
+                  }}
                 />
                 <IconTextPosition
                   style={{
@@ -109,6 +118,15 @@ const BodyParameters = ({
                   id="weight"
                   name="weight"
                   placeholder="Enter your weight"
+                  onChange={e => {
+                    e.preventDefault();
+                    const { value } = e.target;
+                    const regex =
+                      /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                    if (!value || regex.test(value.toString())) {
+                      setFieldValue('weight', value);
+                    }
+                  }}
                 />
                 <IconTextPosition
                   style={{
