@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import EditBtn from './EditBtn';
 import EditDiaryModal from '../EditDiaryModal/EditDiaryModal';
 import { updateFoodIntake, fetchFoodIntake } from 'redux/diary/operations';
 import { useDispatch } from 'react-redux';
+import sprite from '../../assets/images/icons/icons.svg';
 
 import {
   ProductContainer,
   Text,
   SpanElement,
   ProductName,
-  // ProductInfo,
   ProductPower,
-  Item
+  ProductTitleContainer,
+  EditButton,
+  Svg,
 } from '../DiaryPages/Product.styled';
 
 const Product = ({ product, type, index }) => {
@@ -37,12 +38,11 @@ const Product = ({ product, type, index }) => {
   return (
     <>
       <ProductContainer>
-        <Item>{index+1}</Item>
-        {/* <ProductInfo> */}
-          
+        <ProductTitleContainer>
+          <p>{index + 1}</p>
           <ProductName>{name}</ProductName>
-          <EditBtn onClick={openModal} />
-        {/* </ProductInfo> */}
+        </ProductTitleContainer>
+
         <ProductPower>
           <Text>
             <SpanElement>Carb. </SpanElement>
@@ -57,6 +57,12 @@ const Product = ({ product, type, index }) => {
             {fat}
           </Text>
         </ProductPower>
+        <EditButton onClick={openModal}>
+          <Svg>
+            <use href={sprite + '#icon-edit-2'}></use>
+          </Svg>
+          Edit
+        </EditButton>
       </ProductContainer>
 
       {isModalOpen && (
