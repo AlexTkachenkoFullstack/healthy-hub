@@ -13,6 +13,15 @@ export const CardContainer = styled.div`
     
   }
 `;
+export const TabletFood = styled.div`
+
+  @media (min-width: 834px) {  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    padding-right:101px;
+  }`;
 
 
 export const Container = styled.div`
@@ -44,5 +53,13 @@ export const DiaryCardHeader = styled.div`
 export const PartsOfMeal = styled.div`
   display: flex;
   gap: 16px;
-  flex-direction:column;
+  flex-direction: column;
+
+  @media (min-width: 1440px) {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Два стовпці однакової ширини */
+  gap: 10px; /* Відступи між елементами */
+}
+
+  
 `;
