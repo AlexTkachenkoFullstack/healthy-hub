@@ -94,14 +94,15 @@ export const InputBox = styled.div`
     border-radius: 12px;
     height: 36px;
     border: 1px solid var(--input-border-color-normal);
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
   }
   @media (min-width: 834px) {
     width: 380px;
+    text-align: left;
   }
   @media (min-width: 1440px) {
     width: 212px;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
   }
 `;
 
@@ -123,6 +124,13 @@ export const InputText = styled(Field)`
 
   &:last-child {
     margin-bottom: 0;
+  }
+  @media (min-width: 834px) {
+    width: 92%;
+  }
+
+  @media (min-width: 1440px) {
+    width: 85%;
   }
 `;
 

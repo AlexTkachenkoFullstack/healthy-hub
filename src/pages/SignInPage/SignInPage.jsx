@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
 import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
 import { signInSchema } from '../../components/SignInFormValidation/SignInFormValidation';
