@@ -29,13 +29,14 @@ export const MainTitle = styled.h1`
 `;
 
 export const GoalLink = styled(Link)`
+  display: flex;
+  align-items: center;
   color: var(--text-color-secondary-grey);
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  margin-right: 6px;
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
@@ -43,9 +44,8 @@ export const GoalLink = styled(Link)`
   }
 `;
 
-export const LinkWrapper = styled.div`
-  display: flex;
-  align-items: center;
+export const LinkText = styled.span`
+  margin-right: 6px;
 `;
 
 export const TitleWrapper = styled.div`

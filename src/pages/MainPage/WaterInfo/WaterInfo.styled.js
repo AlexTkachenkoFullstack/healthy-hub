@@ -79,7 +79,7 @@ export const WaterPercentage = styled.p`
 `;
 
 export const WaterBar = styled.div`
-  height: 177px;
+  height: 176px;
   width: 64px;
   border-radius: 20px;
   overflow: hidden;
