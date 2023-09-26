@@ -7,18 +7,19 @@ import { MainTitle } from 'components/DiaryPages/DiaryPage.styled';
 import Dinner from 'components/DiaryPages/Dinner';
 import Lunch from 'components/DiaryPages/Lunch';
 import Snack from 'components/DiaryPages/Snack';
+import { DiaryCardHeader } from 'components/DiaryPages/DiaryCard.styled'
 
 const DiaryPage = () => {
   return (
     <div style={{ padding: '20px 0 52px' }}>
-      <div style={{ display: 'flex', gap: 12 }}>
+      <DiaryCardHeader>
         <Link to="/">
           <GoBackPage />
         </Link>
         <MainTitle>Diary</MainTitle>
-      </div>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
+      </DiaryCardHeader>
+      <div>
+        {/* <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}> */}
         <Breakfast />
         <Dinner />
         <Lunch />

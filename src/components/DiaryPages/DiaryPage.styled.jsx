@@ -17,7 +17,6 @@ export const MainTitle = styled.h2`
   font-size: 30px;
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: 16px;
   font-family: Poppins;
 `;
 
@@ -90,7 +89,7 @@ export const TextIndexSpan = styled.span`
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line - height: 1.43; /* 20px;  142.857% */
+  line-height: 1.43; /* 20px;  142.857% */
   color: var(--input-border-color-normal); 
   width: 160px; 
 `;
@@ -101,7 +100,7 @@ export const ListMeatContainer = styled.div`
   padding-left: 0;
   border-radius: 12px;
   background-color: var(--bg-secondary);
-  heigth: 240px;
+  /* heigth: 240px; */
   overflow-y: auto;
   // width: 100vw;
 
@@ -133,7 +132,7 @@ export const Li = styled.li`
   @media (min-width: 834px) {
     flex-wrap: nowrap;
 }
-  }
+  
 
   @media (min-width: 1440px) {
     
@@ -149,7 +148,7 @@ export const ItemBox = styled.div`
   @media (min-width: 834px) {
     flex-wrap: nowrap;
 }
-  }
+  
 
   @media (min-width: 1440px) {
     
@@ -160,7 +159,7 @@ export const Ul = styled.ul`
   margin-left: 0;
   padding-left: 0;
   // width: 676px;
-  heigth: 240px;
+  /* heigth: 240px; */
 `;
 
 // @media (min-width: 834px) {
