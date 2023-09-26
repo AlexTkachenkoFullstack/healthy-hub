@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { redirect } from 'react-router-dom';
 import SignUpFirst from './SignUpFirst';
 import YourGoal from './YourGoal';
 import AgeAndGender from './AgeAndGender';
@@ -49,7 +48,6 @@ const SignUpForm = () => {
       setWeight('');
       setAge('');
       setActivity(1.2);
-      // redirect('/signin');
     } catch (error) {
       setErrorsMessage(error);
       setIsOpenModal(true);
