@@ -139,6 +139,8 @@ export const FotmSignIn = styled.form`
 }
 @media (min-width: 1440px) {
     margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
 }`;
 
 export const TextSecond = styled.p`
@@ -225,11 +227,13 @@ export const IconTextPosition = styled.div`
 `;
 
 export const ValidationError = styled.span`
-  color: #e74a3b;
-  font-family: Poppins;
-  font-size: 12px;
-   margin-top: -13px;
-   margin-bottom: 14px;
-  font-weight: 400;
-  line-height: 1.17;
+@media (min-width: 320px) {
+    color: #e74a3b;
+    font-family: Poppins;
+    font-size: 12px;
+    margin-top: -13px;
+    margin-bottom: 14px;
+    font-weight: 400;
+    line-height: 1.17;
+}
 `;
