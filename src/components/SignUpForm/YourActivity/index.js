@@ -1,1 +1,1 @@
-export { default } from './YourActivity';
+export { default } from './YourActivity.jsx';

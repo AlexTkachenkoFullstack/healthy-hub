@@ -15,18 +15,22 @@ import {
 } from './YourActivity.styled';
 import { useEffect } from 'react';
 
-const initialValues = {
-  activity: '',
-};
+
 
 const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
+  const initialValues = {
+    activity: dataActivity,
+  };
+
   useEffect(() => {
     const selectorString = 'input[type="radio"][value="' + dataActivity + '"]';
-    const checkedButton = document.querySelector(selectorString);
-    if (!checkedButton) {
+    const putCheckToButton = document.querySelector(selectorString);
+    const delCheckFromButton = document.querySelector('checked');
+    if (!putCheckToButton) {
       return;
     }
-    checkedButton.checked = true;
+    // delCheckFromButton.checked = false;
+    putCheckToButton.checked = true;
   }, [dataActivity]);
 
   const handleSubmit = async ({ activity }) => {
@@ -76,39 +80,19 @@ const YourActivity = ({ goNext, goBack, dataActivity, setActivity }) => {
               1.2 - if you do not have physical activity and sedentary work
             </Label>
             <Label>
-              <CustomRadioInput
-                type="radio"
-                name="activity"
-                value="1.375"
-                required
-              />
+              <CustomRadioInput type="radio" name="activity" value="1.375" />
               1,375 - if you do short runs or light gymnastics 1-3 times a week
             </Label>
             <Label>
-              <CustomRadioInput
-                type="radio"
-                name="activity"
-                value="1.55"
-                required
-              />
+              <CustomRadioInput type="radio" name="activity" value="1.55" />
               1.55 - if you play sports with average loads 3-5 times a week
             </Label>
             <Label>
-              <CustomRadioInput
-                type="radio"
-                name="activity"
-                value="1.725"
-                required
-              />
+              <CustomRadioInput type="radio" name="activity" value="1.725" />
               1.725 ​​- if you train fully 6-7 times a week
             </Label>
             <Label>
-              <CustomRadioInput
-                type="radio"
-                name="activity"
-                value="1.9"
-                required
-              />
+              <CustomRadioInput type="radio" name="activity" value="1.9" />
               1.9 - if your work is related to physical labor, you train 2 times
               a day and include strength exercises in your training program
             </Label>
