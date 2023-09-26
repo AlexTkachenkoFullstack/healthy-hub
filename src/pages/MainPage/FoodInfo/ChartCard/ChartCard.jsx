@@ -16,7 +16,7 @@ export const ChartCard = props => {
   const left = elementGoal - elementValue;
   let elementPercentage = Math.round((elementValue * 100) / elementGoal);
 
-  if (elementPercentage === Infinity) {
+  if (elementPercentage === Infinity || isNaN(elementPercentage)) {
     elementPercentage = 0;
   }
 
