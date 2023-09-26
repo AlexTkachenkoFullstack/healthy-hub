@@ -96,7 +96,8 @@ export const ChooseText = styled.p`
   }
 `;
 
-export const InputBox = styled.label`
+export const InputBox = styled.div`
+  position: relative;
   border-radius: 12px;
   border: 1px solid var(--text-color-active-page-green);
   background: var(--bg-secondary);
@@ -136,6 +137,13 @@ export const InputText = styled(Field)`
   border: none;
   outline: none;
   padding: 8px 10px;
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    margin: 0;
+  }
+  &::-webkit-outer-spin-button {
+  }
 `;
 
 export const InputButton = styled.button`
@@ -192,4 +200,11 @@ export const ValidationError = styled.span`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17;
+`;
+
+export const IconTextPosition = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(-50%, -50%);
 `;

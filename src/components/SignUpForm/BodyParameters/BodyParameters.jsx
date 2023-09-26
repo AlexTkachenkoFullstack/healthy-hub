@@ -13,8 +13,11 @@ import {
   InputButton,
   BackButton,
   ValidationError,
+  IconTextPosition,
 } from './BodyParameters.styled';
 import { bodyParamSchema } from '../validationLibs';
+import InputErrorIcon from '../InputErrorIcon';
+import InputSuccessIcon from '../InputSuccessIcon';
 
 const BodyParameters = ({
   goNext,
@@ -52,33 +55,73 @@ const BodyParameters = ({
         onSubmit={handleSubmit}
         validationSchema={bodyParamSchema}
       >
-        {({ error, touched }) => (
-          <Form>
+        {({ errors, touched, values }) => (
+          <Form autoComplete="off">
             <BodyParametersHeader>Body parameters</BodyParametersHeader>
             <Text>Enter your parameters for correct performance tracking</Text>
             <ChooseText>Height</ChooseText>
-            <InputBox htmlFor="height">
-              <InputText
-                name="height"
-                type="number"
-                id="height"
-                placeholder="Enter your height"
-              />
-            </InputBox>
+            <label htmlFor="height">
+              <InputBox
+                style={{
+                  borderColor:
+                    errors.height && touched.height
+                      ? 'var(--input-border-color-error)'
+                      : '',
+                }}
+              >
+                <InputText
+                  name="height"
+                  type="number"
+                  id="height"
+                  placeholder="Enter your height"
+                />
+                <IconTextPosition
+                  style={{
+                    display: values.height ? 'block' : 'none',
+                  }}
+                >
+                  {errors.height && touched.height ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
+                </IconTextPosition>
+              </InputBox>
+            </label>
             <ErrorMessage name="height">
               {msg => <ValidationError>{msg}</ValidationError>}
             </ErrorMessage>
 
             <ChooseText>Weight</ChooseText>
 
-            <InputBox htmlFor="weight">
-              <InputText
-                type="number"
-                id="weight"
-                name="weight"
-                placeholder="Enter your weight"
-              />
-            </InputBox>
+            <label htmlFor="weight">
+              <InputBox
+                style={{
+                  borderColor:
+                    errors.weight && touched.weight
+                      ? 'var(--input-border-color-error)'
+                      : '',
+                }}
+              >
+                <InputText
+                  type="number"
+                  id="weight"
+                  name="weight"
+                  placeholder="Enter your weight"
+                />
+                <IconTextPosition
+                  style={{
+                    display: values.weight ? 'block' : 'none',
+                  }}
+                >
+                  {errors.weight && touched.weight ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
+                </IconTextPosition>
+              </InputBox>
+            </label>
             <ErrorMessage name="weight">
               {msg => <ValidationError>{msg}</ValidationError>}
             </ErrorMessage>
