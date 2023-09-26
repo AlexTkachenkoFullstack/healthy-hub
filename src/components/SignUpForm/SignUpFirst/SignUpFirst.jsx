@@ -34,14 +34,6 @@ const initialValues = {
   password: '',
 };
 
-function getStyles(errors, fieldName) {
-  if (getIn(errors, fieldName)) {
-    return {
-      border: '1px solid red',
-      borderRadius: '12px',
-    };
-  }
-}
 
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
