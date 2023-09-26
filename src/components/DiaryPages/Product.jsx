@@ -9,11 +9,12 @@ import {
   Text,
   SpanElement,
   ProductName,
-  ProductInfo,
+  // ProductInfo,
   ProductPower,
+  Item
 } from '../DiaryPages/Product.styled';
 
-const Product = ({ product, type }) => {
+const Product = ({ product, type, index }) => {
   const dispatch = useDispatch();
   const { name, carbonohidrates, protein, fat, ident } = product;
   console.log(ident);
@@ -36,11 +37,12 @@ const Product = ({ product, type }) => {
   return (
     <>
       <ProductContainer>
-        {' '}
-        <ProductInfo>
+        <Item>{index+1}</Item>
+        {/* <ProductInfo> */}
+          
           <ProductName>{name}</ProductName>
           <EditBtn onClick={openModal} />
-        </ProductInfo>
+        {/* </ProductInfo> */}
         <ProductPower>
           <Text>
             <SpanElement>Carb. </SpanElement>

@@ -2,6 +2,22 @@ import styled from 'styled-components';
 
 export const ProductContainer = styled.div`
   margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+
+`;
+
+export const Item = styled.div`
+grid-column: span calc(2 - 0.2); 
+&:first-child {
+    grid-column: span 2;
+  }
+  
+  &:nth-child(4),
+  &:nth-child(5) {
+    grid-column: span 2;
+  }
 `;
 
 export const Text = styled.p`
