@@ -11,9 +11,13 @@
         <div id="root"></div>
       </body>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var location = window.location.href;
-    var path = location.replace(window.location.origin, '/');
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var location = window.location.href;
+  //   var path = location.replace(window.location.origin, '/');
+  //   window.location.replace(path);
+  // });
+    document.addEventListener('DOMContentLoaded', function() {
+    var path = window.location.pathname;
     window.location.replace(path);
   });
 </script>
