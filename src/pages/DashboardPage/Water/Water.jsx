@@ -1,3 +1,4 @@
+import { getDate, parseISO } from 'date-fns';
 import {
   GraphicHeader,
   GraphicBody,
@@ -7,7 +8,6 @@ import {
   Avarage,
   Value,
 } from '../DashboardPage.styled';
-import { YearWaterSet } from '../../../utils/DashBoard/TempData/YearWaterSet';
 import { avarageValue } from 'utils/DashBoard/avarageValue';
 import { Line } from 'react-chartjs-2';
 
@@ -25,22 +25,28 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  Tooltip,
+  Tooltip
 );
 
-export const Water = ({ name }) => {
-  const lables = YearWaterSet.map(({ date }) => {
-    return date.substring(0,3);
+export const Water = ({ name, data: dataWater, period }) => {
+  if (!dataWater) {
+    return;
+  }
+
+  const lables = dataWater.map(({ date }) => {
+    if (period.value === 'lastYear') {
+      return date.substring(0, 3);
+    }
+    return getDate(parseISO(date));
   });
 
-  const waterData = YearWaterSet.map(({ data }) => {
-    return data ;
+  const waterData = dataWater.map(({ value }) => {
+    return value;
   });
 
   const titleTooltip = tooltipItems => {
     return '';
   };
-
 
   const data = {
     type: 'line',
@@ -58,7 +64,7 @@ export const Water = ({ name }) => {
   };
 
   const options = {
-   
+    maintainAspectRatio: false,
     interaction: {
       mode: 'nearest',
       axis: 'x',
@@ -77,12 +83,11 @@ export const Water = ({ name }) => {
         display: false,
       },
       tooltip: {
+        shadowOffsetX: 3,
+        shadowOffsetY: 3,
+        shadowBlur: 10,
+        shadowColor: 'rgba(231, 219, 219, 0.5)',
 
-      shadowOffsetX: 3,
-      shadowOffsetY: 3,
-      shadowBlur: 10,
-      shadowColor: 'rgba(231, 219, 219, 0.5)',
-      
         yAlign: false,
         displayColors: false,
         cornerRadius: 8,
@@ -98,7 +103,7 @@ export const Water = ({ name }) => {
           lineHeight: 1.19,
           style: 'normal',
         },
-        caretSize:0,
+        caretSize: 0,
         footerFont: {
           size: 14,
           weight: 'normal',
@@ -106,7 +111,7 @@ export const Water = ({ name }) => {
           lineHeight: 1.43,
           style: 'normal',
         },
-        footerColor:'#B6B6B6',
+        footerColor: '#B6B6B6',
         callbacks: {
           title: titleTooltip,
           footer: function (context) {
@@ -151,7 +156,6 @@ export const Water = ({ name }) => {
           lineWidth: 0.5,
           color: 'rgba(182, 182, 182, 1)',
           drawTicks: false,
-          // offset: true,
         },
         min: 0,
         max: 31,
@@ -165,12 +169,16 @@ export const Water = ({ name }) => {
         <GraphicHeader>
           <GraphicTitle>{name}</GraphicTitle>
           <Avarage>
-            Avarage value:<Value>{avarageValue(YearWaterSet)} ml</Value>
+            Avarage value:<Value>{avarageValue(dataWater)} ml</Value>
           </Avarage>
         </GraphicHeader>
         <ScrollWrap>
           <GraphicBody>
-            <Line data={data} options={options}></Line>
+            {dataWater.length ? (
+              <Line data={data} options={options}></Line>
+            ) : (
+              <p>Created by HealthyHub🍎Team</p>
+            )}
           </GraphicBody>
         </ScrollWrap>
       </GraficFrame>

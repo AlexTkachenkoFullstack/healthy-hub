@@ -13,28 +13,34 @@ import {
   WeightDate,
 } from '../DashboardPage.styled';
 
-import { YearWeightSet } from '../../../utils/DashBoard/TempData/YearWeightSet';
+export const Weight = ({ name, data: dataWeight, period }) => {
+  if (!dataWeight) {
+    return;
+  }
 
-export const Weight = ({ name }) => {
   return (
     <>
       <WeightBody>
         <GraphicHeader>
           <GraphicTitle>{name}</GraphicTitle>
           <Avarage>
-            Avarage value:<Value>{avarageValue(YearWeightSet)} kg</Value>
+            Avarage value:<Value>{avarageValue(dataWeight)} kg</Value>
           </Avarage>
         </GraphicHeader>
         <ScrollWrap>
           <WeigthFrame>
-            {YearWeightSet.map(({ date, data }) => {
-              return (
-                <WeigthItem key={nanoid()}>
-                  <WeightData>{data}</WeightData>
-                  <WeightDate>{date}</WeightDate>
-                </WeigthItem>
-              );
-            })}
+            {dataWeight.length ? (
+              dataWeight.map(({ value, date }) => {
+                return (
+                  <WeigthItem key={nanoid()}>
+                    <WeightData>{value}</WeightData>
+                    <WeightDate>{date}</WeightDate>
+                  </WeigthItem>
+                );
+              })
+            ) : (
+              <p> Created by HealthyHub🍎Team</p>
+            )}
           </WeigthFrame>
         </ScrollWrap>
       </WeightBody>

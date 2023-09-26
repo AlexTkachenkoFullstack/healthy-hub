@@ -28,7 +28,7 @@ export const GraphicsFrame = styled('div')`
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    gap:20px;
+    gap: 20px;
   }
 `;
 
@@ -79,6 +79,9 @@ export const Value = styled('span')`
 `;
 
 export const GraphicBody = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 780px;
   height: 382px;
   background-color: var(--bg-secondary);
@@ -91,18 +94,15 @@ export const GraphicBody = styled('div')`
 `;
 
 export const WeightBody = styled('div')`
-  width: 1372px;
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 
   @media screen and (min-width: 834px) {
-    width: 1372px;
     margin-bottom: 60px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1372px;
     margin-bottom: 60px;
   }
 `;
@@ -113,7 +113,8 @@ export const WeigthFrame = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  margin: auto;
+  justify-content: center;
   padding: 24px 24px 36px 24px;
   border-radius: 12px;
   background-color: var(--bg-secondary);
