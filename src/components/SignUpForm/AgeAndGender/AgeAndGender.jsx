@@ -70,7 +70,7 @@ const AgeAndGender = ({
       {({ errors, touched, values }) => (
         <AgeAndGenderContainer>
           <Image src={image} alt="Elder fitness" />
-          <Form Add autocomplete="off">
+          <Form autoComplete="off">
             <AgeAndGenderHeader id="genderGroup">
               Select gender, Age
             </AgeAndGenderHeader>
