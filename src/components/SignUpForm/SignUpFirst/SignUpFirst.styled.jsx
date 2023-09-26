@@ -98,9 +98,6 @@ export const InputText = styled(Field)`
   }
 `;
 
-export const ValidationErrorField = styled.div`
-  color: var(--input-border-color-error);
-`;
 
 export const IconTextPosition = styled.div`
   position: absolute;
