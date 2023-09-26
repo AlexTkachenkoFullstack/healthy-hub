@@ -24,11 +24,13 @@ import { fetchWaterIntake } from 'redux/dailyWater/operations';
 
 import { getCaloriesGoal } from 'redux/dialyGoalCalories/selectors';
 import { getWaterIntake } from 'redux/dailyWater/selectors';
+import { getRecommendedFood } from 'redux/recommendedFood/selectors';
 
 const MainPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dailyCalories = useSelector(getCaloriesGoal);
   const waterConsumtion = useSelector(getWaterIntake);
+  const recomendFood = useSelector(getRecommendedFood);
   const dispatch = useDispatch();
 
   const toggleIsOpenModal = () => {
@@ -42,14 +44,13 @@ const MainPage = () => {
   }, [isOpenModal]);
 
   useEffect(() => {
-    dispatch(fetchCaloriesIntake());
-    dispatch(fetchRecommendedFood());
-    dispatch(fetchWaterIntake());
-  }, [dispatch]);
+    !dailyCalories && dispatch(fetchCaloriesIntake());
+    !recomendFood && dispatch(fetchRecommendedFood());
+    !waterConsumtion && dispatch(fetchWaterIntake());
+  }, [dispatch, dailyCalories, waterConsumtion, recomendFood]);
 
   return (
     <MainContainer>
-      
       <TitleWrapper>
         <MainTitle>Today</MainTitle>
         <GoalLink to="dashboard">
