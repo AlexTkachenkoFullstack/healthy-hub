@@ -31,8 +31,9 @@ const FoodList = ({ type }) => {
   return (
     <Container>
       {arrayMeal && arrayMeal.length > 0 ? (
-        arrayMeal?.map(item => (
-          <Product key={item.ident} type={type} product={item} />
+        arrayMeal?.map((item, index) => (
+          
+          <Product key={item.ident} index={index } type={type} product={item} />
         ))
       ) : (
         <p
