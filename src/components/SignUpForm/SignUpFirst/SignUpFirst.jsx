@@ -22,9 +22,9 @@ import {
 import checkEmail from '../checkEmail';
 import { signupSchema } from '../validationLibs';
 import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
-import { useEffect, useState } from 'react';
-import SuccessIcon from '../InputSuccessIcon';
-import ErrorIcon from '../InputErrorIcon';
+import { useState } from 'react';
+import InputSuccessIcon from '../InputSuccessIcon';
+import InputErrorIcon from '../InputErrorIcon';
 import EyeOpenIcon from '../EyeOpenIcon';
 import EyeHideIcon from '../EyeHideIcon';
 
@@ -43,49 +43,10 @@ function getStyles(errors, fieldName) {
   }
 }
 
-const nameValidation = status => {
-  switch (status) {
-    case 'error':
-      break;
-
-    case 'success':
-      break;
-    default:
-      break;
-  }
-};
-
-const emailValidation = status => {
-  switch (status) {
-    case 'error':
-      break;
-
-    case 'success':
-      break;
-    default:
-      break;
-  }
-};
-
-const passwordValidation = status => {
-  switch (status) {
-    case 'error':
-      break;
-
-    case 'success':
-      break;
-    default:
-      break;
-  }
-};
-
 const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
   const [showPassword, setShowPassword] = useState('password');
-  const [status, setStatus] = useState('pending');
-  const [nameStatus, setNameStatus] = useState('pending');
-  const [passwordStatus, setPasswordStatus] = useState('pending');
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
@@ -137,9 +98,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
         >
           {({ errors, touched, values }) => (
             <FormStyle autoComplete="off">
-              {console.log('Touched >>:', touched)}
-              {console.log('Errors >>:', errors)}
-              {/* {console.log('Values >>:', values)} */}
               <label htmlFor="name">
                 <InputContainer
                   style={{
@@ -161,9 +119,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                     }}
                   >
                     {errors.name && touched.name ? (
-                      <ErrorIcon />
+                      <InputErrorIcon />
                     ) : (
-                      <SuccessIcon />
+                      <InputSuccessIcon />
                     )}
                   </IconTextPosition>
                 </InputContainer>
@@ -193,9 +151,9 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
                     }}
                   >
                     {errors.email && touched.email ? (
-                      <ErrorIcon />
+                      <InputErrorIcon />
                     ) : (
-                      <SuccessIcon />
+                      <InputSuccessIcon />
                     )}
                   </IconTextPosition>
                 </InputContainer>
