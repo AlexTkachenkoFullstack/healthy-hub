@@ -21,6 +21,7 @@ import {
     InputBox,
     InputText,
     ValidationError,
+    Box,
 } from './SignInPage.styled';
 import {loginThunk} from '../../redux/auth/operations'
 
@@ -87,7 +88,9 @@ const SignInPage = () => {
                         </FotmSignIn>
                     )}
                 </Formik>
-                <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
+                <Box>
+                    <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
+                    </Box>
                 <TextBlock>
                     <TextSecond>If you don't have an account yet</TextSecond>
                     <TextSignUp to="/signup">Sign up</TextSignUp>

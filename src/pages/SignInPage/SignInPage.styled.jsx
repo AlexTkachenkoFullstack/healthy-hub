@@ -211,19 +211,21 @@ export const TextFogot = styled(NavLink)`
 @media (min-width: 834px) {
     font-size: 14px;
 }
-@media (min-width: 1441px) {
+@media (min-width: 1440px) {
     margin-bottom: 0px;
+    text-align: center;
+    
 }`;
 
 export const InputBox = styled.label`
-  background: transparent;
-  position: relative;
+    background: transparent;
+    position: relative;
 `;
 export const IconTextPosition = styled.div`
-  position: absolute;
-  top: 35%;
-  right: 10px;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 35%;
+    right: 10px;
+    transform: translate(-50%, -50%);
 `;
 
 export const ValidationError = styled.span`
@@ -237,3 +239,10 @@ export const ValidationError = styled.span`
     line-height: 1.17;
 }
 `;
+
+export const Box = styled.div`
+
+@media (min-width: 1440px) {
+    padding-right: 35px;
+    padding-left: 35px;
+}`;
