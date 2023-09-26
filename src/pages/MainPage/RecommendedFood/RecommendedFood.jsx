@@ -7,7 +7,7 @@ import {
   Title,
   LinkToRecomFood,
 } from './RecommendedFood.styled';
-// import recommendedFood from 'RecommendedFood.json';
+
 import { randomArray } from 'utils';
 import { getRecommendedFood } from 'redux/recommendedFood/selectors';
 

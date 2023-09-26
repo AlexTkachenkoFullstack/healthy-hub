@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDateLastWeight } from 'redux/auth/selectors';
 import { updateWeightThunk } from 'redux/auth/operations';
+import { fetchCaloriesIntake } from 'redux/dialyGoalCalories/operations';
 import {
   Overlay,
   WeightContainer,
@@ -21,6 +22,7 @@ import {
   CancelButton,
 } from './CurrentWeightModal.styled';
 import CloseModalButton from '../CloseModalButton/CloseModalButton';
+
 
 const schema = yup.object({
   weight: yup
@@ -54,6 +56,7 @@ export default function CurrentWeightModal({ onClose, date }) {
 
   const handleSubmit = ({ weight }, actions) => {
     dispatch(updateWeightThunk({ weight }));
+    dispatch(fetchCaloriesIntake());
     actions.resetForm();
     onClose();
   };
