@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/healthy-hub/static/css/main.737528b0.css",
-    "main.js": "/healthy-hub/static/js/main.37047539.js",
+    "main.js": "/healthy-hub/static/js/main.800ed702.js",
     "static/js/37.a2544673.chunk.js": "/healthy-hub/static/js/37.a2544673.chunk.js",
-    "static/js/413.36987dbd.chunk.js": "/healthy-hub/static/js/413.36987dbd.chunk.js",
-    "static/js/511.0db1a63b.chunk.js": "/healthy-hub/static/js/511.0db1a63b.chunk.js",
+    "static/js/285.135a1f4a.chunk.js": "/healthy-hub/static/js/285.135a1f4a.chunk.js",
+    "static/js/511.ea7dd8fc.chunk.js": "/healthy-hub/static/js/511.ea7dd8fc.chunk.js",
     "static/js/819.317203b2.chunk.js": "/healthy-hub/static/js/819.317203b2.chunk.js",
     "static/js/34.b3eba157.chunk.js": "/healthy-hub/static/js/34.b3eba157.chunk.js",
     "static/js/550.3a4718cb.chunk.js": "/healthy-hub/static/js/550.3a4718cb.chunk.js",
@@ -39,17 +39,19 @@
     "static/media/sport-and-fitness-tracker-tablet.png": "/healthy-hub/static/media/sport-and-fitness-tracker-tablet.9b2da3ae735b83de98fd.png",
     "static/media/icons.svg": "/healthy-hub/static/media/icons.c526b3851449db2781446b1f4933315f.svg",
     "static/media/milk.svg": "/healthy-hub/static/media/milk.a0eacd57b86b0ba2f6c6a392b77da7f8.svg",
+    "static/media/eyeClose.svg": "/healthy-hub/static/media/eyeClose.5b0448e3675d9a819205952381ef662c.svg",
     "static/media/bubble.svg": "/healthy-hub/static/media/bubble.3b2e6986df7fcf539bc5e73bed7ca1ce.svg",
     "static/media/error.svg": "/healthy-hub/static/media/error.38a7e578f0e399cd75c664266f8d9c4d.svg",
+    "static/media/eyeOpen.svg": "/healthy-hub/static/media/eyeOpen.7c6cdc5beb99f3e2a9ef43f719411585.svg",
     "static/media/correct.svg": "/healthy-hub/static/media/correct.37f002969b1336da5e0fe0040c8e2c93.svg",
     "index.html": "/healthy-hub/index.html",
     "static/media/arrow-right.svg": "/healthy-hub/static/media/arrow-right.d0c0c26f156afde714dd6305bb874a9a.svg",
     "static/media/add.svg": "/healthy-hub/static/media/add.f6a357611ea74d91cdfc643ffab7c968.svg",
     "main.737528b0.css.map": "/healthy-hub/static/css/main.737528b0.css.map",
-    "main.37047539.js.map": "/healthy-hub/static/js/main.37047539.js.map",
+    "main.800ed702.js.map": "/healthy-hub/static/js/main.800ed702.js.map",
     "37.a2544673.chunk.js.map": "/healthy-hub/static/js/37.a2544673.chunk.js.map",
-    "413.36987dbd.chunk.js.map": "/healthy-hub/static/js/413.36987dbd.chunk.js.map",
-    "511.0db1a63b.chunk.js.map": "/healthy-hub/static/js/511.0db1a63b.chunk.js.map",
+    "285.135a1f4a.chunk.js.map": "/healthy-hub/static/js/285.135a1f4a.chunk.js.map",
+    "511.ea7dd8fc.chunk.js.map": "/healthy-hub/static/js/511.ea7dd8fc.chunk.js.map",
     "819.317203b2.chunk.js.map": "/healthy-hub/static/js/819.317203b2.chunk.js.map",
     "34.b3eba157.chunk.js.map": "/healthy-hub/static/js/34.b3eba157.chunk.js.map",
     "550.3a4718cb.chunk.js.map": "/healthy-hub/static/js/550.3a4718cb.chunk.js.map",
@@ -62,6 +64,6 @@
   },
   "entrypoints": [
     "static/css/main.737528b0.css",
-    "static/js/main.37047539.js"
+    "static/js/main.800ed702.js"
   ]
 }
