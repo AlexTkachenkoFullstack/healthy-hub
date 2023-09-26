@@ -11,10 +11,14 @@
         <div id="root"></div>
           <script>
                   document.addEventListener('DOMContentLoaded', function() {
-                    var location = window.location.href;
-                    var path = location.replace(window.location.origin, '/');
-                    window.location.replace(path);
-                  });
+            var location = window.location.href;
+
+            // Ожидаем 5 секунд, чтобы дать странице загрузиться.
+            setTimeout(function() {
+                var path = location.replace(window.location.origin, '/');
+                window.location.replace(path);
+            }, 4000);
+        });
         </script>
       </body>
 </html>
