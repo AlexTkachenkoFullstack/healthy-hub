@@ -82,14 +82,35 @@ export const Text = styled.p`
     line-height: 32px;
 }`;
 
-export const InputText = styled(Field)`
+export const LabelBox = styled.label`
+  margin-bottom: 14px;
+`;
+
+export const InputBox = styled.div`
   @media (min-width: 320px) {
-    background-color: var(--bg-primary);
-    height: 36px;
+    background: transparent;
+    position: relative;
     width: 300px;
     border-radius: 12px;
+    height: 36px;
     border: 1px solid var(--input-border-color-normal);
     margin-bottom: 16px;
+  }
+  @media (min-width: 834px) {
+    width: 380px;
+  }
+  @media (min-width: 1440px) {
+    width: 212px;
+    margin-bottom: 24px;
+  }
+`;
+
+export const InputText = styled(Field)`
+  @media (min-width: 320px) {
+    background: none;
+    border: none;
+    outline: none;
+    width: 90%;
     color: var(--text-color-primary-white);
     padding: 8px 10px;
     font-size: 14px;
@@ -102,13 +123,6 @@ export const InputText = styled(Field)`
 
   &:last-child {
     margin-bottom: 0;
-  }
-  @media (min-width: 834px) {
-    width: 380px;
-  }
-  @media (min-width: 1440px) {
-    width: 212px;
-    margin-bottom: 24px;
   }
 `;
 
@@ -222,14 +236,10 @@ export const TextFogot = styled(NavLink)`
   }
 `;
 
-export const InputBox = styled.label`
-  background: transparent;
-  position: relative;
-`;
 export const IconTextPosition = styled.div`
   position: absolute;
-  top: 30%;
-  right: 10px;
+  top: 50%;
+  right: 8px;
   transform: translate(-50%, -50%);
 `;
 
