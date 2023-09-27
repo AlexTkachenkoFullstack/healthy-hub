@@ -1,1 +1,1 @@
-export {default} from './AgeAndGender.jsx'
+export { default } from './AgeAndGender';

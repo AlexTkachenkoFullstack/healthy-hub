@@ -81,18 +81,18 @@ export const Text = styled.p`
   }
 `;
 
-export const ExtraContainer = styled.div`
-  @media (min-width: 834px) {
-    padding-left: 30px;
-    padding-right: 30px;
-    margin: 0 auto;
-  }
-  @media (min-width: 1440px) {
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 0 auto;
-  }
-`;
+// export const ExtraContainer = styled.div`
+//   @media (min-width: 834px) {
+//     padding-left: 30px;
+//     padding-right: 30px;
+//     margin: 0 auto;
+//   }
+//   @media (min-width: 1440px) {
+//     padding-left: 0px;
+//     padding-right: 0px;
+//     margin: 0 auto;
+//   }
+// `;
 
 export const ChooseText = styled.p`
   color: var(--text-color-primary-white);
@@ -137,6 +137,7 @@ export const RadioButtonText = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  font-style: normal;
   color: var(---text-color-primary-white);
 `;
 
@@ -231,8 +232,30 @@ export const BackButton = styled.button`
   }
 `;
 
-export const CustomRadioInput = styled(Field)`
-  place-content: center;
+export const CustomRadioInput = styled.span`
+position: relative;
+display: inline-block;
+width: 12px;
+height: 12px;
+background-color: transparent;
+border: 1px solid var(--fat-donut-color);
+border-radius: 50%;
+vertical-align: text-top;
+
+&::before{
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+display: block;
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background-color: var(--bg-button-color);
+transform: translate(-50%, -50%) scale(0);
+transition: 200ms ease-in;
+}
+  /* place-content: center;
   appearance: none;
   background-color: black;
   margin: 0;
@@ -247,8 +270,31 @@ export const CustomRadioInput = styled(Field)`
   &:checked {
     background-color: rgba(227, 255, 168, 1);
     transform: scale(1);
-  }
+  } */
 `;
+
+export const NativeRadioInput = styled(Field)`
+opacity: 0;
+z-index: 1;
+cursor: pointer;
+&:checked + ${CustomRadioInput}{
+  &::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--bg-button-color);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in;}
+}
+
+
+`
+
 
 export const ValidationError = styled.span`
   color: #e74a3b;

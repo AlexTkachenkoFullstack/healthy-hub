@@ -5,21 +5,18 @@ import {
   AgeAndGenderHeader,
   Text,
   ChooseText,
-  LabelContainer,
   LabelBlock,
   InputBox,
   InputText,
   InputButton,
   BackButton,
-  ExtraContainer,
-  CustomRadioInput,
   ValidationError,
   IconTextPosition,
   InputContainer,
-  RadioBoxContainer,
   RadioInputBox,
-  GenderChooseBox,
   RadioButtonText,
+  NativeRadioInput,
+  CustomRadioInput,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -93,13 +90,24 @@ const AgeAndGender = ({
               <LabelBlock role="group" aria-labelledby="yourGender">
                 <label>
                   <RadioInputBox>
-                    <Field type="radio" name="gender" value="male" />
+                    <NativeRadioInput
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      required
+                    />
+                    <CustomRadioInput></CustomRadioInput>
                     <RadioButtonText>Male</RadioButtonText>
                   </RadioInputBox>
                 </label>
                 <label>
                   <RadioInputBox>
-                    <Field type="radio" name="gender" value="female" />
+                    <NativeRadioInput
+                      type="radio"
+                      name="gender"
+                      value="female"
+                    />
+                    <CustomRadioInput></CustomRadioInput>
                     <RadioButtonText>Female</RadioButtonText>
                   </RadioInputBox>
                 </label>
@@ -148,14 +156,6 @@ const AgeAndGender = ({
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
             </InputContainer>
-
-            {/* <ExtraContainer htmlFor="gender">
-
-
-            </ExtraContainer>
-
-
-             */}
 
             <InputButton type="submit">Next</InputButton>
 
