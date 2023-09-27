@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as BubbleSvg } from 'assets/images/icons/bubble.svg';
 import { ReactComponent as MilkSvg } from '../../../assets/images/icons/milk.svg';
 import {
@@ -12,17 +10,7 @@ import {
   InfoWrapper,
 } from './DailyGoalInfo.styled';
 
-import { fetchCaloriesIntake } from 'redux/dialyGoalCalories/operations';
-import { getWeight } from 'redux/auth/selectors';
-
 export const DailyGoalInfo = ({ dailyCalories }) => {
-  const dispatch = useDispatch();
-  const userWeight = useSelector(getWeight);
-
-  useEffect(() => {
-    dispatch(fetchCaloriesIntake());
-  }, [dispatch, userWeight]);
-
   return (
     <div>
       <Title>Daily goal</Title>

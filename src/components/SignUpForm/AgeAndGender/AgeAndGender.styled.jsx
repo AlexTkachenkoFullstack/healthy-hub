@@ -4,6 +4,7 @@ import { Field } from 'formik';
 export const AgeAndGenderContainer = styled.div`
   background-color: var(--bg-primary);
   padding-top: 24px;
+  padding-bottom: 24px;
 
   @media (min-width: 834px) {
     padding-top: 40px;
@@ -55,7 +56,7 @@ export const AgeAndGenderHeader = styled.h1`
   }
   @media (min-width: 1440px) {
     text-align: left;
-    padding-top:80px;
+    padding-top: 80px;
   }
 `;
 
@@ -80,14 +81,16 @@ export const Text = styled.p`
   }
 `;
 
-export const ExtraContainer = styled.label`
+export const ExtraContainer = styled.div`
   @media (min-width: 834px) {
     padding-left: 30px;
     padding-right: 30px;
+    margin: 0 auto;
   }
   @media (min-width: 1440px) {
     padding-left: 0px;
     padding-right: 0px;
+    margin: 0 auto;
   }
 `;
 
@@ -101,7 +104,7 @@ export const ChooseText = styled.p`
   margin-bottom: 12px;
 `;
 
-export const Label = styled.label`
+export const LabelContainer = styled.label`
   color: var(---text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
@@ -124,6 +127,17 @@ export const LabelBlock = styled.div`
   @media (min-width: 1440px) {
     flex-direction: column;
     gap: 16px;
+  }
+`;
+
+export const InputContainer = styled.div`
+  @media (min-width: 834px) {
+    width: 380px;
+    margin: 0 auto;
+
+    @media (min-width: 1440px) {
+      margin: 0;
+    }
   }
 `;
 
@@ -156,7 +170,6 @@ export const InputText = styled(Field)`
   padding: 8px 10px;
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: textfield;
     margin: 0;
   }
   &::-webkit-outer-spin-button {

@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 const emailRegexp = '[a-z0-9]+@[a-z]+.[a-z]{2,3}';
-const letterRegexp = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).*$';
+const letterRegexp = '^(?=.*[a-zA-Z]).*$';;
 const numberRegexp = '^(?=.*[0-9]).*$';
 const onlyLatinRegexp = '^[^А-Яа-яЇїІіЄєҐґЁё]+$';
 
@@ -21,8 +21,19 @@ export const signInSchema = yup.object().shape({
     .label('Password')
     .matches(
       letterRegexp,
-      'Must include at least 1 uppercase and lowercase symbols'
+      'Must include at least 1  symbols'
     )
     .matches(numberRegexp, 'Must include 1 number or more')
     .required('Please enter password'),
+});
+
+export const forgotSchema = yup.object().shape({
+   email: yup
+    .string()
+    .email('Example: your@email.com')
+    .label('Email')
+    .max(255)
+    .matches(onlyLatinRegexp, 'Must include only latin letters')
+    .matches(emailRegexp, 'Example: your@email.com')
+    .required('Please enter email'),
 });

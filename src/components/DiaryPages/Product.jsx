@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
-import EditBtn from './EditBtn';
 import EditDiaryModal from '../EditDiaryModal/EditDiaryModal';
 import { updateFoodIntake, fetchFoodIntake } from 'redux/diary/operations';
 import { useDispatch } from 'react-redux';
+import sprite from '../../assets/images/icons/icons.svg';
 
-const Product = ({ product, type }) => {
+import {
+  ProductContainer,
+  Text,
+  SpanElement,
+  ProductName,
+  ProductPower,
+  ProductTitleContainer,
+  EditButton,
+  Svg,
+} from '../DiaryPages/Product.styled';
+
+const Product = ({ product, type, index }) => {
   const dispatch = useDispatch();
   const { name, carbonohidrates, protein, fat, ident } = product;
   console.log(ident);
@@ -26,18 +37,33 @@ const Product = ({ product, type }) => {
 
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <p>{name}</p>
-        <p>{carbonohidrates}</p>
-        <p>{protein}</p>
-        <p>{fat}</p>
-        <EditBtn onClick={openModal} />
-      </div>
+      <ProductContainer>
+        <ProductTitleContainer>
+          <p>{index + 1}</p>
+          <ProductName>{name}</ProductName>
+        </ProductTitleContainer>
+
+        <ProductPower>
+          <Text>
+            <SpanElement>Carb. </SpanElement>
+            {carbonohidrates}
+          </Text>
+          <Text>
+            <SpanElement>Prot. </SpanElement>
+            {protein}
+          </Text>
+          <Text>
+            <SpanElement>Fat. </SpanElement>
+            {fat}
+          </Text>
+        </ProductPower>
+        <EditButton onClick={openModal}>
+          <Svg>
+            <use href={sprite + '#icon-edit-2'}></use>
+          </Svg>
+          Edit
+        </EditButton>
+      </ProductContainer>
 
       {isModalOpen && (
         <EditDiaryModal

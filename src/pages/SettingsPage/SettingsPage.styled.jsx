@@ -82,26 +82,3 @@ export const ButtonContainer = styled.div`
     gap: 12px;
   }
 `;
-
-export const SaveButton = styled.button`
-  width: 212px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  background: var(--bg-button-color);
-  color: var(--text-color-button-black);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.43;
-  border: none;
-`;
-
-export const CancelButton = styled.button`
-  width: 192px;
-  padding: 8px 10px;
-  background: transparent;
-  color: var(--text-color-secondary-grey);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.43;
-  border: none;
-`;

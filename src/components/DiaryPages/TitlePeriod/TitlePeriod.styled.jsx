@@ -3,7 +3,15 @@ import styled from 'styled-components';
 export const PeriodContainer = styled.div`
   display: flex;
   gap: 20px;
-  margin-right: 40px;
+  flex-direction: column;
+
+  @media (min-width: 834px) {
+    flex-direction: row;
+  }
+  
+  @media (min-width: 1440px) {
+    
+  }
 `;
 
 export const Title = styled.p`
@@ -16,4 +24,10 @@ export const Span = styled.span`
   font-weight: 500;
   color: var(--text-color-secondary-grey);
   margin-left: 4px;
+`;
+
+export const ProteinAndFatContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 `;

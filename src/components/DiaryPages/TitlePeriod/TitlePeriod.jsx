@@ -1,5 +1,10 @@
 import React from 'react';
-import { PeriodContainer, Title, Span } from './TitlePeriod.styled';
+import {
+  PeriodContainer,
+  Title,
+  Span,
+  ProteinAndFatContainer,
+} from './TitlePeriod.styled';
 
 const TitlePeriod = ({ product }) => {
   if (product.length === 0 || product === undefined) {
@@ -8,12 +13,14 @@ const TitlePeriod = ({ product }) => {
         <Title>
           Carbonohidrates:<Span>0</Span>
         </Title>
-        <Title>
-          Protein:<Span>0</Span>
-        </Title>
-        <Title>
-          Fat:<Span>0</Span>
-        </Title>
+        <ProteinAndFatContainer>
+          <Title>
+            Protein:<Span>0</Span>
+          </Title>
+          <Title>
+            Fat:<Span>0</Span>
+          </Title>
+        </ProteinAndFatContainer>
       </PeriodContainer>
     );
   }
@@ -41,12 +48,13 @@ const TitlePeriod = ({ product }) => {
       <Title>
         Carbonohidrates:<Span>{sumCarbohydrates}</Span>
       </Title>
-      <Title>
+      <ProteinAndFatContainer><Title>
         Protein:<Span>{sumProtein}</Span>
       </Title>
       <Title>
         Fat:<Span>{sumFat}</Span>
-      </Title>
+      </Title></ProteinAndFatContainer>
+      
     </PeriodContainer>
   );
 };
