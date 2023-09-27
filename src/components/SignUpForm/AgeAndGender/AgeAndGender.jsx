@@ -1,4 +1,4 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
 import {
   Image,
   AgeAndGenderContainer,
@@ -16,6 +16,7 @@ import {
   ValidationError,
   IconTextPosition,
   InputContainer,
+  RadioBoxContainer,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -35,16 +36,20 @@ const AgeAndGender = ({
 }) => {
   useEffect(() => {
     const selectorString = 'input[type="radio"][value="' + dataGender + '"]';
-    const checkedButton = document.querySelector(selectorString);
-    if (!checkedButton) {
-      return;
-    }
-    checkedButton.checked = true;
+    const userButton = document.querySelector(selectorString);
+    const checkedButton = document.querySelector('[checked=true]');
+    console.log(userButton);
+    console.log(checkedButton);
+
+    // if (!checkedButton) {
+    //   return;
+    // }
+    // checkedButton.checked = true;
   }, [dataGender]);
 
   const initialValues = {
-    gender: dataGender,
-    age: dataAge,
+    gender: '',
+    age: '',
   };
 
   const handleSubmit = (values, actions) => {
@@ -66,7 +71,7 @@ const AgeAndGender = ({
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={genderAgeSchema}
+      // validationSchema={genderAgeSchema}
     >
       {({ errors, touched, values, setFieldValue }) => (
         <AgeAndGenderContainer>
@@ -79,22 +84,48 @@ const AgeAndGender = ({
               Choose a goal so that we can <br />
               help you effectively
             </Text>
-            <ExtraContainer htmlFor="gender">
+            <div role="group" aria-labelledby="yourGender">
+              <label>
+                <Field type="radio" name="gender" value="male" />
+                <div>Male</div>
+              </label>
+              <label>
+                <Field type="radio" name="gender" value="female" />
+                Female
+              </label>
+
+              <div>Picked: {values.gender}</div>
+            </div>
+            <label>
+              <Field type="text" name="age" />
+            </label>
+
+            {/* <ExtraContainer htmlFor="gender">
               <ChooseText>Gender</ChooseText>
               <LabelBlock role="group" aria-label="genderGroup">
-                <LabelContainer>
-                  <CustomRadioInput type="radio" name="gender" value="male" />
+                <RadioBoxContainer>
+                  <label htmlFor="male">
+                    <CustomRadioInput
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      required
+                      checked
+                    />
+                  </label>
                   Male
-                </LabelContainer>
-                <LabelContainer>
-                  <CustomRadioInput
-                    type="radio"
-                    name="gender"
-                    value="female"
-                    checked
-                  />
+                </RadioBoxContainer>
+
+                <RadioBoxContainer>
+                  <label htmlFor="female">
+                    <CustomRadioInput
+                      type="radio"
+                      name="gender"
+                      value="female"
+                    />
+                  </label>
                   Female
-                </LabelContainer>
+                </RadioBoxContainer>
               </LabelBlock>
               <ChooseText>Your age</ChooseText>
             </ExtraContainer>
@@ -137,7 +168,7 @@ const AgeAndGender = ({
               <ErrorMessage name="age">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-            </InputContainer>
+            </InputContainer> */}
 
             <InputButton type="submit">Next</InputButton>
 
