@@ -114,7 +114,7 @@ export const WeigthFrame = styled('div')`
   flex-direction: row;
   align-items: center;
   margin: auto;
-  justify-content: center;
+  justify-content: space-between;
   padding: 24px 24px 36px 24px;
   border-radius: 12px;
   background-color: var(--bg-secondary);

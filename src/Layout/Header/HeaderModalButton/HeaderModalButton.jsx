@@ -9,6 +9,7 @@ import {
   Svg,
   SvgGoal,
 } from './HeaderModalButton.styled';
+
 import sprite from '../../../assets/images/icons/icons.svg';
 import LoseFatGirl from '../../../assets/images/emoji/lose-fat-girl.png';
 import LoseFatGirl2x from '../../../assets/images/emoji/lose-fat-girl-2x.png';

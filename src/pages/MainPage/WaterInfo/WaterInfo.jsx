@@ -19,8 +19,6 @@ import {
 
 import { bubbles } from 'utils/bubbles';
 
-
-
 export const WaterInfo = ({ handleModal, waterConsumtion }) => {
   const leftWaterIntake = 1500 - waterConsumtion;
 

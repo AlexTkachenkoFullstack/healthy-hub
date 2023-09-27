@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import { getAuthStatus, getUserInfo } from 'redux/auth/selectors';
 import { getCurrentDate } from 'utils/currentDate';
+
 import HeaderModalButton from './HeaderModalButton/HeaderModalButton';
 import MobileMenu from './MobileMenu/MobileMenu';
 import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
@@ -24,6 +26,7 @@ import {
   UserSvg,
   UserAvatar,
 } from './Header.styled';
+
 import sprite from '../../assets/images/icons/icons.svg';
 
 const Header = () => {

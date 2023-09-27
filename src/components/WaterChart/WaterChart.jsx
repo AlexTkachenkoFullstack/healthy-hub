@@ -18,7 +18,6 @@ ChartJS.register(
   Legend
 );
 
-
 const options = {
   responsive: true,
   aspectRatio: 0.364,

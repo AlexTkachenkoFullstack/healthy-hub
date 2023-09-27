@@ -93,7 +93,7 @@ export const NameField = styled(Field)`
   color: var(--text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
-  line-height: 1.43; /* 20px */
+  line-height: 1.43;
   width: 100%;
   outline: none;
   border: ${({ borderstyle }) => borderstyle};
@@ -112,7 +112,7 @@ export const StyledField = styled(Field)`
   color: var(--text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
-  line-height: 1.43; /* 20px */
+  line-height: 1.43;
   width: 100%;
   outline: none;
   border: ${({ borderstyle }) => borderstyle};
@@ -120,8 +120,6 @@ export const StyledField = styled(Field)`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-
-  
 
   ::placeholder {
     color: var(--text-color-secondary-grey);
@@ -153,7 +151,7 @@ export const ButtonStyle = styled.button`
   border: none;
   text-align: center;
   font-size: 14px;
-  line-height: 1.43; /* 142.857% */
+  line-height: 1.43;
   margin-top: 24px;
   color: var(--text-color-active-page-green);
 `;
@@ -164,7 +162,7 @@ export const ButtonSubmit = styled.button`
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.43; /* 142.857% */
+  line-height: 1.43;
   height: 36px;
   border-radius: 12px;
   border: none;

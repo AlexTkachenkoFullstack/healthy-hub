@@ -1,10 +1,12 @@
 import './styles/fonts.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect, lazy } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Layout from './Layout/Layout';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
-import { useEffect, lazy } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+
 import { getAuthStatus, getIsLoadingAuth } from './redux/auth/selectors';
 import { getStacticsLoading } from 'redux/statistic/selectors';
 import { getFoodIntakeLoading } from 'redux/diary/selectors';

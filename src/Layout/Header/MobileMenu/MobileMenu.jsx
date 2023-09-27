@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
+
+import HeaderModalButton from '../HeaderModalButton/HeaderModalButton';
 import {
   MobileButtonsContainer,
   MobileContainer,
   CloseButton,
   Overlay,
 } from './MobileMenu.styled';
-import HeaderModalButton from '../HeaderModalButton/HeaderModalButton';
+
 import sprite from '../../../assets/images/icons/icons.svg';
 
 export default function MobileMenu({

@@ -1,5 +1,5 @@
-import React, { useState} from 'react';
-import Notification from '../../../src/components/Notification/Notification'
+import React, { useState } from 'react';
+import Notification from '../../../src/components/Notification/Notification';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -24,37 +24,38 @@ const ForgotPasswordPage = () => {
     const [notificationColor, setNotificationColor] = useState('');
     const navigate = useNavigate();
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-        setIsEmailValid(true);
+
+  const handleSendClick = async event => {
+    event.preventDefault();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailPattern.test(email)) {
+      setIsEmailValid(false);
+      setErrorMessage('Please enter a valid email address!');
+      return;
     }
 
-    const handleSendClick = async (event) => {
-        event.preventDefault();
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailPattern.test(email)) {
-            setIsEmailValid(false);
-            setErrorMessage('Please enter a valid email address!');
-            return;
+    try {
+      const response = await axios.post(
+        'https://backend-healthyhub.onrender.com/api/users/forgot-password',
+        {
+          email: email,
         }
+      );
 
-        try {
-            const response = await axios.post('https://backend-healthyhub.onrender.com/api/users/forgot-password', {
-                email: email,
-            });
-
-            console.log('Response:', response.data);
-            setNotificationColor('green'); 
-            setNotificationMessage('New password instructions sent to your email.');
-            setTimeout(() => {
-                navigate('/signin');
-            }, 2000);
-        } catch (error) {
-            console.error('Error sending request:', error);
-            setNotificationColor('red');  
-        setNotificationMessage('Password reset request failed. Please try again.');
-        }
+      console.log('Response:', response.data);
+      setNotificationColor('green');
+      setNotificationMessage('New password instructions sent to your email.');
+      setTimeout(() => {
+        navigate('/signin');
+      }, 2000);
+    } catch (error) {
+      console.error('Error sending request:', error);
+      setNotificationColor('red');
+      setNotificationMessage(
+        'Password reset request failed. Please try again.'
+      );
     }
+  };
 
     return (<>
             <ForgotContainer>
@@ -85,4 +86,5 @@ const ForgotPasswordPage = () => {
     )
 }
 
-export default ForgotPasswordPage
+
+export default ForgotPasswordPage;

@@ -1,5 +1,6 @@
-import sprite from '../../../assets/images/icons/icons.svg';
 import { CloseButton } from './CloseModalButton.styled';
+
+import sprite from '../../../assets/images/icons/icons.svg';
 
 export default function CloseModalButton({ onClose }) {
   return (

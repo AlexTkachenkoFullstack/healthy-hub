@@ -1,11 +1,10 @@
-import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
-import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
-import lunchImg from '../../assets/images/meal-periods/lunch.png';
-import lunchImg2x from '../../assets/images/meal-periods/lunch-2x.png';
-import dinnerImg from '../../assets/images/meal-periods/dinner.png';
-import dinnerImg2x from '../../assets/images/meal-periods/dinner-2x.png';
-import snackImg from '../../assets/images/meal-periods/snack.png';
-import snackImg2x from '../../assets/images/meal-periods/snack-2x.png';
+import { Formik, ErrorMessage } from 'formik';
+import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
+import { updateFoodIntake } from 'redux/diary/operations';
+
 import {
   ModalOverlay,
   ModalDiv,
@@ -21,13 +20,16 @@ import {
   FieldContainer,
   CloseButton,
 } from './EditDiaryModal.styled';
-import { useDispatch } from 'react-redux';
-import { updateFoodIntake } from 'redux/diary/operations';
-import { useEffect } from 'react';
-import sprite from '../../assets/images/icons/icons.svg';
 
-import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import sprite from '../../assets/images/icons/icons.svg';
+import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
+import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
+import lunchImg from '../../assets/images/meal-periods/lunch.png';
+import lunchImg2x from '../../assets/images/meal-periods/lunch-2x.png';
+import dinnerImg from '../../assets/images/meal-periods/dinner.png';
+import dinnerImg2x from '../../assets/images/meal-periods/dinner-2x.png';
+import snackImg from '../../assets/images/meal-periods/snack.png';
+import snackImg2x from '../../assets/images/meal-periods/snack-2x.png';
 
 export const schema = yup.object({
   name: yup.string().required('Please Enter product name'),

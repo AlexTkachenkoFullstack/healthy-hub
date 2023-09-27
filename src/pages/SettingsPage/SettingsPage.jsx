@@ -1,15 +1,17 @@
 import { useSelector } from 'react-redux';
+
 import { getUserInfo } from 'redux/auth/selectors';
+
+import UserInformation from 'components/UserInformation';
 import {
   SettingContainer,
   Container,
   Title,
   StyledImg,
 } from './SettingsPage.styled';
+
 import ProfileSettingPhoto from '../../assets/images/interactive-learning-experience.png';
 import ProfileSettingPhoto2x from '../../assets/images/interactive-learning-experience-2x.png';
-
-import UserInformation from 'components/UserInformation';
 
 const SettingsPage = () => {
   const user = useSelector(getUserInfo);
