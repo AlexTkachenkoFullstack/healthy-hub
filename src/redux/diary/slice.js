@@ -6,10 +6,11 @@ import {
 } from './operations';
 
 const initialState = {
-  food: null,
+  food: { breakfast: [], lunch: [], dinner: [], snack: [] },
   totalCalories: 0,
   isLoading: false,
   error: null,
+  firstLoad: false,
 };
 
 const handleRejected = (state, action) => {
@@ -24,6 +25,8 @@ const handlePending = state => {
 const handleFulfildGet = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  state.firstLoad = true;
+  
   const breakfast = action.payload.data.userProducts.breakfast;
   const dinner = action.payload.data.userProducts.dinner;
   const snack = action.payload.data.userProducts.snack;
@@ -60,8 +63,8 @@ export const foodIntakeSlice = createSlice({
   name: 'foodIntake',
   initialState,
   reducers: {
-    addFoodIntake(state, {payload}) {
-      state.food = payload;
+    clearDiary(state) {
+      return (state = initialState);
     },
   },
   extraReducers: builder => {
@@ -78,4 +81,4 @@ export const foodIntakeSlice = createSlice({
   },
 });
 
-export const { addFoodIntake } = foodIntakeSlice.actions;
+export const { clearDiary } = foodIntakeSlice.actions;

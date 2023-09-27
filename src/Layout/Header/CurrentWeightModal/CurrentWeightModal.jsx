@@ -23,7 +23,6 @@ import {
 } from './CurrentWeightModal.styled';
 import CloseModalButton from '../CloseModalButton/CloseModalButton';
 
-
 const schema = yup.object({
   weight: yup
     .number()
@@ -56,7 +55,10 @@ export default function CurrentWeightModal({ onClose, date }) {
 
   const handleSubmit = ({ weight }, actions) => {
     dispatch(updateWeightThunk({ weight }));
-    dispatch(fetchCaloriesIntake());
+    setTimeout(() => {
+      dispatch(fetchCaloriesIntake());
+    }, 100);
+
     actions.resetForm();
     onClose();
   };

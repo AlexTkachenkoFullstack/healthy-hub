@@ -26,15 +26,20 @@ const handleFulfildGet = (state, action) => {
 
 
 export const caloriesGoalSlice = createSlice({
-    name: 'caloriesGoal',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchCaloriesIntake.fulfilled, handleFulfildGet)
-            .addCase(fetchCaloriesIntake.pending, handlePending)
-            .addCase(fetchCaloriesIntake.rejected, handleRejected)
-    }
-})
+  name: 'caloriesGoal',
+  initialState,
+  reducers: {
+    clearDailyCalories(state) {
+      return (state = initialState);
+    },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchCaloriesIntake.fulfilled, handleFulfildGet)
+      .addCase(fetchCaloriesIntake.pending, handlePending)
+      .addCase(fetchCaloriesIntake.rejected, handleRejected);
+  },
+});
 
+export const { clearDailyCalories } = caloriesGoalSlice.actions;
 
