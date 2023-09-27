@@ -18,13 +18,10 @@ import {
 const Product = ({ product, type, index }) => {
   const dispatch = useDispatch();
   const { name, carbonohidrates, protein, fat, ident } = product;
-  console.log(ident);
-  console.log('product', product);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
-    console.log('openModal');
   };
 
   const closeModal = () => {
@@ -72,7 +69,6 @@ const Product = ({ product, type, index }) => {
           product={product}
           handleDataUpdate={handleDataUpdate}
           onSubmit={data => {
-            console.log(data);
             dispatch(updateFoodIntake({ ident, type: type, product: data }));
           }}
         />
