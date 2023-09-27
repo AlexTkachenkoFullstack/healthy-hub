@@ -244,11 +244,11 @@ export const TextFogot = styled(NavLink)`
     text-align: center;
 }`;
 
-export const InputBox = styled.label`
+// export const InputBox = styled.label`
 //   background: transparent;
 //   position: relative;
 
-`;
+// `;
 
 export const IconTextPosition = styled.div`
   position: absolute;
