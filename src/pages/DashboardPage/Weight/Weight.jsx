@@ -12,6 +12,7 @@ import {
   Value,
   WeightData,
   WeightDate,
+  Stub,
 } from '../DashboardPage.styled';
 
 export const Weight = ({ name, data: dataWeight, period }) => {
@@ -42,12 +43,12 @@ export const Weight = ({ name, data: dataWeight, period }) => {
                 return (
                   <WeigthItem key={nanoid()}>
                     <WeightData>{value}</WeightData>
-                    <WeightDate>{dateOrMonth(date,period)}</WeightDate>
+                    <WeightDate>{dateOrMonth(date, period)}</WeightDate>
                   </WeigthItem>
                 );
               })
             ) : (
-              <p> Created by HealthyHub🍎Team</p>
+              <Stub> Created by HealthyHub🍎Team</Stub>
             )}
           </WeigthFrame>
         </ScrollWrap>
