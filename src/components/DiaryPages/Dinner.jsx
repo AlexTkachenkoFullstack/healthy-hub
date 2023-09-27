@@ -1,6 +1,5 @@
 import React from 'react';
 import TitlePeriod from './TitlePeriod/TitlePeriod';
-// import sprite from '../../assets/images/icons/icons.svg';
 import dinnerImg from '../../assets/images/meal-periods/dinner.png';
 import dinnerImg2x from '../../assets/images/meal-periods/dinner-2x.png';
 
@@ -17,7 +16,9 @@ const Dinner = () => {
   const product = useSelector(state => state.foodIntake.food.dinner);
   return (
     <CardContainer>
-      <TabletFood> <CardTitleContainer>
+      <TabletFood>
+        {' '}
+        <CardTitleContainer>
           <img
             srcSet={`${dinnerImg} 1x, ${dinnerImg2x} 2x`}
             src={dinnerImg}
@@ -26,11 +27,10 @@ const Dinner = () => {
             height="32"
           />
           <Title>Dinner</Title>
-      </CardTitleContainer>
-        
+        </CardTitleContainer>
         <TitlePeriod product={product} />
-</TabletFood>
-       
+      </TabletFood>
+
       <FoodList type="dinner" product={product} />
     </CardContainer>
   );

@@ -37,24 +37,21 @@ const TitlePeriod = ({ product }) => {
     return acc + item.fat;
   }, 0);
 
-  const sumCalorises = product.reduce((acc, item) => {
-    return acc + item.calories;
-  }, 0);
 
-  console.log(sumCalorises);
 
   return (
     <PeriodContainer>
       <Title>
         Carbonohidrates:<Span>{sumCarbohydrates}</Span>
       </Title>
-      <ProteinAndFatContainer><Title>
-        Protein:<Span>{sumProtein}</Span>
-      </Title>
-      <Title>
-        Fat:<Span>{sumFat}</Span>
-      </Title></ProteinAndFatContainer>
-      
+      <ProteinAndFatContainer>
+        <Title>
+          Protein:<Span>{sumProtein}</Span>
+        </Title>
+        <Title>
+          Fat:<Span>{sumFat}</Span>
+        </Title>
+      </ProteinAndFatContainer>
     </PeriodContainer>
   );
 };
