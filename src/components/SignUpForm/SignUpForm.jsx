@@ -19,7 +19,7 @@ const SignUpForm = () => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
-  const [activity, setActivity] = useState(1.2);
+  const [activity, setActivity] = useState('1.2');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorsMessage, setErrorsMessage] = useState('');
   const dispatch = useDispatch();
