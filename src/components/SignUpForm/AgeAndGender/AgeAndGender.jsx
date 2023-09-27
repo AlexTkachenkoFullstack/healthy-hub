@@ -17,6 +17,9 @@ import {
   IconTextPosition,
   InputContainer,
   RadioBoxContainer,
+  RadioInputBox,
+  GenderChooseBox,
+  RadioButtonText,
 } from './AgeAndGender.styled';
 
 import lowQualityImage from '../../../assets/images/elder-fitness.png';
@@ -71,7 +74,7 @@ const AgeAndGender = ({
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      // validationSchema={genderAgeSchema}
+      validationSchema={genderAgeSchema}
     >
       {({ errors, touched, values, setFieldValue }) => (
         <AgeAndGenderContainer>
@@ -85,93 +88,72 @@ const AgeAndGender = ({
               help you effectively
             </Text>
 
-            <div role="group" aria-labelledby="yourGender">
-              <label>
-                <div>
-                  <Field type="radio" name="gender" value="male" />
-                  <div>Male</div>
-                </div>
-              </label>
-              <label>
-                <div>
-                  <Field type="radio" name="gender" value="female" />
-                  <div>Female</div>
-                </div>
-              </label>
-            </div>
-            
             <InputContainer>
+              <ChooseText>Gender</ChooseText>
+              <LabelBlock role="group" aria-labelledby="yourGender">
+                <label>
+                  <RadioInputBox>
+                    <Field type="radio" name="gender" value="male" />
+                    <RadioButtonText>Male</RadioButtonText>
+                  </RadioInputBox>
+                </label>
+                <label>
+                  <RadioInputBox>
+                    <Field type="radio" name="gender" value="female" />
+                    <RadioButtonText>Female</RadioButtonText>
+                  </RadioInputBox>
+                </label>
+              </LabelBlock>
+            </InputContainer>
+            <InputContainer>
+              <ChooseText>Your Age</ChooseText>
               <InputBox
                 style={{
                   borderColor:
                     errors.age && touched.age
                       ? 'var(--input-border-color-error)'
                       : '',
-                }}>
-              <label htmlFor="age">
-              <InputText
-                type="number"
-                name="age"
-                id="age"
-                placeholder="Enter your age"
-                onChange={e => {
-                  e.preventDefault();
-                  const { value } = e.target;
-                  const regex =
-                    /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
-                  if (!value || regex.test(value.toString())) {
-                    setFieldValue('age', value);
-                  }
-                }}
-              /></label>
-              <IconTextPosition
-                style={{
-                  display: values.age ? 'block' : 'none',
                 }}
               >
-                {errors.age && touched.age ? (
-                  <InputErrorIcon />
-                ) : (
-                  <InputSuccessIcon />
-                )}
-              </IconTextPosition>
+                <label htmlFor="age">
+                  <InputText
+                    type="number"
+                    name="age"
+                    id="age"
+                    placeholder="Enter your age"
+                    onChange={e => {
+                      e.preventDefault();
+                      const { value } = e.target;
+                      const regex =
+                        /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                      if (!value || regex.test(value.toString())) {
+                        setFieldValue('age', value);
+                      }
+                    }}
+                  />
+                </label>
+                <IconTextPosition
+                  style={{
+                    display: values.age ? 'block' : 'none',
+                  }}
+                >
+                  {errors.age && touched.age ? (
+                    <InputErrorIcon />
+                  ) : (
+                    <InputSuccessIcon />
+                  )}
+                </IconTextPosition>
               </InputBox>
               <ErrorMessage name="age">
                 {msg => <ValidationError>{msg}</ValidationError>}
               </ErrorMessage>
-              </InputContainer>
-
+            </InputContainer>
 
             {/* <ExtraContainer htmlFor="gender">
-              <ChooseText>Gender</ChooseText>
-              <LabelBlock role="group" aria-label="genderGroup">
-                <RadioBoxContainer>
-                  <label htmlFor="male">
-                    <CustomRadioInput
-                      type="radio"
-                      name="gender"
-                      value="male"
-                      required
-                      checked
-                    />
-                  </label>
-                  Male
-                </RadioBoxContainer>
 
-                <RadioBoxContainer>
-                  <label htmlFor="female">
-                    <CustomRadioInput
-                      type="radio"
-                      name="gender"
-                      value="female"
-                    />
-                  </label>
-                  Female
-                </RadioBoxContainer>
-              </LabelBlock>
-              <ChooseText>Your age</ChooseText>
+
             </ExtraContainer>
-            
+
 
              */}
 
