@@ -33,9 +33,9 @@ const handleFulfildGet = (state, action) => {
     const lunch = action.payload.data.userProducts.lunch;
     
   state.food = { breakfast, dinner, snack, lunch };
-  //   state.food.lunch = action.payload.data.userProducts.lunch;
-  //   state.food.dinner = action.payload.data.userProducts.dinner;
-  //   state.food.snack = action.payload.data.userProducts.snack;
+    state.food.lunch = action.payload.data.userProducts.lunch;
+    state.food.dinner = action.payload.data.userProducts.dinner;
+    state.food.snack = action.payload.data.userProducts.snack;
   state.totalCalories = action.payload.data.userProducts.totalCalories;
 };
 

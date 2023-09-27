@@ -19,7 +19,10 @@ export const fetchFoodIntake=createAsyncThunk(
                 return thunkAPI.rejectWithValue('No token');
             } 
             setAuthHeader(persistToken);
-            const response=await instance('api/user/food-intake')
+            const response = await instance('api/user/food-intake')
+            if (!response || !response.data) {
+              return thunkAPI.rejectWithValue('No data received');
+            }
             console.log(response.data)
             return response.data
         } catch (error) {

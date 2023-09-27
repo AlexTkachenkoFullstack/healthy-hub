@@ -196,24 +196,3 @@ export const TextSignUp = styled(NavLink)`
     padding-bottom: 0px;
     margin-top: 0px;
 }`;
-export const IconTextPosition = styled.div`
-  position: absolute;
-  top: 58%;
-  right: 10px;
-  transform: translate(-50%, -50%);
-`;
-export const ValidationError = styled.span`
-@media (min-width: 320px) {
-    color: #e74a3b;
-    font-family: Poppins;
-    font-size: 12px;
-    margin-top: -13px;
-    margin-bottom: 14px;
-    font-weight: 400;
-    line-height: 1.17;
-}
-`;
-export const InputBox = styled.label`
-  background: transparent;
-  position: relative;
-`;
