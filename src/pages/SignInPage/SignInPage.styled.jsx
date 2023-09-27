@@ -1,86 +1,68 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import SignImImageMobile from "../../assets/images/sport-and-fitness-tracker-mobile.png";
-import SignImImageTablet from "../../assets/images/sport-and-fitness-tracker-tablet.png";
-import SignImImageDesctop from "../../assets/images/sport-and-fitness-tracker.png";
+import { Field } from 'formik';
 
-import SignImImageMobile2к from "../../assets/images/sport-and-fitness-tracker-mobile-2x.png";
-import SignImImageTablet2к from "../../assets/images/sport-and-fitness-tracker-tablet-2x.png";
-import SignImImageDesctop2к from "../../assets/images/sport-and-fitness-tracker-2x.png";
-import { Field} from 'formik';
+export const ImageSignIn = styled.img`
+  height: 296px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 
-
-export const ImageSignIn = styled.div`
-@media (min-width: 320px) {
-    background-image: image-set(
-        url(${SignImImageMobile}) 1x,
-        url(${SignImImageMobile2к}) 2x
-    );
-    height: 296px;
-    width: 300px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
-    }
-@media (min-width: 834px) {
-    background-image: image-set(
-        url(${SignImImageTablet}) 1x,
-        url(${SignImImageTablet2к}) 2x
-    );
+  @media (min-width: 834px) {
     height: 376px;
     width: 380px;
-    }
-@media (min-width: 1440px) {
-    background-image: image-set(
-        url(${SignImImageDesctop}) 1x,
-        url(${SignImImageDesctop2к}) 2x
-    );
+  }
+
+  @media (min-width: 1440px) {
     height: 588px;
     width: 592px;
     margin: 0px;
-    padding-bottom: 72p
-}`;
+    padding-bottom: 72p;
+  }
+`;
 
 export const SignInText = styled.div`
-@media (min-width: 320px) {
+  @media (min-width: 320px) {
     margin-top: 24px;
-}
-@media (min-width: 834px) {
+  }
+  @media (min-width: 834px) {
     margin-top: 60px;
     text-align: center;
-}
-@media (min-width: 1440px) {
+  }
+  @media (min-width: 1440px) {
     margin-top: 0px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-}`;
+  }
+`;
 
 export const TextTitle = styled.h1`
-@media (min-width: 320px) {
+  @media (min-width: 320px) {
     font-size: 24px;
-    font-weight:500;
+    font-weight: 500;
     line-height: 30px;
     font-family: 'Poppins';
-}
-@media (min-width: 834px) {
+  }
+  @media (min-width: 834px) {
     font-size: 30px;
     line-height: 36px;
-}`;
+  }
+`;
 
 export const Text = styled.p`
-@media (min-width: 320px) {
+  @media (min-width: 320px) {
     margin-top: 16px;
     font-size: 18px;
-    font-weight:400;
+    font-weight: 400;
     line-height: 24px;
     color: var(--text-color-secondary-grey);
-}
-@media (min-width: 834px) {
+  }
+  @media (min-width: 834px) {
     font-size: 22px;
     line-height: 32px;
-}`;
+  }
+`;
 
 export const InputText = styled(Field)`
   @media (min-width: 320px) {
