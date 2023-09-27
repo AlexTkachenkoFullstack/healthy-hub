@@ -104,7 +104,7 @@ export const ChooseText = styled.p`
   margin-bottom: 12px;
 `;
 
-export const LabelContainer = styled.label`
+export const RadioBoxContainer = styled.div`
   color: var(---text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
