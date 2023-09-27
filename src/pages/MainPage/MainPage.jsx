@@ -21,12 +21,12 @@ import {
 import { fetchCaloriesIntake } from 'redux/dialyGoalCalories/operations';
 import { fetchRecommendedFood } from 'redux/recommendedFood/operations';
 import { fetchWaterIntake } from 'redux/dailyWater/operations';
+import { fetchFoodIntake } from 'redux/diary/operations';
 
 import { getCaloriesGoal } from 'redux/dialyGoalCalories/selectors';
 import { getWaterIntake } from 'redux/dailyWater/selectors';
 import { getRecommendedFood } from 'redux/recommendedFood/selectors';
 import { getFirstLoad } from 'redux/diary/selectors';
-import { fetchFoodIntake } from 'redux/diary/operations';
 
 const MainPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);

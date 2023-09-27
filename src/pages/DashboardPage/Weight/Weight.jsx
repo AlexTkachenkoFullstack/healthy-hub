@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { getDate, parseISO } from 'date-fns';
 import { avarageValue } from 'utils/DashBoard/avarageValue';
 import {
   WeightBody,
@@ -18,6 +19,13 @@ export const Weight = ({ name, data: dataWeight, period }) => {
     return;
   }
 
+  const dateOrMonth = (date, period) => {
+    if (period.value === 'lastYear') {
+      return date.substring(0, 3);
+    }
+    return getDate(parseISO(date));
+  }
+
   return (
     <>
       <WeightBody>
@@ -34,7 +42,7 @@ export const Weight = ({ name, data: dataWeight, period }) => {
                 return (
                   <WeigthItem key={nanoid()}>
                     <WeightData>{value}</WeightData>
-                    <WeightDate>{date}</WeightDate>
+                    <WeightDate>{dateOrMonth(date,period)}</WeightDate>
                   </WeigthItem>
                 );
               })
