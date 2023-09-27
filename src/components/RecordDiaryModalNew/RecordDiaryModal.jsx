@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
+import { postFoodIntake } from 'redux/diary/operations';
+
 import {
   ModalOverlay,
   ModalDiv,
@@ -14,7 +17,6 @@ import {
   ButtonContainer,
 } from './RecordDiaryModal.styled';
 
-import { postFoodIntake } from 'redux/diary/operations';
 import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
 import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
 import lunchImg from '../../assets/images/meal-periods/lunch.png';

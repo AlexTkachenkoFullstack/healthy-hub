@@ -2,7 +2,9 @@ import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+
 import { updateFoodIntake } from 'redux/diary/operations';
+
 import {
   ModalOverlay,
   ModalDiv,
@@ -18,6 +20,7 @@ import {
   FieldContainer,
   CloseButton,
 } from './EditDiaryModal.styled';
+
 import sprite from '../../assets/images/icons/icons.svg';
 import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
 import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
