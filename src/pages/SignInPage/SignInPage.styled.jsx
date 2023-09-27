@@ -140,6 +140,7 @@ export const ButtonSignIn = styled.button`
     width: 300px;
     border-radius: 12px;
     background-color: var(--bg-button-color);
+    border: none;
   }
   @media (min-width: 834px) {
     width: 380px;

@@ -69,6 +69,7 @@ const SignInPage = () => {
           >
             {({ errors, touched, values }) => (
               <FotmSignIn onSubmit={handleSubmit}>
+
                 <LabelBox htmlFor="email">
                   <InputBox
                     style={{
