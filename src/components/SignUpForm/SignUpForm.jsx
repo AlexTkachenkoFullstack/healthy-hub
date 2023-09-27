@@ -36,6 +36,7 @@ const SignUpForm = () => {
       activity: Number(activity),
     };
     dispatch(registrationThunk(userData));
+    return;
   };
 
   const handleNextStep = () => {
