@@ -15,11 +15,11 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [goal, setGoal] = useState('lose fat');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('male');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
-  const [activity, setActivity] = useState('1.2');
+  const [activity, setActivity] = useState(1.2);
 
   const dispatch = useDispatch();
 
