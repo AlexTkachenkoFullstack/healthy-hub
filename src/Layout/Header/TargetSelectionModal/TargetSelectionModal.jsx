@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import CloseModalButton from '../CloseModalButton/CloseModalButton';
+
 import { updateGoalThunk } from 'redux/auth/operations';
+
+import CloseModalButton from '../CloseModalButton/CloseModalButton';
 import {
   Overlay,
   TargetLayout,
@@ -55,7 +57,7 @@ export default function TargetSelectionModal({ gender, onClose, target }) {
 
   const onSubmit = event => {
     event.preventDefault();
-    dispatch(updateGoalThunk({ goal: goal })); 
+    dispatch(updateGoalThunk({ goal: goal }));
     onClose();
   };
 
