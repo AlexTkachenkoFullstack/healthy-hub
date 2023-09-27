@@ -24,6 +24,11 @@ const ForgotPasswordPage = () => {
     const [notificationColor, setNotificationColor] = useState('');
     const navigate = useNavigate();
 
+    const handleEmailChange = event => {
+      setEmail(event.target.value);
+      setIsEmailValid(true);
+    };
+
 
   const handleSendClick = async event => {
     event.preventDefault();
