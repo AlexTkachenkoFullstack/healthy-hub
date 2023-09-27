@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registrationThunk } from 'redux/auth/operations';
+
 import SignUpFirst from './SignUpFirst';
 import YourGoal from './YourGoal';
 import AgeAndGender from './AgeAndGender';
 import BodyParameters from './BodyParameters';
 import YourActivity from './YourActivity';
-import { ErrorUserModal } from './ErrorUserModal/ErrorUserModal';
-import { useDispatch } from 'react-redux';
-import { registrationThunk } from 'redux/auth/operations';
 
 const SignUpForm = () => {
   // зберігати у локальний стейт, а на сотанній частині форми зробити submit усіх стейтів
