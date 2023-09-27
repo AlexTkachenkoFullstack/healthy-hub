@@ -21,17 +21,30 @@ import {
     InputBox,
     InputText,
     ValidationError,
+    InputContainer,
+    Box,
 } from './SignInPage.styled';
 import {loginThunk} from '../../redux/auth/operations'
+import EyeOpenIcon from '../../components/SignUpForm/EyeOpenIcon';
+import EyeHideIcon from '../../components/SignUpForm/EyeHideIcon';
+import { useState } from 'react';
 
 const initialValues = {
     email: '',
     password: '',
 };
-
+;
 const SignInPage = () => {
     const dispatch = useDispatch();
+    const [showPassword, setShowPassword] = useState('password');
 
+    const toggleIsOpenPassword = () => {
+    showPassword === 'password'
+        ? setShowPassword('text')
+        : setShowPassword('password');
+    };
+
+    
     const handleSubmit = e => {
     e.preventDefault();
     const formLogin = e.currentTarget;
@@ -47,38 +60,69 @@ const SignInPage = () => {
                 <TextTitle>Sign in</TextTitle>
                 <Text>You need to login to use the   service</Text>
                 <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signInSchema}>
-                    {({ errors, touched }) => (
+                    {({ errors, touched, values }) => (
                         <FotmSignIn onSubmit={handleSubmit}>
                             <InputBox htmlFor="email">
+                                <InputContainer
+                    style={{
+                    borderColor:
+                        errors.email && touched.email
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                    }}
+                > 
                             <InputText
                                 placeholder="E-mail"
-                                label="email"
+                                id="email"
                                 type='email'
                                 name="email" />
-                            <IconTextPosition>
-                                {errors.email && touched.email ? (
-                                <InputErrorIcon />
-                                ) : (
-                                <InputSuccessIcon />
-                                )}
-                            </IconTextPosition>
+                            <IconTextPosition
+                    style={{
+                        display: values.email ? 'block' : 'none',
+                    }}
+                    >
+                    {errors.email && touched.email ? (
+                        <InputErrorIcon />
+                    ) : (
+                        <InputSuccessIcon />
+                    )}
+                                    </IconTextPosition>
+                                    </InputContainer>
                             </InputBox>
                                 <ErrorMessage name="email">
                                     {msg => <ValidationError>{msg}</ValidationError>}
                                 </ErrorMessage>
                             <InputBox htmlFor="password">
+                                <InputContainer
+                    style={{
+                    borderColor:
+                        errors.password && touched.password
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                    }}
+                >   
                             <InputText
                                 placeholder="Password"
-                                label="password"
-                                type='password'
+                                id="password"
+                                type={showPassword}
                                 name="password" />
-                            <IconTextPosition>
-                                {errors.password && touched.password ? (
-                                <InputErrorIcon />
-                                ) : (
-                                <InputSuccessIcon />
-                                )}
-                            </IconTextPosition>
+                            <IconTextPosition
+                    style={{
+                        display: values.password ? 'block' : 'none',
+                    }}
+                    >
+                    <div
+                        onClick={toggleIsOpenPassword}
+                        alt="Show or hide password"
+                    >
+                        {showPassword === 'password' ? (
+                        <EyeHideIcon />
+                        ) : (
+                        <EyeOpenIcon />
+                        )}
+                    </div>
+                                    </IconTextPosition>
+                                    </InputContainer>
                             </InputBox>
                             <ErrorMessage name="password">
                                 {msg => <ValidationError>{msg}</ValidationError>}
@@ -87,7 +131,9 @@ const SignInPage = () => {
                         </FotmSignIn>
                     )}
                 </Formik>
-                <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
+                <Box>
+                    <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
+                    </Box>
                 <TextBlock>
                     <TextSecond>If you don't have an account yet</TextSecond>
                     <TextSignUp to="/signup">Sign up</TextSignUp>

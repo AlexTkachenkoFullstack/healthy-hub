@@ -139,6 +139,8 @@ export const FotmSignIn = styled.form`
 }
 @media (min-width: 1440px) {
     margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
 }`;
 
 export const TextSecond = styled.p`
@@ -211,11 +213,12 @@ export const TextFogot = styled(NavLink)`
 }
 @media (min-width: 1441px) {
     margin-bottom: 0px;
+    text-align: center;
 }`;
 
 export const InputBox = styled.label`
-  background: transparent;
-  position: relative;
+//   background: transparent;
+//   position: relative;
 `;
 export const IconTextPosition = styled.div`
   position: absolute;
@@ -223,7 +226,6 @@ export const IconTextPosition = styled.div`
   right: 10px;
   transform: translate(-50%, -50%);
 `;
-
 export const ValidationError = styled.span`
   color: #e74a3b;
   font-family: Poppins;
@@ -233,3 +235,21 @@ export const ValidationError = styled.span`
   font-weight: 400;
   line-height: 1.17;
 `;
+export const InputContainer = styled.div`
+  background: transparent;
+  position: relative;
+//   border: 1px solid var(--input-border-color-normal);
+  border-radius: 12px;
+`;
+export const InputContainerError = styled.div`
+  background: transparent;
+  position: relative;
+  border: 1px solid var(--input-border-color-error);
+  border-radius: 12px;
+`;
+export const Box = styled.div`
+
+@media (min-width: 1440px) {
+    padding-right: 35px;
+    padding-left: 35px;
+}`;
