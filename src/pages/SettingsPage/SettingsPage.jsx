@@ -8,7 +8,6 @@ import {
 } from './SettingsPage.styled';
 import ProfileSettingPhoto from '../../assets/images/interactive-learning-experience.png';
 import ProfileSettingPhoto2x from '../../assets/images/interactive-learning-experience-2x.png';
-
 import UserInformation from 'components/UserInformation';
 
 const SettingsPage = () => {

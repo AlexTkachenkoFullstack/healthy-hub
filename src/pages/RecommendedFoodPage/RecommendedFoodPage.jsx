@@ -1,3 +1,9 @@
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getRecommendedFood } from 'redux/recommendedFood/selectors';
+import { fetchRecommendedFood } from 'redux/recommendedFood/operations';
+import { RecommendedCard } from 'components/RecommendedCard';
+import { randomArray } from 'utils';
 import {
   RecommendedFood,
   Title,
@@ -5,11 +11,6 @@ import {
   StyledImg,
   ProductsList,
 } from './RecommendedFoodPage.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRecommendedFood } from 'redux/recommendedFood/selectors';
-import { fetchRecommendedFood } from 'redux/recommendedFood/operations';
-import { RecommendedCard } from 'components/RecommendedCard';
-import { randomArray } from 'utils';
 import RecommendedFoodPhoto2x from '../../assets/images/ketogenic-diet-2x.png';
 import RecommendedFoodPhoto from '../../assets/images/ketogenic-diet.png';
 

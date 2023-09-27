@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react';
-import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
-import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
-import lunchImg from '../../assets/images/meal-periods/lunch.png';
-import lunchImg2x from '../../assets/images/meal-periods/lunch-2x.png';
-import dinnerImg from '../../assets/images/meal-periods/dinner.png';
-import dinnerImg2x from '../../assets/images/meal-periods/dinner-2x.png';
-import snackImg from '../../assets/images/meal-periods/snack.png';
-import snackImg2x from '../../assets/images/meal-periods/snack-2x.png';
+import { useDispatch } from 'react-redux';
 import {
   ModalOverlay,
   ModalDiv,
@@ -20,8 +13,16 @@ import {
   ButtonStyle,
   ButtonContainer,
 } from './RecordDiaryModal.styled';
-import { useDispatch } from 'react-redux';
+
 import { postFoodIntake } from 'redux/diary/operations';
+import breakfastImg from '../../assets/images/meal-periods/breakfast.png';
+import breakfastImg2x from '../../assets/images/meal-periods/breakfast-2x.png';
+import lunchImg from '../../assets/images/meal-periods/lunch.png';
+import lunchImg2x from '../../assets/images/meal-periods/lunch-2x.png';
+import dinnerImg from '../../assets/images/meal-periods/dinner.png';
+import dinnerImg2x from '../../assets/images/meal-periods/dinner-2x.png';
+import snackImg from '../../assets/images/meal-periods/snack.png';
+import snackImg2x from '../../assets/images/meal-periods/snack-2x.png';
 
 const RecordDiaryModal = ({ onClose, type }) => {
   const dispatch = useDispatch();
