@@ -105,7 +105,7 @@ const SignUpForm = () => {
           />
         </div>
       )}
-      {step >= 6 && userRegister()}
+      {step > 5 && userRegister()}
     </>
   );
 };
