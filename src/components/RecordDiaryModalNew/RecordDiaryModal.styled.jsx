@@ -86,12 +86,9 @@ export const NameField = styled.input`
   color: var(--text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
-  line-height: 1.43; /* 20px */
+  line-height: 1.43;
   width: 100%;
   outline: none;
-
-
-
 
   @media (min-width: 834px) {
     margin-top: 16px;
@@ -107,7 +104,7 @@ export const Field = styled.input`
   color: var(--text-color-primary-white);
   font-family: Poppins;
   font-size: 14px;
-  line-height: 1.43; /* 20px */
+  line-height: 1.43;
   width: 100%;
   outline: none;
 
@@ -145,7 +142,7 @@ export const ButtonStyle = styled.button`
   border: none;
   text-align: center;
   font-size: 14px;
-  line-height: 1.43; /* 142.857% */
+  line-height: 1.43;
   margin-top: 24px;
   color: var(--text-color-active-page-green);
 `;
@@ -156,7 +153,7 @@ export const ButtonSubmit = styled.button`
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.43; /* 142.857% */
+  line-height: 1.43;
   height: 36px;
   border-radius: 12px;
   border: none;

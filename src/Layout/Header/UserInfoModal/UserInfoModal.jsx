@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { logOutThunk } from 'redux/auth/operations';
+import { clearWaterIntake } from 'redux/dailyWater/slice';
+import { clearDailyCalories } from 'redux/dialyGoalCalories/slice';
+import { clearDiary } from 'redux/diary/slice';
+
 import {
   Overlay,
   UserLayout,
@@ -11,9 +16,6 @@ import {
   CancelButton,
 } from './UserInfoModal.styled';
 import sprite from '../../../assets/images/icons/icons.svg';
-import { clearWaterIntake } from 'redux/dailyWater/slice';
-import { clearDailyCalories } from 'redux/dialyGoalCalories/slice';
-import { clearDiary } from 'redux/diary/slice';
 
 export default function UserInfoModal({ onClose }) {
   const [showConfirmation, setShowConfirmation] = useState(false);

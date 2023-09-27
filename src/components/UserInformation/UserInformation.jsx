@@ -1,4 +1,10 @@
 import { Formik, ErrorMessage, Field } from 'formik';
+import * as yup from 'yup';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { updateProfileThunk, updateAvatarThunk } from 'redux/auth/operations';
+
 import {
   StyledForm,
   Label,
@@ -16,11 +22,8 @@ import {
   AvatarContainer,
   AvatarText,
 } from './UserInformation.styled';
-import * as yup from 'yup';
+
 import sprite from '../../assets/images/icons/icons.svg';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateProfileThunk, updateAvatarThunk } from 'redux/auth/operations';
 
 const schema = yup.object({
   userName: yup.string().required('Please Enter your name'),
