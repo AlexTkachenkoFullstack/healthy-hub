@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/healthy-hub/static/css/main.737528b0.css",
-    "main.js": "/healthy-hub/static/js/main.4c72a741.js",
-    "static/js/37.a2544673.chunk.js": "/healthy-hub/static/js/37.a2544673.chunk.js",
+    "main.js": "/healthy-hub/static/js/main.5bb7377e.js",
+    "static/js/37.ebab8b5c.chunk.js": "/healthy-hub/static/js/37.ebab8b5c.chunk.js",
     "static/js/107.05fdf3ae.chunk.js": "/healthy-hub/static/js/107.05fdf3ae.chunk.js",
-    "static/js/279.84864b71.chunk.js": "/healthy-hub/static/js/279.84864b71.chunk.js",
-    "static/js/819.8003075c.chunk.js": "/healthy-hub/static/js/819.8003075c.chunk.js",
+    "static/js/279.ccf12a2d.chunk.js": "/healthy-hub/static/js/279.ccf12a2d.chunk.js",
+    "static/js/819.c373019d.chunk.js": "/healthy-hub/static/js/819.c373019d.chunk.js",
     "static/js/683.753100c4.chunk.js": "/healthy-hub/static/js/683.753100c4.chunk.js",
     "static/js/93.50e72293.chunk.js": "/healthy-hub/static/js/93.50e72293.chunk.js",
     "static/js/568.591eb692.chunk.js": "/healthy-hub/static/js/568.591eb692.chunk.js",
@@ -30,13 +30,9 @@
     "static/media/ketogenic-diet.png": "/healthy-hub/static/media/ketogenic-diet.bd13d20fcd66588bb6fb.png",
     "static/media/summer-hiking.png": "/healthy-hub/static/media/summer-hiking.487152541279e1774b58.png",
     "static/media/elder-fitness.png": "/healthy-hub/static/media/elder-fitness.9a15f72a29b163ea6fa4.png",
-    "static/media/sport-and-fitness-tracker-tablet-2x.png": "/healthy-hub/static/media/sport-and-fitness-tracker-tablet-2x.a1875d2e084505ef7b65.png",
     "static/media/workout-fashion.png": "/healthy-hub/static/media/workout-fashion.9d9c2463eab2cc533c90.png",
     "static/media/body-contouring.png": "/healthy-hub/static/media/body-contouring.a4695cbcc6e7b4b29d00.png",
-    "static/media/sport-and-fitness-tracker-mobile-2x.png": "/healthy-hub/static/media/sport-and-fitness-tracker-mobile-2x.21cc4a60759b13b20786.png",
     "static/media/sport-and-fitness-tracker.png": "/healthy-hub/static/media/sport-and-fitness-tracker.a616831fd2b34ff13567.png",
-    "static/media/sport-and-fitness-tracker-mobile.png": "/healthy-hub/static/media/sport-and-fitness-tracker-mobile.bc6c5067b9717df38fd1.png",
-    "static/media/sport-and-fitness-tracker-tablet.png": "/healthy-hub/static/media/sport-and-fitness-tracker-tablet.9b2da3ae735b83de98fd.png",
     "static/media/icons.svg": "/healthy-hub/static/media/icons.c526b3851449db2781446b1f4933315f.svg",
     "static/media/milk.svg": "/healthy-hub/static/media/milk.a0eacd57b86b0ba2f6c6a392b77da7f8.svg",
     "static/media/eyeClose.svg": "/healthy-hub/static/media/eyeClose.5b0448e3675d9a819205952381ef662c.svg",
@@ -48,11 +44,11 @@
     "static/media/arrow-right.svg": "/healthy-hub/static/media/arrow-right.d0c0c26f156afde714dd6305bb874a9a.svg",
     "static/media/add.svg": "/healthy-hub/static/media/add.f6a357611ea74d91cdfc643ffab7c968.svg",
     "main.737528b0.css.map": "/healthy-hub/static/css/main.737528b0.css.map",
-    "main.4c72a741.js.map": "/healthy-hub/static/js/main.4c72a741.js.map",
-    "37.a2544673.chunk.js.map": "/healthy-hub/static/js/37.a2544673.chunk.js.map",
+    "main.5bb7377e.js.map": "/healthy-hub/static/js/main.5bb7377e.js.map",
+    "37.ebab8b5c.chunk.js.map": "/healthy-hub/static/js/37.ebab8b5c.chunk.js.map",
     "107.05fdf3ae.chunk.js.map": "/healthy-hub/static/js/107.05fdf3ae.chunk.js.map",
-    "279.84864b71.chunk.js.map": "/healthy-hub/static/js/279.84864b71.chunk.js.map",
-    "819.8003075c.chunk.js.map": "/healthy-hub/static/js/819.8003075c.chunk.js.map",
+    "279.ccf12a2d.chunk.js.map": "/healthy-hub/static/js/279.ccf12a2d.chunk.js.map",
+    "819.c373019d.chunk.js.map": "/healthy-hub/static/js/819.c373019d.chunk.js.map",
     "683.753100c4.chunk.js.map": "/healthy-hub/static/js/683.753100c4.chunk.js.map",
     "93.50e72293.chunk.js.map": "/healthy-hub/static/js/93.50e72293.chunk.js.map",
     "568.591eb692.chunk.js.map": "/healthy-hub/static/js/568.591eb692.chunk.js.map",
@@ -64,6 +60,6 @@
   },
   "entrypoints": [
     "static/css/main.737528b0.css",
-    "static/js/main.4c72a741.js"
+    "static/js/main.5bb7377e.js"
   ]
 }
