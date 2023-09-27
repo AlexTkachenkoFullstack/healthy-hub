@@ -1,29 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchCaloriesIntake } from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCaloriesIntake } from './operations';
 
-const initialState={
-    calories:{
-        value:0,
-    },
-    isLoading: false,
-    error:null,
-}
+const initialState = {
+  calories: {
+    value: 0,
+  },
+  isLoading: false,
+  error: null,
+};
 
 const handleRejected = (state, action) => {
-    state.isLoading = false;
-    state.error=action.payload
-}
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
-const handlePending = (state) => {
-    state.isLoading = true;
-}
+const handlePending = state => {
+  state.isLoading = true;
+};
 
 const handleFulfildGet = (state, action) => {
-    state.isLoading = false;
-    state.error = null;
-    state.calories.value=action.payload.data.value;
-}
-
+  state.isLoading = false;
+  state.error = null;
+  state.calories.value = action.payload.data.value;
+};
 
 export const caloriesGoalSlice = createSlice({
   name: 'caloriesGoal',
@@ -42,4 +41,3 @@ export const caloriesGoalSlice = createSlice({
 });
 
 export const { clearDailyCalories } = caloriesGoalSlice.actions;
-

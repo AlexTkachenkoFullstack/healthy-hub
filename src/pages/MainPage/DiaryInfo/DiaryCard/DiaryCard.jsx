@@ -1,5 +1,5 @@
-import RecordDiaryModalNew from 'components/RecordDiaryModalNew';
 import { useState } from 'react';
+import RecordDiaryModalNew from 'components/RecordDiaryModalNew';
 import {
   AddButton,
   InfoWrap,
@@ -10,8 +10,8 @@ import {
   CarbWrap,
   ProteinWrap,
   ImageWrap,
+  TitleWrap,
 } from './DiaryCard.styled';
-import { TitleWrap } from './DiaryCard.styled';
 
 const elementSum = (arr, elem) => {
   return Math.round((arr.reduce((sum, dish) => sum + dish[elem], 0) * 10) / 10);
