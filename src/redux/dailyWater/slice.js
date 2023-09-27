@@ -24,12 +24,6 @@ const handleFulfild = (state, action) => {
   state.water.value = action.payload.data.value;
 };
 
-// const handleFulfild=(state, action)=>{
-//     state.isLoading = false;
-//     state.error = null;
-//     state.water.value=action.payload.value;
-// }
-
 export const waterIntakeSlice = createSlice({
   name: 'waterIntake',
   initialState,

@@ -26,16 +26,13 @@ const handleFulfildGet = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.firstLoad = true;
-  
+
   const breakfast = action.payload.data.userProducts.breakfast;
   const dinner = action.payload.data.userProducts.dinner;
   const snack = action.payload.data.userProducts.snack;
-    const lunch = action.payload.data.userProducts.lunch;
-    
+  const lunch = action.payload.data.userProducts.lunch;
+
   state.food = { breakfast, dinner, snack, lunch };
-  //   state.food.lunch = action.payload.data.userProducts.lunch;
-  //   state.food.dinner = action.payload.data.userProducts.dinner;
-  //   state.food.snack = action.payload.data.userProducts.snack;
   state.totalCalories = action.payload.data.userProducts.totalCalories;
 };
 

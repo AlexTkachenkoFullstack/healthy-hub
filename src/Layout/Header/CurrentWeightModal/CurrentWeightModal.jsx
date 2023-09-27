@@ -57,7 +57,7 @@ export default function CurrentWeightModal({ onClose, date }) {
     dispatch(updateWeightThunk({ weight }));
     setTimeout(() => {
       dispatch(fetchCaloriesIntake());
-    }, 100);
+    }, 200);
 
     actions.resetForm();
     onClose();
