@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDateLastWeight } from 'redux/auth/selectors';
 import { updateWeightThunk } from 'redux/auth/operations';
+import { fetchCaloriesIntake } from 'redux/dialyGoalCalories/operations';
 import {
   Overlay,
   WeightContainer,
@@ -54,6 +55,10 @@ export default function CurrentWeightModal({ onClose, date }) {
 
   const handleSubmit = ({ weight }, actions) => {
     dispatch(updateWeightThunk({ weight }));
+    setTimeout(() => {
+      dispatch(fetchCaloriesIntake());
+    }, 100);
+
     actions.resetForm();
     onClose();
   };

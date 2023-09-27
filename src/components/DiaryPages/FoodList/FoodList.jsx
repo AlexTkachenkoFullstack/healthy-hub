@@ -6,16 +6,19 @@ import Product from '../Product';
 
 import { fetchFoodIntake, postFoodIntake } from 'redux/diary/operations';
 import RecordDiaryModal from 'components/RecordDiaryModalNew/RecordDiaryModal';
+import { getFirstLoad } from 'redux/diary/selectors';
 
 const FoodList = ({ type }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
-
+const firstLoad = useSelector(getFirstLoad);
   const arrayMeal = useSelector(state => state.foodIntake.food[type]);
 
   useEffect(() => {
-    dispatch(fetchFoodIntake(type));
-  }, [type, dispatch]);
+    if (!firstLoad) {
+      dispatch(fetchFoodIntake());
+    }
+  }, [firstLoad, dispatch]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -31,8 +34,9 @@ const FoodList = ({ type }) => {
   return (
     <Container>
       {arrayMeal && arrayMeal.length > 0 ? (
-        arrayMeal?.map(item => (
-          <Product key={item.ident} type={type} product={item} />
+        arrayMeal?.map((item, index) => (
+          
+          <Product key={item.ident} index={index } type={type} product={item} />
         ))
       ) : (
         <p

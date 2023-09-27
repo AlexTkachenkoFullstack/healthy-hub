@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Formik, ErrorMessage } from 'formik';
-
 import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
 import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
 import { signInSchema } from '../../components/SignInFormValidation/SignInFormValidation';
@@ -29,9 +28,10 @@ import EyeOpenIcon from '../../components/SignUpForm/EyeOpenIcon';
 import EyeHideIcon from '../../components/SignUpForm/EyeHideIcon';
 import { useState } from 'react';
 
+
 const initialValues = {
-    email: '',
-    password: '',
+  email: '',
+  password: '',
 };
 ;
 const SignInPage = () => {
@@ -48,11 +48,29 @@ const SignInPage = () => {
     const handleSubmit = e => {
     e.preventDefault();
     const formLogin = e.currentTarget;
-    dispatch(loginThunk({ email: formLogin.elements.email.value, password: formLogin.elements.password.value, })
+    dispatch(
+      loginThunk({
+        email: formLogin.elements.email.value,
+        password: formLogin.elements.password.value,
+      })
     );
     formLogin.reset();
-}
+  };
 
+  return (
+    <>
+      <SignInContainer>
+        <ImageSignIn />
+        <SignInText>
+          <TextTitle>Sign in</TextTitle>
+          <Text>You need to login to use the service</Text>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            validationSchema={signInSchema}
+          >
+            {({ errors, touched, values }) => (
+              <FotmSignIn onSubmit={handleSubmit}>
     return (<>
         <SignInContainer>
             < ImageSignIn />
@@ -144,4 +162,4 @@ const SignInPage = () => {
     )
 }
 
-export default SignInPage
+export default SignInPage;
