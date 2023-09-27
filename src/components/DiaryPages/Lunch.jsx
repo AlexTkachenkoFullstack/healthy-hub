@@ -1,6 +1,5 @@
 import React from 'react';
 import TitlePeriod from './TitlePeriod/TitlePeriod';
-// import sprite from '../../assets/images/icons/icons.svg';
 import lunchImg from '../../assets/images/meal-periods/lunch.png';
 import lunchImg2x from '../../assets/images/meal-periods/lunch-2x.png';
 

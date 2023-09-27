@@ -11,7 +11,7 @@ import { getFirstLoad } from 'redux/diary/selectors';
 const FoodList = ({ type }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
-const firstLoad = useSelector(getFirstLoad);
+  const firstLoad = useSelector(getFirstLoad);
   const arrayMeal = useSelector(state => state.foodIntake.food[type]);
 
   useEffect(() => {
@@ -35,8 +35,7 @@ const firstLoad = useSelector(getFirstLoad);
     <Container>
       {arrayMeal && arrayMeal.length > 0 ? (
         arrayMeal?.map((item, index) => (
-          
-          <Product key={item.ident} index={index } type={type} product={item} />
+          <Product key={item.ident} index={index} type={type} product={item} />
         ))
       ) : (
         <p
@@ -55,7 +54,6 @@ const firstLoad = useSelector(getFirstLoad);
           type={type}
           onClose={closeModal}
           onSubmit={data => {
-            console.log(data);
             dispatch(postFoodIntake({ type, product: data }));
             handleDataUpdate();
           }}

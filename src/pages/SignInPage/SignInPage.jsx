@@ -5,38 +5,35 @@ import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
 import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
 import { signInSchema } from '../../components/SignInFormValidation/SignInFormValidation';
 import {
-  ImageSignIn,
-  SignInText,
-  TextTitle,
-  Text,
-  ButtonSignIn,
-  FotmSignIn,
-  TextSecond,
-  TextSignUp,
-  TextBlock,
-  SignInContainer,
-  TextFogot,
-  IconTextPosition,
-  InputBox,
-  InputText,
-  ValidationError,
-  Box,
-  LabelBox,
+    ImageSignIn,
+    SignInText,
+    TextTitle,
+    Text,
+    ButtonSignIn,
+    FotmSignIn,
+    TextSecond,
+    TextSignUp,
+    TextBlock,
+    SignInContainer,
+    TextFogot,
+    IconTextPosition,
+    InputBox,
+    InputText,
+    ValidationError,
+    InputContainer,
+    Box,
 } from './SignInPage.styled';
-import { loginThunk } from '../../redux/auth/operations';
+import {loginThunk} from '../../redux/auth/operations'
+import EyeOpenIcon from '../../components/SignUpForm/EyeOpenIcon';
+import EyeHideIcon from '../../components/SignUpForm/EyeHideIcon';
 import { useState } from 'react';
-import EyeOpenIcon from 'components/SignUpForm/EyeOpenIcon';
-import EyeHideIcon from 'components/SignUpForm/EyeHideIcon';
-
 const initialValues = {
   email: '',
   password: '',
 };
-
 const SignInPage = () => {
-  const [showPassword, setShowPassword] = useState('password');
   const dispatch = useDispatch();
-
+  const [showPassword, setShowPassword] = useState('password');
   const toggleIsOpenPassword = () => {
     showPassword === 'password'
       ? setShowPassword('text')
@@ -54,7 +51,6 @@ const SignInPage = () => {
     );
     formLogin.reset();
   };
-
   return (
     <>
       <SignInContainer>
@@ -69,8 +65,8 @@ const SignInPage = () => {
           >
             {({ errors, touched, values }) => (
               <FotmSignIn onSubmit={handleSubmit}>
-                <LabelBox htmlFor="email">
-                  <InputBox
+                <InputBox htmlFor="email">
+                  <InputContainer
                     style={{
                       borderColor:
                         errors.email && touched.email
@@ -80,10 +76,9 @@ const SignInPage = () => {
                   >
                     <InputText
                       placeholder="E-mail"
-                      label="email"
+                      id="email"
                       type="email"
                       name="email"
-                      autoComplete="off"
                     />
                     <IconTextPosition
                       style={{
@@ -96,14 +91,13 @@ const SignInPage = () => {
                         <InputSuccessIcon />
                       )}
                     </IconTextPosition>
-                  </InputBox>
-                  <ErrorMessage name="email">
-                    {msg => <ValidationError>{msg}</ValidationError>}
-                  </ErrorMessage>
-                </LabelBox>
-
-                <LabelBox htmlFor="password">
-                  <InputBox
+                  </InputContainer>
+                </InputBox>
+                <ErrorMessage name="email">
+                  {msg => <ValidationError>{msg}</ValidationError>}
+                </ErrorMessage>
+                <InputBox htmlFor="password">
+                  <InputContainer
                     style={{
                       borderColor:
                         errors.password && touched.password
@@ -113,10 +107,9 @@ const SignInPage = () => {
                   >
                     <InputText
                       placeholder="Password"
-                      label="password"
+                      id="password"
                       type={showPassword}
                       name="password"
-                      autoComplete="off"
                     />
                     <IconTextPosition
                       style={{
@@ -134,12 +127,11 @@ const SignInPage = () => {
                         )}
                       </div>
                     </IconTextPosition>
-                  </InputBox>
-                  <ErrorMessage name="password">
-                    {msg => <ValidationError>{msg}</ValidationError>}
-                  </ErrorMessage>
-                </LabelBox>
-
+                  </InputContainer>
+                </InputBox>
+                <ErrorMessage name="password">
+                  {msg => <ValidationError>{msg}</ValidationError>}
+                </ErrorMessage>
                 <ButtonSignIn type="submit">Sign In</ButtonSignIn>
               </FotmSignIn>
             )}
@@ -156,5 +148,4 @@ const SignInPage = () => {
     </>
   );
 };
-
 export default SignInPage;

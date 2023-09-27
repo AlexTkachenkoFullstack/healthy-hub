@@ -43,7 +43,6 @@ const RecordDiaryModal = ({ onClose, type }) => {
     e.preventDefault();
 
     if (formData.fields[formData.fields.length - 1].name === '') {
-      console.log('enter all fields');
       return;
     }
 
@@ -87,26 +86,8 @@ const RecordDiaryModal = ({ onClose, type }) => {
     setFormData({ fields: updatedFields });
   };
 
-  // const handleSubmit = async () => {
-  //   try {
-  //     const response = await dispatch(postFoodIntake(formData.fields));
-  //     if (postFoodIntake.fulfilled.match(response)) {
-  //       console.log('Дані успішно відправлено на бекенд.');
-  //       onClose();
-  //     } else if (postFoodIntake.rejected.match(response)) {
-  //       console.error(
-  //         'Помилка відправки даних на бекенд:',
-  //         response.error.message
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.error('Помилка під час відправки даних:', error);
-  //   }
-  // };
-
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(type, formData.fields);
     dispatch(postFoodIntake({ type, products: formData.fields }));
     onClose();
   };

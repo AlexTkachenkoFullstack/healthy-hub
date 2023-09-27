@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [goal, setGoal] = useState('lose fat');
-  const [gender, setGender] = useState('female');
+  const [gender, setGender] = useState('male');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
@@ -43,7 +43,7 @@ const SignUpForm = () => {
       setEmail('');
       setPassword('');
       setGoal('lose fat');
-      setGender('female');
+      setGender('male');
       setHeight('');
       setWeight('');
       setAge('');

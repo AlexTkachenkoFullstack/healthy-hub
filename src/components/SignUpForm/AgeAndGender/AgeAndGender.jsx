@@ -87,30 +87,15 @@ const AgeAndGender = ({
 
             <InputContainer>
               <ChooseText>Gender</ChooseText>
-              <LabelBlock role="group" aria-labelledby="yourGender">
-                <label>
-                  <RadioInputBox>
-                    <NativeRadioInput
-                      type="radio"
-                      name="gender"
-                      value="male"
-                      required
-                    />
-                    <CustomRadioInput></CustomRadioInput>
-                    <RadioButtonText>Male</RadioButtonText>
-                  </RadioInputBox>
-                </label>
-                <label>
-                  <RadioInputBox>
-                    <NativeRadioInput
-                      type="radio"
-                      name="gender"
-                      value="female"
-                    />
-                    <CustomRadioInput></CustomRadioInput>
-                    <RadioButtonText>Female</RadioButtonText>
-                  </RadioInputBox>
-                </label>
+              <LabelBlock role="group" aria-label="genderGroup">
+                <LabelContainer>
+                  <CustomRadioInput type="radio" name="gender" value="male" />
+                  Male
+                </LabelContainer>
+                <LabelContainer>
+                  <CustomRadioInput type="radio" name="gender" value="female" />
+                  Female
+                </LabelContainer>
               </LabelBlock>
             </InputContainer>
             <InputContainer>
