@@ -121,9 +121,9 @@ const SignInPage = () => {
                         alt="Show or hide password"
                       >
                         {showPassword === 'password' ? (
-                          <EyeHideIcon />
-                        ) : (
                           <EyeOpenIcon />
+                        ) : (
+                          <EyeHideIcon />
                         )}
                       </div>
                     </IconTextPosition>
