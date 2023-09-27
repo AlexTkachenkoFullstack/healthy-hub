@@ -84,21 +84,63 @@ const AgeAndGender = ({
               Choose a goal so that we can <br />
               help you effectively
             </Text>
+
             <div role="group" aria-labelledby="yourGender">
               <label>
-                <Field type="radio" name="gender" value="male" />
-                <div>Male</div>
+                <div>
+                  <Field type="radio" name="gender" value="male" />
+                  <div>Male</div>
+                </div>
               </label>
               <label>
-                <Field type="radio" name="gender" value="female" />
-                Female
+                <div>
+                  <Field type="radio" name="gender" value="female" />
+                  <div>Female</div>
+                </div>
               </label>
-
-              <div>Picked: {values.gender}</div>
             </div>
-            <label>
-              <Field type="text" name="age" />
-            </label>
+            
+            <InputContainer>
+              <InputBox
+                style={{
+                  borderColor:
+                    errors.age && touched.age
+                      ? 'var(--input-border-color-error)'
+                      : '',
+                }}>
+              <label htmlFor="age">
+              <InputText
+                type="number"
+                name="age"
+                id="age"
+                placeholder="Enter your age"
+                onChange={e => {
+                  e.preventDefault();
+                  const { value } = e.target;
+                  const regex =
+                    /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
+                  if (!value || regex.test(value.toString())) {
+                    setFieldValue('age', value);
+                  }
+                }}
+              /></label>
+              <IconTextPosition
+                style={{
+                  display: values.age ? 'block' : 'none',
+                }}
+              >
+                {errors.age && touched.age ? (
+                  <InputErrorIcon />
+                ) : (
+                  <InputSuccessIcon />
+                )}
+              </IconTextPosition>
+              </InputBox>
+              <ErrorMessage name="age">
+                {msg => <ValidationError>{msg}</ValidationError>}
+              </ErrorMessage>
+              </InputContainer>
+
 
             {/* <ExtraContainer htmlFor="gender">
               <ChooseText>Gender</ChooseText>
@@ -129,46 +171,9 @@ const AgeAndGender = ({
               </LabelBlock>
               <ChooseText>Your age</ChooseText>
             </ExtraContainer>
-            <InputContainer htmlFor="age">
-              <InputBox
-                style={{
-                  borderColor:
-                    errors.age && touched.age
-                      ? 'var(--input-border-color-error)'
-                      : '',
-                }}
-              >
-                <InputText
-                  type="number"
-                  id="age"
-                  name="age"
-                  placeholder="Enter your age"
-                  onChange={e => {
-                    e.preventDefault();
-                    const { value } = e.target;
-                    const regex =
-                      /^(0*[1-9][0-9]*(\.[0-9]*)?|0*\.[0-9]*[1-9][0-9]*)$/;
-                    if (!value || regex.test(value.toString())) {
-                      setFieldValue('age', value);
-                    }
-                  }}
-                />
-                <IconTextPosition
-                  style={{
-                    display: values.age ? 'block' : 'none',
-                  }}
-                >
-                  {errors.age && touched.age ? (
-                    <InputErrorIcon />
-                  ) : (
-                    <InputSuccessIcon />
-                  )}
-                </IconTextPosition>
-              </InputBox>
-              <ErrorMessage name="age">
-                {msg => <ValidationError>{msg}</ValidationError>}
-              </ErrorMessage>
-            </InputContainer> */}
+            
+
+             */}
 
             <InputButton type="submit">Next</InputButton>
 
