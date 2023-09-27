@@ -201,8 +201,7 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       </QuestionForm>
       {isOpenModal && (
         <ErrorUserModal isOpenModal={toggleIsOpenModal}>
-          <h1>Hello world</h1>
-          Sorry.
+          <h1>Sorry</h1>
           <p>{errorsMessage.response.data.message}</p>
         </ErrorUserModal>
       )}

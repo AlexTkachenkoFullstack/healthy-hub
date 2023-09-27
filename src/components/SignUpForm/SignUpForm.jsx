@@ -20,8 +20,7 @@ const SignUpForm = () => {
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
   const [activity, setActivity] = useState(1.2);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [errorsMessage, setErrorsMessage] = useState('');
+
   const dispatch = useDispatch();
 
   const userRegister = () => {
@@ -36,22 +35,7 @@ const SignUpForm = () => {
       age: Number(age),
       activity: Number(activity),
     };
-    try {
-      dispatch(registrationThunk(userData));
-      setStep(1);
-      setName('');
-      setEmail('');
-      setPassword('');
-      setGoal('lose fat');
-      setGender('male');
-      setHeight('');
-      setWeight('');
-      setAge('');
-      setActivity(1.2);
-    } catch (error) {
-      setErrorsMessage(error);
-      setIsOpenModal(true);
-    }
+    dispatch(registrationThunk(userData));
   };
 
   const handleNextStep = () => {
@@ -59,10 +43,6 @@ const SignUpForm = () => {
   };
   const handlePrevStep = () => {
     setStep(prev => prev - 1);
-  };
-
-  const toggleIsOpenModal = () => {
-    setIsOpenModal(isOpenModal => !isOpenModal);
   };
 
   return (
@@ -126,11 +106,6 @@ const SignUpForm = () => {
         </div>
       )}
       {step >= 6 && userRegister()}
-      {isOpenModal && (
-        <ErrorUserModal isOpenModal={toggleIsOpenModal}>
-          {errorsMessage.message}
-        </ErrorUserModal>
-      )}
     </>
   );
 };
