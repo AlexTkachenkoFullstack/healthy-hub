@@ -1,5 +1,5 @@
-import icon from '../../../assets/images/icons/eyeOpen.svg';
 import { IconContainer } from './EyeOpenIcon.styled';
+import icon from '../../../assets/images/icons/eyeOpen.svg';
 
 export default function PasswordOpenButtonIcon() {
   return (

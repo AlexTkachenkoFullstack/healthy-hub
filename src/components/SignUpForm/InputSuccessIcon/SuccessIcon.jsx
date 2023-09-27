@@ -1,5 +1,5 @@
-import icon from '../../../assets/images/icons/correct.svg';
 import { IconContainer } from './SuccessIcon.styled';
+import icon from '../../../assets/images/icons/correct.svg';
 
 export default function InputSuccessIcon() {
   return (

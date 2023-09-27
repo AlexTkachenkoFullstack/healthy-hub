@@ -1,6 +1,5 @@
 import { Formik, Form, ErrorMessage } from 'formik';
-import lowQualityImage from '../../../assets/images/body-contouring.png';
-import highQualityImage from '../../../assets/images/body-contouring-2x.png';
+import { bodyParamSchema } from '../../../utils/Registration/validationLibs';
 
 import {
   BodyParametersContainer,
@@ -16,7 +15,8 @@ import {
   IconTextPosition,
   InputContainer,
 } from './BodyParameters.styled';
-import { bodyParamSchema } from '../validationLibs';
+import highQualityImage from '../../../assets/images/body-contouring-2x.png';
+import lowQualityImage from '../../../assets/images/body-contouring.png';
 import InputErrorIcon from '../InputErrorIcon';
 import InputSuccessIcon from '../InputSuccessIcon';
 

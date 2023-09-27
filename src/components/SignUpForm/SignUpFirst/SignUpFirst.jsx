@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
-import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
-import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
+import { signupSchema } from '../../../utils/Registration/validationLibs';
+import checkEmail from '../../../utils/Registration/checkEmail';
+import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
 
 import {
   SignUpFirstContainer,
@@ -19,10 +21,8 @@ import {
   InputContainer,
 } from './SignUpFirst.styled';
 
-import checkEmail from '../checkEmail';
-import { signupSchema } from '../validationLibs';
-import { ErrorUserModal } from '../ErrorUserModal/ErrorUserModal.jsx';
-import { useState } from 'react';
+import highQualityImage from '../../../assets/images/sport-and-fitness-tracker-2x.png';
+import lowQualityImage from '../../../assets/images/sport-and-fitness-tracker.png';
 import InputSuccessIcon from '../InputSuccessIcon';
 import InputErrorIcon from '../InputErrorIcon';
 import EyeOpenIcon from '../EyeOpenIcon';
@@ -62,7 +62,6 @@ const SignUpFirst = ({ goNext, setName, setEmail, setPassword }) => {
       setPassword(password);
       goNext();
     } catch (error) {
-      console.log(error);
       setErrorsMessage(error);
       setIsOpenModal(true);
     }

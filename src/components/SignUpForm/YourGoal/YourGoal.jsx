@@ -1,6 +1,6 @@
 import { Formik, Form } from 'formik';
-import lowQualityImage from '../../../assets/images/summer-hiking.png';
-import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
+import { useEffect } from 'react';
+import { goalSchema } from '../../../utils/Registration/validationLibs';
 
 import {
   YourGoalContainer,
@@ -13,9 +13,9 @@ import {
   BlockButton,
   CustomRadioInput,
 } from './YourGoal.styled';
+import highQualityImage from '../../../assets/images/summer-hiking-2x.png';
+import lowQualityImage from '../../../assets/images/summer-hiking.png';
 
-import { goalSchema } from '../validationLibs';
-import { useEffect } from 'react';
 
 const YourGoal = ({ goNext, setGoal, dataGoal }) => {
   const initialValues = {

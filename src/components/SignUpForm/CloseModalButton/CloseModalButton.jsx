@@ -1,5 +1,5 @@
-import closeIcon from '../../../assets/images/icons/error.svg';
 import { CloseButton } from './CloseModalButton.styled';
+import closeIcon from '../../../assets/images/icons/error.svg';
 
 export default function CloseModalButton({ onClose }) {
   return (

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const SignUpFirstContainer = styled.div`
   background-color: var(--bg-primary);
@@ -98,7 +98,6 @@ export const InputText = styled(Field)`
   }
 `;
 
-
 export const IconTextPosition = styled.div`
   position: absolute;
   top: 50%;
@@ -182,7 +181,6 @@ export const ValidationError = styled.span`
   font-weight: 400;
   line-height: 1.17;
 `;
-
 
 export const QuestionForm = styled.div`
   @media (min-width: 834px) {

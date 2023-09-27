@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Field } from 'formik';
+import styled from 'styled-components';
 
 export const YourActivityContainer = styled.div`
   background-color: var(--bg-primary);

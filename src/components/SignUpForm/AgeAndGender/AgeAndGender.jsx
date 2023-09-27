@@ -1,4 +1,10 @@
 import { Formik, Form, ErrorMessage } from 'formik';
+import { useEffect } from 'react';
+import lowQualityImage from '../../../assets/images/elder-fitness.png';
+import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
+import InputSuccessIcon from '../InputSuccessIcon';
+import InputErrorIcon from '../InputErrorIcon';
+import { genderAgeSchema } from '../../../utils/Registration/validationLibs';
 import {
   Image,
   AgeAndGenderContainer,
@@ -18,12 +24,7 @@ import {
   InputContainer,
 } from './AgeAndGender.styled';
 
-import lowQualityImage from '../../../assets/images/elder-fitness.png';
-import highQualityImage from '../../../assets/images/elder-fitness-2x.png';
-import { genderAgeSchema } from '../validationLibs';
-import { useEffect } from 'react';
-import InputSuccessIcon from '../InputSuccessIcon';
-import InputErrorIcon from '../InputErrorIcon';
+
 
 const AgeAndGender = ({
   goNext,

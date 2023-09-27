@@ -1,4 +1,5 @@
 import { Formik, Form } from 'formik';
+import { useEffect } from 'react';
 import lowQualityImage from '../../../assets/images/workout-fashion.png';
 import highQualityImage from '../../../assets/images/workout-fashion-2x.png';
 
@@ -13,7 +14,6 @@ import {
   BackButton,
   CustomRadioInput,
 } from './YourActivity.styled';
-import { useEffect } from 'react';
 
 
 
