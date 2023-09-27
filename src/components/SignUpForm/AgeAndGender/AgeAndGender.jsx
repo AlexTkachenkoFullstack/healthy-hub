@@ -91,7 +91,6 @@ const AgeAndGender = ({
                     type="radio"
                     name="gender"
                     value="female"
-                    checked
                   />
                   Female
                 </LabelContainer>
