@@ -104,17 +104,6 @@ export const ChooseText = styled.p`
   margin-bottom: 12px;
 `;
 
-export const RadioBoxContainer = styled.div`
-  color: var(---text-color-primary-white);
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.43;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
 export const LabelBlock = styled.div`
   display: flex;
   flex-direction: row;
@@ -126,6 +115,8 @@ export const LabelBlock = styled.div`
 
   @media (min-width: 1440px) {
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 16px;
   }
 `;
@@ -139,6 +130,21 @@ export const InputContainer = styled.div`
       margin: 0;
     }
   }
+`;
+
+export const RadioButtonText = styled.p`
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(---text-color-primary-white);
+`;
+
+export const RadioInputBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 `;
 
 export const InputBox = styled.div`
