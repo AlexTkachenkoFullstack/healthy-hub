@@ -82,36 +82,14 @@ export const Text = styled.p`
     line-height: 32px;
 }`;
 
-export const LabelBox = styled.label`
-  margin-bottom: 14px;
-`;
-
-export const InputBox = styled.div`
-  @media (min-width: 320px) {
-    background: transparent;
-    position: relative;
-    width: 300px;
-    border-radius: 12px;
-    height: 36px;
-    border: 1px solid var(--input-border-color-normal);
-    /* margin-bottom: 16px; */
-  }
-  @media (min-width: 834px) {
-    width: 380px;
-    text-align: left;
-  }
-  @media (min-width: 1440px) {
-    width: 212px;
-    /* margin-bottom: 24px; */
-  }
-`;
-
 export const InputText = styled(Field)`
   @media (min-width: 320px) {
-    background: none;
-    border: none;
-    outline: none;
-    width: 90%;
+    background-color: var(--bg-primary);
+    height: 36px;
+    width: 300px;
+    border-radius: 12px;
+    border: 1px solid var(--input-border-color-normal);
+    margin-bottom: 16px;
     color: var(--text-color-primary-white);
     padding: 8px 10px;
     font-size: 14px;
@@ -126,11 +104,11 @@ export const InputText = styled(Field)`
     margin-bottom: 0;
   }
   @media (min-width: 834px) {
-    width: 92%;
+    width: 380px;
   }
-
   @media (min-width: 1440px) {
-    width: 85%;
+    width: 212px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -140,7 +118,6 @@ export const ButtonSignIn = styled.button`
     width: 300px;
     border-radius: 12px;
     background-color: var(--bg-button-color);
-    border: none;
   }
   @media (min-width: 834px) {
     width: 380px;
@@ -164,8 +141,8 @@ export const FotmSignIn = styled.form`
     margin-bottom: 16px;
     display: flex;
     align-items: flex-start;
-}`;
-
+  }
+`;
 
 export const TextSecond = styled.p`
   @media (min-width: 320px) {
@@ -239,38 +216,35 @@ export const TextFogot = styled(NavLink)`
   @media (min-width: 834px) {
     font-size: 14px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1441px) {
     margin-bottom: 0px;
     text-align: center;
-}`;
+  }
+`;
 
-// export const InputBox = styled.label`
-//   background: transparent;
-//   position: relative;
-
-// `;
-
+export const InputBox = styled.label`
+  //   background: transparent;
+  //   position: relative;
+`;
 export const IconTextPosition = styled.div`
   position: absolute;
-  top: 50%;
-  right: 8px;
+  top: 35%;
+  right: 10px;
   transform: translate(-50%, -50%);
 `;
 export const ValidationError = styled.span`
-@media (min-width: 320px) {
-    color: #e74a3b;
-    font-family: Poppins;
-    font-size: 12px;
-    margin-top: -13px;
-    margin-bottom: 14px;
-    font-weight: 400;
-    line-height: 1.17;
-}
+  color: #e74a3b;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: -13px;
+  margin-bottom: 14px;
+  font-weight: 400;
+  line-height: 1.17;
 `;
 export const InputContainer = styled.div`
   background: transparent;
   position: relative;
-//   border: 1px solid var(--input-border-color-normal);
+  //   border: 1px solid var(--input-border-color-normal);
   border-radius: 12px;
 `;
 export const InputContainerError = styled.div`
@@ -279,11 +253,9 @@ export const InputContainerError = styled.div`
   border: 1px solid var(--input-border-color-error);
   border-radius: 12px;
 `;
-
 export const Box = styled.div`
-
-@media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     padding-right: 35px;
     padding-left: 35px;
-}`;
-
+  }
+`;
