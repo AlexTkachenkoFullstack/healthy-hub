@@ -164,8 +164,8 @@ export const FotmSignIn = styled.form`
     margin-bottom: 16px;
     display: flex;
     align-items: flex-start;
-  }
-`;
+}`;
+
 
 export const TextSecond = styled.p`
   @media (min-width: 320px) {
@@ -242,7 +242,12 @@ export const TextFogot = styled(NavLink)`
   @media (min-width: 1440px) {
     margin-bottom: 0px;
     text-align: center;
-  }
+}`;
+
+export const InputBox = styled.label`
+//   background: transparent;
+//   position: relative;
+
 `;
 
 export const IconTextPosition = styled.div`
@@ -251,7 +256,6 @@ export const IconTextPosition = styled.div`
   right: 8px;
   transform: translate(-50%, -50%);
 `;
-
 export const ValidationError = styled.span`
 @media (min-width: 320px) {
     color: #e74a3b;
@@ -263,6 +267,18 @@ export const ValidationError = styled.span`
     line-height: 1.17;
 }
 `;
+export const InputContainer = styled.div`
+  background: transparent;
+  position: relative;
+//   border: 1px solid var(--input-border-color-normal);
+  border-radius: 12px;
+`;
+export const InputContainerError = styled.div`
+  background: transparent;
+  position: relative;
+  border: 1px solid var(--input-border-color-error);
+  border-radius: 12px;
+`;
 
 export const Box = styled.div`
 
@@ -270,3 +286,4 @@ export const Box = styled.div`
     padding-right: 35px;
     padding-left: 35px;
 }`;
+

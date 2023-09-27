@@ -5,45 +5,47 @@ import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
 import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
 import { signInSchema } from '../../components/SignInFormValidation/SignInFormValidation';
 import {
-  ImageSignIn,
-  SignInText,
-  TextTitle,
-  Text,
-  ButtonSignIn,
-  FotmSignIn,
-  TextSecond,
-  TextSignUp,
-  TextBlock,
-  SignInContainer,
-  TextFogot,
-  IconTextPosition,
-  InputBox,
-  InputText,
-  ValidationError,
-  Box,
-  LabelBox,
+    ImageSignIn,
+    SignInText,
+    TextTitle,
+    Text,
+    ButtonSignIn,
+    FotmSignIn,
+    TextSecond,
+    TextSignUp,
+    TextBlock,
+    SignInContainer,
+    TextFogot,
+    IconTextPosition,
+    InputBox,
+    InputText,
+    ValidationError,
+    InputContainer,
+    Box,
 } from './SignInPage.styled';
-import { loginThunk } from '../../redux/auth/operations';
+import {loginThunk} from '../../redux/auth/operations'
+import EyeOpenIcon from '../../components/SignUpForm/EyeOpenIcon';
+import EyeHideIcon from '../../components/SignUpForm/EyeHideIcon';
 import { useState } from 'react';
-import EyeOpenIcon from 'components/SignUpForm/EyeOpenIcon';
-import EyeHideIcon from 'components/SignUpForm/EyeHideIcon';
+
 
 const initialValues = {
   email: '',
   password: '',
 };
-
+;
 const SignInPage = () => {
-  const [showPassword, setShowPassword] = useState('password');
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const [showPassword, setShowPassword] = useState('password');
 
-  const toggleIsOpenPassword = () => {
+    const toggleIsOpenPassword = () => {
     showPassword === 'password'
-      ? setShowPassword('text')
-      : setShowPassword('password');
-  };
+        ? setShowPassword('text')
+        : setShowPassword('password');
+    };
 
-  const handleSubmit = e => {
+    
+    const handleSubmit = e => {
     e.preventDefault();
     const formLogin = e.currentTarget;
     dispatch(
@@ -69,93 +71,95 @@ const SignInPage = () => {
           >
             {({ errors, touched, values }) => (
               <FotmSignIn onSubmit={handleSubmit}>
-
-                <LabelBox htmlFor="email">
-                  <InputBox
+    return (<>
+        <SignInContainer>
+            < ImageSignIn />
+            <SignInText>
+                <TextTitle>Sign in</TextTitle>
+                <Text>You need to login to use the   service</Text>
+                <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signInSchema}>
+                    {({ errors, touched, values }) => (
+                        <FotmSignIn onSubmit={handleSubmit}>
+                            <InputBox htmlFor="email">
+                                <InputContainer
                     style={{
-                      borderColor:
+                    borderColor:
                         errors.email && touched.email
-                          ? 'var(--input-border-color-error)'
-                          : '',
+                        ? 'var(--input-border-color-error)'
+                        : '',
                     }}
-                  >
-                    <InputText
-                      placeholder="E-mail"
-                      label="email"
-                      type="email"
-                      name="email"
-                      autoComplete="off"
-                    />
-                    <IconTextPosition
-                      style={{
-                        display: values.email ? 'block' : 'none',
-                      }}
-                    >
-                      {errors.email && touched.email ? (
-                        <InputErrorIcon />
-                      ) : (
-                        <InputSuccessIcon />
-                      )}
-                    </IconTextPosition>
-                  </InputBox>
-                  <ErrorMessage name="email">
-                    {msg => <ValidationError>{msg}</ValidationError>}
-                  </ErrorMessage>
-                </LabelBox>
-
-                <LabelBox htmlFor="password">
-                  <InputBox
+                > 
+                            <InputText
+                                placeholder="E-mail"
+                                id="email"
+                                type='email'
+                                name="email" />
+                            <IconTextPosition
                     style={{
-                      borderColor:
-                        errors.password && touched.password
-                          ? 'var(--input-border-color-error)'
-                          : '',
+                        display: values.email ? 'block' : 'none',
                     }}
-                  >
-                    <InputText
-                      placeholder="Password"
-                      label="password"
-                      type={showPassword}
-                      name="password"
-                      autoComplete="off"
-                    />
-                    <IconTextPosition
-                      style={{
-                        display: values.password ? 'block' : 'none',
-                      }}
                     >
-                      <div
+                    {errors.email && touched.email ? (
+                        <InputErrorIcon />
+                    ) : (
+                        <InputSuccessIcon />
+                    )}
+                                    </IconTextPosition>
+                                    </InputContainer>
+                            </InputBox>
+                                <ErrorMessage name="email">
+                                    {msg => <ValidationError>{msg}</ValidationError>}
+                                </ErrorMessage>
+                            <InputBox htmlFor="password">
+                                <InputContainer
+                    style={{
+                    borderColor:
+                        errors.password && touched.password
+                        ? 'var(--input-border-color-error)'
+                        : '',
+                    }}
+                >   
+                            <InputText
+                                placeholder="Password"
+                                id="password"
+                                type={showPassword}
+                                name="password" />
+                            <IconTextPosition
+                    style={{
+                        display: values.password ? 'block' : 'none',
+                    }}
+                    >
+                    <div
                         onClick={toggleIsOpenPassword}
                         alt="Show or hide password"
-                      >
+                    >
                         {showPassword === 'password' ? (
-                          <EyeOpenIcon />
+                        <EyeHideIcon />
                         ) : (
-                          <EyeHideIcon />
+                        <EyeOpenIcon />
                         )}
-                      </div>
-                    </IconTextPosition>
-                  </InputBox>
-                  <ErrorMessage name="password">
-                    {msg => <ValidationError>{msg}</ValidationError>}
-                  </ErrorMessage>
-                </LabelBox>
-
-                <ButtonSignIn type="submit">Sign In</ButtonSignIn>
-              </FotmSignIn>
-            )}
-          </Formik>
-          <Box>
-            <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
-          </Box>
-          <TextBlock>
-            <TextSecond>If you don't have an account yet</TextSecond>
-            <TextSignUp to="/signup">Sign up</TextSignUp>
-          </TextBlock>
-        </SignInText>
-      </SignInContainer>
-    </>
-  );
-};
+                    </div>
+                                    </IconTextPosition>
+                                    </InputContainer>
+                            </InputBox>
+                            <ErrorMessage name="password">
+                                {msg => <ValidationError>{msg}</ValidationError>}
+                            </ErrorMessage>
+                            <ButtonSignIn type='submit'>Sign In</ButtonSignIn>
+                        </FotmSignIn>
+                    )}
+                </Formik>
+                <Box>
+                    <TextFogot to="/forgot-password">Forgot your password?</TextFogot>
+                    </Box>
+                <TextBlock>
+                    <TextSecond>If you don't have an account yet</TextSecond>
+                    <TextSignUp to="/signup">Sign up</TextSignUp>
+                </TextBlock>
+            </SignInText>
+        </SignInContainer>
+            </>
+    )
+}
 
 export default SignInPage;
