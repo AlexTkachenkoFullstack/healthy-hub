@@ -7,14 +7,12 @@ import { useEffect, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuthStatus, getIsLoadingAuth } from './redux/auth/selectors';
 import { getStacticsLoading } from 'redux/statistic/selectors';
-import { getFoodIntakeLoading, getFoodIntake } from 'redux/diary/selectors';
+import { getFoodIntakeLoading } from 'redux/diary/selectors';
 import { getWaterIntakeLoading } from 'redux/dailyWater/selectors';
 import { getCaloriesGoalLoading } from 'redux/dialyGoalCalories/selectors';
 import { getRecommendedFoodLoading } from 'redux/recommendedFood/selectors';
 import { refreshThunk } from './redux/auth/operations';
 import Loader from 'components/Loader/Loader';
-import { fetchFoodIntake } from 'redux/diary/operations';
-import { addFoodIntake } from 'redux/diary/slice';
 
 const WellcomPage = lazy(() => import('./pages/WellcomPage/WellcomPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -32,7 +30,6 @@ const SettingsPage = lazy(() => import('./pages/SettingsPage/SettingsPage'));
 
 function App() {
   let isAuth = useSelector(getAuthStatus);
-  const foodIntake = useSelector(getFoodIntake);
   const isAuthLoading = useSelector(getIsLoadingAuth);
   const isStatisticsLoading = useSelector(getStacticsLoading);
   const isFoodLoading = useSelector(getFoodIntakeLoading);
@@ -45,18 +42,6 @@ function App() {
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (foodIntake === null) {
-      dispatch(
-        addFoodIntake({ breakfast: [], lunch: [], dinner: [], snack: [] })
-      );
-      dispatch(fetchFoodIntake());
-    }
-
-    // dispatch(postFoodIntake({type:"lunch", products:[{name: "Apple",carbohydrates: 23,protein:  55 ,fat: 44 ,calories: 60}]}))
-    //  dispatch(updateFoodIntake({id:"650f8352565b69b1151714ea", type:"lunch", product:{name: "Mango",carbohydrates: 23,protein:  55, fat: 44, calories:60}}))
-  }, [dispatch, foodIntake]);
 
   return (
     <>

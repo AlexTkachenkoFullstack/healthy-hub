@@ -25,17 +25,26 @@ import { fetchWaterIntake } from 'redux/dailyWater/operations';
 import { getCaloriesGoal } from 'redux/dialyGoalCalories/selectors';
 import { getWaterIntake } from 'redux/dailyWater/selectors';
 import { getRecommendedFood } from 'redux/recommendedFood/selectors';
+import { getFirstLoad } from 'redux/diary/selectors';
+import { fetchFoodIntake } from 'redux/diary/operations';
 
 const MainPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dailyCalories = useSelector(getCaloriesGoal);
   const waterConsumtion = useSelector(getWaterIntake);
   const recomendFood = useSelector(getRecommendedFood);
+  const firstLoad = useSelector(getFirstLoad);
   const dispatch = useDispatch();
 
   const toggleIsOpenModal = () => {
     setIsOpenModal(isOpenModal => !isOpenModal);
   };
+
+  useEffect(() => {
+    if (!firstLoad) {
+      dispatch(fetchFoodIntake());
+    }
+  }, [dispatch, firstLoad]);
 
   useEffect(() => {
     isOpenModal
@@ -46,7 +55,7 @@ const MainPage = () => {
   useEffect(() => {
     !dailyCalories && dispatch(fetchCaloriesIntake());
     !recomendFood && dispatch(fetchRecommendedFood());
-    !waterConsumtion && dispatch(fetchWaterIntake());
+    waterConsumtion === null && dispatch(fetchWaterIntake());
   }, [dispatch, dailyCalories, waterConsumtion, recomendFood]);
 
   return (
