@@ -1,32 +1,38 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, ErrorMessage } from 'formik';
-import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
-import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
+import { useState } from 'react';
+
 import { signInSchema } from '../../components/SignInFormValidation/SignInFormValidation';
+import { loginThunk } from '../../redux/auth/operations';
+
 import {
-    ImageSignIn,
-    SignInText,
-    TextTitle,
-    Text,
-    ButtonSignIn,
-    FotmSignIn,
-    TextSecond,
-    TextSignUp,
-    TextBlock,
-    SignInContainer,
-    TextFogot,
-    IconTextPosition,
-    InputBox,
-    InputText,
-    ValidationError,
-    InputContainer,
-    Box,
+  ImageSignIn,
+  SignInText,
+  TextTitle,
+  Text,
+  ButtonSignIn,
+  FotmSignIn,
+  TextSecond,
+  TextSignUp,
+  TextBlock,
+  SignInContainer,
+  TextFogot,
+  IconTextPosition,
+  InputBox,
+  InputText,
+  ValidationError,
+  InputContainer,
+  Box,
 } from './SignInPage.styled';
-import {loginThunk} from '../../redux/auth/operations'
+
 import EyeOpenIcon from '../../components/SignUpForm/EyeOpenIcon';
 import EyeHideIcon from '../../components/SignUpForm/EyeHideIcon';
-import { useState } from 'react';
+import InputSuccessIcon from '../../components/SignUpForm/InputSuccessIcon';
+import InputErrorIcon from '../../components/SignUpForm/InputErrorIcon';
+import SignImImageDesctop from '../../assets/images/sport-and-fitness-tracker.png';
+import SignImImageDesctop2к from '../../assets/images/sport-and-fitness-tracker-2x.png';
+
 const initialValues = {
   email: '',
   password: '',
@@ -54,7 +60,11 @@ const SignInPage = () => {
   return (
     <>
       <SignInContainer>
-        <ImageSignIn />
+        <ImageSignIn
+          srcSet={`${SignImImageDesctop} 1x, ${SignImImageDesctop2к} 2x`}
+          src={SignImImageDesctop}
+          alt="Sing in page photo Photo"
+        />
         <SignInText>
           <TextTitle>Sign in</TextTitle>
           <Text>You need to login to use the service</Text>
