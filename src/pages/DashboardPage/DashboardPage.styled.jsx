@@ -175,3 +175,6 @@ export const ScrollWrap = styled('div')`
     }
   }
 `;
+export const Stub = styled('p')`
+  margin: auto;
+`
