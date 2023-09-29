@@ -1,7 +1,7 @@
 [build]
-publish='build'
+publish = 'build'
 
 [[redirects]]
-from="/healthy-hub/*"
+from= '/*'
 to = '/index.html'
 status = 200
