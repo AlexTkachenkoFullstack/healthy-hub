@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {
     ForgotContainer,
-    ImageForgot,
+    ImageContainerLog,
     ForgotText,
     ForgotTextTitle,
     Text,
@@ -15,6 +15,9 @@ import {
     TextSecond,
     TextSignUp,
 } from './ForgotPasswordPage.styled';
+
+import ForgotImageDesctop from '../../assets/images/sport-and-fitness-tracker.png';
+import ForgotImageDesctop2k from '../../assets/images/sport-and-fitness-tracker-2x.png';
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('');
@@ -64,7 +67,11 @@ const ForgotPasswordPage = () => {
 
     return (<>
             <ForgotContainer>
-                < ImageForgot />
+                <ImageContainerLog
+          srcSet={`${ForgotImageDesctop} 1x, ${ForgotImageDesctop2k} 2x`}
+          src={ForgotImageDesctop}
+          alt="Welcome page photo Photo"
+        />
             <ForgotText>
                     <ForgotTextTitle>Forgot your password</ForgotTextTitle>
                     <Text>We will send you an email with recovery instructions</Text>

@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const ImageForgot = styled.img`
+
+
+export const ImageContainerLog = styled.img`
+ 
   height: 296px;
   width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+
   @media (min-width: 834px) {
     height: 376px;
     width: 380px;
+   
   }
 
   @media (min-width: 1440px) {
     height: 588px;
     width: 592px;
-    margin-right: 48px;
+    margin: 0px;
+   margin-right: 48px;
   }
 `;
 
@@ -100,6 +108,7 @@ export const FormForgot = styled.form`
     align-items: center;
     flex-direction: column;
     border: none;
+    align-items: flex-start;
   }
 `;
 
