@@ -2,6 +2,6 @@
 publish='build'
 
 [[redirects]]
-from='/*'
+from="/healthy-hub/*"
 to = '/index.html'
 status = 200
