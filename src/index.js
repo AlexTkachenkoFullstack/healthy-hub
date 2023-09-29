@@ -12,10 +12,14 @@ root.render(
   // <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/healthy-hub">
+        <BrowserRouter >
           <App/>
         </BrowserRouter>
       </PersistGate>
     </Provider>
   // </React.StrictMode>
 );
+
+// basename="/healthy-hub"
+
+// "homepage": "https://AlexTkachenkoFullstack.github.io/healthy-hub/",
