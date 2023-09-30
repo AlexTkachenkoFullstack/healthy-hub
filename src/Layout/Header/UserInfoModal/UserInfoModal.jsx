@@ -6,6 +6,7 @@ import { logOutThunk } from 'redux/auth/operations';
 import { clearWaterIntake } from 'redux/dailyWater/slice';
 import { clearDailyCalories } from 'redux/dialyGoalCalories/slice';
 import { clearDiary } from 'redux/diary/slice';
+import { clearStatistic } from 'redux/statistic/slice';
 
 import {
   Overlay,
@@ -16,6 +17,7 @@ import {
   CancelButton,
 } from './UserInfoModal.styled';
 import sprite from '../../../assets/images/icons/icons.svg';
+
 
 export default function UserInfoModal({ onClose }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -55,6 +57,7 @@ export default function UserInfoModal({ onClose }) {
     dispatch(clearWaterIntake());
     dispatch(clearDailyCalories());
     dispatch(clearDiary());
+    dispatch(clearStatistic())
 
     onClose();
   };

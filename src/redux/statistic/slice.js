@@ -25,7 +25,11 @@ const handleFulfildGet = (state, action) => {
 export const statisticsSlice = createSlice({
   name: 'statistics',
   initialState,
-  reducers: {},
+  reducers: {
+    clearStatistic(state) {
+      return (state = initialState);
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchStatistics.fulfilled, handleFulfildGet)
@@ -33,3 +37,5 @@ export const statisticsSlice = createSlice({
       .addCase(fetchStatistics.rejected, handleRejected);
   },
 });
+
+export const { clearStatistic } = statisticsSlice.actions;
