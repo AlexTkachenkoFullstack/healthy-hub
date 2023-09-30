@@ -49,8 +49,8 @@ export default function UserInfoModal({ onClose }) {
     setShowConfirmation(true);
   };
 
-  const onLogout = () => {
-    dispatch(logOutThunk());
+  const onLogout = async () => {
+    await dispatch(logOutThunk());
 
     dispatch(clearWaterIntake());
     dispatch(clearDailyCalories());

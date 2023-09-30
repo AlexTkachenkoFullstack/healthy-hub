@@ -8,7 +8,7 @@ const isAuth=useSelector(getAuthStatus)
     // змінити умову для авторизованого чи неавторизованого користувача(!auth)
     const shouldRedirect = !isAuth; //замінити на значення зі стейту
     return (<>
-    {shouldRedirect ? <Navigate to={redirectTo} />  : component}
+    {shouldRedirect ? <Navigate to={redirectTo} replace/>  : component}
     </>    
     )
 }
